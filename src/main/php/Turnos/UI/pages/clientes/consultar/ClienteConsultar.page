@@ -1,0 +1,17 @@
+<rasty specificationClass="Turnos\UI\pages\clientes\consultar\ClienteConsultar" templateLocation="pages/clientes/consultar/ClienteConsultar.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="clienteOid" value="get:oid" />
+
+
+	<component id="clienteForm" type="ClienteForm">
+		<param name="legend" value="msg:cliente.modificar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="action" value="linkActionModificarCliente" />
+		<param name="method" value="str:post" />
+		<param name="cliente" value="cliente" />
+		<param name="isEditable" value="str:false" />
+	</component>
+	
+</rasty>

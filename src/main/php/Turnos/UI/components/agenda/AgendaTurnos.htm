@@ -1,0 +1,203 @@
+<!-- BEGIN:main -->
+<script>
+function agendaTurnos{id}_turnoChange(data){
+
+	
+	event = new Event("turnochange", data, "Turno");
+	subject.notify(event);
+}
+
+function agendaTurnos{id}_tipoAgendaSemanal(){
+
+	data["tipoAgenda"] = "semanal";
+	event = new Event("turnochange", data, "TipoAgenda");
+	
+	subject.notify(event);
+}
+
+function agendaTurnos{id}_tipoAgendaDiaria(fecha){
+
+	if(fecha!=null){
+		data["fecha"] = fecha;
+		
+		
+	}
+	data["tipoAgenda"] = "diaria";
+	event = new Event("turnochange", data, "TipoAgenda");
+	
+	subject.notify(event);
+}
+
+$(document).ready(function(){
+	
+	//totalesDia('{importe_total}','{total_ensala}', '{total_asignados}', '{total_atendidos}');
+
+	/* notificamos un cambio sobre los totales de la agenda.*/
+	/*
+	data = new Array();
+	data["importeTotal"] = '{importe_total}';
+	data["totalEnSala"] = '{total_ensala}';
+	data["totalAsignados"] = '{total_asignados}';
+	data["totalAtendidos"] = '{total_atendidos}';
+	event = new Event("totaleschange", data, "AgendaTotales");
+	subject.notify(event);
+	*/
+
+	/*
+	$("#link_ayuda").fancybox({
+		'autoScale'		: false,
+		'type': 'ajax',
+		'width'	:	500,
+		'height'	:	500,
+		'modal':false
+	});*/
+});
+
+</script>
+
+<style>
+
+</style>
+
+<div class="agenda">
+
+		<!-- BEGIN: agendaSemanalTitle -->
+		<span id="fecha_title">{fecha_label} {fecha}
+		<!-- END: agendaSemanalTitle -->
+		
+		<!-- BEGIN: agendaDiariaTitle -->
+		<span id="fecha_title">{fecha_label} {fecha}
+		
+		&nbsp;&nbsp;
+		<a href="#" onclick="javascript: agendaTurnos{id}_tipoAgendaSemanal();" >Ver semana</a>
+		
+		</span>
+		<!-- END: agendaDiariaTitle -->
+		
+		
+		
+		<!-- BEGIN: turno -->
+		<div class="agenda_turno {first_css} {last_css} {odd_css}" style="display: block;">
+		
+			<!-- BEGIN: turno_no_disponible -->
+			<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{mensaje}
+			</h2>
+			<!-- END: turno_no_disponible -->
+			
+			<p>{hora}</p>
+			<!-- BEGIN: turno_disponible -->
+			
+				<!-- BEGIN: editar -->
+				<p>
+					<!-- a style="cursor: pointer;" title="{editar_label}" href="#" onclick="javascript: editarTurno('{linkModificar}','{turno_oid}');return false;" >
+					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/editar.png" /></a-->
+					
+					<a style="cursor: pointer;" title="{borrar_label}" href="#" onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;" >
+					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/delete_over.png" /></a>
+				</p>
+				<!-- END: editar -->
+				
+				
+				<!-- BEGIN: otro_estado -->
+				<p class="{turno_css}">
+					<span>{estado}</span>
+				</p>
+				<!-- END: otro_estado -->
+				
+				<!-- BEGIN: ensala -->
+				<p class="{turno_css}" style="cursor: pointer;" title="{asignado_label}" onclick="javascript: turnoAsignado('{linkAsignado}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
+					<span>{estado}</span><img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_finalizar.png"/>
+				</p>
+				<!-- END: ensala -->
+
+				<!-- BEGIN: asignado -->
+				<p class="{turno_css}" style="cursor: pointer;" title="{enSala_label}" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
+					<span>{estado}</span><img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/>
+				</p>
+				<!-- END: asignado -->
+
+				<!-- BEGIN: ocupado -->
+				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente}<br>
+				<span>{obra_social}</span>
+				<span>{importe}</span>
+				</h2>
+				<!-- END: ocupado -->
+			
+				<!-- BEGIN: libre -->
+				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;width:85%;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+					<br />
+				</h2>
+				<!-- END: libre -->
+			
+			<!-- END: turno_disponible -->
+			
+		</div>
+		<!-- END: turno -->
+		
+			
+</div>
+
+<!-- BEGIN: no_atiende -->
+<div id="agenda_no_atiende">
+{no_atiende_msg}
+</div>
+<!-- END: no_atiende -->
+
+
+<!--  semanal  -->
+<div id="agenda_semanal">
+<table class="table_agenda_semanal">
+	<thead">
+		<tr class="fc-first fc-last">
+		
+			<th style="width: 50px;">&nbsp;</th>
+			<!-- BEGIN:th_dia -->
+			<th class="{dia_css}" title='{linkSeleccionarDiaLabel}' style="cursor:pointer;" onclick="javascript: agendaTurnos{id}_tipoAgendaDiaria('{fecha}');">{dia}</th>
+			<!-- END: th_dia -->
+		</tr>
+	</thead>
+	<tbody>
+		
+		<!-- BEGIN:hora -->		
+		<tr class="">
+		
+			<th class="">{hora}</th>
+			
+			<!-- BEGIN: dia -->
+			
+			<!-- BEGIN:turno -->
+			<td class="{turno_css}" >
+				<div title='{linkSeleccionarLabel}' style="width: 100%;position:relative;cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				&nbsp;
+				</div> 
+			</td>
+			<!-- END:turno -->
+
+			<!-- BEGIN:turno_ausencia -->
+			<td class="{turno_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				 {mensajeOculto}
+			</td>
+			<!-- END:turno_ausencia -->
+			
+			<!-- BEGIN:turno_vacio_sobreturno -->
+			<td class="{turno_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				 {mensajeOculto}
+			</td>
+			<!-- END:turno_vacio_sobreturno -->
+			
+			<!-- BEGIN:turno_vacio_disponible -->
+			<td class="{turno_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				 {mensajeOculto} 
+			</td>
+			<!-- END:turno_vacio_disponible -->
+			
+			<!-- END: dia -->
+		</tr>
+		<!-- END:hora -->
+	</tbody>
+</table>
+</div>
+
+
+
+<!-- END:main -->

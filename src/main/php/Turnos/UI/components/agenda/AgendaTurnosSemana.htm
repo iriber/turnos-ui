@@ -1,0 +1,69 @@
+<!-- BEGIN:main -->
+<script>
+function agendaTurnos{id}_turnoChange(data){
+
+	event = new Event("turnochange", data, "Turno");
+	subject.notify(event);
+}
+
+$(document).ready(function(){
+	
+
+});
+
+</script>
+
+<style>
+
+</style>
+
+
+
+<div id="agenda_semanal">
+<table class="table_agenda_semanal">
+	<thead">
+		<tr class="fc-first fc-last">
+		
+			<th style="width: 50px;">&nbsp;</th>
+			
+			<!-- BEGIN:th_dia -->
+			<th class="{dia_css}" title='{linkSeleccionarDiaLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarDia}');">{dia}</th>
+			<!-- END: th_dia -->
+		</tr>
+	</thead>
+	<tbody>
+		
+		<!-- BEGIN:hora -->		
+		<tr class="">
+		
+			<th class="">{hora}</th>
+			
+			<!-- BEGIN: dia -->
+			
+			<!-- BEGIN:turno -->
+			<td class="{turno_css}" >
+				<div style="width: 100%;position:relative;">
+				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente_}</h2>
+				</div> 
+			</td>
+			<!-- END:turno -->
+			
+			<!-- BEGIN:turno_vacio_sobreturno -->
+			<td class="{turno_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				 {mensajeOculto}
+			</td>
+			<!-- END:turno_vacio_sobreturno -->
+			
+			<!-- BEGIN:turno_vacio_disponible -->
+			<td class="{turno_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				 {mensajeOculto} 
+			</td>
+			<!-- END:turno_vacio_disponible -->
+			
+			<!-- END: dia -->
+		</tr>
+		<!-- END:hora -->
+	</tbody>
+</table>
+</div>
+<!-- END:main -->

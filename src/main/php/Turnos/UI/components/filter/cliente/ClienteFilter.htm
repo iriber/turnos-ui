@@ -1,0 +1,127 @@
+<!-- BEGIN:main -->
+<script>
+
+
+function submitBuscarClientes(){
+
+	$( "#page" ).val( 1 );
+	
+	//buscarClientes();
+
+	submitBuscar("{WEB_PATH}", "#clientes_filter{id}", "#{resultDiv}");
+}
+
+function ordenarClientes(name, type){
+
+	$( "#orderBy" ).val(name);
+	$( "#orderByType" ).val(type);
+	
+	submitBuscar("{WEB_PATH}", "#clientes_filter{id}", "#{resultDiv}");
+}
+
+function paginarClientes(page){
+	$( "#page" ).val(page);
+
+	submitBuscar("{WEB_PATH}", "#clientes_filter{id}", "#{resultDiv}");
+}
+
+function seleccionarCliente(clienteId, rowId, checkboxId){
+
+
+	/* muestro un pop con las opciones sobre el cliente */
+	
+	
+	
+	
+	gotoLink("{linkSeleccionar}?oid="+clienteId);
+	
+}
+
+$(document).ready(function(){
+
+	submitBuscar("{WEB_PATH}", "#clientes_filter{id}", "#{resultDiv}");
+	
+	
+	
+	$('#input_submit_ajax_Cliente{id}').click(function() {
+		
+		$('#divClientes{id}Toggle1').toggle( 5, 'linear', function() {
+		});
+		$('#divClientes{id}Toggle2').toggle( 5, 'linear', function() {
+		});
+	});
+
+	$('#legend_buscar{id}_open').click(function() {
+		
+		$('#divClientes{id}Toggle1').toggle( 5, 'linear', function() {
+		});
+		$('#divClientes{id}Toggle2').toggle( 5, 'linear', function() {
+		});
+	});
+});
+
+
+</script>
+
+
+<div id="divClientes{id}Toggle1" style="display:none">
+<form class="turnos_form">
+		<fieldset>
+		<legend class="search_again" id="legend_buscar{id}_open">{legend_again}</legend>
+		</fieldset>
+</form>		
+</div>
+<div id="divClientes{id}Toggle2">
+<form class="turnos_form" id="clientes_filter{id}">
+
+		<fieldset>
+		
+		<legend id="legend_buscar{id}">{legend}</legend>		
+
+
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nombre">{lbl_nombre}:</label>
+	    	<rasty id="nombre" />
+		</div>
+		
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nombre">{lbl_domicilio}:</label>
+	    	<rasty id="domicilio" />
+		</div>
+
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nroHistoriaClinica">{lbl_nroHistoriaClinica}:</label>
+		    <rasty id="nroHistoriaClinica" />
+		</div>
+		
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="obraSocialNombre">{lbl_obraSocialNombre}:</label>
+		    <rasty id="obraSocialNombre" />
+		</div>
+		
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nroObraSocial">{lbl_nroObraSocial}:</label>
+		    <rasty id="nroObraSocial" />
+		</div>		
+	</fieldset>
+	
+	<input type="hidden" name="model" value="{model}">
+	<input type="hidden" name="sortCallback" value="ordenarClientes">
+	<input type="hidden" name="paginationCallback" value="paginarClientes">
+	<input type="hidden" name="selectRowCallback" value="{selectRowCallback}">
+	<input type="hidden" id="orderBy" name="orderBy">
+	<input type="hidden" id="orderByType" name="orderByType" value="ASC">
+	<input type="hidden" id="page" name="page" value="1">
+
+</form>
+<form  class="turnos_form" id="buttons{id}">
+	<fieldset class="tblFooters">
+	
+		<input type="button" value="{lbl_submit}" id="input_submit_ajax_Cliente{id}" onclick="javascript: $( '#page' ).val( 1 ); submitBuscar('{WEB_PATH}', '#clientes_filter{id}', '#{resultDiv}');">
+		
+		<!-- input type="button" value="Limpiar" id="input_button_2" onclick="javascript: cleanForm('clientes_filter'); "-->
+	
+	</fieldset>
+</form>	
+</div>
+<!-- END:main -->

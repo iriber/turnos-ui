@@ -1,0 +1,66 @@
+<rasty specificationClass="Turnos\UI\components\form\horario\AusenciaForm" templateLocation="AusenciaForm.htm">
+
+	<param name="error" value="get:error" />
+	<param name="profesionalOid" value="get:profesionalOid" />
+
+	<component id="backSuccess" type="InputHidden">
+		<param name="inputId" value="str:backToOnSuccess" />
+		<param name="name" value="str:backToOnSuccess" />
+		<param name="value" value="backToOnSuccess" />
+	</component>
+
+
+	<component id="profesional" type="InputFindEntity">
+		<param name="inputId" value="str:profesional" />
+		<param name="name" value="str:profesional" />
+		<param name="value" value="ausencia.profesional" />
+		<param name="placeholder" value="msg:ausencia.profesional" />
+		<param name="finder" value="profesionalFinderClazz" />
+		<param name="requiredMessage" value="msg:ausencia.profesional.required" />
+		<param name="onSelectCallback" value="str:profesionalChange" />
+		
+	</component>
+
+	
+	<component id="observaciones" type="InputText">
+		<param name="inputId" value="str:observaciones" />
+		<param name="name" value="str:observaciones" />
+		<param name="value" value="ausencia.observaciones" />
+		<param name="placeholder" value="msg:ausencia.observaciones" />	
+	</component>
+	
+	<component id="fechaDesde" type="InputDate">
+		<param name="inputId" value="str:fechaDesde" />
+		<param name="name" value="str:fechaDesde" />
+		<param name="value" value="ausencia.fechaDesde" />
+		<param name="placeholder" value="msg:ausencia.fechaDesde" />
+		<param name="format" value="str:d/m/Y" />
+		<param name="requiredMessage" value="msg:ausencia.fechaDesde.required" />
+	</component>
+	
+	<component id="fechaHasta" type="InputDate">
+		<param name="inputId" value="str:fechaHasta" />
+		<param name="name" value="str:fechaHasta" />
+		<param name="value" value="ausencia.fechaHasta" />
+		<param name="placeholder" value="msg:ausencia.fechaHasta" />
+		<param name="format" value="str:d/m/Y" />
+	</component>
+		
+	
+	<component id="horaDesde" type="InputTime">
+		<param name="inputId" value="str:horaDesde" />
+		<param name="name" value="str:horaDesde" />
+		<param name="value" value="ausencia.horaDesde" />
+		<param name="placeholder" value="msg:ausencia..horaDesde" />
+		<param name="interval" value="str:30" />
+	</component>
+
+	<component id="horaHasta" type="InputTime">
+		<param name="inputId" value="str:horaHasta" />
+		<param name="name" value="str:horaHasta" />
+		<param name="value" value="ausencia.horaHasta" />
+		<param name="placeholder" value="msg:ausencia..horaHasta" />
+		<param name="interval" value="str:30" />
+	</component>
+	
+</rasty>

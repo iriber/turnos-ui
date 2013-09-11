@@ -1,0 +1,28 @@
+<rasty specificationClass="Turnos\UI\pages\practicas\historia\HistoriaClinica" templateLocation="pages/practicas/historia/HistoriaClinica.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+
+	<param name="clienteOid" value="get:clienteOid" />
+
+	<param name="backTo" value="get:backTo" />
+
+	<component id="historia" type="HistoriaClinica">
+		<param name="cliente" value="cliente" />
+	</component>
+
+	<component id="turnosCliente" type="TurnosCliente">
+		<param name="cliente" value="cliente" />
+	</component>
+
+	<component id="findCliente" type="InputFindEntity">
+		<param name="inputId" value="str:cliente" />
+		<param name="name" value="str:cliente" />
+		<param name="value" value="cliente" />
+		<param name="placeholder" value="msg:practica.cliente" />
+		<param name="finder" value="clienteFinderClazz" />
+		<param name="hasPopup" value="str:0" />
+		<param name="isEditable" value="str:0" />
+		<param name="onSelectCallback" value="str:cliente_historia_change" />
+	</component>
+		
+</rasty>

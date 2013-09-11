@@ -1,0 +1,110 @@
+/* 
+	Document   : simpleAutoComplete
+	Created on : 14/03/2010, 13:27:12
+	Author     : Wellington Ribeiro
+	Description:
+		Para estilizar o simpleAutoComplete
+	Para não ter problema de posicionamento no IE6,
+		deve-se setar width e height,
+		ou então usar um hack em div.autocomplete
+*/
+div.autocomplete {
+	position: absolute;
+	min-width: 30%;
+	z-index: 1000;
+	/*
+	background-color: #FEFEFE;
+	border: 1px solid #7C7C7C;;
+	font-size: 11px;
+	font-family: 'arial';*/
+}
+
+div.autocomplete ul {
+	/*
+	padding-left: 0;
+	margin: 0;
+	list-style: none*/
+}
+
+div.autocomplete ul li {
+	/*
+	padding: 1px 10px;
+	cursor: pointer;
+	color: #303030;
+	font-size: 14px;*/
+}
+
+div.autocomplete ul li.sel {
+	background-color: #B4D5FE;
+}
+
+.autocomplete_li_even {
+	background-color: #FFFFCC;
+}
+
+.autocomplete_li_odd {
+	background-color: #F8F8F8;
+}
+
+.autocomplete-ul{
+	padding: 5px;
+	position:relative;
+	width: 100%;
+	background: -moz-linear-gradient(center top , #3C3C3C, #111111) repeat scroll 0 0 #111111;
+    border: 1px solid #2A2A2A;
+    color: #FFFFFF;
+    border-left-width: 0;
+    border-right-width: 0;
+    /*overflow: hidden;*/
+	border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 0 #000000, 0 3px 3px #EEEEEE inset;
+        
+}
+
+
+.autocomplete-li{
+	color: #303030;
+	border-left-width: 1px;
+    border-right-width: 1px;
+    display: block;
+    margin: 0;
+    overflow: visible;
+    position: relative;
+    text-align: left;
+    list-style: none outside none;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid #CCCCCC;
+}
+
+.autocomplete-li-odd{
+    background: -moz-linear-gradient(center top , #FDFDFD, #EEEEEE) repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #BBBBBB;
+    color: #101010;
+}
+.autocomplete-li-even{
+    background: -moz-linear-gradient(center top , #EDEDED, #DADADA) repeat scroll 0 0 #DADADA;
+    border: 1px solid #BBBBBB;
+    color: #101010;
+}
+
+.autocomplete-li:hover{
+    background: -moz-linear-gradient(center top , #EDEDED, #DADADA) repeat scroll 0 0 #DADADA;
+    border: 1px solid #BBBBBB;
+    color: #101010;
+}
+
+.autocomplete-li-item{
+
+	font-family: Helvetica,Arial,sans-serif;
+	text-decoration: none;
+	font-size: 16px;
+    display: block;
+}
+
+.autocomplete-li-item-details{
+
+	font-family: Helvetica,Arial,sans-serif;
+	text-decoration: none;
+	font-size: 12px;
+}

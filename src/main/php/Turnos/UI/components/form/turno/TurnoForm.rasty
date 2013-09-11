@@ -1,0 +1,109 @@
+<rasty specificationClass="Turnos\UI\components\form\turno\TurnoForm" templateLocation="TurnoForm.htm">
+
+	<param name="error" value="get:error" />
+
+	<component id="backSuccess" type="InputHidden">
+		<param name="inputId" value="str:backToOnSuccess" />
+		<param name="name" value="str:backToOnSuccess" />
+		<param name="value" value="backToOnSuccess" />
+	</component>
+
+	<component id="oid" type="InputHidden">
+		<param name="inputId" value="str:oid" />
+		<param name="name" value="str:oid" />
+		<param name="value" value="turno.oid" />
+	</component>
+
+	<component id="fecha" type="InputDate">
+		<param name="inputId" value="str:fecha" />
+		<param name="name" value="str:fecha" />
+		<param name="value" value="turno.fecha" />
+		<param name="placeholder" value="msg:turno.fecha" />
+		<param name="numberOfMonths" value="str:1" />
+		<param name="format" value="str:d/m/Y" />
+		<param name="isEditable" value="fechaEditable" />
+		<param name="requiredMessage" value="msg:turno.fecha.required" />
+	</component>
+
+	<component id="hora" type="InputTime">
+		<param name="inputId" value="str:hora" />
+		<param name="name" value="str:hora" />
+		<param name="value" value="turno.hora" />
+		<param name="placeholder" value="msg:turno.hora" />
+		<param name="interval" value="intervalo" />
+		<param name="requiredMessage" value="msg:turno.hora.required" />
+		<param name="isEditable" value="horaEditable" />
+	</component>
+
+	<component id="estado" type="InputCombo">
+		<param name="inputId" value="str:estado" />
+		<param name="name" value="str:estado" />
+		<param name="value" value="turno.estado" />
+		<param name="options" value="estados" />
+		<param name="placeholder" value="msg:turno.estado" />
+		<param name="requiredMessage" value="msg:turno.estado.required" />
+	</component>
+
+	<component id="obraSocial" type="InputFindEntity">
+		<param name="inputId" value="str:obraSocial" />
+		<param name="name" value="str:obraSocial" />
+		<param name="value" value="turno.obraSocial" />
+		<param name="placeholder" value="msg:turno.obraSocial" />
+		<param name="finder" value="obraSocialFinderClazz" />
+		<param name="hasAddEntity" value="boolean:true" />
+		<param name="hasPopup" value="boolean:true" />
+		<param name="popupFilterType" value="str:ObraSocialFilter" />
+		<param name="popupFormType" value="str:ObraSocialQuickForm" />
+		
+		<param name="hasHelp" value="boolean:true" />
+		<param name="popupHelpMsg" value="msg:obraSocial.ayuda.popup" />
+		<param name="autocompleteHelpMsg" value="msg:obraSocial.ayuda.autocomplete" />
+		<param name="addHelpMsg" value="msg:obraSocial.ayuda.add" />
+		
+	</component>
+
+	<component id="nroObraSocial" type="InputText">
+		<param name="inputId" value="str:nroObraSocial" />
+		<param name="name" value="str:nroObraSocial" />
+		<param name="value" value="turno.nroObraSocial" />
+		<param name="placeholder" value="msg:turno.nroObraSocial" />
+	</component>
+
+	<component id="cliente" type="InputFindEntity">
+		<param name="inputId" value="str:cliente" />
+		<param name="name" value="str:cliente" />
+		<param name="value" value="turno.cliente" />
+		<param name="placeholder" value="msg:turno.cliente" />
+		<param name="requiredMessage" value="msg:turno.cliente.required" />
+		<param name="finder" value="clienteFinderClazz" />
+		<param name="hasAddEntity" value="boolean:true" />
+		<param name="hasPopup" value="boolean:true" />
+		<param name="popupFilterType" value="str:ClienteFilter" />
+		<param name="onSelectCallback" value="str:cambiarObraSocial" />
+		<param name="popupFormType" value="str:ClienteQuickForm" />
+		
+		<param name="hasHelp" value="boolean:true" />
+		<param name="popupHelpMsg" value="msg:cliente.ayuda.popup" />
+		<param name="autocompleteHelpMsg" value="msg:cliente.ayuda.autocomplete" />
+		<param name="addHelpMsg" value="msg:cliente.ayuda.add" />
+	</component>
+	
+	<component id="profesional" type="InputFindEntity">
+		<param name="inputId" value="str:profesional" />
+		<param name="name" value="str:profesional" />
+		<param name="value" value="turno.profesional" />
+		<param name="placeholder" value="msg:turno.profesional" />
+		<param name="finder" value="profesionalFinderClazz" />
+		<param name="requiredMessage" value="msg:turno.profesional.required" />
+		<param name="isEditable" value="boolean:false" />
+	</component>
+
+	<component id="importe" type="InputNumber">
+		<param name="inputId" value="str:importe" />
+		<param name="name" value="str:importe" />
+		<param name="value" value="turno.importe" />
+		<param name="requiredMessage" value="msg:turno.importe.required" />
+		<param name="placeholder" value="msg:turno.importe" />
+	</component>
+	
+</rasty>

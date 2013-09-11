@@ -1,0 +1,121 @@
+<rasty-application>
+
+	<!-- declaración de las páginas -->
+	<page name="Login" location="pages/login/Login.page" url="login"/>
+
+	<page name="ProfesionalHome"   location="pages/turnos/ProfesionalHome.page" url="home"/>
+	<page name="TurnosHome"   location="pages/turnos/TurnosHome.page" url="turnos"/>
+
+	<page name="AusenciaAgregar"   location="pages/horarios/agregar/AusenciaAgregar.page" url="ausencia/agregar"/>
+
+	<page name="Nomencladores"   location="pages/nomenclador/Nomencladores.page" url="nomenclador"/>
+
+	<page name="ObrasSociales"   location="pages/obrasSociales/ObrasSociales.page" url="obrasSociales"/>
+
+	<page name="Clientes"   location="pages/clientes/Clientes.page" url="pacientes"/>
+	<page name="ClienteAgregar"   location="pages/clientes/agregar/ClienteAgregar.page" url="pacientes/agregar"/>
+	<page name="ClienteModificar"   location="pages/clientes/modificar/ClienteModificar.page" url="pacientes/modificar"/>
+	<page name="ClienteConsultar"   location="pages/clientes/consultar/ClienteConsultar.page" url="pacientes/consultar"/>
+
+	<page name="TurnoAgregar"   location="pages/turnos/agregar/TurnoAgregar.page" url="turnos/agregar"/>
+	<page name="TurnoModificar"   location="pages/turnos/modificar/TurnoModificar.page" url="turnos/modificar"/>
+	<page name="SobreturnoAgregar"   location="pages/turnos/agregar/SobreturnoAgregar.page" url="turnos/agregar_sobreturno"/>
+
+	<page name="HistoriaClinica"   location="pages/practicas/historia/HistoriaClinica.page" url="historia"/>
+
+	<page name="PracticaAgregar"   location="pages/practicas/agregar/PracticaAgregar.page" url="practicas/agregar"/>
+	<page name="PracticaModificar"   location="pages/practicas/modificar/PracticaModificar.page" url="practicas/modificar"/>
+
+	<page name="AyudaTurnos"   location="pages/ayuda/AyudaTurnos.page" url="ayuda"/>
+	
+	<!-- declaración de los componentes -->
+	<component name="HeaderNav" location="components/header" />
+	<component name="FooterTurnos" location="components/footer" />
+	
+	<component name="AgendaTurnos" location="components/agenda" />
+	<component name="AgendaEnSala" location="components/agenda" />
+	<component name="AgendaAtendidos" location="components/agenda" />
+	<component name="AgendaAsignados" location="components/agenda" />
+	<component name="AgendaTurnosSemana" location="components/agenda" />
+
+	<component name="TotalesDia" location="components/stats" />
+
+	<component name="HistoriaClinica" location="components/historia" />
+
+	<component name="AusenciaForm"   location="components/form/horario"/>
+	
+	<component name="TurnoForm"   location="components/form/turno"/>
+	<component name="TurnosCliente"   location="components/turnos"/>
+
+	<component name="ClienteFilter"   location="components/filter/cliente"/>
+	<component name="ClienteForm"   location="components/form/cliente"/>
+	<component name="ClienteQuickForm"   location="components/form/cliente"/>
+
+	<component name="ObraSocialFilter"   location="components/filter/obraSocial"/>
+	
+	<component name="NomencladorQuickForm"   location="components/form/nomenclador"/>
+
+	<component name="LocalidadQuickForm"   location="components/form/localidad"/>
+
+	<component name="LocalidadFilter"   location="components/filter/localidad"/>
+
+	<component name="PracticaForm"   location="components/form/practica"/>
+
+	<component name="NomencladorFilter"   location="components/filter/nomenclador"/>
+
+
+	<component name="ObraSocialQuickForm"   location="components/form/obraSocial"/>
+
+	<component name="AyudaColoresAgenda"   location="components/ayuda/agenda"/>
+	<component name="AyudaIconosAgenda"   location="components/ayuda/agenda"/>
+	<component name="AyudaAgregarTurno"   location="components/ayuda/agenda"/>
+	<component name="AyudaAgregarSobreturno"   location="components/ayuda/agenda"/>
+	<component name="AyudaEstadoTurno"   location="components/ayuda"/>
+	<component name="AyudaIconosPanel"   location="components/ayuda/panel"/>
+
+	<!-- layouts -->
+	<component name="TurnosLoginLayout" location="layouts" />
+	<component name="TurnosPopupLayout" location="layouts" />
+	<component name="TurnosLayout" location="layouts" />
+	
+	<!-- declaración de las actions -->
+	<action name="Login" class="Turnos\UI\actions\login\Login" url="login"/>
+	<action name="Logout" class="Turnos\UI\actions\login\Logout" url="logout"/>
+
+	<action name="AgregarAusencia" class="Turnos\UI\actions\horarios\AgregarAusencia" url="ausencia/agregar"/>
+	<action name="BorrarAusencia" class="Turnos\UI\actions\horarios\BorrarAusencia" url="ausencia/borrar"/>
+	
+	<action name="AgregarCliente" class="Turnos\UI\actions\clientes\AgregarCliente" url="pacientes/agregar"/>
+	<action name="AgregarClienteJson" class="Turnos\UI\actions\clientes\AgregarClienteJson" url="pacientes/agregarjson"/>
+	<action name="ModificarCliente" class="Turnos\UI\actions\clientes\ModificarCliente" url="pacientes/modificar"/>
+
+	<action name="AgregarTurno" class="Turnos\UI\actions\turnos\AgregarTurno" url="turnos/agregar"/>
+	<action name="ModificarTurno" class="Turnos\UI\actions\turnos\ModificarTurno" url="turnos/modificar"/>
+	<action name="BorrarTurno" class="Turnos\UI\actions\turnos\BorrarTurno" url="turnos/borrar"/>
+	<action name="IniciarTurno" class="Turnos\UI\actions\turnos\IniciarTurno" url="turnos/iniciar"/>
+	<action name="FinalizarTurno" class="Turnos\UI\actions\turnos\FinalizarTurno" url="turnos/finalizar"/>
+	<action name="TurnoEnSala" class="Turnos\UI\actions\turnos\TurnoEnSala" url="turnos/ensala"/>
+	<action name="TurnoAsignado" class="Turnos\UI\actions\turnos\TurnoAsignado" url="turnos/asignado"/>
+	
+
+	<action name="AgregarPractica" class="Turnos\UI\actions\practicas\AgregarPractica" url="practicas/agregar"/>
+	<action name="ModificarPractica" class="Turnos\UI\actions\practicas\ModificarPractica" url="practicas/modificar"/>
+	<action name="BorrarPractica" class="Turnos\UI\actions\practicas\BorrarPractica" url="practicas/borrar"/>
+	
+	<action name="AgregarObraSocialJson" class="Turnos\UI\actions\obrasSociales\AgregarObraSocialJson" url="obrasSociales/agregarjson"/>
+	<action name="AgregarLocalidadJson" class="Turnos\UI\actions\localidades\AgregarLocalidadJson" url="localidades/agregarjson"/>
+
+	<action name="AgregarNomencladorJson" class="Turnos\UI\actions\nomenclador\AgregarNomencladorJson" url="nomenclador/agregarjson"/>
+	
+	<action name="findEntities" class="Turnos\UI\actions\common\ListarEntitiesJson" url="findEntities"/>
+	<action name="findEntity" class="Turnos\UI\actions\common\GetEntityJson" url="findEntity"/>
+	<action name="listening" class="Turnos\UI\actions\common\ListeningJson" url="listening"/>
+	
+
+	<!-- librerías externas 
+	<library name="phprasty_layout" app_path="/home/bernardo/workspace_php/phprasty_layout/src/main/php/Rasty/Layout" web_path="/rasty_fmk/phprasty_layout/"/>
+	<library name="phprasty_grid" app_path="/home/bernardo/workspace_php/phprasty_grid/src/main/php/Rasty/Grid" web_path="/rasty_fmk/phprasty_grid/"/>
+	<library name="phprasty_forms" app_path="/home/bernardo/workspace_php/phprasty_forms/src/main/php/Rasty/Forms" web_path="/rasty_fmk/phprasty_forms/"/>
+	<library name="phprasty_menu" app_path="/home/bernardo/workspace_php/phprasty_menu/src/main/php/Rasty/Menu" web_path="/rasty_fmk/phprasty_menu/"/>
+	-->
+</rasty-application>

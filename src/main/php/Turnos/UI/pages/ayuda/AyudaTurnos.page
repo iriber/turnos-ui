@@ -1,0 +1,6 @@
+<rasty specificationClass="Turnos\UI\pages\ayuda\AyudaTurnos" templateLocation="pages/ayuda/AyudaTurnos.htm"> 
+
+	<param name="layoutType" value="str:TurnosPopupLayout" />
+	
+	
+</rasty>

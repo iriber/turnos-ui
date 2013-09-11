@@ -1,0 +1,20 @@
+<rasty specificationClass="Turnos\UI\components\header\HeaderNav" templateLocation="HeaderNav.htm">
+
+	<component id="btnMenu" type="Button">
+		<param name="onclick" value="str:toggleMenuNav();" />
+		<param name="icon" value="str:home" />
+		<param name="label" value="msg:menu.main" />
+	</component>
+	
+	<component id="menuMain" type="Menu">
+		<param name="onclick" value="str:toggleMenuMain();" />
+		<param name="label" value="msg:menu.main" />
+		<param name="menuGroups" value="mainMenuGroups" />
+	</component>
+	
+	<component id="menuPage" type="Menu">
+		<param name="onclick" value="str:toggleMenuPage();" />
+		<param name="label" value="msg:menu.page" />
+		<param name="menuGroups" value="pageMenuGroups" />
+	</component>
+</rasty>

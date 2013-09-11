@@ -1,0 +1,18 @@
+<configuration xmlns="http://logging.apache.org/log4php/">
+
+	<appender name="fileAppender" class="LoggerAppenderFile">
+		<layout class="LoggerLayoutPattern" />
+			<param name="file" value="/var/www/turnos_ui/logs/turnos_ui.log" />
+	</appender>
+	
+	<appender name="default" class="LoggerAppenderEcho">
+		<layout class="LoggerLayoutPattern">
+			<param name="conversionPattern" value="%date %-5level %msg%n " />
+		</layout>
+	</appender>
+	
+	<root>
+		<level value="DEBUG" />
+		<appender_ref ref="fileAppender" />
+	</root>
+</configuration>

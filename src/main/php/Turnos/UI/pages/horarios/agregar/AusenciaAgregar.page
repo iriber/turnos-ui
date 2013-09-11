@@ -1,0 +1,17 @@
+<rasty specificationClass="Turnos\UI\pages\horarios\agregar\AusenciaAgregar" templateLocation="pages/horarios/agregar/AusenciaAgregar.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+	
+	<param name="profesionalOid" value="get:profesionalOid" />
+
+	<component id="ausenciaForm" type="AusenciaForm">
+		<param name="legend" value="msg:ausencia.agregar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="method" value="str:post" />
+		<param name="action" value="linkActionAgregarAusencia" />
+		<param name="ausencia" value="ausencia" />
+	</component>
+
+		
+</rasty>

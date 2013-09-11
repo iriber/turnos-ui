@@ -1,0 +1,132 @@
+<!-- BEGIN:main -->
+<script>
+function agendaTurnos{id}_turnoChange(data){
+
+	event = new Event("turnochange", data, "Turno");
+	subject.notify(event);
+}
+
+$(document).ready(function(){
+	
+	//totalesDia('{importe_total}','{total_ensala}', '{total_asignados}', '{total_atendidos}');
+
+	/* notificamos un cambio sobre los totales de la agenda.*/
+	data = new Array();
+	data["importeTotal"] = '{importe_total}';
+	data["totalEnSala"] = '{total_ensala}';
+	data["totalAsignados"] = '{total_asignados}';
+	data["totalAtendidos"] = '{total_atendidos}';
+	event = new Event("totaleschange", data, "AgendaTotales");
+	subject.notify(event);
+
+});
+
+/* escuchamos cambios en el servidor 
+var lpOnComplete = function(response) {
+    alert(response);
+    
+    lpStart();
+};
+ 
+var lpStart = function() {
+	
+    //$.post('{WEB_PATH}/listening.json', {}, lpOnComplete, 'json');
+    $.ajax({
+		  url: '{WEB_PATH}/listening.json',
+		  type: "GET",
+		  dataType:"json",
+		  cache: false,
+		  success: function(content){
+		    
+			  lpOnComplete(content);
+			
+		  }
+		});
+    
+};
+$(document).ready(lpStart);*/
+
+
+</script>
+
+<style>
+
+</style>
+
+<span id="fecha_title">{fecha_label} {fecha}</span>
+<div id="agenda">
+<table class="agenda_turnos">
+	<thead>
+	<tr>
+		<th colspan="2">{hora_label}</th>
+		<th>{cliente_label}</th>
+		<th>{estado_label}</th>
+		<th>{importe_label}</th>
+		<th>{os_label}</th>
+		<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr id="turno_{turno_oid}">
+		
+	</tr>
+	
+	<!-- BEGIN: turno -->
+	<tr id="turno_{turno_oid}">
+		
+		
+		<!-- BEGIN: turno_hora -->
+		<td class="franja_horaria" rowspan="{cantidad_turnos}">{hora}</td>
+		<!-- END: turno_hora -->
+		
+		<!-- BEGIN: turno_no_disponible -->
+		<td><b>{hora}</b></td>
+		<td title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');" class="turnoNoDisponible" colspan="5">{mensaje}</td>
+		<!-- END: turno_no_disponible -->
+		
+		<!-- BEGIN: turno_disponible -->
+			<td title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');"><b>{hora}</b></td>
+			<td title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente}&nbsp;</td>
+			<td class="{turno_css}">
+				{estado}&nbsp;
+				<!-- BEGIN: ensala -->
+					<a style="cursor: pointer;" title="{enSala_label}" href="#" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
+					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/></a>
+				<!-- END: ensala -->
+				<!-- BEGIN: iniciar -->
+					<a style="cursor: pointer;" title="{iniciar_label}" href="#" onclick="javascript: iniciarTurno('{linkIniciar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
+					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_iniciar.png"/></a>
+				<!-- END: iniciar -->
+				<!-- BEGIN: finalizar -->
+					<a style="cursor: pointer;" title="{finalizar_label}" href="#" onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
+					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/turno_finalizar.png" /></a>
+				<!-- END: finalizar -->
+			</td>
+			<td title='{linkSeleccionarLabel}' style="cursor:pointer;text-align: right;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{importe}&nbsp;</td>
+			<td title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{obra_social}&nbsp;</td>
+			<td class="agenda_actions">
+				<!-- BEGIN: agregar -->
+					<a style="cursor: pointer;" title="{agregar_label}" href="#" onclick="javascript: agregarTurno('{linkAgregar}', '{horaEncode}', '{fecha}', '{profesional_oid}');return false;" >
+					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/add_over.png" />
+					</a>
+				<!-- END: agregar -->
+				<!-- BEGIN: editar -->
+					<a style="cursor: pointer;" title="{editar_label}" href="#" onclick="javascript: editarTurno('{linkModificar}','{turno_oid}');return false;" >
+					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/editar.png" /></a>
+					
+					<a style="cursor: pointer;" title="{borrar_label}" href="#" onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;" >
+					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/delete_over.png" /></a>
+				<!-- END: editar -->			
+			</td>
+			<!-- END: turno_disponible -->			
+	</tr>
+	<!-- END: turno -->	
+	</tbody>
+</table>
+<!-- BEGIN: no_atiende -->
+<div id="agenda_no_atiende">
+{no_atiende_msg}
+</div>
+<!-- END: no_atiende -->
+</div>
+<!-- END:main -->

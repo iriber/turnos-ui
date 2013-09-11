@@ -1,0 +1,102 @@
+<!-- BEGIN:main -->
+<script>
+
+
+function submitBuscarObrasSociales(){
+
+	$( "#page" ).val( 1 );
+	
+	//buscarObrasSociales();
+
+	submitBuscar("{WEB_PATH}", "#os_filter{id}", "#{resultDiv}");
+}
+
+function ordenarObrasSociales(name, type){
+
+	$( "#orderBy" ).val(name);
+	$( "#orderByType" ).val(type);
+	
+	submitBuscar("{WEB_PATH}", "#os_filter{id}", "#{resultDiv}");
+}
+
+function paginarObrasSociales(page){
+	$( "#page" ).val(page);
+
+	submitBuscar("{WEB_PATH}", "#os_filter{id}", "#{resultDiv}");
+}
+
+function seleccionarObraSocial(oid, rowId, checkboxId){
+	
+	gotoLink("{WEB_PATH}obrasSociales/modificar.html?oid="+oid);
+	
+}
+
+$(document).ready(function(){
+
+	submitBuscar("{WEB_PATH}", "#os_filter{id}", "#{resultDiv}");
+	
+	
+	$('#input_submit_ajax_OS{id}').click(function() {
+		
+		$('#divOS{id}Toggle1').toggle( 5, 'linear', function() {
+		});
+		$('#divOS{id}Toggle2').toggle( 5, 'linear', function() {
+		});
+	});
+
+	$('#legend_buscar{id}_open').click(function() {
+		
+		$('#divOS{id}Toggle1').toggle( 5, 'linear', function() {
+		});
+		$('#divOS{id}Toggle2').toggle( 5, 'linear', function() {
+		});
+	});
+});
+
+</script>
+<div id="divOS{id}Toggle1" style="display:none">
+<form class="turnos_form">
+		<fieldset>
+		<legend class="search_again" id="legend_buscar{id}_open">{legend_again}</legend>
+		</fieldset>
+</form>		
+</div>
+<div id="divOS{id}Toggle2">
+<form class="turnos_form" id="os_filter{id}">
+
+		<fieldset>
+		<legend id="legend_buscar{id}">{legend}</legend>
+		
+
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nombre">{lbl_nombre}:</label>
+		    <rasty id="nombre" />
+		</div>
+
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="codigo">{lbl_codigo}:</label>
+		    <rasty id="codigo" />
+		</div>
+		
+	</fieldset>
+	
+	<input type="hidden" name="model" value="{model}">
+	<input type="hidden" name="sortCallback" value="ordenarObrasSociales">
+	<input type="hidden" name="paginationCallback" value="paginarObrasSociales">
+	<input type="hidden" name="selectRowCallback" value="{selectRowCallback}">
+	<input type="hidden" id="orderBy" name="orderBy">
+	<input type="hidden" id="orderByType" name="orderByType" value="ASC">
+	<input type="hidden" id="page" name="page" value="1">
+
+</form>
+<form  class="turnos_form" id="buttons{id}">
+	<fieldset class="tblFooters">
+	
+		<input type="button" value="{lbl_submit}" id="input_submit_ajax_OS{id}" onclick="javascript: $( '#page' ).val( 1 ); submitBuscar('{WEB_PATH}', '#os_filter{id}', '#{resultDiv}');">
+		
+		<!-- input type="button" value="Limpiar" id="input_button_2" onclick="javascript: cleanForm('os_filter'); "-->
+	
+	</fieldset>
+</form>	
+</div>
+<!-- END:main -->

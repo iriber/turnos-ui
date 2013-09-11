@@ -1,0 +1,204 @@
+<!-- BEGIN:main -->
+<script language="javascript"
+	src="{WEB_PATH}js/autocomplete/simpleAutoComplete.js"></script>
+<link rel="stylesheet"
+	href="{WEB_PATH}css/autocomplete/simpleAutoComplete.css"
+	type="text/css" />
+	
+<style>
+
+#editar{
+	width: 100%;
+}
+</style>
+<script type="text/javascript">
+
+function cliente_historia_change(attrs){
+
+	if(attrs["oid"] != undefined){
+
+		var oid = attrs["oid"];
+
+		//informacion personal.
+		historia_mostrar_infoPersonal(attrs);
+		
+		//historia clínica.
+		historia_mostrar_resumen(oid);
+
+		//turnos realizados.
+		historia_mostrar_turnos(oid);
+
+		//resúmenes de historia clínica.
+		historia_mostrar_resumenes_hc(oid);
+		
+	}else{
+		historia_mostrar_infoPersonal(null);
+		//historia_mostrar_resumen(null);
+		historia_mostrar_turnos(null);
+	}
+
+}
+
+function historia_mostrar_infoPersonal(cliente){
+
+	$("#obraSocial").html("");
+	$("#nroObraSocial").html("");
+	$("#fechaNacimiento").html("");
+	$("#fechaAlta").html("");
+	$("#nroHistoriaClinica").html("");
+	$("#edad").html("");
+	
+	if( cliente != null ){
+
+
+		$("#fechaNacimiento").html(cliente["fechaNacimientoFormateada"]);
+		$("#fechaAlta").html(cliente["fechaAltaFormateada"]);
+
+		$("#nroHistoriaClinica").html(cliente["nroHistoriaClinica"]);
+		$("#edad").html(cliente["edad"]);
+		
+		//info de obra social		
+		var osOid = cliente["obraSocial.oid"];
+		var osNombre = cliente["obraSocial.nombre"];
+		var osNro = cliente["nroObraSocial"];
+		if( osNombre != undefined ){		
+			$("#obraSocial").html(osNombre);
+		}
+		if( osNro != undefined ){		
+			$("#nroObraSocial").html(osNro);
+		}
+	}
+	
+	
+}
+
+function historia_mostrar_resumen(oid){
+
+	if( oid != null ){
+		$.ajax({
+		  url: "{WEB_PATH}HistoriaClinica.rasty?oid="+oid,
+		  type: "GET",
+		  cache: false,
+		  success: function(content){
+		    
+			$( "#historia_resumen" ).html(content);
+			//$( resultId ).fadeTo("fast", 1);
+			
+		  }
+		});
+
+	}else{
+		$( "#historia_resumen" ).html("");
+	}
+}
+
+function historia_mostrar_resumenes_hc(oid){
+
+	
+	if( oid != null ){
+
+		$.ajax({
+			  url: "{WEB_PATH}ResumenHistoriaClinica.rasty?oid="+oid,
+			  cache: false,
+			  success: function(content){
+			    
+				$( "#historia_resumenes_hc" ).html(content);
+
+				//wakeUp( "#ver_agenda" );
+				
+			  }
+			});
+	}else{
+		$( "#historia_resumenes_hc" ).html("");
+	}
+	
+}
+
+function historia_mostrar_turnos(oid){
+	
+	if( oid != null ){
+
+		$.ajax({
+			  url: "{WEB_PATH}TurnosCliente.rasty?fCallback=actualizarHistoria&oid="+oid,
+			  type: "GET",
+			  cache: false,
+			  success: function(content){
+			    
+				$( "#historia_turnos" ).html(content);
+				//$( resultId ).fadeTo("fast", 1);
+				
+			  }
+			});
+
+
+	}else{
+		$( "#historia_turnos" ).html("");
+	}
+	
+}
+
+
+function actualizarHistoria(){
+	
+	$("#findentity_cliente_inputCode").blur();
+}
+
+$(document).ready(function(){
+	actualizarHistoria();
+});
+</script>
+<div id="historia_clinica">
+	
+	<div id="historia_clinica_left" class="turnos_form" >
+		<fieldset>
+			<legend>{cliente_info_subtitle}</legend>
+			
+	   		<rasty id="findCliente" />
+	
+			<table>
+				<tr>
+					<th>{fechaAlta_label}</th>
+					<th>{fechaNacimiento_label}</th>
+					<th>{edad_label}</th>
+				</tr>
+				<tr>
+					<td><span id="fechaAlta"></span></td>
+					<td><span id="fechaNacimiento"></span></td>
+					<td><span id="edad"></span></td>
+				</tr>
+				<tr>
+					<th>{obraSocial_label}</th>
+					<th>{nroObraSocial_label}</th>
+				</tr>
+				<tr>
+					<td><span id="obraSocial"></span></td>
+					<td><span id="nroObraSocial"></span></td>
+				</tr>
+			</table>			
+			
+			
+		</fieldset>	
+		<fieldset>
+			<legend>{historia_info_subtitle} - <span id="nroHistoriaClinica"></span></legend>
+			
+			<div id="historia_resumen">
+				<rasty id="historia" />
+			</div>
+			
+		</fieldset>
+	</div>
+	<div id="historia_clinica_right">
+		<fieldset>
+			<legend>{turnos_info_subtitle}</legend>
+			<div id="historia_turnos">
+				<rasty id="turnosCliente" />
+			</div>	
+		</fieldset>
+		<fieldset style="display:none;">
+			<legend>{resumenes_info_subtitle}</legend>
+			<div id="historia_resumenes_hc"></div>	
+		</fieldset>
+	</div>	
+</div>
+
+<!-- END:main -->

@@ -1,0 +1,275 @@
+<!-- BEGIN:main -->
+<script language="javascript"
+	src="{WEB_PATH}js/autocomplete/simpleAutoComplete.js"></script>
+<link rel="stylesheet"
+	href="{WEB_PATH}css/autocomplete/simpleAutoComplete.css"
+	type="text/css" />
+
+<script>
+
+$(document).ready(function(){
+	
+	$("#ausenciaPorFecha").click(function(){
+
+		//$("#form_ausencia").css("display","block");
+		$("#buttons").css("display","block");
+
+		$("#form_ausencia .itemOcultar").css("display","none");
+
+		$("#legendFormulario").html("{ausencia_porFecha}");
+
+		$(".formOcultar").css("display","block");
+		
+		$("#item_observaciones").css("display","block");
+
+		$("#item_fechaDesde").css("display","block");
+
+		window.location.href = "#form_ausencia_anchor";
+				
+	});
+
+	$("#ausenciaPorFechaHorario").click(function(){
+
+		//$("#form_ausencia").css("display","block");
+		$("#buttons").css("display","block");
+
+		$("#form_ausencia .itemOcultar").css("display","none");
+		
+		$("#legendFormulario").html("{ausencia_porFechaHorario}");
+
+		$(".formOcultar").css("display","block");
+
+		$("#item_observaciones").css("display","block");
+
+		$("#item_fechaDesde").css("display","block");
+
+		$("#item_horaDesde").css("display","block");
+
+		$("#item_horaHasta").css("display","block");
+
+		window.location.href = "#form_ausencia_anchor";		
+	});
+
+
+	$("#ausenciaPorRangoFecha").click(function(){
+
+		//$("#form_ausencia").css("display","block");
+		$("#buttons").css("display","block");
+
+		$("#form_ausencia .itemOcultar").css("display","none");
+		
+		$("#legendFormulario").html("{ausencia_porRangoFecha}");
+
+		$(".formOcultar").css("display","block");
+
+		$("#item_observaciones").css("display","block");
+
+		$("#item_fechaDesde").css("display","block");
+
+		$("#item_fechaHasta").css("display","block");
+
+		window.location.href = "#form_ausencia_anchor";
+	});
+
+
+	$("#ausenciaPorRangoFechaHorario").click(function(){
+
+		//$("#form_ausencia").css("display","block");
+		$("#buttons").css("display","block");
+
+		$("#form_ausencia .itemOcultar").css("display","none");
+		
+		$("#legendFormulario").html("{ausencia_porRangoFechaHorario}");
+
+		$(".formOcultar").css("display","block");
+
+		$("#item_observaciones").css("display","block");
+
+		$("#item_fechaDesde").css("display","block");
+
+		$("#item_fechaHasta").css("display","block");
+		
+		$("#item_horaDesde").css("display","block");
+
+		$("#item_horaHasta").css("display","block");
+
+		window.location.href = "#form_ausencia_anchor";
+	});
+	
+	
+});
+
+function profesionalChange(profesional){
+	data = new Array();
+	data["profesionalOid"] = profesional["oid"];
+	event = new Event("ausenciachange", data, "Ausencia");
+	subject.notify(event);
+
+}
+function ausencias_ausenciaChange(data, profesionalOid){
+
+	//var poid = data["profesionalOid"];
+	data = new Array();
+	data["profesionalOid"] = profesionalOid;
+	event = new Event("ausenciachange", data, "Ausencia");
+	subject.notify(event);
+	
+}
+
+function configurarEnvio(){
+
+	
+	
+		
+}
+
+</script>
+
+<div>
+<style>
+.ejemplo{
+	font-style: italic;
+	color:#000;
+	
+}
+</style>
+
+
+
+<form class="turnos_form" id="form_ausencia" onsubmit="return configurarEnvio();" action="{action}"  method="{method}">		
+	
+	
+		<fieldset>
+			<legend>
+			{ausencia_agregar_legend}
+			</legend>
+			<div class="item">
+		    	<label for="profesional">{lbl_profesional}</label>
+		    	<rasty id="profesional" />
+			</div>
+			
+			<!-- BEGIN: ausencias_vigentes -->
+			<div class="vigencias item">
+				{ausencias_vigentes_msg}:
+			</div>
+			
+			<div id="ausencias_vigentes">
+			<ul>
+				<!-- BEGIN: ausencia -->
+				<li>
+				{vigente_mensaje}
+				<a style="cursor: pointer;" title="{lbl_borrar}" href="#" onclick="javascript: borrarAusencia('{linkBorrar}','{vigente_oid}','{vigente_profesionalOid}', ausencias_ausenciaChange);return false;" >
+					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/delete_over.png" /></a>
+				 
+				</li>
+				<!-- END: ausencia -->	
+			</ul>
+			</div>
+		
+			<!-- END: ausencias_vigentes -->
+		</fieldset>
+		
+		<fieldset class="ausencia_form_left">
+			<legend>
+			{ausencia_agregar_legend_tipo}
+			</legend>
+			
+			<div class="item">
+		    	<label for="nombre">
+		    	&nbsp;
+		    	</label>
+		    	<input id="ausenciaPorFecha" type="radio" value=1 name="tipoAusencia">{ausencia_porFecha}
+			</div>
+			<div class="ejemplo item">
+		    	<label>&nbsp;</label>{ausencia_porFecha_ejemplo}
+			</div>
+			<br />
+			
+			<div class="item">
+		    	<label for="nombre">
+		    	&nbsp;
+		    	</label>
+		    	<input id="ausenciaPorFechaHorario" type="radio" value=2 name="tipoAusencia">{ausencia_porFechaHorario}
+			</div>
+			<div class="ejemplo item">
+		    	<label>&nbsp;</label>{ausencia_porFechaHorario_ejemplo}
+			</div>
+			<br />
+			
+			<div class="item">
+		    	<label for="nombre">
+		    	&nbsp;
+		    	</label>
+		    	<input  id="ausenciaPorRangoFecha"type="radio" value=3 name="tipoAusencia">{ausencia_porRangoFecha}
+			</div>
+			<div class="ejemplo item">
+		    	<label>&nbsp;</label>{ausencia_porRangoFecha_ejemplo}
+			</div>
+			<br />
+			
+			<div class="item">
+		    	<label for="nombre">
+		    	&nbsp;
+		    	</label>
+		    	<input  id="ausenciaPorRangoFechaHorario" type="radio" value=4 name="tipoAusencia">{ausencia_porRangoFechaHorario}
+			</div>
+			<div class="ejemplo item">
+		    	<label>&nbsp;</label>{ausencia_porRangoFechaHorario_ejemplo}
+			</div>
+			
+		</fieldset>
+		
+		<a name="form_ausencia_anchor"></a>
+		<fieldset  class="formOcultar ausencia_form_right" style="display:none;">
+			<legend id="legendFormulario">
+			
+			</legend>
+
+			<div id="item_observaciones" class="item">
+		    	<label for="nombre">
+		    	{lbl_observaciones}:</label>
+		    	<rasty id="observaciones"/>
+			</div>
+					
+			<div id="item_fechaDesde" class="item itemOcultar">
+		    	<label for="fechaDesde">
+		    	{lbl_fechaDesde}* : </label>
+		    	<rasty id="fechaDesde"/>
+			</div>
+
+			<div id="item_fechaHasta" class="item itemOcultar">
+		    	<label for="fechaHasta">
+		    	{lbl_fechaHasta}: </label>
+		    	<rasty id="fechaHasta"/>
+			</div>
+			
+			<div id="item_horaDesde" class="item itemOcultar">
+		    	<label for="horaDesde">
+		    	{lbl_horaDesde}: </label>
+		    	<rasty id="horaDesde"/>
+			</div>
+			
+			<div id="item_horaHasta" class="item itemOcultar">
+		    	<label for="horaHasta">
+		    	{lbl_horaHasta}: </label>
+		    
+		    	<rasty id="horaHasta"/>
+		    	
+			</div>
+			
+		</fieldset>
+		
+		<fieldset id="buttons"  style="display:none;" class="tblFooters ausencia_form_right">
+		
+			<input type="button" value="Aceptar" id="input_submit" onclick="javascript: submitFormulario('form_ausencia'); ">
+			
+			<input type="button" value="Cancelar" id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; ">
+		
+		</fieldset>
+		<div style="clear: both;"></div>
+	</form>
+		
+	
+
+</div>
+<!-- END:main -->

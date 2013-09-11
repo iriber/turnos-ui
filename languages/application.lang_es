@@ -1,0 +1,354 @@
+{
+
+	"common.campos_obligatorios":"Campos requeridos",
+
+	"app.title":"Instituto 9 de Julio",
+	
+	"menu.page":"Opciones de la página",
+	"menu.main":"Menú de navegación",
+	
+	"menu.turnos":"Agenda de turnos",
+	"menu.profesional_home":"Panel de trabajo",
+	"menu.clientes":"Pacientes",
+	"menu.historia":"Historia Clínica",
+	"menu.nomenclador":"Nomenclador",
+	"menu.obrasSociales":"Obras Sociales",
+	"menu.logout":"Salir del sistema",
+
+	"user.required.exception.msg": "Debe iniciar sesión para operar el sistema", 
+	"invalid.password.exception.msg": "La clave ingresada no es válida",
+	
+
+	"ayuda": "Centro de Ayuda",
+	"ayuda.msg": "Necesito ayuda",
+	
+	"ayuda.cerrar.label": "Cerrar la ayuda",
+	"ayuda.agenda.titulo": "Necesitás ayuda?",
+	
+	"ayuda.agenda.header": "Agenda de turnos",
+	"ayuda.panelTrabajo.header": "Panel de trabajo",
+	
+	"ayuda.panel.iconos.titulo": "Qué significan los íconos en mi panel de trabajo?",
+	
+	"ayuda.turnos.titulo": "Centro de ayuda de Turnos",
+	"ayuda.agenda.volver.indice.label":"Volver al índice",
+	"ayuda.agenda.volver.from.label":"Volver",
+
+	"ayuda.turno.estados.titulo":"Estados en los turnos, cómo funciona?",
+		
+	"ayuda.agenda.iconos.titulo": "Qué significan los íconos en mi agenda?",
+	"ayuda.agenda.colores.titulo": "Qué significan los colores en mi agenda?",
+	"ayuda.agenda.agregarTurno.titulo": "Cómo agrego un turno?",
+	"ayuda.agenda.agregarSobreturno.titulo": "Cómo agrego un sobre-turno?",
+	
+	"ayuda.agenda.asignado": "El turno se encuentra asignado a un paciente",
+	"ayuda.agenda.ensala": "El paciente del turno se encuentra en la sala de espera",
+	"ayuda.agenda.encurso": "El paciente está siendo atendido en este momento",
+	"ayuda.agenda.atendido": "El paciente ya fue atendido", 
+	"ayuda.agenda.ausencia": "El turno no está disponible, el profesional notificó ausencia", 
+
+	"ayuda.agenda.asignado-sala.msg": "Utiliza esta opción para indicar que el paciente, asignado al curso, ya se encuentra en sala de espera",
+	"ayuda.agenda.sala-asignado.msg": "Utiliza esta opción para indicar que el paciente se fue sin ser atendido. Por ejemplo, en caso de haberlo puesto en sala por error, o bien, si el paciente se fue por alguna razón y aún no fue atendido.",
+	"ayuda.agenda.borrar.msg": "Utiliza esta opción para borrar los datos del turno. Sirve para liberar el turno en caso de haberlo reservado por error, o bien, que el paciente lo hayo cancelado.",
+	
+	"ayuda.panel.sala-encurso.msg":"Utiliza esta opción para indicar que comienzas a atender al paciente",
+	"ayuda.panel.encurso-atendido.msg": "Utiliza esta opción para indicar que el paciente fue atendido",
+	"ayuda.panel.atendido-ensala.msg": "Utiliza esta opción para indicar que el paciente que está siendo atendido pasa a sala de espera",
+	"ayuda.panel.asignado-ensala.msg": "Utiliza esta opción para indicar que el paciente asignado al curso ya se encuentra en sala de espera", 
+	
+	"cliente.ayuda.autocomplete": "Ingresa el nombre del paciente así te puedo sugerir alguno de los registrados. Recuerda siempre comenzar escribiendo el apellido.",
+	"cliente.ayuda.popup": "Si te resulta más práctico, puedes utilizar la lupa para hacer una búsqueda avanzada.",
+	"cliente.ayuda.add":"Si no encuentras al paciente, utiliza el '+' para ingresar sus datos y registrarlo en el sistema",
+	
+	"obraSocial.ayuda.autocomplete": "Ingresa el nombre de la obra social así te puedo sugerir alguna de las registradas.",
+	"obraSocial.ayuda.popup": "Si te resulta más práctico, puedes utilizar la lupa para hacer una búsqueda avanzada.",
+	"obraSocial.ayuda.add":"Si no encuentras la obra social, utiliza el '+' para ingresar una nueva y registrarla en el sistema",
+	
+	
+	"login.title":"Instituto 9 de Julio",
+	"login.titulo":"Instituto 9 de Julio",
+	"login.subtitulo":"Turnos",
+	
+	"login.iniciar_sesion":"Iniciar sesión",
+	"login.username":"Usuario",
+	"login.password":"Clave",
+	"login.ingrese_username":"Ingrese un usuario",
+	"login.ingrese_password":"Ingrese una clave",
+	"login.ingresar":"Comenzar!",
+	"login.invalid_password": "La clave ingresada no es válida",
+	"login.user_not_found": "El usuario ingresado no es válido",
+
+	"profesional_home.title": "Panel de trabajo de $1",
+	"profesional_home.legend": "Resumen del día de $1",
+	
+	"profesional_home.enSala.legend": "Pacientes en sala",
+	"profesional_home.asignados.legend": "Pacientes con turno que aún no se han presentado",
+	"profesional_home.atendidos.legend": "Pacientes que ya fueron atendidos",
+	"profesional_home.stats.legend": "Totales del día",
+
+	"turnos_home.title": "Agenda",
+	"turnos_home.profesional": "Médico",
+	"turnos_home.calendario": "Calendario",
+	"turnos_home.totales": "Totales del día",
+	"turnos_home.en_caja": "En caja",
+	"turnos_home.agenda": "Agenda",
+	
+	"turno.agregar": "Agregar turno",
+	"turno.agregar.fechaHora": "$1 - $2",
+	"turno.agregar.title": "Agregar un nuevo turno",
+	"turno.agregar.legend": "Ingrese los datos del turno",
+
+	"turno.agregar_sobreturno": "Agregar sobre turno",
+	"turno.agregar_sobreturno.title": "Agregar un nuevo sobre turno",
+	"turno.agregar_sobreturno.legend": "Ingrese los datos del sobre turno",
+
+	"turno.enSala": "Poner el paciente en sala",
+	
+	
+	"turno.cliente.required": "Ingrese un paciente",
+	"turno.profesional.required": "Ingrese el médico",
+	"turno.fecha.required": "Ingrese una fecha",
+	"turno.importe.required": "Ingrese un importe",
+
+	"turno.profesional.unicity": "El médico ya tiene asignado el turno. Elija otro día/horario",
+
+	"turno.editar": "Editar turno",
+	"turno.modificar.title": "Modificar un turno",
+	"turno.modificar.legend": "Modifique los datos del turno",
+
+	"turno.borrar": "Borrar turno",
+	"turno.iniciar": "Atender",
+	"turno.finalizar": "Finalizar el turno",
+	"turno.asignado": "Volver el turno a Asignado",
+	
+
+	"agenda.no_atiende": "No atiende",
+	"agenda.fecha": "Fecha",
+	"agenda.verficha": "Ver ficha del paciente",
+
+	"turno.fecha": "Fecha",
+	"turno.hora": "Hora",
+	"turno.profesional": "Médico",
+	"turno.cliente": "Paciente",
+	"turno.estado": "Estado",
+	"turno.importe": "Importe",
+	"turno.obraSocial": "Obra social",
+	"turno.nroObraSocial": "Nro Afiliado",
+
+	
+	"ausencia.title":  "Ausencias",
+	"ausencia.agregar":  "Notificar ausencia",
+	"ausencia.agregar.title":  "Notificación de ausencia",
+	
+	"ausencia.borrar": "Deseo borrar esta notificación",
+	
+	"ausencia.profesional":  "Médico",
+	"ausencia.observaciones":  "Motivo",
+	"ausencia.fecha":  "Fecha",
+	"ausencia.fechaDesde":  "Fecha",
+	"ausencia.fechaDesde.required":  "Ingrese una fecha",
+	"ausencia.fechaHasta":  "Fecha hasta",
+	"ausencia.horaDesde":  "Hora",
+	"ausencia.horaHasta":  "Hora hasta",
+	
+	"ausencia.ver": "Ver la notifiación de ausencia",
+	"ausencia.agregar.legend": "Notificación de  ausencia",
+	"ausencia.agregar.legend.tipo": "Qué tipo de ausencia desea notificar?",
+	"ausencias.vigentes.msg": "Recuerde que actualmente tiene notificaciones en vigencia",		
+		
+		
+	"ausencia.observaciones.default.msg": "Estará ausente",
+	"ausencia.porFecha.msg": "$1 el día $2",		
+	"ausencia.porFechaHorario.msg": "$1 el día $2 en el horario de $3 a $4",		
+	"ausencia.porRangoFecha.msg": "$1 del $2 al $3",
+	"ausencia.porRangoFechaHorario.msg": "$1 del $2 al $3 en el horario de $4 a $5",
+		
+	"ausencia.porFecha":  "Ausencia por un día",
+	"ausencia.porFecha.ejemplo":  "Ejemplo: Estar&eacute; ausente el día 12/09/2013",
+	
+	"ausencia.porFechaHorario":  "Ausencia por un día y horario",
+	"ausencia.porFechaHorario.ejemplo" :  "Ejemplo: Estaré ausente el día 12/09/2013 de 8 a 12hs",
+	
+	"ausencia.porRangoFecha":  "Ausencia varios días",
+	"ausencia.porRangoFecha.ejemplo" :  "Ejemplo: Estaré ausente del  12/09/2013 al 23/09/2013",
+	
+	"ausencia.porRangoFechaHorario":  "Ausencia varios días en un horario",
+	"ausencia.porRangoFechaHorario.ejemplo" :  "Ejemplo: Estaré ausente del 12/09/2013 al 23/09/2013 en el horario de 8 a 12",
+
+	"clientes.title": "Listado de Pacientes",
+	"cliente.agregar": "Agregar un nuevo paciente",
+	"cliente.agregar.title": "Agregar un nuevo paciente",
+	"cliente.agregar.legend": "Ingrese los datos del paciente",
+	
+	"cliente.modificar": "Modificar datos del paciente",
+	"cliente.modificar.title": "Modificar paciente",
+	"cliente.modificar.legend": "Modifique los datos del paciente",
+	
+	"cliente.buscar": "Buscar pacientes",
+	"cliente.buscar.again": "Volver a intentarlo...",
+
+	"cliente.nombre":"Nombre",
+	"cliente.nombre.unicity":"Ya existe un paciente para el nombre indicado",
+	"cliente.nombre.required":"Ingrese un nombre",
+	
+	"cliente.fechaAlta":"Fecha de alta",
+	"cliente.edad":"Edad",
+	
+	"cliente.apellido":"Apellido",
+	"cliente.fechaNacimiento":"Fecha de nacimiento",
+	"cliente.email":"E-mail",
+   	"cliente.oid":"Código",
+	"cliente.nroHistoriaClinica":"Historia Clínica",
+	"cliente.nroObraSocial":"Nro Afiliado",
+	"cliente.obraSocial":"Obra Social",
+   	
+   	"cliente.documento":"Documento",
+   	"cliente.documento.unicity":"Ya existe un paciente con el documento indicado",
+   	
+   	"cliente.telefonoFijo":"Tel. fijo",
+   	"cliente.telefonoMovil":"Celular",
+   	"cliente.telefonos":"Teléfonos",
+   	"cliente.localidad":"Localidad",
+   	"cliente.domicilio":"Domicilio",
+   	"cliente.sexo":"Sexo",
+   	"cliente.nroDocumento":"Nro Documento",
+   	"cliente.tipoDocumento":"Tipo Documento",
+   	
+   	"documento.tipo":"Tipo",
+   	"documento.nro":"Nro",
+   	
+   	"localidad.agregar.legend": "Ingrese los datos de la localidad",
+   	"localidad.oid":"Id",
+   	"localidad.nombre":"Nombre",
+	"localidad.nombre.required":"Ingrese un nombre",
+   	
+   	"obraSocial.title":"Obras sociales",
+   	"obraSocial.buscar":"Buscar obras sociales",
+   	"obraSocial.buscar.again":"Volver a intentarlo...",
+
+	"obraSocial.agregar.legend": "Ingrese los datos de la obras social",
+
+   	"obraSocial.oid":"Id",
+   	"obraSocial.nombre":"Nombre",
+	"obraSocial.codigo":"Código",
+
+	"obraSocial.nombre.required":"Ingrese un nombre",
+	"obraSocial.codigo.required":"Ingrese un código",
+
+   	"nomenclador.title":"Nomenclador",
+   	"nomenclador.buscar":"Buscar en el nomenclador",
+   	"nomenclador.buscar.again":"Volver a intentarlo...",
+
+	"nomenclador.agregar.title":"Agregar práctica en nomenclador",
+   	"nomenclador.agregar.legend":"Ingrese los datos para el nomenclador",
+   	
+   	"nomenclador.oid":"Id",
+   	"nomenclador.nombre":"Nombre",
+   	"nomenclador.codigo":"Código",
+
+	"nomenclador.nombre.required":"Ingrese un nombre",
+	"nomenclador.codigo.required":"Ingrese un código",
+
+	"practica.agregar": "Agregar una nueva práctica",
+	"practica.agregar.title": "Agregar nueva práctica",
+	"practica.agregar.legend": "Ingrese los datos de la práctica",
+	
+	"practica.modificar": "Modificar práctica",
+	"practica.modificar.title": "Modificar práctica",
+	"practica.modificar.legend": "Modifique los datos de la práctica",
+	
+	"practica.borrar": "Borrar práctica",
+	
+	"practica.historia.title": "$1",
+	"practica.historia.cliente_subtitle": "Datos personales",
+   	"practica.historia.practicas_subtitle": "Historia Clínica",
+   	"practica.historia.turnos_subtitle": "Turnos solicitados",
+   	"practica.historia.resumenes_subtitle": "Resúmenes de historia clínica",
+
+	"practica.historia.legend": "El paciente está siendo atendido por $1",
+
+	"practica.historia.practica_agregar_label": "Escribir...",
+
+
+	"historia.ver_mas_datos_personales": "ver más...",
+   	"historia.ver_menos_datos_personales": "ocultar...",
+   	
+   	"historia.ver_mas_turnos": "ver todos...",
+   	"historia.ver_menos_turnos": "ocultar...",
+   	
+   	"practica":"Práctica",
+   	"practica.fecha":"Fecha",
+   	"practica.cliente":"Paciente",
+   	"practica.profesional":"Médico",
+   	"practica.obraSocial":"Obra social",
+   	"practica.nomenclador":"Nomenclador",
+   	"practica.observaciones":"Observaciones",
+
+	"practica.profesional.required":"Ingrese un médico",
+	"practica.cliente.required":"Ingrese un paciente",
+	"practica.fecha.required":"Ingrese una fecha",
+   	"practica.nomenclador.required":"Ingrese una práctica del nomenclador",
+ 
+ 
+ 	"stats.totales.enSala": "En sala",
+ 	"stats.totales.asignados": "Asignados",
+ 	"stats.totales.atendidos": "Atendidos",
+ 	"stats.totales.importe": "Importe",
+ 
+ 
+ 	"categoria.basico.label":"Básico", 
+    "categoria.diferenciado.label": "Diferenciado",
+    
+ 	"dia.domingo.label": "Domingo",
+	"dia.lunes.label": "Lunes",
+	"dia.martes.label": "Martes",
+	"dia.miercoles.label": "Miércoles",
+	"dia.jueves.label": "Jueves",
+	"dia.viernes.label": "Viernes",
+	"dia.sabado.label": "Sábado",
+    								   
+   	"tipo.documento.dni.label":"DNI", 
+	"tipo.documento.le.label":"LE",
+	"tipo.documento.lc.label":"LC",
+	"tipo.documento.ci.label":"CI",
+	"tipo.documento.pasaporte.label":"Pasaporte",
+	
+	"sexo.m.label": "Masculino",
+	"sexo.f.label": "Femenino",
+	
+	"iva.ri.label":"Responsable Inscripto",
+	"iva.m.label": "Responsable Monotributo",
+	"iva.rni.label":"Responsable No Inscripto",
+	"iva.e.label":"Excento",
+	"iva.cf.label":"Consumido Final",
+    
+    "turno.asignado.label":"Asignado",
+    "turno.ensala.label":"En sala",
+    "turno.atendido.label":"Atendido",
+    "turno.encurso.label":"En curso",
+   	"turno.ausencia.label":"Ausencia",
+   	
+   	"grid.operaciones": "Operaciones",
+   	"grid.resultados": "Resultados de la búsqueda",
+   	
+   	"entitygrid.pagination.of": "de",
+   	"entitygrid.pagination.next": "siguiente",
+   	"entitygrid.pagination.previous": "anterior",
+    "entitygrid.pagination.first": "primero",
+    "entitygrid.pagination.last": "último",
+
+	
+    "form.aceptar": "Aceptar",
+    "form.cancelar": "Cancelar",
+    "form.volver": "Volver",
+    
+    "filter.buscar": "Buscar",
+    "filter.buscar.again": "Volver a intentarlo...",
+    "filter.resultados": "Resultados de la búsqueda",
+ 
+ 	"addpopup.legend":"Agregar",
+    
+    "xxx": "yyy"
+   
+   
+}

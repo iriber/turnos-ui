@@ -1,0 +1,119 @@
+<!-- BEGIN: main-->
+<style>
+.volver_indice .ayuda_toggle{
+	display:none;
+}
+</style>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	historiaAyuda = new HistoriaAyuda();
+	mostrarIndice();
+
+
+	$(".helpdesk span.ayuda_close").click(function(){
+
+		closeAyuda();
+		
+	});
+		
+});
+
+function mostrarIndice(){
+
+	historiaAyuda.reset();
+
+	historiaAyuda.addIndice( '{volver_indice_label}', 'mostrarIndice' );
+	
+	$(".toggle_indice").show();
+	$(".volver_indice").hide();
+	$(".ayuda_contenido").html("");
+	$(".links_historia_ayuda").html("");
+	$(".links_historia_ayuda_wrapper").hide();
+}
+
+
+/**
+ * se muestra el contenido de una ayuda.
+ * utilizamos from para indicar si se llama desde otra ayuda asi podés agregar un link para volver.
+ */
+function openItemAyuda(titulo, link){
+
+	historiaItem = new HistoriaAyudaItem(titulo, link);
+	historiaAyuda.addItem( historiaItem );
+	
+	$.ajax({
+	  	url:  link,
+	  	type: "GET",
+	  	cache: false,
+		complete:function(){
+		},
+	  	success: function(html){
+			$(".toggle_indice").hide();
+			$(".volver_indice").show();
+			$(".ayuda_contenido").html(html);
+			$(".links_historia_ayuda").html( historiaAyuda.armarLinksHistoria() );
+			$(".links_historia_ayuda_wrapper").show();
+	  	}
+	});
+	
+}
+
+</script>
+<div class="helpdesk">
+	<!-- 
+	<span class="ayuda_close" title="{cerrar_ayuda_label}">
+	
+	</span>
+	 -->
+	 
+	<a name="ayuda_indice"></a>
+	<div class="toggle_indice">
+	<div class="helpdesk_item">
+		<div class="helpdesk_titulo">
+			<h2>{ayuda_turnos_titulo}</h2>
+			<span class="helpdesk_img">
+				<img  height="72px" width="72px" border=0 src="{WEB_PATH}/css/images/helpdesk.png" />
+			</span>
+			
+		</div>
+		
+		<div class="helpdesk_indice">
+			{usuario}, bienvenido al centro de ayuda. Acá vas a encontrar información sobre cómo utilizar el sistema.
+			A continuación tenés el índice de contenidos: 
+			<br /><br />
+			<ol>
+			
+				<!-- BEGIN: ayuda_item -->
+				<li>
+					<img src="{ayuda_item_img}">  {ayuda_item_titulo}
+					<ol>
+					<!-- BEGIN: ayuda_subitem -->
+					<li>
+					<a href="#" onclick="openItemAyuda('{ayuda_subitem_titulo}', '{linkItemAyuda}');">
+					{ayuda_subitem_titulo}
+					</a>
+					</li>
+					<!-- END: ayuda_subitem -->
+					</ol>
+				</li>
+				<!-- END: ayuda_item -->
+			</ol>
+		</div>	
+		<div style="clear:both;"></div>
+	</div>
+	</div>
+	
+	<div class="links_historia_ayuda">
+	</div>
+	
+	<div class="ayuda_contenido">
+	</div>
+	
+	<div class="links_historia_ayuda">
+	</div>
+	
+</div>
+
+<!-- END: main-->

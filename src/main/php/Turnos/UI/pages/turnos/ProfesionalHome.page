@@ -1,0 +1,25 @@
+<rasty specificationClass="Turnos\UI\pages\turnos\ProfesionalHome" templateLocation="pages/turnos/ProfesionalHome.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+
+	<component id="agendaEnSala" type="AgendaEnSala">
+		<param name="fecha" value="fecha" />
+		<param name="profesional" value="profesional" />
+	</component>
+
+	<component id="agendaAtendidos" type="AgendaAtendidos">
+		<param name="fecha" value="fecha" />
+		<param name="profesional" value="profesional" />
+	</component>
+
+	<component id="agendaAsignados" type="AgendaAsignados">
+		<param name="fecha" value="fecha" />
+		<param name="profesional" value="profesional" />
+	</component>
+
+	<component id="totalesDia" type="TotalesDia">
+		<param name="fecha" value="fecha" />
+		<param name="profesional" value="profesional" />
+	</component>
+	
+</rasty>

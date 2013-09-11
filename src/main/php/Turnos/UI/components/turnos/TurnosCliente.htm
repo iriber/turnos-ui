@@ -1,0 +1,86 @@
+<!-- BEGIN:main -->
+<style>
+.turnoOculto{
+	display:none;
+}
+.turnoNoOculto{
+	display:block;
+}
+</style>
+<script>
+function turnosCliente{id}_turnoFinalizado(data){
+
+	data = new Array();
+	data["oid"] = '{cliente_oid}';
+	event = new Event("turnosCliente{id}", data, "TurnoFinalizado");
+	subject.notify(event);
+}
+
+function turnosCliente{id}_turnoIniciado(data){
+
+	data = new Array();
+	data["oid"] = '{cliente_oid}';
+	event = new Event("turnosCliente{id}", data, "Turno");
+	subject.notify(event);
+}
+
+$(document).ready(function(){
+
+	$('#turnos_ver_mas_turnos').click(function() {
+
+
+		if ($("#turnos_ver_mas_turnos").html() == "{ver_mas_turnos_label}" ){
+			$("#turnos_ver_mas_turnos").html("{ver_menos_turnos_label}");
+		}else{
+			$("#turnos_ver_mas_turnos").html("{ver_mas_turnos_label}");
+		}
+	
+		$(".turnoOculto").toggle( 5, 'linear', function() {
+			
+		});
+
+	});
+
+});
+
+</script>
+
+<div id="turnos_cliente">
+
+<!-- BEGIN: turno -->
+	
+	<div class="{visibilidadTurnoClass} turno">
+		<div class="turno_actions">
+		
+			<!-- BEGIN: iniciar -->
+			<a style="cursor: pointer;" title="{iniciar_label}" href="#" onclick="javascript: iniciarTurno('{linkIniciar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', turnosCliente{id}_turnoIniciado);return false;" >
+			<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/turno_iniciar.png" /></a>
+			<!-- END: iniciar -->
+			<!-- BEGIN: finalizar -->
+			<a style="cursor: pointer;" title="{finalizar_label}" href="#" onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', turnosCliente{id}_turnoFinalizado);return false;" >
+			<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/turno_finalizar.png" /></a>
+			<!-- END: finalizar -->										
+		
+		</div>
+		<div class="turno_left">
+			<span class="turno_fecha">{fecha}</span> 
+		    <span class="turno_hora">{hora}</span>
+			<span class="turno_obraSocial">{obra_social}</span>
+			<span class="turno_importe">{importe}</span>
+		</div>
+	    <div class="turno_right">
+		    <span class="turno_profesional">{profesional}</span>
+		    <span class="{turno_css} turno_estado">{estado}</span>
+		
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+
+<!-- END: turno -->
+
+<!-- BEGIN: ver_mas -->
+<span style="cursor: pointer;" id="turnos_ver_mas_turnos">{ver_mas_turnos_label}</span>
+<!-- END: ver_mas -->
+</div>
+
+<!-- END:main -->

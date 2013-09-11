@@ -1,0 +1,55 @@
+<rasty specificationClass="Turnos\UI\components\form\cliente\ClienteQuickForm" templateLocation="ClienteQuickForm.htm">
+
+	<component id="oid" type="InputHidden">
+		<param name="inputId" value="str:oid" />
+		<param name="name" value="str:oid" />
+		<param name="value" value="cliente.oid" />
+	</component>
+	
+	<component id="nombre" type="InputText">
+		<param name="inputId" value="str:nombre" />
+		<param name="name" value="str:nombre" />
+		<param name="value" value="cliente.nombre" />
+		<param name="requiredMessage" value="msg:cliente.nombre.required" />
+		<param name="placeholder" value="msg:cliente.nombre" />
+	</component>
+
+	<component id="tipoDocumento" type="InputCombo">
+		<param name="inputId" value="str:tipoDocumento" />
+		<param name="name" value="str:tipoDocumento" />
+		<param name="value" value="cliente.tipoDocumento" />
+		<param name="options" value="tiposDocumento" />
+		<param name="placeholder" value="msg:cliente.tipoDocumento" />
+	</component>
+
+	<component id="nroDocumento" type="InputText">
+		<param name="inputId" value="str:nroDocumento" />
+		<param name="name" value="str:nroDocumento" />
+		<param name="value" value="cliente.nroDocumento" />
+		<param name="placeholder" value="msg:cliente.nroDocumento" />
+	</component>
+
+	<component id="fechaNacimiento" type="InputDate">
+		<param name="inputId" value="str:fechaNacimiento" />
+		<param name="name" value="str:fechaNacimiento" />
+		<param name="value" value="cliente.fechaNacimiento" />
+		<param name="placeholder" value="msg:cliente.fechaNacimiento" />
+		<param name="format" value="str:d/m/Y" />
+	</component>
+
+	<component id="sexo" type="InputCombo">
+		<param name="inputId" value="str:sexo" />
+		<param name="name" value="str:sexo" />
+		<param name="value" value="cliente.sexo" />
+		<param name="options" value="sexos" />
+		<param name="placeholder" value="msg:cliente.sexo" />
+	</component>
+
+	<component id="nroHistoriaClinica" type="InputText">
+		<param name="inputId" value="str:nroHistoriaClinica" />
+		<param name="name" value="str:nroHistoriaClinica" />
+		<param name="value" value="cliente.nroHistoriaClinica" />
+		<param name="placeholder" value="msg:cliente.nroHistoriaClinica" />
+	</component>
+
+</rasty>

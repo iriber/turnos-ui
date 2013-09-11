@@ -1,0 +1,14 @@
+<rasty specificationClass="Turnos\UI\components\filter\nomenclador\NomencladorFilter" templateLocation="NomencladorFilter.htm">
+
+	<component id="codigo" type="InputText">
+		<param name="name" value="str:codigo" />
+		<param name="value" value="criteria.codigo" />
+		<param name="placeholder" value="msg:nomenclador.codigo" />
+	</component>
+
+	<component id="nombre" type="InputText">
+		<param name="name" value="str:nombre" />
+		<param name="value" value="criteria.nombre" />
+		<param name="placeholder" value="msg:nomenclador.nombre" />
+	</component>
+</rasty>

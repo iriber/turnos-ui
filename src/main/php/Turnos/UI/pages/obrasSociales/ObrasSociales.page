@@ -1,0 +1,14 @@
+<rasty specificationClass="Turnos\UI\pages\obrasSociales\ObrasSociales" templateLocation="pages/obrasSociales/ObrasSociales.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+
+	
+	<component id="osFilter" type="ObraSocialFilter">
+		<param name="gridModelClazz" value="modelClazz" />
+		<param name="uicriteriaClazz" value="uicriteriaClazz" />
+		<param name="legend" value="msg:obraSocial.buscar" />
+		<param name="legendAgain" value="msg:obraSocial.buscar.again" />
+		<param name="resultDiv" value="str:searchdiv" />
+	</component>
+	
+</rasty>

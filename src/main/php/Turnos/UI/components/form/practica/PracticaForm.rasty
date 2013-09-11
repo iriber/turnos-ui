@@ -1,0 +1,85 @@
+<rasty specificationClass="Turnos\UI\components\form\practica\PracticaForm" templateLocation="PracticaForm.htm">
+
+	<component id="backSuccess" type="InputHidden">
+		<param name="inputId" value="str:backToOnSuccess" />
+		<param name="name" value="str:backToOnSuccess" />
+		<param name="value" value="backToOnSuccess" />
+	</component>
+
+	<component id="oid" type="InputHidden">
+		<param name="inputId" value="str:oid" />
+		<param name="name" value="str:oid" />
+		<param name="value" value="practica.oid" />
+	</component>
+
+	<component id="fecha" type="InputDate">
+		<param name="inputId" value="str:fecha" />
+		<param name="name" value="str:fecha" />
+		<param name="value" value="practica.fecha" />
+		<param name="placeholder" value="msg:practica.fecha" />
+		<param name="format" value="str:d/m/Y" />
+		<param name="isEditable" value="boolean:false" />
+		<param name="requiredMessage" value="msg:practica.fecha.required" />
+	</component>
+
+	<component id="obraSocial" type="InputFindEntity">
+		<param name="inputId" value="str:obraSocial" />
+		<param name="name" value="str:obraSocial" />
+		<param name="value" value="practica.obraSocial" />
+		<param name="placeholder" value="msg:practica.obraSocial" />
+		<param name="finder" value="obraSocialFinderClazz" />
+		<param name="hasAddEntity" value="boolean:true" />
+		<param name="hasPopup" value="boolean:true" />
+		<param name="popupFilterType" value="str:ObraSocialFilter" />
+		<param name="popupFormType" value="str:ObraSocialQuickForm" />
+	</component>
+
+
+	<component id="cliente" type="InputFindEntity">
+		<param name="inputId" value="str:cliente" />
+		<param name="name" value="str:cliente" />
+		<param name="value" value="practica.cliente" />
+		<param name="placeholder" value="msg:practica.cliente" />
+		<param name="requiredMessage" value="msg:practica.cliente.required" />
+		<param name="finder" value="clienteFinderClazz" />
+		<param name="hasAddEntity" value="boolean:false" />
+		<param name="hasPopup" value="boolean:false" />
+		<param name="isEditable" value="boolean:false" />
+		<param name="onSelectCallback" value="str:cambiarObraSocial" />
+	</component>
+	
+	<component id="profesional" type="InputFindEntity">
+		<param name="inputId" value="str:profesional" />
+		<param name="name" value="str:profesional" />
+		<param name="value" value="practica.profesional" />
+		<param name="placeholder" value="msg:practica.profesional" />
+		<param name="finder" value="profesionalFinderClazz" />
+		<param name="requiredMessage" value="msg:practica.profesional.required" />
+		<param name="isEditable" value="boolean:false" />
+	</component>
+
+
+	<component id="nomenclador" type="InputFindEntity">
+		<param name="inputId" value="str:nomenclador" />
+		<param name="name" value="str:nomenclador" />
+		<param name="value" value="practica.nomenclador" />
+		<param name="placeholder" value="msg:practica.nomenclador" />
+		<param name="finder" value="nomencladorFinderClazz" />
+		<param name="hasAddEntity" value="boolean:true" />
+		<param name="hasPopup" value="boolean:true" />
+		<param name="popupFilterType" value="str:NomencladorFilter" />
+		<param name="popupFormType" value="str:NomencladorQuickForm" />
+		<param name="requiredMessage" value="msg:practica.nomenclador.required" />
+	</component>
+
+
+	<component id="observaciones" type="InputTextArea">
+		<param name="inputId" value="str:observaciones" />
+		<param name="name" value="str:observaciones" />
+		<param name="value" value="practica.observaciones" />
+		<param name="placeholder" value="msg:practica.observaciones" />	
+		<param name="rows" value="str:5" />	
+		
+	</component>
+	
+</rasty>

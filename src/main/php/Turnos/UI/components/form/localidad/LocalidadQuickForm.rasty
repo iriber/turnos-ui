@@ -1,0 +1,17 @@
+<rasty specificationClass="Turnos\UI\components\form\localidad\LocalidadQuickForm" templateLocation="LocalidadQuickForm.htm">
+
+	<component id="oid" type="InputHidden">
+		<param name="inputId" value="str:oid" />
+		<param name="name" value="str:oid" />
+		<param name="value" value="localidad.oid" />
+	</component>
+	
+	<component id="nombre" type="InputText">
+		<param name="inputId" value="str:nombre" />
+		<param name="name" value="str:nombre" />
+		<param name="value" value="localidad.nombre" />
+		<param name="requiredMessage" value="msg:localidad.nombre.required" />
+		<param name="placeholder" value="msg:localidad.nombre" />
+	</component>
+	
+</rasty>

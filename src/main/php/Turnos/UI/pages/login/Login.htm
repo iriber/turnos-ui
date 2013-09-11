@@ -1,0 +1,54 @@
+<!-- BEGIN: main-->
+<script>
+</script>
+
+<style>
+
+.jfVal, .jValSpacercover {
+    display: none;
+}
+
+.jfVal .content {
+    display: none;
+}
+
+</style>
+
+<!-- BEGIN: msg_error -->
+<script type="text/javascript">
+showMessageError('{msg}', true);
+</script>	
+<!-- END: msg_error -->
+
+
+<div class="container">
+<a class="logo" target="_blank" href="#"><img border="0" alt="logo" name="imLogo" id="imLogo" src="{WEB_PATH}/css/images/logo_right.png" width="150px" height="150px"></a>
+<h1>
+    {login_titulo} <bdo xml:lang="en" dir="ltr"> {login_subtitulo} </bdo></h1>
+	     
+
+<!-- Login form -->
+<form class="turnos_form" id="login_form" target="_top" name="login_form" action='{login_action}'  onsubmit="return validate('login_form');" method='post'>
+    <fieldset>
+    <legend>{iniciar_sesion}</legend>
+
+        <div class="item">
+            <input  placeholder="{lbl_username} *" type="text" size="24" value="" id="input_username" name="username" jVal="{valid:function (val) { return required(val,'{txt_ingrese_username}'); }}"/>
+        </div>
+        <div class="item">
+            <input  placeholder="{lbl_password} *"  type="password" classsize="24" value="" id="input_password" name="password"  jVal="{valid:function (val) { return required(val,'{txt_ingrese_password}'); }}"/>
+        </div>
+    	<div class="required-fields">(*) {txt_campos_obligatorios}</div>        
+    </fieldset>
+    <fieldset class="tblFooters">
+        <input type="submit" id="input_go" value="{btn_ingresar}">
+   	</fieldset>
+   	
+   	<!-- BEGIN: registration -->
+	<div class="new_user">{link_registrarse}&nbsp;&nbsp;</div>
+	<!-- END: registration -->
+</form>
+
+</div>
+    		
+<!-- END: main-->

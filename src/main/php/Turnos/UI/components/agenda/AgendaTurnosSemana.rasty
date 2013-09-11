@@ -1,0 +1,6 @@
+<rasty specificationClass="Turnos\UI\components\agenda\AgendaTurnosSemana" templateLocation="AgendaTurnosSemana.htm">
+
+	<param name="strFecha" value="get:fecha" />
+	<param name="profesionalOid" value="get:profesionalOid" />
+
+</rasty>

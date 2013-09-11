@@ -1,0 +1,5 @@
+<rasty specificationClass="Turnos\UI\components\turnos\TurnosCliente" templateLocation="TurnosCliente.htm">
+
+	<param name="clienteOid" value="get:oid" />
+	
+</rasty>

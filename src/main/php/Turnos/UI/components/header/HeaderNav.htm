@@ -1,0 +1,71 @@
+<!-- BEGIN: main -->
+<script>
+
+$(document).ready(function(){
+
+	/*
+	$('#menuNavigation').click(function() {
+
+		updated_height = $(window).height() - 80;
+		
+		$('#menuNavigation nav').height(updated_height);
+		
+		$('#menuNavigation nav').toggle( 50, 'linear', function() {
+			$('#menuNavigation nav').height(updated_height);
+		});
+
+	});*/
+		
+});
+
+function toggleMenuMain(){
+	toggleMenuNav('menuMain');
+	$('#menuMain').css({left:0});
+}
+function toggleMenuPage(){
+
+	toggleMenuNav('menuPage');
+
+	$('#menuPage').css({right:0});
+}
+function toggleMenuNav( id ){
+
+	updated_height = $(window).height() ;
+	
+	$('#' + id).height(updated_height);
+	
+	$('#' + id).toggle( 50, 'linear', function() {
+		$('#' + id).height(updated_height);
+	});
+}
+
+</script>
+
+<div id="menuNavigation">
+
+	
+	<div id="menu-header">
+
+		<h1 class="menu-header-ui-title" >{turnos_titulo}</h1>
+		
+		<a class="menu-ui-link menu-ui-link-left" href="#" title="{menu_main}" onclick="toggleMenuMain();">
+			<span class="menu-ui-btn-inner">
+				<span class="menu-ui-btn-text">{menu_main}</span>
+				<span class="menu-ui-icon menu-ui-icon-left menu-ui-icon-home"></span>
+			</span>
+		</a>
+		
+		<a class="menu-ui-link menu-ui-link-right" href="#"  title="{menu_page}" onclick="toggleMenuPage();">
+			<span class="menu-ui-btn-inner">
+				<span class="menu-ui-btn-text">{menu_page}</span>
+				<span class="menu-ui-icon menu-ui-icon-left menu-ui-icon-gear"></span>
+			</span>
+		</a>
+		
+	</div>
+	
+ 	<rasty id="menuMain" />
+ 	
+ 	<rasty id="menuPage" />	
+</div>
+<!-- END: main -->

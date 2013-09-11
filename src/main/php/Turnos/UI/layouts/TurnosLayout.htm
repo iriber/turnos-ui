@@ -1,0 +1,108 @@
+<html>
+<!-- BEGIN: main-->
+<head>
+<title>{title}</title>
+
+<!-- BEGIN: meta_tag -->
+<meta http-equiv='{http_equiv}' content='{meta_content}'  name='{name}'/>
+<!-- END: meta_tag -->
+
+<!–[if lt IE 9]>
+<script src="{WEB_PATH}js/css3-mediaqueries.js"></script>
+<![endif]–>
+
+<!-- BEGIN: style -->
+<link rel="stylesheet" href="{css}" type="text/css" />
+<!-- END: style -->
+
+
+<!-- BEGIN: link -->
+<link rel="{rel}" href="{href}" type="{type}" />
+<!-- END: link -->
+
+<!-- BEGIN: script -->
+<script language="javascript" src="{js}"></script>
+<!-- END: script -->
+
+        <script type="text/javascript">
+            function linkTo(action){
+                window.location.href='{WEB_PATH}/' + action;
+            }
+
+            function showMessageInfo( msg, hide ){
+            	$( "#layout_info_message" ).html( msg );
+            	updated_right = ($(window).width() / 2) - ($( "#layout_info" ).width()/2);
+            	$( "#layout_info" ).css({'right': updated_right});
+            	
+            	if( hide )
+            		$( "#layout_info" ).show().delay(4000).slideUp(300);
+            	else
+            		$( "#layout_info" ).show();
+            }
+
+            function showMessageError( msg, hide ){
+            	$( "#layout_error_message" ).html( msg );
+            	updated_right = ($(window).width() / 2) - ($( "#layout_error" ).width()/2);
+            	$( "#layout_error" ).css({'right': updated_right});
+            	
+            	if( hide )
+            		$( "#layout_error" ).show().delay(4000).slideUp(300);
+            	else
+            		$( "#layout_error" ).show();
+            }
+
+            </script>
+
+
+</head>
+<body>
+	<div id="layout_info" class="ui-state-highlight ui-corner-all" style="display:none;position:absolute; right:50%; top:0px;margin: 10px;padding: 6pt .7em; z-index:1500;"> 
+		<p>
+		<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+		<span id="layout_info_message"></span>
+		</p>
+	</div>
+	<div id="layout_error" class="ui-state-error ui-corner-all" style="display:none;position:absolute; right:50%; top:0px;margin: 10px;padding: 6pt .7em; z-index:1500;"> 
+		<p>
+		<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+		<span id="layout_error_message"></span>
+		</p>
+	</div>
+
+
+
+	<!-- BEGIN: msg_error -->
+	<script type="text/javascript">
+	showMessageError('{msg}', false);
+	</script>	
+	<!-- END: msg_error -->
+		
+	<div id="wrap">
+	  	<div id="header">
+	  		<rasty id="header" />
+	  		
+	  	</div>
+	  	<div id="inner-wrap">
+	  	
+	  	
+	    	<div id="content">{page}</div>
+		</div>
+		<div id="footer"><rasty id="footer" /></div> 
+	</div>
+
+	<div id="ui-ayuda-turnos"  style="display:none;"></div>
+	<!-- div id="ui-ayuda-turnos" class="ui-ayuda-turnos-panel" style="display:none;position:fixed;"></div-->	
+</body>
+<script>
+$(window).resize(function () {
+
+	//var height = $(window).height()-20;
+	//var width = $(window).width()/2;
+	
+	//$( "#ui-ayuda-turnos" ).height(height);
+	//$( "#ui-ayuda-turnos" ).width(width);
+	
+});
+</script>
+<!-- END: main-->
+</html>

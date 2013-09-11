@@ -1,0 +1,10 @@
+<rasty specificationClass="Turnos\UI\pages\turnos\TurnosHome" templateLocation="pages/turnos/TurnosHome.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+
+	<component id="agenda" type="AgendaTurnos">
+		<param name="fecha" value="fecha" />
+		<param name="profesional" value="profesional" />		
+	</component>
+		
+</rasty>

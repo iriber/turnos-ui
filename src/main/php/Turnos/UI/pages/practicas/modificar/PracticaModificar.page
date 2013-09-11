@@ -1,0 +1,17 @@
+<rasty specificationClass="Turnos\UI\pages\practicas\modificar\PracticaModificar" templateLocation="pages/practicas/modificar/PracticaModificar.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="practicaOid" value="get:oid" />
+
+	
+	<component id="practicaForm" type="PracticaForm">
+		<param name="legend" value="msg:practica.modificar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="action" value="linkActionModificarPractica" />
+		<param name="method" value="str:post" />
+		<param name="practica" value="practica" />
+		<param name="backToOnSuccess" value="get:backTo" />
+	</component>
+	
+</rasty>

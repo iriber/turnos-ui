@@ -1,0 +1,223 @@
+<!-- BEGIN: main-->
+
+<style>
+</style>
+<script type="text/javascript">
+$(function() {
+    $("#fechaPicker").datepicker({
+    	changeMonth: true,
+    	changeYear: true,
+    	numberOfMonths: 1,
+		dateFormat: 'dd/mm/yy',		
+		altField: "#visualizarFecha",
+		altFormat: "d MM, yy",
+		onSelect: fecha_change,
+        showButtonPanel:true,
+        onChangeMonthYear: function(year, month, datePicker) {
+            // Prevent forbidden dates, like 2/31/2012:
+            var $t = $(this);
+            var day = $t.data('preferred-day') || new Date().getDate();
+            var newDate = new Date(month + '/' + day + '/' + year);
+            while (day > 28) {
+              if (newDate.getDate() == day && newDate.getMonth() + 1 == month && newDate.getFullYear() == year) {
+                break;
+              } else {
+                day -= 1;
+                newDate = new Date(month + '/' + day + '/' + year);
+              }
+            }   
+            $t.datepicker('setDate', newDate);
+            fecha_change( newDate, $t);
+          },  
+            
+          beforeShow: function(dateText, datePicker) {
+            // Record the starting date so that
+            // if the user changes months from Jan->Feb->Mar
+            // and the original date was 1/31,
+            // then we go 1/31->2/28->3/31.
+            $(this).data('preferred-day', ($(this).datepicker('getDate') || new Date()).getDate());
+          }
+    });
+    $('#fechaPicker').datepicker("setDate",new Date('{fechaAnio}','{fechaMes}','{fechaDia}'));
+
+
+	//nos interesa saber cuando cambian los totales de la agenda.
+	//observer = new Observer("totalesagend", totalesAgenda);
+	//subject.addObserver( observer );
+
+	//appObserver.listen( "all", subject.notifyServerChanges );
+		
+	//nos interesa saber cambios en los turnos
+	observer = new Observer("turnosChange", turnosChange);
+	subject.addObserver( observer );
+
+	//nos interesa saber cambios en el tipo de agenda
+	observer = new Observer("tipoAgendaChange", tipoAgendaChange);
+	subject.addObserver( observer );
+
+	
+	
+	
+});
+
+function fecha_change( fecha, picker ){
+
+	$("#fecha").val(fecha);
+
+	//ir a buscar los turnos de la fecha seleccionada.
+	//actualizarAgenda();
+
+	data = new Array();
+	data["fecha"] = $("#fecha").val();
+	event = new Event("fechaChange", data, "Turno");
+	subject.notify(event);
+}
+
+/*
+function totalesAgenda(event){
+	if( event.type == "AgendaTotales" ){
+		totales = event.data;
+		
+		totalesDia(totales["importeTotal"], totales["totalEnSala"], totales["totalAsignados"], totales["totalAtendidos"]);
+	}
+	
+}
+*/
+
+function turnosChange(event){
+
+	
+	if( event.type == "Turno" ){
+		turno = event.data;
+
+		//chequeamos si el turno fue iniciado, en ese caso, vamos a la ficha del paciente.
+		if(turno["estado"] != undefined && turno["estado"] == '{estadoTurnoEnCurso}'){
+			
+			gotoLink('{linkHistoriaClinica}?clienteOid='+turno["clienteOid"]);	
+		} 
+			
+	}
+	
+}
+
+function tipoAgendaChange(event){
+
+	//si cambió el tipo de agenda puede que se haya cambiado la fecha,
+	//en ese caso actualizamos la fecha del picker
+	if( event.type == "TipoAgenda" ){
+		data = event.data;
+		
+		if(data["fecha"] != undefined ){
+			//alert(data["fecha"]);
+			var fechaArray = data["fecha"].split("-");
+			data["fechaAnio"] = fechaArray[0];
+			data["fechaMes"] = fechaArray[1]-1;
+			data["fechaDia"] = fechaArray[2];
+			$fechaNueva = new Date(data["fechaAnio"],data["fechaMes"],data["fechaDia"]);
+			$('#fechaPicker').datepicker("setDate", $fechaNueva);
+			//alert($fechaNueva);
+		} 
+			
+	}
+	
+}
+
+/*
+function totalesDia(importeTotal, total_ensala, total_asignados, total_atendidos){
+
+	//alert(total_ensala + "-" +  total_asignados  + "-" + total_atendidos);
+	$("#total_ensala").val(total_ensala);
+	$("#total_asignados").val(total_asignados);
+	$("#total_atendidos").val(total_atendidos);
+	$("#importeTotal").html(importeTotal);
+}*/
+
+function profesional_change( attrs ){
+
+	//ir a buscar los turnos del profesional seleccionado.
+	//actualizarAgenda();
+
+	data = new Array();
+	data["profesionalOid"] = $("#profesionalOid").val();
+	event = new Event("profesionalChange", data, "Profesional");
+	subject.notify(event);
+}
+
+/*
+function actualizarAgenda(){
+	data = new Array();
+	data["fecha"] = $("#fecha").val();
+	data["profesionalOid"] = $("#profesionalOid").val();
+	
+	event = new Event("fechaProfesionalChange", data, "Turno");
+	subject.notify(event);
+}
+*/
+</script>
+
+<div id="ui-dialog-agregar-agenda" style="display: none;"></div>
+<div id="ui-dialog-agregar-cliente" style="display: none;"></div>
+
+<div id="turnos_home">
+	
+	<div id="turnos_left" >	
+		
+		<form class="turnos_form" id="form_agenda" action="" >
+		<fieldset>
+			<legend>{profesional_subtitle}</legend>
+			<select style="font-size:120%; width: 100%;" id="profesionalOid"  name="profesionalOid"  
+					onchange="profesional_change();" 
+					jVal="{valid:function (val) { return required(val,'{msg_profesional_required}'); }}">
+					<!-- BEGIN: profesional_option -->
+				    <option value={value}>{label}</option>
+				    <!-- END: profesional_option -->
+			</select>
+			<input type="hidden" name="fecha" id="fecha" value="{fecha}"/>
+		</fieldset>
+		</form>
+		
+		<fieldset>
+			<legend>{calendario_subtitle}</legend>
+			<div id="fechaPicker"></div>
+		</fieldset>
+		<!-- 
+		<fieldset>
+			<legend>{totales_subtitle}</legend>
+			<table class="totales">
+				<tr>
+					<td>{ensala_label}</td><td><input type="text" size="4" readonly="readonly" id="total_ensala"/></td>
+				</tr>
+				<tr>
+					<td>{asignados_label}</td><td><input type="text" size="4" readonly="readonly" id="total_asignados"/></td>
+				</tr>
+				<tr>	
+					<td>{atendidos_label}</td><td><input type="text" size="4" readonly="readonly" id="total_atendidos"/></td>
+				</tr>
+			</table>
+			<span id="caja_title">{caja_label} <span id="importeTotal"></span></span>	
+		</fieldset>
+		 -->		
+	</div>
+	<div id="turnos_right">
+		<a ></a>
+		<div class="ayuda">
+					<a style="cursor: pointer;" title="{ayuda_label}" href="#" onclick="javascript: openAyuda('{linkAyudaAgenda}', '{ayuda_label}', 500, '50%');">
+						<!--a id="link_ayuda"  style="cursor: pointer;" title="{ayuda_label}" href="{linkAyudaAgenda}"-->
+						<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/help_32.png" />
+						<span>{ayuda_agenda_msg}</span>
+					</a>		
+		</div>
+		<a name="veragenda"></a> 
+		<fieldset>
+			<legend>
+				{agenda_subtitle}
+			</legend>
+			
+			<div id="ver_agenda">
+				<rasty id="agenda" />
+			</div>
+		</fieldset>
+	</div>	
+</div>
+	
+<!-- END: main-->

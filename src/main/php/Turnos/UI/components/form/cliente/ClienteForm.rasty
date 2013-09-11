@@ -1,0 +1,124 @@
+<rasty specificationClass="Turnos\UI\components\form\cliente\ClienteForm" templateLocation="ClienteForm.htm">
+
+	<param name="error" value="get:error" />
+
+	<component id="backSuccess" type="InputHidden">
+		<param name="inputId" value="str:backToOnSuccess" />
+		<param name="name" value="str:backToOnSuccess" />
+		<param name="value" value="backToOnSuccess" />
+	</component>
+
+	<component id="oid" type="InputHidden">
+		<param name="inputId" value="str:oid" />
+		<param name="name" value="str:oid" />
+		<param name="value" value="cliente.oid" />
+	</component>
+	
+	<component id="nombre" type="InputText">
+		<param name="inputId" value="str:nombre" />
+		<param name="name" value="str:nombre" />
+		<param name="value" value="cliente.nombre" />
+		<param name="requiredMessage" value="msg:cliente.nombre.required" />
+		<param name="placeholder" value="msg:cliente.nombre" />
+		<param name="isEditable" value="isEditable" />
+	</component>
+
+	<component id="tipoDocumento" type="InputCombo">
+		<param name="inputId" value="str:tipoDocumento" />
+		<param name="name" value="str:tipoDocumento" />
+		<param name="value" value="cliente.tipoDocumento" />
+		<param name="options" value="tiposDocumento" />
+		<param name="placeholder" value="msg:cliente.tipoDocumento" />
+	</component>
+
+	<component id="nroDocumento" type="InputText">
+		<param name="inputId" value="str:nroDocumento" />
+		<param name="name" value="str:nroDocumento" />
+		<param name="value" value="cliente.nroDocumento" />
+		<param name="placeholder" value="msg:cliente.nroDocumento" />
+	</component>
+
+	<component id="fechaNacimiento" type="InputDate">
+		<param name="inputId" value="str:fechaNacimiento" />
+		<param name="name" value="str:fechaNacimiento" />
+		<param name="value" value="cliente.fechaNacimiento" />
+		<param name="placeholder" value="msg:cliente.fechaNacimiento" />
+		<param name="format" value="str:d/m/Y" />
+	</component>
+
+	<component id="sexo" type="InputCombo">
+		<param name="inputId" value="str:sexo" />
+		<param name="name" value="str:sexo" />
+		<param name="value" value="cliente.sexo" />
+		<param name="options" value="sexos" />
+		<param name="placeholder" value="msg:cliente.sexo" />
+	</component>
+
+	<component id="nroHistoriaClinica" type="InputText">
+		<param name="inputId" value="str:nroHistoriaClinica" />
+		<param name="name" value="str:nroHistoriaClinica" />
+		<param name="value" value="cliente.nroHistoriaClinica" />
+		<param name="placeholder" value="msg:cliente.nroHistoriaClinica" />
+	</component>
+
+	<component id="obraSocial" type="InputFindEntity">
+		<param name="inputId" value="str:obraSocial" />
+		<param name="name" value="str:obraSocial" />
+		<param name="value" value="cliente.obraSocial" />
+		<param name="placeholder" value="msg:cliente.obraSocial" />
+		<param name="finder" value="obraSocialFinderClazz" />
+		<param name="hasAddEntity" value="str:true" />
+		<param name="hasPopup" value="str:true" />
+		<param name="popupFilterType" value="str:ObraSocialFilter" />
+		<param name="popupFormType" value="str:ObraSocialQuickForm" />
+	</component>
+
+	<component id="nroObraSocial" type="InputText">
+		<param name="inputId" value="str:nroObraSocial" />
+		<param name="name" value="str:nroObraSocial" />
+		<param name="value" value="cliente.nroObraSocial" />
+		<param name="placeholder" value="msg:cliente.nroObraSocial" />
+	</component>
+
+	<component id="telefonoFijo" type="InputText">
+		<param name="inputId" value="str:telefonoFijo" />
+		<param name="name" value="str:telefonoFijo" />
+		<param name="value" value="cliente.telefonoFijo" />
+		<param name="placeholder" value="msg:cliente.telefonoFijo" />
+	</component>
+
+	<component id="telefonoMovil" type="InputText">
+		<param name="inputId" value="str:telefonoMovil" />
+		<param name="name" value="str:telefonoMovil" />
+		<param name="value" value="cliente.telefonoMovil" />
+		<param name="placeholder" value="msg:cliente.telefonoMovil" />
+	</component>
+	
+	<component id="email" type="InputText">
+		<param name="inputId" value="str:email" />
+		<param name="name" value="str:email" />
+		<param name="value" value="cliente.email" />
+		<param name="placeholder" value="msg:cliente.email" />
+	</component>
+	
+	<component id="domicilio" type="InputText">
+		<param name="inputId" value="str:domicilio" />
+		<param name="name" value="str:domicilio" />
+		<param name="value" value="cliente.domicilio" />
+		<param name="placeholder" value="msg:cliente.domicilio" />
+	</component>
+	
+	<component id="localidad" type="InputFindEntity">
+		<param name="inputId" value="str:localidad" />
+		<param name="name" value="str:localidad" />
+		<param name="value" value="cliente.localidad" />
+		<param name="placeholder" value="msg:cliente.localidad" />
+		<param name="finder" value="localidadFinderClazz" />
+		<param name="hasAddEntity" value="str:true" />
+		<param name="hasPopup" value="str:true" />
+		<param name="popupFilterType" value="str:LocalidadFilter" />
+		<param name="popupFormType" value="str:LocalidadQuickForm" />
+	</component>
+	
+	
+</rasty>

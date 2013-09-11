@@ -1,0 +1,63 @@
+<!-- BEGIN:main -->
+<style>
+#historia_clinica_resumen{
+	position:relative;
+}
+#historia_clinica_resumen .practicas{
+
+}
+
+#historia_clinica_resumen .botones{
+	text-align: right;
+}
+</style>
+<script type="text/javascript">
+function historiaClinica{id}_historiaChange(data){
+
+	data = new Array();
+	data["oid"] = '{cliente_oid}';
+	event = new Event("historiachange", data, "HistoriaClinica");
+	subject.notify(event);
+}
+</script>
+
+<div id="historia_clinica_resumen" style="width: 100%">
+<div class="botones">
+
+</div>
+
+
+
+<table>
+<tr>
+	<th>{fecha_lbl}</th>
+	<th>{practica_lbl}</th>
+	<th>{profesional_lbl}</th>
+	<th>{obraSocial_lbl}</th>
+	<th></th>	
+</tr>
+<!-- BEGIN: practica -->
+<tr>
+	<th style="font-size:100% ;">{fecha}</th>
+	<th>{nomenclador_codigo} - {nomenclador_nombre}</th>
+	<td><b>{profesional}</b></td>
+	<td>{obraSocial}</td>
+	<td style="white-space:nowrap;">
+		<a style="cursor: pointer;" title="{editar_label}" href="#" onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;" >
+		<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/editar.png" /></a>
+		
+		<a style="cursor: pointer;" title="{borrar_label}" href="#" onclick="javascript: borrarPractica('{linkBorrar}', '{practica_oid}', '{cliente_oid}', '{cliente}', historiaClinica{id}_historiaChange);return false;" >
+		<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/delete_over.png" /></a>
+		
+	</td>	
+</tr>
+<tr>
+	<td colspan="6" style="font-size:120% ;text-align: left;">{observaciones}</td>
+</tr>
+<tr>
+	<td colspan="5" >&nbsp;</td>
+</tr>
+<!-- END: practica -->
+</table>
+</div>
+<!-- END:main -->

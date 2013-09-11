@@ -1,0 +1,13 @@
+<rasty specificationClass="Turnos\UI\pages\clientes\Clientes" templateLocation="pages/clientes/Clientes.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+
+	<component id="clientesFilter" type="ClienteFilter">
+		<param name="gridModelClazz" value="modelClazz" />
+		<param name="uicriteriaClazz" value="uicriteriaClazz" />
+		<param name="legend" value="msg:cliente.buscar" />
+		<param name="legendAgain" value="msg:cliente.buscar.again" />
+		<param name="resultDiv" value="str:searchdiv" />
+	</component>
+	
+</rasty>

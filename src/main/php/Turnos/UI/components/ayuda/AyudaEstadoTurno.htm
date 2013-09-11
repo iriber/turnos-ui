@@ -1,0 +1,48 @@
+<!-- BEGIN: main-->
+
+<div class="helpdesk_item">
+	<div class="helpdesk_titulo">
+		<h2>{ayuda_titulo}</h2>
+		<span class="helpdesk_img">
+		<img  height="72px" width="72px" border=0 src="{WEB_PATH}/css/images/helpdesk.png" />
+		</span>
+	</div>
+	<div class="helpdesk_texto">
+		
+		<ol>
+			<li>
+				El paciente solicita un turno
+				<ol>
+					<li>Se le asigna un turno en la agenda del médico ( <a href="#" onclick="openItemAyuda('{ayuda_agregar_turno_titulo}', '{linkAyudaAgregarTurno}');">{ayuda_agregar_turno_titulo}</a> )</li>
+					<li>El turno queda con estado: <span class="{turno_asignado_css}">{asignado_label}</span></li>
+				</ol>
+			</li>
+			
+			<li>
+				El paciente concurre al instituto y se presenta en mesa de entrada
+				<ol>
+					<li>En mesa de entrada se debe cambiar el estado del turno  ( <a href="#" onclick="openItemAyuda('{ayuda_agenda_iconos_titulo}','{linkAyudaIconosAgenda}');">{ayuda_agenda_iconos_titulo}</a> )</li>
+					<li>El paciente queda en sala esperando a ser llamado por el médico</li>
+					<li>El turno queda con estado: <span class="{turno_enSala_css}">{enSala_label}</span></li>
+				</ol>			
+			</li>
+			<li>
+				El médico llama al paciente para atenderlo
+				<ol>
+					<li>El médico indica que comienza a atender al paciente ( <a href="#" onclick="openItemAyuda('{ayuda_panel_profesional_titulo}','{linkAyudaPanelProfesional}');">{ayuda_panel_profesional_titulo}</a> )</li>
+					<li>El turno queda con estado: <span class="{turno_enCurso_css}">{enCurso_label}</span></li>
+				</ol>
+			</li>
+			<li>
+				El médico finaliza la atención y el paciente se va
+				<ol>
+					<li>El médico indica que terminó de atender al paciente ( <a href="#" onclick="openItemAyuda('{ayuda_panel_profesional_titulo}','{linkAyudaPanelProfesional}');">{ayuda_panel_profesional_titulo}</a> )</li>
+					<li>El turno queda con estado: <span class="{turno_atendido_css}">{atendido_label}</span></li>
+				</ol>
+			</li>
+			
+		</ol>
+	</div>		
+	<div style="clear: both;"></div>
+</div>	
+<!-- END: main-->

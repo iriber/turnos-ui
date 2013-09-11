@@ -1,0 +1,9 @@
+<rasty specificationClass="Turnos\UI\classes\com\prueba\ListarPrueba" templateLocation="pages/prueba/listar.htm"> 
+
+	<param name="layoutType" value="str:Rasty\Layout" />
+
+	<component id="historia" type="HistoriaClinica">
+		<param name="codigo" value="str:Ber" />
+	</component>
+		
+</rasty>

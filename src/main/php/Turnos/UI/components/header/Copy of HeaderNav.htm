@@ -1,0 +1,94 @@
+<!-- BEGIN: main -->
+<script>
+
+$(document).ready(function(){
+
+	/*
+	$('#menuNavigation').click(function() {
+
+		updated_height = $(window).height() - 80;
+		
+		$('#menuNavigation nav').height(updated_height);
+		
+		$('#menuNavigation nav').toggle( 50, 'linear', function() {
+			$('#menuNavigation nav').height(updated_height);
+		});
+
+	});*/
+		
+});
+
+function toggleMenuNav(){
+
+	updated_height = $(window).height() - 80;
+	
+	$('#menuNavigation nav').height(updated_height);
+	
+	$('#menuNavigation nav').toggle( 50, 'linear', function() {
+		$('#menuNavigation nav').height(updated_height);
+	});
+}
+
+</script>
+
+<div id="menuNavigation">
+
+	
+	<div id="menu-header">
+		
+		<a class="menu-ui-link menu-ui-link-left" href="#" onclick="toggleMenuNav();">
+			<span class="menu-ui-btn-inner">
+				<span class="menu-ui-btn-text">Menu</span>
+				<span class="menu-ui-icon menu-ui-icon-left menu-ui-icon-home"></span>
+			</span>
+		</a>
+		
+		<a class="menu-ui-link menu-ui-link-right" href="#" onclick="toggleMenuNav();">
+			<span class="menu-ui-btn-inner">
+				<span class="menu-ui-btn-text">Opciones</span>
+				<span class="menu-ui-icon menu-ui-icon-left menu-ui-icon-gear"></span>
+			</span>
+		</a>
+		
+		<h1 class="menu-header-ui-title" >Instituto 9 de Julio</h1>
+	</div>
+	
+ 		
+	<nav>
+ 		<ul class="" id="menuItems">
+ 			<!-- li class="ui-li ui-li-divider ui-btn ui-bar-b ui-corner-top ui-btn-up-undefined"-->
+			<!-- 
+			<li class="ui-li-divider ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a  ">
+				<div class="ui-btn-inner ui-li">
+					<div class="ui-btn-text"><a href="#" class="ui-link-inherit">Menu</a></div>
+					<span class="ui-icon ui-icon-delete ui-icon-shadow"></span>
+				</div>
+			</li-->
+			<li class="menu-li menu-li-divider">
+				<div class="meun-ui-btn-inner">
+					<div class="menu-ui-btn-text"><a href="#" onclick="toggleMenuNav();" class="menu-ui-link-inherit">Menu</a></div>
+					<span class="menu-ui-icon menu-ui-icon-right menu-ui-icon-delete"></span>
+				</div>
+			</li>
+			<li class="menu-li">
+				<div class="menu-ui-btn-inner menu-ui-btn-inner-icon-right">
+					<div class="menu-ui--btn-text"><a href="#" onclick="gotoLink('{WEB_PATH}/turnos.html');return false;" class="menu-ui-link-inherit">Turnos</a></div>
+					<span class="menu-ui-icon menu-ui-icon-right menu-ui-icon-arrow-r"></span>
+				</div>
+			</li>
+			<li class="menu-li">
+				<div class="menu-ui-btn-inner">
+					<div class="menu-ui--btn-text"><a href="#" onclick="gotoLink('{WEB_PATH}/clientes.html');return false;" class="menu-ui-link-inherit">Clientes</a></div>
+					<span class="menu-ui-icon menu-ui-icon-right menu-ui-icon-arrow-r"></span>
+				</div>
+			</li>
+			<li class="menu-li">
+				<div class="menu-ui-btn-inner menu-ui-btn-inner-icon-left">
+					<div class="menu-ui--btn-text"><a href="#" onclick="gotoLink('{WEB_PATH}/nomenclador.html');return false;" class="menu-ui-link-inherit">Nomenclador</a></div>
+					<span class="menu-ui-icon menu-ui-icon-left menu-ui-icon-arrow-r"></span>
+				</div>
+			</li>
+		</ul>	
+	</nav>
+</div>
+<!-- END: main -->

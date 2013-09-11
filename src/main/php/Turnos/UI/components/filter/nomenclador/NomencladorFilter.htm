@@ -1,0 +1,102 @@
+<!-- BEGIN:main -->
+<script>
+
+
+function submitBuscarNomencladores(){
+
+	$( "#page" ).val( 1 );
+	
+	//buscarNomencladores();
+
+	submitBuscar("{WEB_PATH}", "#nomenclador_filter{id}", "#{resultDiv}");
+}
+
+function ordenarNomencladores(name, type){
+
+	$( "#orderBy" ).val(name);
+	$( "#orderByType" ).val(type);
+	
+	submitBuscar("{WEB_PATH}", "#nomenclador_filter{id}", "#{resultDiv}");
+}
+
+function paginarNomencladores(page){
+	$( "#page" ).val(page);
+
+	submitBuscar("{WEB_PATH}", "#nomenclador_filter{id}", "#{resultDiv}");
+}
+
+function seleccionarNomenclador(oid, rowId, checkboxId){
+	
+	gotoLink("{linkModificar}?oid="+oid);
+	
+}
+
+$(function() {
+
+	submitBuscar("{WEB_PATH}", "#nomenclador_filter{id}", "#{resultDiv}");
+	
+	
+	$('#input_submit_ajax_Nomen{id}').click(function() {
+		
+		$('#divNomen{id}Toggle1').toggle( 5, 'linear', function() {
+		});
+		$('#divNomen{id}Toggle2').toggle( 5, 'linear', function() {
+		});
+	});
+
+	$('#legend_buscar{id}_open').click(function() {
+		
+		$('#divNomen{id}Toggle1').toggle( 5, 'linear', function() {
+		});
+		$('#divNomen{id}Toggle2').toggle( 5, 'linear', function() {
+		});
+	});	
+});
+
+</script>
+<div id="divNomen{id}Toggle1" style="display:none">
+<form class="turnos_form">
+		<fieldset>
+		<legend class="search_again" id="legend_buscar{id}_open">{legend_again}</legend>
+		</fieldset>
+</form>		
+</div>
+<div id="divNomen{id}Toggle2">
+<form class="turnos_form" id="nomenclador_filter{id}">
+
+		<fieldset>
+		<legend id="legend_buscar{id}">{legend}</legend>
+		
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="codigo">{lbl_codigo}:</label>
+		    <rasty id="codigo" />
+		</div>
+
+
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nombre">{lbl_nombre}:</label>
+		    <rasty id="nombre" />
+		</div>
+
+	</fieldset>
+	
+	<input type="hidden" name="model" value="{model}">
+	<input type="hidden" name="sortCallback" value="ordenarNomencladores">
+	<input type="hidden" name="paginationCallback" value="paginarNomencladores">
+	<input type="hidden" name="selectRowCallback" value="{selectRowCallback}">
+	<input type="hidden" id="orderBy" name="orderBy">
+	<input type="hidden" id="orderByType" name="orderByType" value="ASC">
+	<input type="hidden" id="page" name="page" value="1">
+
+</form>
+<form  class="turnos_form" id="buttons{id}">
+	<fieldset class="tblFooters">
+	
+		<input type="button" value="{lbl_submit}" id="input_submit_ajax_Nomen{id}" onclick="javascript: $( '#page' ).val( 1 ); submitBuscar('{WEB_PATH}', '#nomenclador_filter{id}', '#{resultDiv}');">
+		
+		<!-- input type="button" value="Limpiar" id="input_button_2" onclick="javascript: cleanForm('nomenclador_filter'); "-->
+	
+	</fieldset>
+</form>	
+</div>
+<!-- END:main -->

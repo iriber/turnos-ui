@@ -1,0 +1,14 @@
+<rasty specificationClass="Turnos\UI\pages\nomenclador\Nomencladores" templateLocation="pages/nomenclador/Nomencladores.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+
+	
+	<component id="nomencladorFilter" type="NomencladorFilter">
+		<param name="gridModelClazz" value="modelClazz" />
+		<param name="uicriteriaClazz" value="uicriteriaClazz" />
+		<param name="legend" value="msg:nomenclador.buscar" />
+		<param name="legendAgain" value="msg:nomenclador.buscar.again" />
+		<param name="resultDiv" value="str:searchdiv" />
+	</component>
+	
+</rasty>

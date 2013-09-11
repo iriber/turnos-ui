@@ -1,0 +1,14 @@
+<rasty specificationClass="Turnos\UI\pages\clientes\agregar\ClienteAgregar" templateLocation="pages/clientes/agregar/ClienteAgregar.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+
+	<component id="clienteForm" type="ClienteForm">
+		<param name="legend" value="msg:cliente.agregar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="action" value="linkActionAgregarCliente" />
+		<param name="method" value="str:post" />
+		<param name="cliente" value="cliente" />
+	</component>
+	
+</rasty>

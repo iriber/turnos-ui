@@ -1,0 +1,22 @@
+<rasty specificationClass="Turnos\UI\pages\turnos\agregar\SobreturnoAgregar" templateLocation="pages/turnos/agregar/TurnoAgregar.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="hora" value="get:hora" />
+	<param name="fecha" value="get:fecha" />
+	<param name="clienteOid" value="get:clienteOid" />
+	<param name="profesionalOid" value="get:profesionalOid" />
+	
+	
+	<component id="turnoForm" type="TurnoForm">
+		<param name="legend" value="msg:turno.agregar_sobreturno.legend" />
+		<param name="action" value="linkActionAgregarTurno" />
+		<param name="method" value="str:post" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="turno" value="turno" />
+		<param name="horaEditable" value="boolean:true" />
+		<param name="fechaEditable" value="boolean:true" />
+		<param name="intervalo" value="str:5" />
+	</component>
+	
+</rasty>

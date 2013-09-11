@@ -1,0 +1,286 @@
+<!-- BEGIN:main -->
+<script language="javascript"
+	src="{WEB_PATH}js/autocomplete/simpleAutoComplete.js"></script>
+<link rel="stylesheet"
+	href="{WEB_PATH}css/autocomplete/simpleAutoComplete.css"
+	type="text/css" />
+	
+<style>
+
+#editar{
+	width: 100%;
+}
+
+#historia_clinica_left th{
+	text-align: left;
+}
+
+.datoOculto{
+	display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+function historiaClinica_turnoFinalizado(data){
+
+	data = new Array();
+	data["oid"] = '{cliente_oid}';
+	event = new Event("hcTurnoFinalizado", data, "TurnoFinalizado");
+	subject.notify(event);
+}
+
+function cliente_historia_change(attrs){
+
+	event = new Event("HistoriClinicaPage", attrs, "Cliente");
+	subject.notify(event);
+
+}
+
+function turnoChange(event){
+	//si finaliza un turno, retornamos a la agenda de turnos
+	if( event.type == "TurnoFinalizado"){
+
+		gotoLink( '{linkOnTurnoFinalizado}' );
+		
+	}
+}
+function historia_mostrar_infoPersonal(event){
+
+	if( event.type == "Cliente" ){
+		cliente = event.data;
+		
+		$("#obraSocial").html("");
+		$("#nroObraSocial").html("");
+		$("#fechaNacimiento").html("");
+		$("#fechaAlta").html("");
+		$("#nroHistoriaClinica").html("");
+		$("#edad").html("");
+		
+		if( cliente != null ){
+	
+	
+			$("#fechaNacimiento").html(cliente["fechaNacimientoFormateada"]);
+			$("#fechaAlta").html(cliente["fechaAltaFormateada"]);
+	
+			$("#nroHistoriaClinica").html(cliente["nroHistoriaClinica"]);
+			$("#edad").html(cliente["edad"]);
+			
+			//info de obra social		
+			var osOid = cliente["obraSocial.oid"];
+			var osNombre = cliente["obraSocial.nombre"];
+			var osNro = cliente["nroObraSocial"];
+			if( osNombre != undefined ){		
+				$("#obraSocial").html(osNombre);
+			}
+			if( osNro != undefined ){		
+				$("#nroObraSocial").html(osNro);
+			}
+		}
+	}	
+}
+
+
+
+function actualizarHistoria(){
+	
+	//$("#findentity_cliente_inputCode").blur();
+}
+
+$(document).ready(function(){
+	
+	//actualizarHistoria();
+});
+
+
+$(document).ready(function(){
+
+	//escuchamos cambios en el cliente.
+	observer = new Observer("hc_infopersonal", historia_mostrar_infoPersonal);
+	subject.addObserver( observer );
+
+	//escuchamos cambios en el turno
+	observer = new Observer("hc_turnochange", turnoChange);
+	subject.addObserver( observer );
+
+
+	
+	$('#cliente_ver_mas_datos').click(function() {
+
+		if ($("#cliente_ver_mas_datos").html() == "{ver_mas_datos_label}" ){
+			$("#cliente_ver_mas_datos").html("{ver_menos_datos_label}");
+		}else{
+			$("#cliente_ver_mas_datos").html("{ver_mas_datos_label}");
+		}
+		
+		$('.datoOculto').toggle( 5, 'linear', function() {
+			
+		});
+	});
+});
+
+
+</script>
+<style>
+#estadoActual .title{
+	color:#FFF;
+	font-size:120%;
+	display:block;
+}
+#estadoActual .turnoEnCurso{
+	color:#FFF;
+	font-size:120%;
+	display:block;
+	position:relative;
+}
+#estadoActual{
+	
+	padding: 10px;
+	text-align: left;
+}
+</style>
+<div id="historia_clinica">
+
+	<div id="estadoActual">
+		
+		<!-- BEGIN:turnoEnCurso -->
+		<span class="turnoEnCurso">
+			{paciente_atendido_por}
+			<a class="btn-link" href="#" onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', historiaClinica_turnoFinalizado);return false;" >
+			<span class="btn-inner btn-link-left">
+				<span class="btn-text">{turno_finalizar_label}</span>
+				<span class="btn-icon-left menu-ui-icon menu-ui-icon-check"></span>
+			</span>
+			</a>
+		</span>
+		<!-- END:turnoEnCurso -->
+	</div>
+	<div id="historia_clinica_left" class="turnos_form" >
+		<fieldset>
+			<legend>{historia_info_subtitle} - <span id="nroHistoriaClinica">{nroHistoriaClinica}</span> - 
+			
+			<a class="btn-link" href="#" onclick="javascript: gotoLink('{linkAgregarPractica}')" >
+			<span class="btn-inner btn-link-left">
+				<span class="btn-text">{practica_agregar_label}</span>
+				<span class="btn-icon-left menu-ui-icon menu-ui-icon-edit"></span>
+			</span>
+			</a>
+			</legend>
+			
+			<rasty id="historia" />
+			
+		</fieldset>
+	</div>
+	<div id="historia_clinica_right">
+		<fieldset>
+			<legend>{cliente_info_subtitle}</legend>
+			
+			<div class="dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_cliente">{cliente_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="nombre">{cliente}</span> (<span id="edad">{edad}</span>)
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_obraSocial">{obraSocial_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="obraSocial">{obraSocial}</span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_nroObraSocial">{nroObraSocial_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="nroObraSocial">{nroObraSocial}</span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="datoOculto dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_domicilio">{domicilio_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="domicilio">{domicilio}</span> &nbsp; <span id="localidad">{localidad}</span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="datoOculto dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_telefono">{telefonos_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="telefonoFijo">{telefonoFijo}</span> / <span id="telefonoMovil">{telefonoMovil}</span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="datoOculto dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_email">{email_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="email">{email}</span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+
+
+			<div class="datoOculto dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_documento">{documento_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="tipoDocumento">{tipoDocumento}</span> <span id="nroDocumento">{nroDocumento}</span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="datoOculto dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_fechaAlta">{fechaAlta_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="fechaAlta">{fechaAlta}</span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+
+			<div class="datoOculto dato_personal">
+				<div class="dato_personal_left">
+			    	<span class="dato_personal_fechaNacimiento">{fechaNacimiento_label}</span>
+				</div>
+		    	<div class="dato_personal_right">
+					<span id="fechaNacimiento">{fechaNacimiento}</span>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+
+			<span style="cursor: pointer;" id="cliente_ver_mas_datos">{ver_mas_datos_label}</span>
+			
+		</fieldset>	
+		<fieldset>
+			<legend>{turnos_info_subtitle}</legend>
+			<rasty id="turnosCliente" />	
+		</fieldset>
+		<fieldset style="display:none;">
+			<legend>{resumenes_info_subtitle}</legend>
+			<div id="historia_resumenes_hc"></div>	
+		</fieldset>
+	</div>	
+	
+	<div style="clear:both;"></div>
+	
+</div>
+
+<!-- END:main -->

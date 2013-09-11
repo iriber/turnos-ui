@@ -1,0 +1,22 @@
+<rasty specificationClass="Turnos\UI\pages\turnos\modificar\TurnoModificar" templateLocation="pages/turnos/modificar/TurnoModificar.htm"> 
+
+	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="turnoOid" value="get:oid" />
+
+	<layout type="RastyHeaderFooterLayout">
+		<param name="header" value="header" />
+		<param name="footer" value="footer" />
+	</layout>
+
+	<component id="turnoForm" type="TurnoForm">
+		<param name="legend" value="msg:turno.modificar.legend" />
+		<param name="action" value="linkActionModificarTurno" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="method" value="str:post" />
+		<param name="turno" value="turno" />
+		<param name="horaEditable" value="boolean:false" />
+		<param name="fechaEditable" value="boolean:false" />
+	</component>
+	
+</rasty>

@@ -1,0 +1,32 @@
+<!-- BEGIN: main-->
+<script>
+$(function() {
+	//nos interesa saber cambios en las ausencias
+	observer = new Observer("ausenciaChange", ausenciaChange);
+	
+	subject.addObserver( observer );
+});
+
+function ausenciaChange(event){
+	if( event.type == "Ausencia" ){
+		
+		ausencia = event.data;
+			
+		gotoLink('{linkAusenciaAgregar}?profesionalOid='+ausencia["profesionalOid"]);	
+			
+	}
+	
+}
+</script>
+
+<div id="editar">
+
+	<div align="justify">
+		<p class="titulo">{title}</p>
+	</div>
+
+	<rasty id="ausenciaForm" />
+
+
+</div>
+<!-- END: main-->
