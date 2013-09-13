@@ -149,7 +149,7 @@ $(document).ready(function(){
 			<a class="btn-link" href="#" onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', historiaClinica_turnoFinalizado);return false;" >
 			<span class="btn-inner btn-link-left">
 				<span class="btn-text">{turno_finalizar_label}</span>
-				<span class="btn-icon-left menu-ui-icon menu-ui-icon-check"></span>
+				<span class="btn-icon-left btn-icon-img btn-icon-finalizar-turno"></span>
 			</span>
 			</a>
 		</span>
@@ -157,15 +157,17 @@ $(document).ready(function(){
 	</div>
 	<div id="historia_clinica_left" class="turnos_form" >
 		<fieldset>
-			<legend>{historia_info_subtitle} - <span id="nroHistoriaClinica">{nroHistoriaClinica}</span> - 
+			<legend>{historia_info_subtitle} - <span id="nroHistoriaClinica">{nroHistoriaClinica}</span></legend>
 			
-			<a class="btn-link" href="#" onclick="javascript: gotoLink('{linkAgregarPractica}')" >
-			<span class="btn-inner btn-link-left">
-				<span class="btn-text">{practica_agregar_label}</span>
-				<span class="btn-icon-left menu-ui-icon menu-ui-icon-edit"></span>
+			<span class="actions">
+				<a class="btn-link" href="#" onclick="javascript: gotoLink('{linkAgregarPractica}')" >
+				<span class="btn-inner btn-link-left">
+					<span class="btn-text">{practica_agregar_label}</span>
+					<span class="btn-icon-left btn-icon-img btn-icon-agregar"></span>
+				</span>
+				</a>
 			</span>
-			</a>
-			</legend>
+			
 			
 			<rasty id="historia" />
 			

@@ -436,7 +436,7 @@ ul.historiaAyuda li:hover{
 .practica:hover{
 
 	/*background: -moz-linear-gradient(center top , #FDFDFD, #EEEEEE) repeat scroll 0 0 #EEEEEE;*/
-	background-color: #D8D8D8;
+	background-color: #CCC;
 }
 
 .practica_actions{
@@ -444,6 +444,15 @@ ul.historiaAyuda li:hover{
 	bottom:5px;
 	right: 0;
 }
+
+.practica div.actions{
+	top: 0px;
+	right:0;
+	position:absolute;
+	display:none;
+}
+
+
 
 .practica_right{
 	float:right;
@@ -755,7 +764,7 @@ fieldset .agenda {
     font-weight: 500;
 }
 
-.agenda_turno p span{
+.agenda_turno p span.texto{
 	padding:4px;
 	
 }
@@ -813,6 +822,18 @@ fieldset .agenda {
 	font-size:70%;
 	padding:1px;
 }
+
+.table_agenda_semanal td div.turno_ocupado{
+	position:relative;
+}
+
+.table_agenda_semanal td div.actions{
+	top: 0px;
+	right:0;
+	position:absolute;
+	display:none;
+}
+
 .table_agenda_semanal td.turno_vacio_disponible{
 	background: none repeat scroll 0 0 #FFF;
 	color:#FFF;
@@ -899,11 +920,23 @@ fieldset .agenda {
 #historia_clinica_left{
 	float: left;
 	width: 53%;
+	position:relative;
 }
+
+#historia_clinica_left span.actions{
+	top: 8px;
+	right:0;
+	position:absolute;
+}
+
 #historia_clinica_right{
 	float: right;
 	width: 45%;
 }
+
+
+
+
 
 /* ausencias */
 
@@ -997,8 +1030,9 @@ body.loginform {
 	border: 1px solid #BFBFBF;
     border-radius: 10px;
     box-shadow: 0 0 0 #000000, 0 3px 3px #EEEEEE inset;
-    font-size: 120%;
-    padding: 8px;
+    /*font-size: 120%;*/
+    font-size: 100%;
+    padding: 5px;
     width: 70%;
     /*text-transform: uppercase;*/
 }
@@ -1528,12 +1562,6 @@ body.loginform {
 
 
 
-.btn-icon {
-    opacity:0.75;
-}
-.btn-icon:HOVER {
-    opacity:1;
-}
 
 body{
 	font-size:80%;
@@ -1545,17 +1573,35 @@ body{
     margin: 0;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    padding: 10px;
+    padding: 4px;
     text-align: center;
-    border-radius: 1em 1em 1em 1em;
+    
     font-family: Helvetica,Arial,sans-serif;
     text-decoration: none !important;
-    border: 1px solid #145072;
-    background: #CCC; /*#396B9E;*/
+    border: 1px solid #CCC;
+    
+    border-radius: 1em 1em 1em 1em;
+    
+    background: #CCC;
 
 }
+
+.btn-link-img{
+	display: inline-block;
+    font-size: 13px;
+    margin: 0;
+    cursor: pointer;
+    padding: 4px;
+    text-align: center;
+    font-family: Helvetica,Arial,sans-serif;
+    text-decoration: none !important;
+    background: #CCC;
+    
+}
+
 .btn-link:hover{
-	background: #DDD; /*#396BCC;*/
+	background: #FFF; /*#396BCC;*/
+	background-image: -moz-linear-gradient(center top, #FFFFFF, #FFFFFF);
 }
 
 .btn-inner{
@@ -1572,6 +1618,20 @@ body{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.btn-inner-img{
+	display: block;
+	padding: 0;
+	position: relative;
+    margin: 0;
+    overflow: visible;
+    text-align: left;
+    list-style: none outside none;
+    text-overflow: ellipsis;
+    height: 18px;
+    width: 18px;
+}
+
 .btn-text{
 	position: relative;
     z-index: 1;
@@ -1580,7 +1640,7 @@ body{
     white-space: nowrap;
     cursor: pointer;
     color: #111;
-    font-weight: bold;
+    /*font-weight: bold;*/
     text-decoration: none;
 }
 .btn-link-right{
@@ -1599,17 +1659,34 @@ body{
 	right: 10px;
 }
 
-.btn-icon-finalizar-turno{
-    margin-top: -9px;
+.btn-icon-img{
+	margin-top: -9px;
     position: absolute;
     top: 50%;
     height: 18px;
     width: 18px;
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-	background: url("images/turno_finalizar.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0.4);
-    border-radius: 9px 9px 9px 9px;
+	/*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    border-radius: 9px 9px 9px 9px;*/
+}
+.btn-icon-finalizar-turno{
+	background: url("images/turno_finalizar.png") no-repeat scroll 0 0;
 }
 
+.btn-icon-editar{
+	/*background: url("images/sprite_black2.png") no-repeat scroll -3px -1px transparent;*/
+		
+	background: url("images/edit2.png") -3px -1px no-repeat transparent;	
+}
+
+.btn-icon-agregar{
+	background: url("images/add_16.png") no-repeat scroll 0px 1px
+		transparent;
+}
+
+.btn-icon-eliminar{
+	background: url("images/sprite_black2.png") no-repeat scroll  -65px -43px
+		transparent;
+}
 
 /* mobile */
 @media screen and (min-width: 800px) and (max-width: 1200px) {

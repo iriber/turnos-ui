@@ -65,7 +65,7 @@ class AgregarTurno extends Action{
 		} catch (RastyException $e) {
 		
 			$forward->setPageName( "TurnoAgregar" );
-			$forward->addError( $e->getMessage() );
+			$forward->addError(Locale::localize($e->getMessage()) );
 			
 			//guardamos lo ingresado en el form.
 			$turnoForm->save();

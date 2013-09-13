@@ -2,6 +2,8 @@
 
 namespace Turnos\UI\components\form\cliente;
 
+use Turnos\UI\utils\TurnosUtils;
+
 use Rasty\Forms\form\Form;
 
 use Rasty\components\RastyComponent;
@@ -90,13 +92,13 @@ class ClienteQuickForm extends Form{
 	
 	public function getTiposDocumento(){
 		
-		return TipoDocumento::getItems();	
+		return TurnosUtils::localizeEntities(TipoDocumento::getItems());	
 		
 	}
 	
 	public function getSexos(){
 		
-		return Sexo::getItems();	
+		return TurnosUtils::localizeEntities(Sexo::getItems());	
 		
 	}
 	

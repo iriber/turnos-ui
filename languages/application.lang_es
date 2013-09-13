@@ -125,6 +125,7 @@
 	"agenda.no_atiende": "No atiende",
 	"agenda.fecha": "Fecha",
 	"agenda.verficha": "Ver ficha del paciente",
+	"agenda.ver.dia": "Ver detalle del día",
 
 	"turno.fecha": "Fecha",
 	"turno.hora": "Hora",
@@ -267,7 +268,7 @@
 
 	"practica.historia.legend": "El paciente está siendo atendido por $1",
 
-	"practica.historia.practica_agregar_label": "Escribir...",
+	"practica.historia.practica_agregar_label": "Escribir nueva...",
 
 
 	"historia.ver_mas_datos_personales": "ver más...",

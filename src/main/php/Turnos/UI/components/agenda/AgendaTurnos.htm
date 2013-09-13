@@ -30,27 +30,16 @@ function agendaTurnos{id}_tipoAgendaDiaria(fecha){
 
 $(document).ready(function(){
 	
-	//totalesDia('{importe_total}','{total_ensala}', '{total_asignados}', '{total_atendidos}');
-
-	/* notificamos un cambio sobre los totales de la agenda.*/
-	/*
-	data = new Array();
-	data["importeTotal"] = '{importe_total}';
-	data["totalEnSala"] = '{total_ensala}';
-	data["totalAsignados"] = '{total_asignados}';
-	data["totalAtendidos"] = '{total_atendidos}';
-	event = new Event("totaleschange", data, "AgendaTotales");
-	subject.notify(event);
-	*/
-
-	/*
-	$("#link_ayuda").fancybox({
-		'autoScale'		: false,
-		'type': 'ajax',
-		'width'	:	500,
-		'height'	:	500,
-		'modal':false
-	});*/
+	$(".turno_ocupado").hover(
+			function () {
+				$(this).find("div.actions").show();
+				},
+				function () {
+					//$(this).find("div.actions").css({"display":"none"});
+					$(this).find("div.actions").hide();
+				}
+			);	
+	
 });
 
 </script>
@@ -89,30 +78,33 @@ $(document).ready(function(){
 			
 				<!-- BEGIN: editar -->
 				<p>
-					<!-- a style="cursor: pointer;" title="{editar_label}" href="#" onclick="javascript: editarTurno('{linkModificar}','{turno_oid}');return false;" >
-					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/editar.png" /></a-->
-					
-					<a style="cursor: pointer;" title="{borrar_label}" href="#" onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;" >
-					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/delete_over.png" /></a>
+				
+					<!-- eliminar -->
+					<a title="{borrar_label}" class="btn-link" href="#" onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;" >
+					<span class="btn-inner btn-link-left">
+						<span class="btn-text">&nbsp;</span>
+						<span class="btn-icon-left btn-icon-img btn-icon-eliminar"></span>
+					</span>
+					</a>
 				</p>
 				<!-- END: editar -->
 				
 				
 				<!-- BEGIN: otro_estado -->
 				<p class="{turno_css}">
-					<span>{estado}</span>
+					<span class="texto">{estado}</span>
 				</p>
 				<!-- END: otro_estado -->
 				
 				<!-- BEGIN: ensala -->
 				<p class="{turno_css}" style="cursor: pointer;" title="{asignado_label}" onclick="javascript: turnoAsignado('{linkAsignado}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
-					<span>{estado}</span><img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_finalizar.png"/>
+					<span class="texto">{estado}</span><img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_finalizar.png"/>
 				</p>
 				<!-- END: ensala -->
 
 				<!-- BEGIN: asignado -->
 				<p class="{turno_css}" style="cursor: pointer;" title="{enSala_label}" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
-					<span>{estado}</span><img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/>
+					<span class="texto">{estado}</span><img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/>
 				</p>
 				<!-- END: asignado -->
 
@@ -166,10 +158,30 @@ $(document).ready(function(){
 			<!-- BEGIN: dia -->
 			
 			<!-- BEGIN:turno -->
-			<td class="{turno_css}" >
-				<div title='{linkSeleccionarLabel}' style="width: 100%;position:relative;cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
-				&nbsp;
-				</div> 
+			<td class="{turno_css}">
+				<div class="turno_ocupado">
+					<div title='{cliente}/{obra_social}' style="width: 100%;position:relative;cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+					&nbsp;
+					</div> 
+					<div class="actions">
+						
+						<!-- consultar 
+						<a title="{linkSeleccionarLabel}" class="btn-link" href="#" onclick="javascript: gotoLink('{linkSeleccionarTurno}');" >
+						<span class="btn-inner btn-link-left">
+							<span class="btn-text">&nbsp;</span>
+							<span class="btn-icon-left btn-icon-img btn-icon-editar"></span>
+						</span>
+						</a-->
+						<!-- eliminar -->
+						<a title="{borrar_label}" class="btn-link" href="#" onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;" >
+							<span class="btn-inner btn-link-left">
+								<span class="btn-text">&nbsp;</span>
+								<span class="btn-icon-left btn-icon-img btn-icon-eliminar"></span>
+							</span>
+						</a>
+					</div>	
+				</div>
+				
 			</td>
 			<!-- END:turno -->
 

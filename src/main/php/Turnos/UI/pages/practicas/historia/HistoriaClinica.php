@@ -164,7 +164,7 @@ class HistoriaClinica extends TurnosPage{
 		
 		}
 		
-		$xtpl->assign("practica_agregar_label" , $this->localize( "practica.agregar" ) );
+		$xtpl->assign("practica_agregar_label" , $this->localize( "practica.historia.practica_agregar_label" ) );
 		$xtpl->assign("linkAgregarPractica" , LinkBuilder::getPageUrl( "PracticaAgregar", $agregarPracticaParams ));
 		
 		$xtpl->assign("historia_info_subtitle" , $this->localize("practica.historia.practicas_subtitle") );

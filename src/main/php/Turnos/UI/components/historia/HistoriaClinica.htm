@@ -19,29 +19,50 @@ function historiaClinica{id}_historiaChange(data){
 	event = new Event("historiachange", data, "HistoriaClinica");
 	subject.notify(event);
 }
+
+
+$(document).ready(function(){
+	
+	$(".practica").hover(
+			function () {
+				$(this).find("div.actions").show();
+				},
+				function () {
+					//$(this).find("div.actions").css({"display":"none"});
+					$(this).find("div.actions").hide();
+				}
+			);	
+	
+});
+
+
 </script>
 
 <div id="historia_clinica_resumen" style="width: 100%">
 			
 <!-- BEGIN: practica -->
 	<div class="practica" >
-		<div class="practica_actions"> 
-			<a style="cursor: pointer;" title="{editar_label}" href="#" onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;" >
-			<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/editar.png" /></a>
+		<div style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;"> 
+			<div class="practica_left">
+				<span class="practica_fecha">{fecha}</span> 
+			    <span class="practica_nomenclador">{nomenclador_codigo} - {nomenclador_nombre}</span>
+				<span class="practica_obraSocial">{obraSocial}</span>
+			    <span class="practica_profesional">{profesional}</span>
+			</div>
+		    <div class="practica_right" style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;">
+			{observaciones}
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<div class="actions">
+			<a title="{borrar_label}" class="btn-link" href="#" onclick="javascript: borrarPractica('{linkBorrar}', '{practica_oid}', '{cliente_oid}', '{cliente}', historiaClinica{id}_historiaChange);return false;" >
+			<span class="btn-inner btn-link-left">
+				<span class="btn-text">&nbsp;</span>
+				<span class="btn-icon-left btn-icon-img btn-icon-eliminar"></span>
+			</span>
+			</a>
+		</div>
 		
-			<a style="cursor: pointer;" title="{borrar_label}" href="#" onclick="javascript: borrarPractica('{linkBorrar}', '{practica_oid}', '{cliente_oid}', '{cliente}', historiaClinica{id}_historiaChange);return false;" >
-			<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/delete_over.png" /></a>
-		</div>
-		<div class="practica_left" style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;">
-			<span class="practica_fecha">{fecha}</span> 
-		    <span class="practica_nomenclador">{nomenclador_codigo} - {nomenclador_nombre}</span>
-			<span class="practica_obraSocial">{obraSocial}</span>
-		    <span class="practica_profesional">{profesional}</span>
-		</div>
-	    <div class="practica_right" style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;">
-		{observaciones}
-		</div>
-		<div style="clear: both;"></div>
 	</div>
 
 <!-- END: practica -->

@@ -7,11 +7,11 @@
         	"Cose\\Security": "/home/bernardo/workspace_php/cose_security/src/main/php",
         	"Cose\\Crud": "/home/bernardo/workspace_php/cose_crud/src/main/php",
         	"Cose\\Observer": "/home/bernardo/workspace_php/cose_observer/src/main/php",
-        	"Rasty": "/var/www/rasty_fmk/phprasty",
-        	"Rasty\\Forms": "/var/www/rasty_fmk/phprasty_forms",
-        	"Rasty\\Grid": "/var/www/rasty_fmk/phprasty_grid",
-        	"Rasty\\Layout": "/var/www/rasty_fmk/phprasty_layout",
-        	"Rasty\\Menu": "/var/www/rasty_fmk/phprasty_menu"
+        	"Rasty": "/home/bernardo/workspace_php/phprasty/src/main/php",
+        	"Rasty\\Forms": "/home/bernardo/workspace_php/phprasty_forms/src/main/php",
+        	"Rasty\\Grid": "/home/bernardo/workspace_php/phprasty_grid/src/main/php",
+        	"Rasty\\Layout": "/home/bernardo/workspace_php/phprasty_layout/src/main/php",
+        	"Rasty\\Menu": "/home/bernardo/workspace_php/phprasty_menu/src/main/php"
         }
     },
     "repositories": [
@@ -22,6 +22,6 @@
     ],
     "require": {
         "apache/log4php": "2.3.0",
-        "doctrine/orm": "*"
+        "doctrine/orm": "2.3.4"
     }
 }

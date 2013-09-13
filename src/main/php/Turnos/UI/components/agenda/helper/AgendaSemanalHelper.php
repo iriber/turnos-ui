@@ -225,8 +225,8 @@ class AgendaSemanalHelper{
 		//armamos la grilla de horarios.
 		$grillaHorarios = self::armarGrillaHorarios($rangosMatriz, $ausencias, $horarios, $turnosSemana, $fechaDesde, $fechaHasta, $profesional);
 
-		
-		
+		$xtpl->assign("linkBorrar",   LinkBuilder::getActionAjaxUrl( "BorrarTurno") );
+		$xtpl->assign("borrar_label", self::localize( "turno.borrar" ) );
 		
 		$hora = new \DateTime();
 		//$hora->setTimestamp( $horaDesde->getTimestamp() );
@@ -277,6 +277,8 @@ class AgendaSemanalHelper{
 				
 				$xtpl->assign("turno_css", TurnosUtils::getEstadoTurnoCss($turno->getEstado()));
 					
+				$xtpl->assign("turno_oid", $turno->getOid() );
+				
 				$cliente = $turno->getCliente();
 				if(!empty($cliente) && $cliente->getOid()>0){
 					$xtpl->assign("cliente",  $turno->getCliente()->__toString() );
@@ -285,6 +287,14 @@ class AgendaSemanalHelper{
 					$xtpl->assign("cliente", $turno->getNombre() );
 				}	
 				$xtpl->assign("estado", self::localize(EstadoTurno::getLabel($turno->getEstado())) );
+				
+				$os = $turno->getObraSocial();
+				$os = ($os!=null)? $os->getNombre() : "-";
+				$xtpl->assign("obra_social", $os );
+				$xtpl->assign("nroObraSocial", $turno->getNroObraSocial() );
+				
+				$importe = $turno->getImporte();
+				$xtpl->assign("importe", TurnosUtils::formatMontoToView($importe) );
 				
 				if( $turno->getEstado() == EstadoTurno::EnSala ){
 		
@@ -298,6 +308,7 @@ class AgendaSemanalHelper{
 
 				$xtpl->assign("linkSeleccionarTurno",   LinkBuilder::getPageUrl( "TurnoModificar" , array("oid"=> $turno->getOid())) );
 				$xtpl->assign("linkSeleccionarLabel",  self::localize("turno.editar") );
+				
 				
 				$xtpl->parse("main.hora.dia.turno");
 				

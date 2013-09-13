@@ -96,7 +96,7 @@ class TurnosCliente extends RastyComponent{
 			$xtpl->assign("cliente_oid",  $this->getCliente()->getOid() );
 		
 			$xtpl->assign("profesional",  $turno->getProfesional()->__toString() );
-			$xtpl->assign("estado", EstadoTurno::getLabel($turno->getEstado()) );
+			$xtpl->assign("estado", $this->localize( EstadoTurno::getLabel($turno->getEstado()) ) );
 			
 			$os = $turno->getObraSocial();
 			if( !empty($os) )
