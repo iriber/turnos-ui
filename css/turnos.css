@@ -236,15 +236,15 @@
 	list-style: none;
 }
 
-.helpdesk_indice LI{
+.helpdesk_indice LI LI{
 
 	padding: 4px 30px;
-	cursor:pointer;
+	/*cursor:pointer;*/
 }
 .helpdesk_indice LI:before { content: counters(item2, ".") "."; counter-increment: item2; padding-right:10px; margin-left:-20px;}
 
-.helpdesk_indice li:hover{
-
+.helpdesk_indice LI li a:hover{
+	cursor:pointer
 	background: none repeat scroll 0 0 #ccc;
 	border-radius: 5px;
 }
