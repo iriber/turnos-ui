@@ -1,4 +1,12 @@
 
+function wait( id ){
+	$( id ).fadeTo("fast", 0.33);
+}
+
+function wakeUp( id ){
+	$( id ).fadeTo("fast", 1);
+}
+
 
 /* PRACTICAS */
 function agregarPractica(link, cliente, profesional){
