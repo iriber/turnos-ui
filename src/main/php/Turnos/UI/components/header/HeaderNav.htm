@@ -3,19 +3,18 @@
 
 $(document).ready(function(){
 
-	/*
-	$('#menuNavigation').click(function() {
-
-		updated_height = $(window).height() - 80;
-		
-		$('#menuNavigation nav').height(updated_height);
-		
-		$('#menuNavigation nav').toggle( 50, 'linear', function() {
-			$('#menuNavigation nav').height(updated_height);
-		});
-
-	});*/
-		
+	$("#menuMain").hover(
+			function(){}, 
+			function(){
+				$(this).hide();
+			}
+	);
+	$("#menuPage").hover(
+			function(){}, 
+			function(){
+				$(this).hide();
+			}
+	);
 });
 
 function toggleMenuMain(){

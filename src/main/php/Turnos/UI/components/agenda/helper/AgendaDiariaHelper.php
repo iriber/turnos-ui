@@ -100,7 +100,7 @@ class AgendaDiariaHelper{
 			}
 		}
 		
-		return $ausenciaRes;		
+		return  $ausenciaRes;		
 					
 	}
 	

@@ -222,5 +222,6 @@ class HistoriaClinica extends TurnosPage{
 		if(!empty($backTo))
 	    	$this->backTo = $backTo;
 	}
+	
 }
 ?>

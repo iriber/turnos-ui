@@ -214,6 +214,7 @@
    	"cliente.sexo":"Sexo",
    	"cliente.nroDocumento":"Nro Documento",
    	"cliente.tipoDocumento":"Tipo Documento",
+   	"cliente.observaciones":"Notas",
    	
    	"documento.tipo":"Tipo",
    	"documento.nro":"Nro",

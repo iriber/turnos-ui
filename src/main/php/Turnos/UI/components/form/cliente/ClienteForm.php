@@ -58,6 +58,7 @@ class ClienteForm extends Form{
 		$this->addProperty("email");
 		$this->addProperty("domicilio");
 		$this->addProperty("localidad");
+		$this->addProperty("observaciones");
 		
 		$this->setBackToOnSuccess("Clientes");
 		$this->setBackToOnCancel("Clientes");
@@ -115,6 +116,7 @@ class ClienteForm extends Form{
 		$xtpl->assign("lbl_email", $this->localize("cliente.email") );
 		$xtpl->assign("lbl_domicilio", $this->localize("cliente.domicilio") );
 		$xtpl->assign("lbl_localidad", $this->localize("cliente.localidad") );
+		$xtpl->assign("lbl_observaciones", $this->localize("cliente.observaciones") );
 		
 		
 		

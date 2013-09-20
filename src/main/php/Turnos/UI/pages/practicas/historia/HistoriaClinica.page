@@ -24,5 +24,6 @@
 		<param name="isEditable" value="str:0" />
 		<param name="onSelectCallback" value="str:cliente_historia_change" />
 	</component>
+
 		
 </rasty>

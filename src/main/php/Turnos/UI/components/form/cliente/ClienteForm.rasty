@@ -120,5 +120,13 @@
 		<param name="popupFormType" value="str:LocalidadQuickForm" />
 	</component>
 	
+	<component id="observaciones" type="InputTextArea">
+		<param name="inputId" value="str:observaciones" />
+		<param name="name" value="str:observaciones" />
+		<param name="value" value="cliente.observaciones" />
+		<param name="placeholder" value="msg:cliente.observaciones" />	
+		<param name="rows" value="str:5" />	
+		
+	</component>
 	
 </rasty>
