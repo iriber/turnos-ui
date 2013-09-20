@@ -13,6 +13,7 @@ use Rasty\Grid\conf\RastyGridConfig;
 
 use Turnos\Core\conf\TurnosConfig;
 
+use Rasty\security\RastySecurityContext;
 
 /**
  * configuración turnos ui
@@ -28,7 +29,13 @@ class TurnosUISetup {
 	public static function initialize( $appName = "turnos_ui"){
 		
 		//inicializamos la sesión.
-		session_start();
+		session_set_cookie_params(0, $appName );
+		session_start ();
+		if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
+			RastySecurityContext::logout();
+		}
+		$_SESSION['LAST_ACTIVITY'] = time();
+		
 		
 		//configuramos php
 		self::configurePhp();
