@@ -32,6 +32,11 @@ class NomencladorFilter extends Filter{
 		$this->setUicriteriaClazz( get_class( new UINomencladorCriteria()) );
 		
 		$this->setSelectRowCallback("seleccionarNomenclador");
+		
+		//agregamos las propiedades a popular en el submit.
+		$this->addProperty("nombre");
+		$this->addProperty("codigo");
+		
 	}
 	
 	protected function parseXTemplate(XTemplate $xtpl){

@@ -22,6 +22,7 @@
     ],
     "require": {
         "apache/log4php": "2.3.0",
-        "doctrine/orm": "2.3.4"
+        "doctrine/orm": "2.4.0",
+        "niktux/addendum": "dev-master"
     }
 }

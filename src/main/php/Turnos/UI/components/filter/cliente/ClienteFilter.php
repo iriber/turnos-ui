@@ -34,6 +34,12 @@ class ClienteFilter extends Filter{
 		
 		$this->setSelectRowCallback("seleccionarCliente");
 		
+		//agregamos las propiedades a popular en el submit.
+		$this->addProperty("nombre");
+		$this->addProperty("nroHistoriaClinica");
+		$this->addProperty("obraSocialNombre");
+		$this->addProperty("nroObraSocial");
+		$this->addProperty("domicilio");
 		
 	}
 	

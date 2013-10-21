@@ -20,6 +20,17 @@ use Turnos\Core\criteria\ClienteCriteria;
 use Rasty\Menu\menu\model\MenuGroup;
 use Rasty\Menu\menu\model\MenuOption;
 
+
+/**
+ * Página para consultar los clientes.
+ * 
+ * @author bernardo
+ * @since 01/10/2013
+ * 
+ * @Rasty\conf\annotations\Page (name="Clientes", 
+ * 								 location="pages/clientes/Clientes.page" , 
+ * 								 url="pacientes")
+ */
 class Clientes extends TurnosPage{
 
 	

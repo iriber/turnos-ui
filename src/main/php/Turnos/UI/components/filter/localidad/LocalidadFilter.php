@@ -32,6 +32,11 @@ class LocalidadFilter extends Filter{
 		$this->setUicriteriaClazz( get_class( new UILocalidadCriteria()) );
 		
 		$this->setSelectRowCallback("seleccionarLocalidad");
+		
+		//agregamos las propiedades a popular en el submit.
+		$this->addProperty("nombre");
+		
+		
 	}
 	
 	protected function parseXTemplate(XTemplate $xtpl){

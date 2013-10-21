@@ -31,13 +31,6 @@ class UIClienteCriteria extends UITurnosCriteria{
 
 		parent::__construct();
 
-		//agregamos las propiedades a popular en el submit.
-		$this->addProperty("nombre");
-		$this->addProperty("nroHistoriaClinica");
-		$this->addProperty("obraSocialNombre");
-		$this->addProperty("nroObraSocial");
-		$this->addProperty("domicilio");
-		
 		//$this->fillFromSaved();
 	}
 	

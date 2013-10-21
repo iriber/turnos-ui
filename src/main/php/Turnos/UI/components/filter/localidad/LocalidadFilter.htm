@@ -25,7 +25,7 @@ function paginarLocalidades(page){
 	submitBuscar("{WEB_PATH}", "#localidad_filter{id}", "#{resultDiv}");
 }
 
-function seleccionarLocalidad(oid, rowId, checkboxId){
+function seleccionarLocalidad(event, oid, rowId, checkboxId){
 	
 	gotoLink("{WEB_PATH}localidades/modificar.html?oid="+oid);
 	
@@ -54,6 +54,7 @@ $(function() {
 	</fieldset>
 	
 	<input type="hidden" name="model" value="{model}">
+	<input type="hidden" name="filter" value="{filter}">
 	<input type="hidden" name="sortCallback" value="ordenarLocalidades">
 	<input type="hidden" name="paginationCallback" value="paginarLocalidades">
 	<input type="hidden" name="selectRowCallback" value="{selectRowCallback}">

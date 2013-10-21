@@ -26,9 +26,7 @@ class UIObraSocialCriteria extends UITurnosCriteria{
 
 		parent::__construct();
 
-		//agregamos las propiedades a popular en el submit.
-		$this->addProperty("nombre");
-		$this->addProperty("codigo");
+		
 	}	
 	
 	protected function newCoreCriteria(){

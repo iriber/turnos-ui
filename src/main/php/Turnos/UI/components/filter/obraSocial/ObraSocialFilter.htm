@@ -25,7 +25,7 @@ function paginarObrasSociales(page){
 	submitBuscar("{WEB_PATH}", "#os_filter{id}", "#{resultDiv}");
 }
 
-function seleccionarObraSocial(oid, rowId, checkboxId){
+function seleccionarObraSocial(event, oid, rowId, checkboxId){
 	
 	//gotoLink("{WEB_PATH}obrasSociales/modificar.html?oid="+oid);
 	
@@ -81,6 +81,7 @@ $(document).ready(function(){
 	</fieldset>
 	
 	<input type="hidden" name="model" value="{model}">
+	<input type="hidden" name="filter" value="{filter}">
 	<input type="hidden" name="sortCallback" value="ordenarObrasSociales">
 	<input type="hidden" name="paginationCallback" value="paginarObrasSociales">
 	<input type="hidden" name="selectRowCallback" value="{selectRowCallback}">

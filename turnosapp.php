@@ -1,4 +1,5 @@
 <?php
+session_start ();
 
 use Turnos\UI\conf\TurnosUISetup;
 use Rasty\utils\RastyUtils;
