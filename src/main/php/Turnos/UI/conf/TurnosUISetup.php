@@ -30,7 +30,6 @@ class TurnosUISetup {
 		
 		//inicializamos la sesión.
 		session_set_cookie_params(0, $appName );
-		session_start ();
 		if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
 			RastySecurityContext::logout();
 		}
