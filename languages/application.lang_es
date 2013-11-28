@@ -14,6 +14,9 @@
 	"menu.nomenclador":"Nomenclador",
 	"menu.obrasSociales":"Obras Sociales",
 	"menu.logout":"Salir del sistema",
+	
+	"menu.cliente.modificar":"Modificar información del Paciente",
+	"menu.cliente.historiaClinica":"Ver historia clínica del Paciente",
 
 	"user.required.exception.msg": "Debe iniciar sesión para operar el sistema", 
 	"invalid.password.exception.msg": "La clave ingresada no es válida",

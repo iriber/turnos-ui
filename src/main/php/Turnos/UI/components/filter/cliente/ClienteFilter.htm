@@ -30,18 +30,20 @@ function seleccionarCliente(event, clienteId, rowId, checkboxId){
 
 	/* muestro un pop con las opciones sobre el cliente */
 	
-	
-	
-	
 	gotoLink("{linkSeleccionar}?oid="+clienteId);
 	
 }
 
+function eliminarCallback(data){
+
+	console.log( data["info"] );
+	submitBuscar("{WEB_PATH}", "#clientes_filter{id}", "#{resultDiv}");
+}
+
+
 $(document).ready(function(){
 
 	submitBuscar("{WEB_PATH}", "#clientes_filter{id}", "#{resultDiv}");
-	
-	
 	
 	$('#input_submit_ajax_Cliente{id}').click(function() {
 		

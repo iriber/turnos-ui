@@ -1052,12 +1052,11 @@ body.loginform {
 	width: 15%;
 	
 }
-
 .turnos_form input[type="submit"], 
 .turnos_form input[type="reset"],
 .turnos_form input[type="button"] {
-	width:100%;
-   	font-size: 18px !important;
+	width:20%;
+   	/*font-size: 18px !important;*/
     height: 50px;
     margin: 0 auto;
     background: none repeat scroll 0 0 #CCCCCC;
@@ -1079,7 +1078,6 @@ body.loginform {
 	cursor: pointer;
 	position: relative;
 }
-
 
 .img_link{
 

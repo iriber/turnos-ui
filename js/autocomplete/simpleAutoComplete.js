@@ -69,59 +69,71 @@
 				{
 					$('div.' + classAC).remove();
 				}
-				if (kc == 13)
+				
+				//cambiamos para que se invoque a la búsqueda sólo al presionar enter
+				//para no llamar tantas veces al servicio (cada vez que se ingresaba una letra).
+				/*if (kc == 13)
 				{
 					$('div.' + classAC + ' li.' + selClass).trigger('click');
-				}
-				if (key.match(/[a-zA-Z0-9_\- ]/) || kc == 8 || kc == 46)
+				}*/
+				if (kc == 13)//if (key.match(/[a-zA-Z0-9_\- ]/) || kc == 8 || kc == 46)
 				{
-					$.get(page, getOptions, function(r)
-					{
-						$('div.' + classAC).remove();
-						autoCompleteList = $('<div>').addClass(classAC).html(r);
-						if (r != '')
-						{
-							autoCompleteList.insertAfter(thisElement);
-							
-							var position = thisElement.position();
-							var height = thisElement.height();
-							var width = thisElement.width();
-
-							$('div.' + classAC).css({
-								'top': ( height + position.top + 6 ) + 'px',
-								'left': ( position.left )+'px',
-								'margin': '0px'
-							});
-							
-							$('div.' + classAC + ' ul').css({
-								'margin-left': '0px'
-							});
-							
-							$('div.' + classAC + ' li').each(function( n, el )
-							{
-								el = $(el);
-								el.mouseenter(function(){
-									$('div.' + classAC + ' li.' + selClass).removeClass(selClass);
-									$(this).addClass(selClass);
-								});
-								el.click(function()
+					//$('div.' + classAC + ' li.' + selClass).trigger('click');
+					
+					if( $('div.' + classAC + ' li.' + selClass).length > 0)
+						$('div.' + classAC + ' li.' + selClass).trigger('click');
+					else{
+					
+						$.get(page, getOptions, function(r)
 								{
-									//thisElement.attr('value', el.text());
-									thisElement.attr('value', el.attr(attrLabel).split('_*_'));
-									
-									if( typeof( callback ) == "function" ){
-										if(el.attr(attrCB)!=undefined)
-											callback( el.attr(attrCB).split('_*_') );
-										else
-											callback();
-									}
-									
 									$('div.' + classAC).remove();
-									thisElement.focus();
+									autoCompleteList = $('<div>').addClass(classAC).html(r);
+									if (r != '')
+									{
+										autoCompleteList.insertAfter(thisElement);
+										
+										var position = thisElement.position();
+										var height = thisElement.height();
+										var width = thisElement.width();
+
+										$('div.' + classAC).css({
+											'top': ( height + position.top + 6 ) + 'px',
+											'left': ( position.left )+'px',
+											'margin': '0px'
+										});
+										
+										$('div.' + classAC + ' ul').css({
+											'margin-left': '0px'
+										});
+										
+										$('div.' + classAC + ' li').each(function( n, el )
+										{
+											el = $(el);
+											el.mouseenter(function(){
+												$('div.' + classAC + ' li.' + selClass).removeClass(selClass);
+												$(this).addClass(selClass);
+											});
+											el.click(function()
+											{
+												//thisElement.attr('value', el.text());
+												thisElement.attr('value', el.attr(attrLabel).split('_*_'));
+												
+												if( typeof( callback ) == "function" ){
+													if(el.attr(attrCB)!=undefined)
+														callback( el.attr(attrCB).split('_*_') );
+													else
+														callback();
+												}
+												
+												$('div.' + classAC).remove();
+												thisElement.focus();
+											});
+										});
+									}
 								});
-							});
-						}
-					});
+						
+					}
+					
 				}
 				if (kc == 38 || kc == 40){
 					if ($('div.' + classAC + ' li.' + selClass).length == 0)

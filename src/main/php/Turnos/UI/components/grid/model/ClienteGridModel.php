@@ -12,6 +12,11 @@ use Turnos\UI\service\UIServiceFactory;
 use Rasty\utils\RastyUtils;
 use Rasty\utils\Logger;
 
+use Rasty\Menu\menu\model\MenuOption;
+use Rasty\Menu\menu\model\MenuGroup;
+use Rasty\Menu\menu\model\MenuActionOption;
+use Rasty\Menu\menu\model\MenuActionAjaxOption;
+
 /**
  * Model para la grilla de clientes.
  * @author bernardo
@@ -33,11 +38,17 @@ class ClienteGridModel extends EntityGridModel{
     
     public function getFilter(){
     	
-    	$criteria = new UIClienteCriteria();
-		return $criteria;    	
+    	$componentConfig = new ComponentConfig();
+	    $componentConfig->setId( "clientefilter" );
+		$componentConfig->setType( "ClienteFilter" );
+		
+		//TODO esto setearlo en el .rasty
+	    $this->filter = ComponentFactory::buildByType($componentConfig, $this);
+	    
+    	$filter = new UIClienteCriteria();
+		return $filter;    	
     }
-    
-    
+        
 	protected function initModel() {
 
 		$this->setHasCheckboxes( false );
@@ -118,5 +129,51 @@ class ClienteGridModel extends EntityGridModel{
         return $this->getDefaultRowActions($item, "cliente", "cliente", true, true, true, false, 500, 750);
     }
 	
+    
+    /**
+	 * opciones de menú dado el item
+	 * @param unknown_type $item
+	 */
+	public function getMenuGroups( $item ){
+	
+		//FIXME seguir según NoticiaGridModel.
+		//pasar css y js.
+		
+		$group = new MenuGroup();
+		$group->setLabel("grupo");
+		$options = array();
+		
+		
+		$menuOption = new MenuOption();
+		$menuOption->setLabel( $this->localize( "menu.cliente.modificar") );
+		$menuOption->setPageName( "ClienteModificar" );
+		$menuOption->addParam("oid",$item->getOid());
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/editar_32.png" );
+		$options[] = $menuOption ;
+		
+		$menuOption = new MenuOption();
+		$menuOption->setLabel( $this->localize( "menu.cliente.historiaClinica") );
+		$menuOption->setPageName( "HistoriaClinica" );
+		$menuOption->addParam("clienteOid",$item->getOid());
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/historia_32.png" );
+		$options[] = $menuOption ;
+		
+		/*
+		$menuOption = new MenuActionAjaxOption();
+		$menuOption->setLabel( $this->localize( "menu.cliente.eliminar") );
+		$menuOption->setActionName( "EliminarCliente" );
+		$menuOption->setConfirmMessage( $this->localize( "cliente.eliminar.confirm.msg") );
+		$menuOption->setConfirmTitle( $this->localize( "cliente.eliminar.confirm.title") );
+		$menuOption->setOnSuccessCallback( "eliminarCallback" );
+		$menuOption->addParam("oid",$item->getOid());
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/eliminar_32.png" );
+		$options[] = $menuOption ;
+		*/
+		$group->setMenuOptions( $options );
+		
+		return array( $group );
+		
+	} 
+    
 }
 ?>

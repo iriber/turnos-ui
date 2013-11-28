@@ -32,7 +32,7 @@ class ClienteFilter extends Filter{
 		
 		$this->setUicriteriaClazz( get_class( new UIClienteCriteria()) );
 		
-		$this->setSelectRowCallback("seleccionarCliente");
+		//$this->setSelectRowCallback("seleccionarCliente");
 		
 		//agregamos las propiedades a popular en el submit.
 		$this->addProperty("nombre");
