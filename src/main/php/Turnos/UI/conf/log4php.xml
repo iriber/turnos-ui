@@ -2,7 +2,7 @@
 
 	<appender name="fileAppender" class="LoggerAppenderFile">
 		<layout class="LoggerLayoutPattern" />
-			<param name="file" value="/var/www/turnos_ui/logs/turnos_ui.log" />
+		<param name="file" value="turnos_ui.log" />
 	</appender>
 	
 	<appender name="default" class="LoggerAppenderEcho">

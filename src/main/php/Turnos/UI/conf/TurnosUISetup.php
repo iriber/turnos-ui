@@ -83,6 +83,7 @@ class TurnosUISetup {
 		//inicializamos rasty indicando el home de la up y el nombre
 		RastyConfig::getInstance()->initialize($appHome, $appName);
 		//RastyConfig::getInstance()->setWebsocketUrl("192.168.1.34");
+		RastyConfig::getInstance()->setCacheId($appName);
 		
 		//configuramos el logger,
 		Logger::configure( dirname(__DIR__) . "/conf/log4php.xml" );
