@@ -473,8 +473,8 @@ function contains( arreglo, valor){
 	return false;
 }
 
-function openAddentityPopup(webpath, filterType, fCallback, resultId){
-	var url = webpath + "AddPopup.rasty?formType=" + filterType + "&onSuccessCallback=" + fCallback;
+function openAddentityPopup(webpath, formType, fCallback, resultId, initialText){
+	var url = webpath + "AddPopup.rasty?initialText=" + encodeURI(initialText) + "&formType=" + formType + "&onSuccessCallback=" + fCallback;
 	var uiDialog = resultId;
 	var dialogOpts = {
             //title : "{title}",

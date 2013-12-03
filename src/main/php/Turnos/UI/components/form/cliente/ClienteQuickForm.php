@@ -65,9 +65,13 @@ class ClienteQuickForm extends Form{
 		
 	}
 
+	
 	protected function parseXTemplate(XTemplate $xtpl){
 
 		$this->fillFromSaved( $this->getCliente() );
+		
+		//rellenamos el nombre con el texto inicial
+		$this->fillInput("nombre", $this->getInitialText() );
 		
 		parent::parseXTemplate($xtpl);
 		

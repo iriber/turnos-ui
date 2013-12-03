@@ -353,6 +353,9 @@
  
  	"addpopup.legend":"Agregar",
     
+    "autocomplete.empty.result": "No se encontraron resultados",
+    "autocomplete.entity.add": "Agregar",
+    
     "xxx": "yyy"
    
    

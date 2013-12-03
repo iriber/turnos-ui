@@ -59,6 +59,9 @@ class ObraSocialQuickForm extends Form{
 
 		$this->fillFromSaved( $this->getObraSocial() );
 		
+		//rellenamos el nombre con el texto inicial
+		$this->fillInput("nombre", $this->getInitialText() );
+		
 		parent::parseXTemplate($xtpl);
 		
 		$xtpl->assign("lbl_nombre", $this->localize("obraSocial.nombre") );

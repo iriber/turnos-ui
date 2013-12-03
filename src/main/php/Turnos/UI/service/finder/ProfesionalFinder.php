@@ -84,5 +84,31 @@ class ProfesionalFinder implements  IAutocompleteFinder {
 	function getEntityFieldCode( $entity ){
 		return "oid";
 	}
+	
+	/**
+	 * mensaje para cuando no hay resultados.
+	 * @var string
+	 */
+	function getEmptyResultLabel(){
+		return null;
+	}
+	
+	/**
+	 * label para agregar una nueva entity
+	 * @var string
+	 */
+	function getAddEntityLabel(){
+		return null;
+	}
+	
+	/**
+	 * función javascript a ejecutar para agregar una nueva entity.
+	 * si esta property es definida se muestra el link cuando
+	 * no hay resultados
+	 * @var string
+	 */
+	function getOnclickAdd(){
+		return "";
+	}
 }
 ?>

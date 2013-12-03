@@ -58,6 +58,9 @@ class LocalidadQuickForm extends Form{
 
 		$this->fillFromSaved( $this->getLocalidad() );
 		
+		//rellenamos el nombre con el texto inicial
+		$this->fillInput("nombre", $this->getInitialText() );
+		
 		parent::parseXTemplate($xtpl);
 		
 		$xtpl->assign("lbl_nombre", $this->localize("localidad.nombre") );
