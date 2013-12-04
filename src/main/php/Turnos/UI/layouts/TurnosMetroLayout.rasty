@@ -1,0 +1,12 @@
+<rasty specificationClass="Turnos\UI\layouts\TurnosMetroLayout" templateLocation="TurnosMetroLayout.htm">
+
+	<param name="menuGroups" value="menuGroups" />
+
+	<component id="header" type="HeaderNavMetro">
+		<param name="pageMenuGroups" value="menuGroups" />
+	</component>
+
+	<component id="footer" type="FooterTurnos">
+	</component>
+
+</rasty>

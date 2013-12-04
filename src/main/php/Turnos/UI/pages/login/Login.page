@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\login\Login" templateLocation="pages/login/Login.htm"> 
 
-	<param name="layoutType" value="str:TurnosLoginLayout" />
+	<param name="layoutType" value="str:TurnosLoginMetroLayout" />
 
 		
 </rasty>

@@ -30,6 +30,7 @@
 	
 	<!-- declaración de los componentes -->
 	<component name="HeaderNav" location="components/header" />
+	<component name="HeaderNavMetro" location="components/header" />
 	<component name="FooterTurnos" location="components/footer" />
 	
 	<component name="AgendaTurnos" location="components/agenda" />
@@ -77,6 +78,9 @@
 	<component name="TurnosLoginLayout" location="layouts" />
 	<component name="TurnosPopupLayout" location="layouts" />
 	<component name="TurnosLayout" location="layouts" />
+
+	<component name="TurnosMetroLayout" location="layouts" />
+	<component name="TurnosLoginMetroLayout" location="layouts" />
 	
 	<!-- declaración de las actions -->
 	<action name="Login" class="Turnos\UI\actions\login\Login" url="login"/>

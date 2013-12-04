@@ -1,0 +1,461 @@
+/* form */
+
+.rasty .input-radio{
+	clear: none;
+    float: left;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.rasty .input-radio input {
+    height: 10px;
+    left: 20px;
+    margin: -5px 0 0;
+    outline: 0 none !important;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    z-index: 1;
+
+}
+.rasty .input-radio label{
+	font-size: 16px;
+	border-radius: 0 0 0 0;
+	border-right-width: 0;
+	text-align: left;
+    z-index: 2;
+    margin: 0;
+    
+}
+
+.rasty .input-radio-btn-inner{
+	padding: 0.6em 20px;
+	white-space: normal;
+	text-align: center;
+	border-radius: inherit;
+	display: block;
+	min-width: 0.75em;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+	color: #222222;
+    font-weight: 700;
+    cursor: pointer;
+    
+    background: linear-gradient(#FFFFFF, #F1F1F1) repeat scroll 0 0 #EEEEEE;
+    z-index: 3;
+    border: 1px solid #AAAAAA;
+}
+
+.rasty .input-radio-btn-inner-text{
+	-moz-user-select: none;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.rasty .first-child{
+	font-size: 16px;
+	border-bottom-left-radius: inherit;
+    border-top-left-radius: inherit;
+}
+
+.rasty #editar{
+	width: 75%;
+	margin:0 auto;
+
+
+}
+
+
+
+/* ayuda */
+.rasty .ayuda{
+ 	position:absolute;
+    padding: 4px;
+    right:  10px;
+    top:30px;
+}
+
+.rasty .ayuda span{
+
+	font-weight: 600;
+}
+.rasty .ayuda a{
+
+	text-decoration: none;
+}
+
+
+/* help tips */
+
+.rasty .helpTipLink{
+
+	position:relative;
+	display: inline;
+	
+	
+}
+
+.rasty .helpTipLink span.open{
+	background-image: url("images/help_32.png");
+	position:absolute;
+	height: 32px;
+	width: 32px;
+	cursor:pointer;
+	top:-21px;
+	left:8px;;
+	
+}
+
+.rasty .helpTipLink span.close{
+	background-image: url("images/close_32.png");
+	position:absolute;
+	height: 32px;
+	width: 32px;
+	cursor:pointer;
+	top:-16px;
+	right:-16px;;
+	
+}
+
+.rasty .helpTip{
+
+	position:absolute;
+	right: 0px;
+	top: -32px;
+	display:none;
+	z-index:3000;
+	min-width: 350px;
+}
+
+.rasty .helpTipWrapper{
+
+	position:relative;
+	background: none repeat scroll 0 0 #F6FAFF;
+    border: 1px solid #D8D8D8;
+    border-radius:15px;
+    float: left;
+    padding: 20px;
+    width: 100%;
+}
+
+.rasty .helpTip span.texto{
+
+	color:#111;
+}
+
+.rasty .helpTip span.flecha{
+	background-image: url("images/flecha_ayuda.png");
+	position:absolute;
+	/*
+	bottom: 24px;*/
+	/*top:-24px;*/
+	left: -48px;
+	/*display:none;*/
+	/*float:left;*/
+	height: 48px;
+	width: 48px;
+}
+
+/* fin help tips */
+
+.rasty .helpdesk{
+	position:relative;
+	padding:10px;
+}
+.rasty .helpdesk_item{
+	margin-bottom:15px;
+}
+
+.rasty .helpdesk_titulo{
+    margin: 5px 2% 0 0;
+    width: 85%;
+    display:block;
+    margin: 0 auto;
+    float:left;	
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 5px 5px 0 0 ;
+    border: 1px solid #D8D8D8;
+    border-bottom: none;
+    padding: 4px 30px;
+}
+.rasty .helpdesk_titulo h2{
+	font-size: 141%;
+	float: left;
+    font-weight: 400;
+    line-height: 18px;
+    text-shadow: none;
+    text-align:left;
+    padding:0;
+}
+.rasty .helpdesk_texto{
+	text-align: justify;
+    background: none repeat scroll 0 0 #eee;
+    border: 1px solid #D8D8D8;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;*/
+    float: left;
+    padding: 4px 30px;
+    width: 85%;
+    margin: 0 auto;	
+    	
+}
+
+
+.rasty .helpdesk_texto OL { 
+	counter-reset: item ;
+	padding: 4px 10px;
+}
+.rasty .helpdesk_texto LI { 
+	display: block;
+	padding: 4px 10px;
+}
+.rasty .helpdesk_texto LI:before { content: counters(item, ".") "."; counter-increment: item; padding-right:10px; margin-left:-20px;}
+
+
+.rasty .helpdesk_indice{
+	text-align: justify;
+    background: none repeat scroll 0 0 #eee;
+    border: 1px solid #D8D8D8;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;*/
+    float: left;
+    padding: 4px 30px;
+    width: 85%;
+    margin: 0 auto;	
+}
+
+
+.rasty .helpdesk_indice OL{
+	counter-reset: item2 ;
+	padding: 4px 10px;
+	list-style: none;
+}
+
+.rasty .helpdesk_indice LI LI{
+
+	padding: 4px 30px;
+	/*cursor:pointer;*/
+}
+.rasty .helpdesk_indice LI:before { content: counters(item2, ".") "."; counter-increment: item2; padding-right:10px; margin-left:-20px;}
+
+.rasty .helpdesk_indice LI li a:hover{
+	cursor:pointer
+	background: none repeat scroll 0 0 #ccc;
+	border-radius: 5px;
+}
+
+.rasty .helpdesk span{
+
+	padding:4px;	
+	border-radius: 5px;
+    	
+}
+.rasty .helpdesk div.ayuda_referencia{
+
+	display:block;
+	padding:4px;	
+    margin:4px;	
+}
+
+.rasty .helpdesk_img{
+	float:right;
+}
+
+.rasty .helpdesk span.ayuda_close{
+	background-image: url("images/close_32.png");
+	position:absolute;
+	height: 24px;
+	width: 24px;
+	cursor:pointer;
+	top:0px;
+	right:0px;
+}
+
+.rasty .referencias{
+    
+    position: relative;
+    width: 50%;
+	
+}
+
+.rasty .referencia{
+    color: #2B2B2B;
+    /*float: right;*/
+    font-size: 14px;
+    /*height: 550px;*/
+    line-height: 28px;
+    overflow: hidden;
+    padding: 10px 0 0;
+    position: relative;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+	
+}
+.rasty .referencia span{
+	color: #2B2B2B;
+    float: left;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 5px 2% 0 0;
+    /*width: 80%;*/
+    font-weight: 400;
+	
+}
+.rasty .referencia p{
+	background: none repeat scroll 0 0 #F6FAFF;
+    border-bottom: 1px solid #D8D8D8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    float: left;
+    padding: 4px 30px;
+    width: 70%;
+}
+
+
+/* LOGIN */
+body.loginform {
+	text-align: center;
+	width: 427px;
+	margin: 0 auto;
+	margin-top:20px;
+}
+
+/* FORMULARIO clase mjpanel_form */
+
+
+
+.rasty form input[type="text"],
+.rasty form textarea, 
+.rasty form select,
+.rasty form input[type="password"]{
+	border: 1px solid #BFBFBF;
+    /*border-radius: 10px;*/
+    box-shadow: 0 0 0 #000000, 0 3px 3px #EEEEEE inset;
+    /*font-size: 120%;*/
+    font-size: 100%;
+    padding: 5px;
+    width: 70%;
+    /*color: #000000;*/
+    /*text-transform: uppercase;*/
+}
+
+.rasty form textarea {
+	font-size: 140%;
+	color:#444;
+}
+
+.rasty form input[type="text"]:focus,
+.rasty form textarea:focus, 
+.rasty form select:focus,
+.rasty form input[type="password"]:focus{
+	border: 1px solid #4D90FE;
+	box-shadow: 1 1 1 #000000, 3px 3px 3px #4D90FE inset;
+    
+}
+
+
+.rasty form input[type="submit"], 
+.rasty form input[type="reset"],
+.rasty form input[type="button"], 
+.rasty form button {
+	/*width:20%;*/
+   	/*height: 50px;*/
+   	/*border-radius: 12px 12px 12px 12px;*/
+   	
+   	/*font-size: 18px !important;*/
+    
+    margin: 0 auto;
+    background: none repeat scroll 0 0 #CCCCCC;
+	border: 1px solid #AAAAAA !important;
+	
+	/*color: #111111;
+	font-weight: bold;*/
+	margin-left: 14px;
+	padding: 3px 7px;
+	text-decoration: none;
+	/*text-shadow: 0 1px 0 #FFFFFF;*/
+}
+
+.rasty form button:hover,
+.rasty form input[type="button"]:hover,
+.rasty form input[type="submit"]:hover,
+.rasty form input[type="reset"]:hover
+	{
+	background: none repeat scroll 0 0 #DDD;
+	cursor: pointer;
+	position: relative;
+}
+
+.rasty .img_link{
+
+	cursor: pointer;
+}
+
+/* mock para cargar imágenes */
+
+.mock_loadimagesgrid1{
+
+	background-image: url('{COMPONENT_PATH}/css/images/next_over.png'); 
+}
+.mock_loadimagesgrid2{
+
+	background-image: url('{COMPONENT_PATH}/css/images/previous_over.png'); 
+}
+
+.mock_loadimages3{
+
+	background-image: url('{WEB_PATH}/css/images/add_over.png'); 
+}
+
+.mock_loadimages4{
+
+	background-image: url('{WEB_PATH}/css/images/add_over_48.png'); 
+}
+
+.mock_loadimages5{
+
+	background-image: url('{WEB_PATH}/css/images/delete_over.png'); 
+}
+
+.mock_loadimages6{
+
+	background-image: url('{WEB_PATH}/css/images/edit_over.png'); 
+}
+
+.mock_loadimages7{
+
+	background-image: url('{WEB_PATH}/css/images/timer_over_24.png'); 
+}
+
+.mock_loadimages8{
+
+	background-image: url('{WEB_PATH}/css/images/finalizar_over_24.png'); 
+}
+
+
+
+.rasty .findentity_inputCode{
+	display:inline;
+}
+.rasty .findentity_inputCode input[type="text"]{
+    width: 11%;
+}
+.rasty .findentity_autocomplete input[type="text"]{
+    width: 55%;
+}
+.rasty .findentity_autocomplete{
+	display:inline;
+}
+
+
+
+body{
+	font-size:80%;
+}
+
+

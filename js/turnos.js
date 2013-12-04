@@ -456,7 +456,7 @@ function openFinderPopup(webpath, filterType, fCallback, resultId){
             }
         };
     $(uiDialog).children().remove();
-    $(uiDialog).dialog("destroy");
+    //$(uiDialog).dialog("destroy");
     $(uiDialog).dialog(dialogOpts);
     $(uiDialog).dialog("open");
 	
@@ -488,7 +488,7 @@ function openAddentityPopup(webpath, formType, fCallback, resultId, initialText)
             }
         };
     $(uiDialog).children().remove();
-    $(uiDialog).dialog("destroy");
+    //$(uiDialog).dialog("destroy");
     $(uiDialog).dialog(dialogOpts);
     $(uiDialog).dialog("open");
 	

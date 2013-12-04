@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\turnos\ProfesionalHome" templateLocation="pages/turnos/ProfesionalHome.htm"> 
 
-	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="layoutType" value="str:TurnosMetroLayout" />
 
 	<component id="agendaEnSala" type="AgendaEnSala">
 		<param name="fecha" value="fecha" />

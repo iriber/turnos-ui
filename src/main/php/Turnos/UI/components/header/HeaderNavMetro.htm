@@ -1,0 +1,63 @@
+<!-- BEGIN: main -->
+<nav class="navigation-bar">
+    <div class="navigation-bar-content">
+
+		<!-- BEGIN:menu_main -->
+		<div class="element ">
+        	<!-- BEGIN: menuTitle -->
+			<a href="#" class="dropdown-toggle">{menuLabel}</a>
+			<!-- END: menuTitle -->
+			<!-- BEGIN: menuGroup -->
+		    <ul data-role="dropdown" class="dropdown-menu">
+		    	<!-- BEGIN: menuOption -->
+		        	<li><a href="#" onclick="{onclick}" ><!-- BEGIN: image --><img style="border:0;margin-right:10px;width:24px;height: 24px;" src="{src}"/><!-- END: image --> {label}</a></li>
+		        <!-- END: menuOption -->
+			</ul>
+			<!-- END: menuGroup -->
+		</div>
+		<!-- END:menu_main-->
+
+		<!-- BEGIN:test -->
+        <span class="element-divider"></span>
+        <a href="#" class="element brand"><span class="icon-spin"></span></a>
+        <a href="#" class="element brand"><span class="icon-printer"></span></a>
+        <span class="element-divider"></span>
+		<!-- END:test -->
+
+        <div class="element place-right">
+        	<a href="#" class="dropdown-toggle">
+        		{user}
+                <span class="icon-user"></span>
+            </a>
+            <ul data-role="dropdown" class="dropdown-menu place-right" style="display: none;">
+                
+                <!-- BEGIN: menuOptionProfile -->
+		        	<li><a href="#" onclick="{onclick}" ><!-- BEGIN: image --><img style="border:0;margin-right:10px;width:24px;height: 24px;" src="{src}"/><!-- END: image --> {label}</a></li>
+		        <!-- END: menuOptionProfile -->
+                
+                <!-- BEGIN: menuOptionExit -->
+		        	<li><a href="#" onclick="{onclick}" ><!-- BEGIN: image --><img style="border:0;margin-right:10px;width:24px;height: 24px;" src="{src}"/><!-- END: image --></i> {label}</a></li>
+		        <!-- END: menuOptionExit -->
+                
+            </ul>
+        </div>
+        
+        <!-- BEGIN:menu_page -->
+		<div class="element place-right">
+        	<!-- BEGIN: menuTitle -->
+			<a href="#" class="dropdown-toggle">{menuLabel}</a>
+			<!-- END: menuTitle -->
+			<!-- BEGIN: menuGroup -->
+		    <ul data-role="dropdown" class="dropdown-menu" style="display: none;">
+		    	<!-- BEGIN: menuOption -->
+		        <li><a href="#" onclick="{onclick}" ><!-- BEGIN: image --><img style="border:0;margin-right:10px;width:24px;height: 24px;" src="{src}"/><!-- END: image -->{label}</a></li>
+		        <!-- END: menuOption -->
+			</ul>
+			<!-- END: menuGroup -->
+		</div>
+		<!-- END:menu_page -->
+
+
+    </div>
+</nav>
+<!-- END: main -->

@@ -1,0 +1,837 @@
+
+/* historia de navegación de la ayuda */
+
+.ui-ayuda-turnos-panel{
+	background: none repeat scroll 0 0 #ffffff;
+	border-radius: 5px;
+	border: 1px solid #AAAAAA;
+	z-index:5000;
+	padding: 10px 30px;
+	overflow: auto;
+}
+
+
+/* turnos */
+
+.turno{
+	display: block;
+	border-bottom: 4px solid #D8D8D8;
+	border-left: 8px solid #D8D8D8;
+	padding:7px;
+	color:#444;
+	position:relative;
+}
+.turno:hover{
+
+	/*background: -moz-linear-gradient(center top , #FDFDFD, #EEEEEE) repeat scroll 0 0 #EEEEEE;*/
+	background-color: #D8D8D8;
+}
+
+
+
+.turno_actions{
+	position:absolute;
+	bottom:5px;
+	right: 0;
+}
+
+
+.turno_right{
+	float:right;
+	width: 70%;
+	text-align: left;
+}
+
+.turno_left{
+	float: left;
+	width: 30%;
+}
+.turno_left span{
+	display:block;
+	text-align:left;
+	padding:5px;
+	
+}
+
+.turno_right span{
+	display:block;
+	text-align:left;
+	padding:5px;
+	margin-left:15px;
+	
+}
+.turno_fecha{
+	font-size: 120%;
+	font-weight: bold;
+}
+
+.turno_hora{
+	font-weight: bold;
+}
+
+.turno_profesional{
+}
+
+.turno_estado{
+}
+
+.turno_obraSocial{
+	font-style: italic;
+}
+
+.dato_personal{
+	display: block;
+	border-bottom: 4px solid #D8D8D8;
+	border-left: 8px solid #D8D8D8;
+	padding:7px;
+	color:#444;
+	position:relative;
+}
+.dato_personal:hover{
+
+	/*background: -moz-linear-gradient(center top , #FDFDFD, #EEEEEE) repeat scroll 0 0 #EEEEEE;*/
+	background-color: #D8D8D8;
+}
+
+.dato_personal_right{
+	float:right;
+	width: 70%;
+	text-align: left;
+}
+
+.dato_personal_left{
+	float: left;
+	width: 30%;
+}
+.dato_personal_left span{
+	display:block;
+	text-align:left;
+	padding:5px;
+	font-weight: bold;
+	
+}
+
+
+.practica{
+	display: block;
+	border-bottom: 4px solid #D8D8D8;
+	border-left: 8px solid #D8D8D8;
+	padding:7px;
+	color:#444;
+	position:relative;
+}
+.practica:hover{
+
+	/*background: -moz-linear-gradient(center top , #FDFDFD, #EEEEEE) repeat scroll 0 0 #EEEEEE;*/
+	background-color: #CCC;
+}
+
+.practica_actions{
+	position:absolute;
+	bottom:5px;
+	right: 0;
+}
+
+.practica div.actions{
+	top: 0px;
+	right:0;
+	position:absolute;
+	display:none;
+}
+
+
+
+.practica_right{
+	float:right;
+	width: 70%;
+	text-align: left;
+}
+
+.practica_left{
+	float: left;
+	width: 30%;
+}
+.practica_left span{
+	display:block;
+	text-align:left;
+	padding:5px;
+	
+}
+
+.practica_fecha{
+	font-size: 120%;
+	font-weight: bold;
+}
+
+.practica_nomenclador{
+	font-weight: bold;
+}
+
+.practica_profesional{
+}
+
+.practica_obraSocial{
+	font-style: italic;
+}
+
+/*agenda*/
+
+.referencias{
+    
+    position: relative;
+    width: 50%;
+	
+}
+
+.referencia{
+    color: #2B2B2B;
+    /*float: right;*/
+    font-size: 14px;
+    /*height: 550px;*/
+    line-height: 28px;
+    overflow: hidden;
+    padding: 10px 0 0;
+    position: relative;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+	
+}
+.referencia span{
+	color: #2B2B2B;
+    float: left;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 5px 2% 0 0;
+    /*width: 80%;*/
+    font-weight: 400;
+	
+}
+.referencia p{
+	background: none repeat scroll 0 0 #F6FAFF;
+    border-bottom: 1px solid #D8D8D8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    float: left;
+    padding: 4px 30px;
+    width: 70%;
+}
+
+.agenda_actions{
+	text-align: center;
+	font-size: 50%;
+	white-space: nowrap;
+}
+
+.turnoNoDisponible{
+	color:white;
+	background: #FF1E4F;
+	border:0px;
+	text-align: center;
+	font-weight: bold;
+	text-shadow: none;
+}
+
+.turno_libre{
+	
+}
+.turno_cancelado{
+	background-color: red;
+	color:white;
+}
+.turno_asignado{
+	background-color: #FFBF00 ;
+	color:#333001;
+}
+.turno_atendido{
+	background-color: #00CCCC;
+	color:white;
+}
+
+.turno_ensala{
+	background-color: #F7FE2E;
+}
+.turno_encurso{
+	background-color: #58C76C;
+	color:#333001;
+}
+.turno_nodisponible{
+	background-color: #FE2E2E;
+	color:white;
+	font-weight: bold;
+}
+
+#agenda_no_atiende{
+	width: 80%;
+	text-align: center;
+	font-size: 150%;
+	color:red;
+	margin:10%;
+}
+
+#agenda{
+	overflow: auto;
+	max-height: 400px;
+}
+
+.agenda_turnos{
+	font-size: 100%;
+}
+
+.agenda_turnos tr:hover{
+	background-color: #D8D8D8;
+}
+
+#fecha_title{
+	font-size: 100%;
+	font-weight: bold;
+	margin-right: 50px;
+}
+
+
+.franja_horaria{
+	background-color: #BCC6C9;
+    border: 1px solid;
+    vertical-align: middle;
+    font-weight: bold;
+    color:black;
+}
+
+#turnos_left .totales{
+	font-size:100%;
+}
+
+/*home profesional*/
+#profesional_home{
+	margin: 30px auto 0;
+    width: 100%;
+	text-align: center;
+	
+}
+#profesional_home_left{
+	float: left;
+	width: 50%;
+	position:relative;
+}
+
+#profesional_home_right{
+	float: right;
+	width: 50%;
+}
+
+#profesional_home .title{
+	font-weight: bold;
+	font-size: 130%;
+	color:white;
+	width: 100%;
+	margin-bottom: 10px;
+	float:left;
+	display: none;    
+}
+
+#totalesDia {
+    color: #2B2B2B;
+    /*float: right;*/
+    font-size: 14px;
+    /*height: 550px;*/
+    line-height: 28px;
+    overflow: hidden;
+    padding: 10px 0 0;
+    position: relative;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+}
+#totalesDia .total {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 #F6FAFF;
+    border-bottom: 1px solid #D8D8D8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    float: left;
+    padding: 0px 30px;
+    width: 100%;
+}
+#totalesDia .total h2 {
+    color: #2B2B2B;
+    float: left;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 5px 2% 0 0;
+    width: 80%;
+    font-weight: 400;
+}
+
+#totalesDia .total p {
+    float: right;
+    font-size: 14px;
+    line-height: 28px;
+    margin: 0;
+    font-weight: bold;
+    /*width: 50%;*/
+    border-radius: 5px;
+    padding:4px;
+}
+
+
+
+fieldset .agenda {
+
+	text-shadow: none;
+}
+
+.agenda {
+    color: #2B2B2B;
+    /*float: right;*/
+    font-size: 14px;
+    /*height: 550px;*/
+    /*line-height: 28px;*/
+    overflow: hidden;
+    padding: 10px 0 0;
+    position: relative;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+}
+
+.agenda_turno.odd {
+    background: none repeat scroll 0 0 #FFFFF4;
+}
+
+.agenda_turno.first {
+    border-radius: 15px 15px 0px  0px;
+}
+
+
+.agenda_turno.last {
+    border-radius: 0px  0px 15px 15px;
+}
+.agenda_turno {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 #F6FAFF;
+    border-bottom: 1px solid #D8D8D8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    float: left;
+    padding: 0px 30px;
+    width: 100%;
+}
+
+.agenda_turno:hover{
+
+	/*background: -moz-linear-gradient(center top , #FDFDFD, #EEEEEE) repeat scroll 0 0 #EEEEEE;*/
+	background-color: #D8D8D8;
+}
+ 
+.agenda_turno h2 {
+    color: #2B2B2B;
+    float: left;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 5px 2% 0 0;
+     padding: 5px 0 5px 3px;
+    width: 70%;
+    font-weight: 400;
+}
+
+.agenda_turno.nodisponible {
+    background: none repeat scroll 0 0 red;
+}
+
+.agenda_turno.nodisponible h2{
+    color:white;
+    text-shadow: none;
+    font-weight: bold;
+}
+.agenda_turno.nodisponible p{
+    color:white;
+    text-shadow: none;
+}
+.agenda_turno h2 span {
+    color: #333001;
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.agenda_turno p span.texto{
+	padding:4px;
+	
+}
+
+.agenda_turno p {
+    float: right;
+    font-size: 14px;
+    /*line-height: 28px;*/
+    /*margin-top:4px;*/
+    font-weight: 400;
+    /*width: 50%;*/
+    border-radius: 5px;
+    padding:4px;
+}
+
+.agenda_turno p.action {
+    float: right;
+    font-size: 14px;
+    /*line-height: 28px;*/
+    margin: 0;
+    font-weight: 400;
+    /*width: 50%;*/
+    border-radius: 5px;
+    padding:4px;
+}
+
+/* agenda semanal */
+
+#agenda_semanal{
+	overflow: auto;
+	/*max-height: 400px;*/
+}
+
+.agenda_turno_fechaSeleccionada{
+
+	background-color: #000;
+	color:#FFF;
+	font-weight: bold;
+}
+
+.table_agenda_semanal td h2{
+	/*
+	border: 1px solid #D8D8D8;
+    border-radius:15px;
+    */
+    font-size:30%;
+}
+.table_agenda_semanal td img{
+	
+    position:absolute;
+    top:-15px;;
+    right: 0;
+}
+.table_agenda_semanal td{
+	font-size:70%;
+	padding:1px;
+}
+
+.table_agenda_semanal td div.turno_ocupado{
+	position:relative;
+}
+
+.table_agenda_semanal td div.actions{
+	top: 0px;
+	right:0;
+	position:absolute;
+	display:none;
+}
+
+.table_agenda_semanal td.turno_vacio_disponible{
+	background: none repeat scroll 0 0 #FFF;
+	color:#FFF;
+	text-shadow: none;
+}
+
+
+.table_agenda_semanal td.turno_vacio_disponible:HOVER{
+	background-color: #D8D8D8;
+	color:#000;
+	border: 1px dashed;
+}
+
+.table_agenda_semanal td.turno_ausencia{
+	background: none repeat scroll 0 0 #F00;
+	color:#F00;;
+	text-shadow: none;
+}
+
+/*
+.table_agenda_semanal td.turno_ausencia:HOVER{
+	background-color: #D8D8D8;
+	color:#000;
+	border: 1px dashed;
+}*/
+
+.table_agenda_semanal td.turno_sobreturno{
+	background: none repeat scroll 0 0 #EEE;
+	color:#EEE;
+	text-shadow: none;
+	border: 1px dashed;
+}
+
+.table_agenda_semanal td.turno_vacio_sobreturno{
+	background-color: #EEE;
+	color:#EEE;
+	text-shadow: none;
+	border: 1px solid #EEE;
+}
+
+
+.table_agenda_semanal td.turno_vacio_sobreturno:HOVER{
+	background-color: #D8D8D8;
+	color:#000;
+	border: 1px dashed #F00;
+}
+
+/*home turnos*/
+#turnos_home{
+	margin: 30px auto 0;
+    text-align: center;
+    width: 100%;
+}
+#turnos_left{
+	float: left;
+	width: 24%;
+}
+
+#turnos_right{
+	float: right;
+	width: 75%;
+	position:relative;
+}
+
+#ver_agenda{
+	/*height: 450px;*/
+}
+
+
+#caja_title{
+	font-size: 100%;
+	font-weight: bold;
+	color: blue;
+	margin-left: 50px;
+}
+
+
+/* historia clinica */
+#historia_clinica{
+	margin: 30px auto 0;
+    text-align: center;
+    width: 100%;
+}
+#historia_clinica_left{
+	float: left;
+	width: 53%;
+	position:relative;
+}
+
+#historia_clinica_left span.actions{
+	top: 8px;
+	right:0;
+	position:absolute;
+}
+
+#historia_clinica_right{
+	float: right;
+	width: 45%;
+}
+
+
+
+
+
+/* ausencias */
+
+.vigencias{
+	font-style: italic;
+	color:#000;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+.ausencia_vigente{
+	display: block;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 100%;
+}
+
+#ausencias_vigentes ul {
+    color: #2B2B2B;
+    /*float: right;*/
+    font-size: 14px;
+    /*height: 550px;*/
+    line-height: 28px;
+    overflow: hidden;
+    padding: 10px 0 0;
+    position: relative;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+}
+
+#ausencias_vigentes ul li .odd {
+    background: none repeat scroll 0 0 #FFFFF4;
+}
+
+#ausencias_vigentes ul li {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 #F6FAFF;
+    border-bottom: 1px solid #D8D8D8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    float: left;
+    padding: 10px 30px;
+    width: 100%;
+    font-weight: 400;
+    position: relative;
+}
+
+#ausencias_vigentes ul li a{
+    right: 0;
+    position: absolute;
+}
+
+.ausencia_form_left{
+ 	float:left; 
+ 	width:40%;
+}
+
+.ausencia_form_right{
+ 	float:right; 
+ 	width:50%;
+}
+
+/*
+#ausencias_vigentes ul {
+
+	margin-left: 20px;
+}
+
+#ausencias_vigentes ul li{
+
+	padding: 10px;	
+	list-style-type: disc;
+	font-weight: bold;
+}
+*/
+
+
+/* mobile */
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+	#fechaPicker{
+		
+	}
+	
+	#turnos_left{
+		font-size: 65%;
+		width: 25%;
+	}
+	
+	#turnos_left #form_agenda fieldset{
+		/*padding:1;*/
+	}
+	#turnos_left .totales{
+		font-size:100%;
+	}
+	#turnos_right{
+		font-size: 70%;
+		width: 75%;
+	}
+	#turnos_right fieldset{
+		/*padding:0;*/
+	}
+
+	.practica{
+		font-size:85%;
+	}
+	.practica_right{
+		width: 55%;
+	}
+
+	.practica_left{
+		width: 45%;
+	}
+	
+	
+	.ausencia_form_left{
+	 	float:left; 
+	 	width:40%;
+	}
+	
+	.ausencia_form_right{
+	 	float:right; 
+	 	width:40%;
+	}
+	
+	
+	
+}
+
+@media screen and (min-width: 100px) and (max-width: 800px) {
+
+		
+	/* profesional home */
+	#profesional_home_left{
+		float: none;
+		clear: both;
+		width: 100%;
+	}
+	#profesional_home_right{
+		float: none;
+		clear: both;
+		width: 100%;
+	}	
+	/* agenda turnos */
+	#turnos_left{
+		float: none;
+		clear: both;
+		width: 100%;
+	}
+	#turnos_right{
+		float: none;
+		clear: both;
+		width: 100%;
+	}
+	
+	
+	#ver_agenda {
+    	height: 100%;;
+	}
+	
+	
+	#agenda {
+    	height: 100%;
+    	overflow: none;
+	}
+	
+	.agenda_actions{
+		font-size:50%;
+	}
+	
+	
+	/* formularios */
+	
+	/* historia clínica */
+	
+	#historia_clinica_left {
+    	float: none;
+    	width: 100%;
+    	clear: both;
+		
+	}
+	#historia_clinica_right {
+    	float: none;
+    	width: 100%;
+    	clear: both;
+	}
+
+	.practica{
+		font-size:85%;
+	}
+	
+	.practica_right{
+		width: 55%;
+	}
+
+	.practica_left{
+		width: 45%;
+	}
+	
+	.ausencia_form_left{
+	 	float:none;
+	 	clear: both; 
+	 	width:90%;
+	}
+	
+	.ausencia_form_right{
+	 	float:none; 
+	 	clear: both;
+	 	width:90%;
+	}
+	
+}
