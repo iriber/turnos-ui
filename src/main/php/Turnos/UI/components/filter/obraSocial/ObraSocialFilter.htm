@@ -93,7 +93,9 @@ $(document).ready(function(){
 <form  class="turnos_form" id="buttons{id}">
 	<fieldset class="tblFooters">
 	
-		<input type="button" value="{lbl_submit}" id="input_submit_ajax_OS{id}" onclick="javascript: $( '#page' ).val( 1 ); submitBuscar('{WEB_PATH}', '#os_filter{id}', '#{resultDiv}');">
+		<!-- input type="button" value="{lbl_submit}" id="input_submit_ajax_OS{id}" onclick="javascript: $( '#page' ).val( 1 ); submitBuscar('{WEB_PATH}', '#os_filter{id}', '#{resultDiv}');"-->
+		
+		<button id="input_submit_ajax_OS{id}"  type="button"  onclick="javascript: $( '#page' ).val( 1 ); submitBuscar('{WEB_PATH}', '#os_filter{id}', '#{resultDiv}');"><i class="icon-search on-left"></i>{lbl_submit}</button>
 		
 		<!-- input type="button" value="Limpiar" id="input_button_2" onclick="javascript: cleanForm('os_filter'); "-->
 	

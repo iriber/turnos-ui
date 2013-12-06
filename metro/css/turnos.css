@@ -1,4 +1,24 @@
 
+
+.btn-icon-finalizar-turno{
+	background: url("images/turno_finalizar.png") no-repeat scroll 0 0;
+}
+
+.btn-icon-editar{
+	/*background: url("images/sprite_black2.png") no-repeat scroll -3px -1px transparent;*/
+		
+	background: url("images/edit2.png") -3px -1px no-repeat transparent;	
+}
+
+.btn-icon-agregar{
+	background: url("images/add_16.png") no-repeat scroll 0px 1px
+		transparent;
+}
+
+.btn-icon-eliminar{
+	background: url("images/sprite_black2.png") no-repeat scroll  -65px -43px
+		transparent;
+}
 /* historia de navegación de la ayuda */
 
 .ui-ayuda-turnos-panel{
@@ -681,9 +701,17 @@ fieldset .agenda {
  	width:40%;
 }
 
+.rasty fieldset.ausencia_form_left label {
+    display: none;
+}
+
 .ausencia_form_right{
  	float:right; 
  	width:50%;
+}
+
+.rasty fieldset.ausencia_form_right label {
+    text-align:left;
 }
 
 /*
@@ -835,3 +863,4 @@ fieldset .agenda {
 	}
 	
 }
+

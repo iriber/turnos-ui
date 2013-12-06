@@ -102,14 +102,19 @@ class TurnosMetroLayout extends RastyLayout{
 		$this->addScript(  "$webPath/metro/js/jquery/jquery.ui.datepicker.js" );
 		$this->addScript(  "$webPath/metro/js/jquery/jquery.ui.button.js" );
 		$this->addScript(  "$webPath/metro/js/jquery/jquery.ui.dialog.js" );
+		$this->addScript(  "$webPath/metro/js/jquery/jquery.ui.position.js" );
+		$this->addScript(  "$webPath/metro/js/jquery/jquery.ui.resizable.js" );
+		$this->addScript(  "$webPath/metro/js/jquery/jquery.ui.selectable.js" );
+		
+		$this->addScript(  "$webPath/metro/js/docs.js" );
 		
 		$this->addScript(  "$webPath/js/jquery/jVal.js" );
     	
 		$this->addScript("$webPath/js/rasty_observer.js");
 		$this->addScript("$webPath/js/historiaAyuda.js");
 		$this->addScript("$webPath/js/app_observer.js");
+		$this->addScript("$webPath/js/rasty.js");
 		$this->addScript("$webPath/js/turnos.js");
-
 		//$this->addScript("$webPath/js/soft.js");
 	}
 	

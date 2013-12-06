@@ -261,9 +261,9 @@ function configurarEnvio(){
 		
 		<fieldset id="buttons"  style="display:none;" class="tblFooters ausencia_form_right">
 		
-			<input type="button" value="Aceptar" id="input_submit" onclick="javascript: submitFormulario('form_ausencia'); ">
-			
-			<input type="button" value="Cancelar" id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; ">
+			<button type="button"  id="input_submit" onclick="javascript: submitFormulario('form_ausencia'); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
+
+			<button type="button"  id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; "><i class="icon-cancel-2 on-left"></i>{lbl_cancel}</button>
 		
 		</fieldset>
 		<div style="clear: both;"></div>

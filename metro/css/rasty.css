@@ -1,10 +1,13 @@
 
-body {
-	color: #444;
-	/*background: #005B7B;*/
-	background-attachment: fixed;
+html {
+	/*font-size: 82%;*/
 }
 
+body {
+	color: #444;
+	/*font-family: sans-serif;*/
+	padding: 0;
+}
 
 .rasty #footer-wrapper {
 	background: none;
@@ -91,20 +94,6 @@ body.loginform div.logincontainer {
 	margin: 6px;
 }
 
-html {
-	/*font-size: 82%;*/
-}
-
-
-body { 
-    /*background: none repeat scroll 0 0 #FFFFFF;*/
-	/*background-image: url("images/cloudy-sky-cartoon.jpg");*/
-	/*color: #FFF;*/
-	font-family: sans-serif;
-	margin: 0.5em;
-	padding: 0;
-}
-
 .rasty h1 {
 	font-size: 140%;
 	font-weight: bold;
@@ -178,9 +167,9 @@ body {
 	padding: 4px;
 }
 
-.rasty #editar input[type="button"],
-.rasty #editar input[type="submit"],
-.rasty #editar input[type="reset"]
+.rasty  input[type="button"],
+.rasty  input[type="submit"],
+.rasty  input[type="reset"]
 	{
 	background: none repeat scroll 0 0 #CCCCCC;
 	border: 1px solid #AAAAAA;
@@ -199,9 +188,9 @@ body {
 	border-radius: 12px 12px 12px 12px;*/
 }
 
-.rasty #editar input[type="button"]:hover,
-.rasty #editar input[type="submit"]:hover,
-.rasty #editar input[type="reset"]:hover
+.rasty  input[type="button"]:hover,
+.rasty  input[type="submit"]:hover,
+.rasty  input[type="reset"]:hover
 	{
 	background: none repeat scroll 0 0 #DDD;
 	cursor: pointer;
@@ -722,7 +711,7 @@ body {
     height: 18px;
     width: 18px;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-	background: url("images/icons-18-white.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0.4);
+	background: url("../images/icons-18-white.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0.4);
     border-radius: 9px 9px 9px 9px;
 }
 .rasty .menu-ui-icon-right{
@@ -749,7 +738,7 @@ body {
 }
 
 .rasty .menu-ui-icon-alt {
-    background-image: url("images/icons-36-black.png");
+    background-image: url("../images/icons-36-black.png");
 }
 .rasty .menu-ui-icon-plus {
     background-position: 0 50%;
@@ -1017,25 +1006,6 @@ body {
 	/*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
     border-radius: 9px 9px 9px 9px;*/
 }
-.rasty .btn-icon-finalizar-turno{
-	background: url("images/turno_finalizar.png") no-repeat scroll 0 0;
-}
-
-.rasty .btn-icon-editar{
-	/*background: url("images/sprite_black2.png") no-repeat scroll -3px -1px transparent;*/
-		
-	background: url("images/edit2.png") -3px -1px no-repeat transparent;	
-}
-
-.rasty .btn-icon-agregar{
-	background: url("images/add_16.png") no-repeat scroll 0px 1px
-		transparent;
-}
-
-.rasty .btn-icon-eliminar{
-	background: url("images/sprite_black2.png") no-repeat scroll  -65px -43px
-		transparent;
-}
 
 
 /* grilla */
@@ -1091,136 +1061,4 @@ body {
 .rasty .selected {
 	background: none repeat scroll 0 0 #FFFFCC;
 	color: #222222;
-}
-
-
-
-/* mobile */
-@media screen and (min-width: 800px) and (max-width: 1200px) {
-	.rasty #fechaPicker{
-		
-	}
-	
-	
-	.rasty #menu-header .menu-ui-btn-text{
-		display: none;
-	}
-	.rasty #menu-header .menu-ui-btn-inner{
-		height: 15px;
-	}
-		
-	.rasty .helpTip{
-
-		position:absolute;
-		right: 0px;
-		top: -32px;
-		display:none;
-		z-index:3000;
-		min-width: 250px;
-	}
-	
-	.rasty img {
-    	height: auto;
-    	max-width: 100%;
-    	vertical-align: middle;
-	}
-}
-
-@media screen and (min-width: 100px) and (max-width: 800px) {
-
-	.rasty #menu-header .menu-header-ui-title{
-		white-space: normal;
-	}
-	
-	body{
-		font-size:90%;
-	}
-			
-	.rasty img {
-    	height: auto;
-    	max-width: 100%;
-    	vertical-align: middle;
-	}
-	
-	/* formularios */
-	
-	.rasty #editar{
-		width: 100%;
-		margin:0 auto;
-	}
-	
-	
-	.rasty form label {
-    	display:none;
-	}
-	
-	
-	.rasty form input[type="text"], 
-	.rasty form textarea, 
-	.rasty form select, 
-	.rasty form input[type="password"] {
-    	padding: 8px;
-    	width: 100%;
-    	font-size:90%;
-	}
-	
-	.rasty .findentity_inputCode input[type="text"] {
-    	width: 15%;
-	}
-	.rasty .findentity_autocomplete  input[type="text"]{
-		width: 65%;
-	}
-	
-	/* grillas */
-	.rasty .grid_filters {
-    	float: none;
-    	clear: both;
-		width: 100%;
-	}
-	
-	/* menú */
-	
-	.rasty #menuNavigation nav {
-	    width: 100%;
-	}
-	
-	.rasty #menu-header{
-		padding-bottom: 5px;
-	}
-	
-	.rasty .menu-ui-link{
-       	float: none;
-       	display:block;
-    	width: 95%;
-    	clear: both;
-	    position: relative;
-	    margin:5 auto;
-	}
-
-	.rasty .menu-ui-link-left {
-    	left: 0;
-	}
-	.rasty .menu-ui-link-right {
-    	right: 0;
-	}
-	
-	/* login */
-	body.loginform {
-    	text-align: center;
-    	width: 95%;
-	}
-	
-	/* autocomplete */
-	.rasty .autocomplete{
-		/*
-		width: 70%;
-		left:0;*/
-	}
-	
-	.rasty .helpTip{
-
-		position:absolute;
-		min-width: 80px;
-	}
-	
 }

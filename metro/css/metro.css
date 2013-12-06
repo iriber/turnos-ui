@@ -1580,7 +1580,7 @@ h2, h3 {
     font-weight: normal;
     letter-spacing: 0.02em;
     line-height: 15pt;
-    margin: 0 0 7pt;
+    /*margin: 0 0 7pt;*/
 }
 .metro strong {
     font-family: 'Segoe UI Semibold_','Open Sans Bold',Verdana,Arial,Helvetica,sans-serif;

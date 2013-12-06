@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\horarios\agregar\AusenciaAgregar" templateLocation="pages/horarios/agregar/AusenciaAgregar.htm"> 
 
-	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="layoutType" value="str:TurnosMetroLayout" />
 	
 	<param name="profesionalOid" value="get:profesionalOid" />
 

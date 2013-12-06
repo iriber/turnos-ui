@@ -35,12 +35,12 @@ $(function() {
 
     $(window).scroll(function(){
         if ($(window).scrollTop() > $('header').height()) {
-            $("header > .navigation-bar")
+            $("#HeaderNavMetroheader .navigation-bar")
                 .addClass("fixed-top")
                 .addClass("opacity shadow")
             ;
         } else {
-            $("header > .navigation-bar")
+            $("#HeaderNavMetroheader .navigation-bar")
                 .removeClass("fixed-top")
                 .removeClass("opacity shadow")
             ;

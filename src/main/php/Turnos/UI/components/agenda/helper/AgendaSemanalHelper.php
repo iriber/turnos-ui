@@ -227,6 +227,10 @@ class AgendaSemanalHelper{
 
 		$xtpl->assign("linkBorrar",   LinkBuilder::getActionAjaxUrl( "BorrarTurno") );
 		$xtpl->assign("borrar_label", self::localize( "turno.borrar" ) );
+		$xtpl->assign("enSala_label", self::localize( "turno.enSala" ) );
+		$xtpl->assign("asignado_label", self::localize( "turno.asignado" ) );
+		$xtpl->assign("linkEnSala",  LinkBuilder::getActionAjaxUrl( "TurnoEnSala") );
+		$xtpl->assign("linkAsignado",  LinkBuilder::getActionAjaxUrl( "TurnoAsignado") );
 		
 		$hora = new \DateTime();
 		//$hora->setTimestamp( $horaDesde->getTimestamp() );

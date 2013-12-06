@@ -84,13 +84,6 @@ class HeaderNav extends RastyComponent{
 		$menuOption->setPageName( "ObrasSociales");
 		$menuOption->setImageSource( $this->getWebPath() . "css/images/obrassociales_48.png" );
 		$menuGroup->addMenuOption( $menuOption );
-
-		
-		$menuOption = new MenuActionOption();
-		$menuOption->setLabel( $this->localize( "menu.logout") );
-		$menuOption->setActionName( "Logout");
-		$menuOption->setImageSource( $this->getWebPath() . "css/images/logout.png" );
-		$menuGroup->addMenuOption( $menuOption );
 		
 		return array($menuGroup);
 	}

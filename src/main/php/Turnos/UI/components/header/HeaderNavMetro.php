@@ -42,7 +42,7 @@ class HeaderNavMetro extends HeaderNav{
 		$xtpl->assign("user", $user->getName() );
 		
 		$this->parseMenuExit( $xtpl );
-		$this->parseMenuProfile( $xtpl, $user );
+		//$this->parseMenuProfile( $xtpl, $user );
 		
 		//parseamos las opciones del menú principal.
 		$this->parseMenuMain( $xtpl );
@@ -87,10 +87,9 @@ class HeaderNavMetro extends HeaderNav{
 	public function parseMenuExit( XTemplate $xtpl){
 		
 		$menuOption = new MenuActionOption();
-		$menuOption->setLabel( $this->localize( "menu.exit") );
-		$menuOption->setIconClass( "icon-exit" );
+		$menuOption->setLabel( $this->localize( "menu.logout") );
 		$menuOption->setActionName( "Logout");
-		$menuOption->setImageSource( $this->getWebPath() . "css/images/logout_2.png" );
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/logout.png" );
 
 		$this->parseMenuOption($xtpl, $menuOption, "main.menuOptionExit");
 		

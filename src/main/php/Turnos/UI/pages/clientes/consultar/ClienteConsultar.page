@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\clientes\consultar\ClienteConsultar" templateLocation="pages/clientes/consultar/ClienteConsultar.htm"> 
 
-	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="layoutType" value="str:TurnosMetroLayout" />
 	<param name="clienteOid" value="get:oid" />
 
 

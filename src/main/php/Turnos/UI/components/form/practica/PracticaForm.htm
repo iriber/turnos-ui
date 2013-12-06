@@ -79,9 +79,9 @@ $(function() {
 <form  class="turnos_form" id="buttons{inputId}">
 	<fieldset class="tblFooters">
 	
-		<input type="button" value="{lbl_submit}" id="input_submit" onclick="javascript: submitFormulario('practica_form'); ">
-		
-		<input type="button" value="{lbl_cancel}" id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; ">
+		<button type="button"  id="input_submit" onclick="javascript: submitFormulario('practica_form'); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
+
+		<button type="button"  id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; "><i class="icon-cancel-2 on-left"></i>{lbl_cancel}</button>
 	
 	</fieldset>
 </form>	

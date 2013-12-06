@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\nomenclador\Nomencladores" templateLocation="pages/nomenclador/Nomencladores.htm"> 
 
-	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="layoutType" value="str:TurnosMetroLayout" />
 
 	
 	<component id="nomencladorFilter" type="NomencladorFilter">

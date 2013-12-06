@@ -66,8 +66,7 @@ $(function() {
 <form  class="turnos_form" id="buttons{id}">
 	<fieldset class="tblFooters">
 	
-		<input type="button" value="{lbl_submit}" id="input_submit_ajax" onclick="javascript: $( '#page' ).val( 1 ); submitBuscar('{WEB_PATH}', '#profesional_filter{id}', '#{resultDiv}');">
-		
+		<button id="input_submit_ajax_Profesional{id}"  type="button"  onclick="javascript: $( '#page' ).val( 1 ); submitBuscar('{WEB_PATH}', '#profesional_filter{id}', '#{resultDiv}');"><i class="icon-search on-left"></i>{lbl_submit}</button>
 		<!-- input type="button" value="Limpiar" id="input_button_2" onclick="javascript: cleanForm('profesional_filter'); "-->
 	
 	</fieldset>

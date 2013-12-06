@@ -119,6 +119,7 @@ class TurnosLayout extends RastyLayout{
 		$this->addScript("$webPath/js/rasty_observer.js");
 		$this->addScript("$webPath/js/historiaAyuda.js");
 		$this->addScript("$webPath/js/app_observer.js");
+		$this->addScript("$webPath/js/rasty.js");
 		$this->addScript("$webPath/js/turnos.js");
 
 		//$this->addScript("$webPath/js/soft.js");

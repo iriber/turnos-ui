@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\practicas\modificar\PracticaModificar" templateLocation="pages/practicas/modificar/PracticaModificar.htm"> 
 
-	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="layoutType" value="str:TurnosMetroLayout" />
 	<param name="practicaOid" value="get:oid" />
 
 	

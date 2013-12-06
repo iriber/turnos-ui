@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\practicas\historia\HistoriaClinica" templateLocation="pages/practicas/historia/HistoriaClinica.htm"> 
 
-	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="layoutType" value="str:TurnosMetroLayout" />
 
 	<param name="clienteOid" value="get:clienteOid" />
 

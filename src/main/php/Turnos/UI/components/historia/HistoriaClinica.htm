@@ -42,7 +42,8 @@ $(document).ready(function(){
 			
 <!-- BEGIN: practica -->
 	<div class="practica" >
-		<div style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;"> 
+		<!--div style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;"--> 
+		<div> 
 			<div class="practica_left">
 				<span class="practica_fecha">{fecha}</span> 
 			    <span class="practica_nomenclador">{nomenclador_codigo} - {nomenclador_nombre}</span>
@@ -54,13 +55,17 @@ $(document).ready(function(){
 			</div>
 			<div style="clear: both;"></div>
 		</div>
-		<div class="actions">
-			<a title="{borrar_label}" class="btn-link" href="#" onclick="javascript: borrarPractica('{linkBorrar}', '{practica_oid}', '{cliente_oid}', '{cliente}', historiaClinica{id}_historiaChange);return false;" >
-			<span class="btn-inner btn-link-left">
-				<span class="btn-text">&nbsp;</span>
-				<span class="btn-icon-left btn-icon-img btn-icon-eliminar"></span>
-			</span>
-			</a>
+		
+		
+		<div class="actions toolbar transparent">
+				<button type="button" title="{editar_label}"
+					onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;">
+					<i class="icon-pencil"></i>
+				</button>
+				<button type="button" title="{borrar_label}"
+					onclick="javascript: borrarPractica('{linkBorrar}', '{practica_oid}', '{cliente_oid}', '{cliente}', historiaClinica{id}_historiaChange);return false;">
+					<i class="icon-remove"></i>
+				</button>
 		</div>
 		
 	</div>

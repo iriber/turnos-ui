@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\clientes\agregar\ClienteAgregar" templateLocation="pages/clientes/agregar/ClienteAgregar.htm"> 
 
-	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="layoutType" value="str:TurnosMetroLayout" />
 
 	<component id="clienteForm" type="ClienteForm">
 		<param name="legend" value="msg:cliente.agregar.legend" />

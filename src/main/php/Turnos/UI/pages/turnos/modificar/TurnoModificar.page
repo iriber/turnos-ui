@@ -1,6 +1,6 @@
 <rasty specificationClass="Turnos\UI\pages\turnos\modificar\TurnoModificar" templateLocation="pages/turnos/modificar/TurnoModificar.htm"> 
 
-	<param name="layoutType" value="str:TurnosLayout" />
+	<param name="layoutType" value="str:TurnosMetroLayout" />
 	<param name="turnoOid" value="get:oid" />
 
 	<layout type="RastyHeaderFooterLayout">

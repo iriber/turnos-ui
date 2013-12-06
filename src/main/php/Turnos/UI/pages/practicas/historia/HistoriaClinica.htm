@@ -123,12 +123,12 @@ $(document).ready(function(){
 </script>
 <style>
 #estadoActual .title{
-	color:#FFF;
+	color:#444;
 	font-size:120%;
 	display:block;
 }
 #estadoActual .turnoEnCurso{
-	color:#FFF;
+	color:#444;
 	font-size:120%;
 	display:block;
 	position:relative;
@@ -146,12 +146,12 @@ $(document).ready(function(){
 		<!-- BEGIN:turnoEnCurso -->
 		<span class="turnoEnCurso">
 			{paciente_atendido_por}
-			<a class="btn-link" href="#" onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', historiaClinica_turnoFinalizado);return false;" >
-			<span class="btn-inner btn-link-left">
-				<span class="btn-text">{turno_finalizar_label}</span>
-				<span class="btn-icon-left btn-icon-img btn-icon-finalizar-turno"></span>
-			</span>
-			</a>
+
+			<button type="button"  id="input_finalizar" 
+				onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', historiaClinica_turnoFinalizado);return false;">
+				<i class="icon-checkmark on-left"></i>{turno_finalizar_label}
+			</button>
+			
 		</span>
 		<!-- END:turnoEnCurso -->
 	</div>
@@ -160,15 +160,11 @@ $(document).ready(function(){
 			<legend>{historia_info_subtitle} - <span id="nroHistoriaClinica">{nroHistoriaClinica}</span></legend>
 			
 			<span class="actions">
-				<a class="btn-link" href="#" onclick="javascript: gotoLink('{linkAgregarPractica}')" >
-				<span class="btn-inner btn-link-left">
-					<span class="btn-text">{practica_agregar_label}</span>
-					<span class="btn-icon-left btn-icon-img btn-icon-agregar"></span>
-				</span>
-				</a>
+				<button type="button"  id="input_agregar" class="transparent" 
+				onclick="javascript: gotoLink('{linkAgregarPractica}')">
+				<i class="icon-plus on-left"></i>{practica_agregar_label}
+				</button>
 			</span>
-			
-			
 			<rasty id="historia" />
 			
 		</fieldset>

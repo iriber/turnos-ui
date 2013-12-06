@@ -1,4 +1,8 @@
 /* form */
+.rasty #editar{
+	width: 75%;
+	margin:0 auto;
+}
 
 .rasty .input-radio{
 	clear: none;
@@ -61,21 +65,12 @@
     border-top-left-radius: inherit;
 }
 
-.rasty #editar{
-	width: 75%;
-	margin:0 auto;
-
-
-}
-
-
-
 /* ayuda */
 .rasty .ayuda{
  	position:absolute;
     padding: 4px;
     right:  10px;
-    top:30px;
+    top:20px;
 }
 
 .rasty .ayuda span{
@@ -381,6 +376,13 @@ body.loginform {
 	/*text-shadow: 0 1px 0 #FFFFFF;*/
 }
 
+.rasty button {
+    
+    background: none repeat scroll 0 0 #CCCCCC;
+	border: 1px solid #AAAAAA !important;
+	text-decoration: none;
+}
+
 .rasty form button:hover,
 .rasty form input[type="button"]:hover,
 .rasty form input[type="submit"]:hover,
@@ -391,50 +393,15 @@ body.loginform {
 	position: relative;
 }
 
+.rasty button:hover	{
+	background: none repeat scroll 0 0 #DDD;
+	cursor: pointer;
+	position: relative;
+}
+
 .rasty .img_link{
 
 	cursor: pointer;
-}
-
-/* mock para cargar imágenes */
-
-.mock_loadimagesgrid1{
-
-	background-image: url('{COMPONENT_PATH}/css/images/next_over.png'); 
-}
-.mock_loadimagesgrid2{
-
-	background-image: url('{COMPONENT_PATH}/css/images/previous_over.png'); 
-}
-
-.mock_loadimages3{
-
-	background-image: url('{WEB_PATH}/css/images/add_over.png'); 
-}
-
-.mock_loadimages4{
-
-	background-image: url('{WEB_PATH}/css/images/add_over_48.png'); 
-}
-
-.mock_loadimages5{
-
-	background-image: url('{WEB_PATH}/css/images/delete_over.png'); 
-}
-
-.mock_loadimages6{
-
-	background-image: url('{WEB_PATH}/css/images/edit_over.png'); 
-}
-
-.mock_loadimages7{
-
-	background-image: url('{WEB_PATH}/css/images/timer_over_24.png'); 
-}
-
-.mock_loadimages8{
-
-	background-image: url('{WEB_PATH}/css/images/finalizar_over_24.png'); 
 }
 
 
@@ -459,3 +426,158 @@ body{
 }
 
 
+
+/* mobile */
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+
+	body{
+		font-size:80%;
+	}
+	
+	.rasty form fieldset label {
+    	text-align: left;
+	}
+	
+	.rasty #fechaPicker{
+		
+	}
+	
+	
+	.rasty #menu-header .menu-ui-btn-text{
+		display: none;
+	}
+	.rasty #menu-header .menu-ui-btn-inner{
+		height: 15px;
+	}
+		
+	.rasty .helpTip{
+
+		position:absolute;
+		right: 0px;
+		top: -32px;
+		display:none;
+		z-index:3000;
+		min-width: 250px;
+	}
+	
+	.rasty img {
+    	height: auto;
+    	max-width: 100%;
+    	vertical-align: middle;
+	}
+	
+	
+	.rasty form input[type="text"], 
+	.rasty form textarea, 
+	.rasty form select, 
+	.rasty form input[type="password"] {
+    	padding: 8px;
+    	width: 100%;
+	}
+	
+}
+
+
+
+
+@media screen and (min-width: 100px) and (max-width: 800px) {
+
+	
+	.rasty form fieldset label {
+    	text-align: left;
+	}
+	.rasty #menu-header .menu-header-ui-title{
+		white-space: normal;
+	}
+	
+	body{
+		font-size:80%;
+	}
+			
+	.rasty img {
+    	height: auto;
+    	max-width: 100%;
+    	vertical-align: middle;
+	}
+	
+	/* formularios */
+	
+	.rasty #editar{
+		width: 100%;
+		margin:0 auto;
+	}
+	
+	
+	.rasty form label {
+    	display:none;
+	}
+	
+	
+	.rasty form input[type="text"], 
+	.rasty form textarea, 
+	.rasty form select, 
+	.rasty form input[type="password"] {
+    	padding: 8px;
+    	width: 100%;
+	}
+	
+	.rasty .findentity_inputCode input[type="text"] {
+    	width: 15%;
+	}
+	.rasty .findentity_autocomplete  input[type="text"]{
+		width: 65%;
+	}
+	
+	/* grillas */
+	.rasty .grid_filters {
+    	float: none;
+    	clear: both;
+		width: 100%;
+	}
+	
+	/* menú */
+	
+	.rasty #menuNavigation nav {
+	    width: 100%;
+	}
+	
+	.rasty #menu-header{
+		padding-bottom: 5px;
+	}
+	
+	.rasty .menu-ui-link{
+       	float: none;
+       	display:block;
+    	width: 95%;
+    	clear: both;
+	    position: relative;
+	    margin:5 auto;
+	}
+
+	.rasty .menu-ui-link-left {
+    	left: 0;
+	}
+	.rasty .menu-ui-link-right {
+    	right: 0;
+	}
+	
+	/* login */
+	body.loginform {
+    	text-align: center;
+    	width: 95%;
+	}
+	
+	/* autocomplete */
+	.rasty .autocomplete{
+		/*
+		width: 70%;
+		left:0;*/
+	}
+	
+	.rasty .helpTip{
+
+		position:absolute;
+		min-width: 80px;
+	}
+	
+}
