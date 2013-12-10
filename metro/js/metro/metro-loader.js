@@ -4,9 +4,6 @@ var plugins = [
 
     'accordion',
     'button-set',
-    'date-format',
-    'calendar',
-    'datepicker',
     'carousel',
     'countdown',
     'dropdown',

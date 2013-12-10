@@ -10,7 +10,7 @@ $(function(){
         });
     });
 
-    window.prettyPrint && prettyPrint();
+    //window.prettyPrint && prettyPrint();
 
     $(".history-back").on("click", function(e){
         e.preventDefault();

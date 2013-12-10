@@ -44,7 +44,7 @@ $(document).ready(function(){
 });
 
 </script>
-
+<script src="{WEB_PATH}/metro/js/metro/metro-dropdown.js"></script>
 <style>
 
 </style>
@@ -161,9 +161,12 @@ $(document).ready(function(){
 			<!-- BEGIN:turno -->
 			<td class="{turno_css}">
 				<div class="turno_ocupado">
+				
+					<div class="horizontal-menu" >
+				
 					<!-- div title='{cliente}/{obra_social}' style="width: 100%;position:relative;cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
-					<a href="#" class="dropdown-toggle">{cliente}</a>
-					<ul data-role="dropdown" class="dropdown-menu">
+					<a href="#" class="dropdown-toggle" data-show='hover'>{cliente}</a>
+					<ul data-role="dropdown" class="dropdown-menu" onmouseout="display:none;">
 						
 						<!-- BEGIN:asignado -->		 	
 					 	<li><a href="#" 
@@ -182,10 +185,8 @@ $(document).ready(function(){
 							onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;">
 							<i class="icon-remove on-left"></i>{borrar_label}</a>
 						</li>
-						
-						
-						
 					</ul>
+					</div>
 				</div>
 				
 			</td>
