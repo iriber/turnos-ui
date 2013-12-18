@@ -232,34 +232,3 @@ function openAddentityPopup(webpath, formType, fCallback, resultId, initialText)
     $(uiDialog).dialog("open");
 	
 }
-
-
-function closeAyuda(){
-	
-	$( "#ui-ayuda" ).hide();
-}
-
-function openAyuda(link, title ){
-	
-	var height = $(window).height()-20;
-	var width = $(window).width()/2;
-
-	/*
-	$.ajax({
-		  url: link,
-		  type: "GET",
-		  cache: false,
-		  success: function(html){
-		    
-			$( "#ui-ayuda-turnos" ).html(html);
-			$( "#ui-ayuda-turnos" ).height(height);
-			$( "#ui-ayuda-turnos" ).width(width);
-			$( "#ui-ayuda-turnos" ).css("top",0);
-			$( "#ui-ayuda-turnos" ).css("left",0);
-			$( "#ui-ayuda-turnos" ).show();
-		  }
-		});
-	*/		
-	gotoLinkPopup( link, "#ui-ayuda", title, height, width );
-	
-}

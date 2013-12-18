@@ -38,6 +38,7 @@
 	<component name="AgendaAtendidos" location="components/agenda" />
 	<component name="AgendaAsignados" location="components/agenda" />
 	<component name="AgendaTurnosSemana" location="components/agenda" />
+	<component name="MenuTurno" location="components/menu/menuTurno" />
 
 	<component name="TotalesDia" location="components/stats" />
 

@@ -222,7 +222,7 @@ class AgendaDiariaHelper{
 				$xtpl->assign("estado", self::localize(EstadoTurno::getLabel($turno->getEstado())) );
 				
 				$os = $turno->getObraSocial();
-				$os = ($os!=null)? $os->getNombre() : "-";
+				$os = ($os!=null)? $os->getNombre() : "";
 				$xtpl->assign("obra_social", $os );
 				$xtpl->assign("nroObraSocial", $turno->getNroObraSocial() );
 				

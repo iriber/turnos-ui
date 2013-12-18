@@ -405,6 +405,9 @@ body.loginform {
 }
 
 
+.rasty .findentity{
+	white-space:nowrap;
+}
 
 .rasty .findentity_inputCode{
 	display:inline;

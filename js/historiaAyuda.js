@@ -59,3 +59,18 @@ function HistoriaAyuda(name){
     }
     
 }
+
+
+function closeAyuda(){
+	
+	$( "#ui-ayuda" ).hide();
+}
+
+function openAyuda(link, title ){
+	
+	var height = $(window).height()-20;
+	var width = $(window).width()/2;
+		
+	gotoLinkPopup( link, "#ui-ayuda", title, height, width );
+	
+}

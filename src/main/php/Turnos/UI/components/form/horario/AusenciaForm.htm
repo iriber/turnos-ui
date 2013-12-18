@@ -158,9 +158,9 @@ function configurarEnvio(){
 				<!-- BEGIN: ausencia -->
 				<li>
 				{vigente_mensaje}
-				<a style="cursor: pointer;" title="{lbl_borrar}" href="#" onclick="javascript: borrarAusencia('{linkBorrar}','{vigente_oid}','{vigente_profesionalOid}', ausencias_ausenciaChange);return false;" >
-					<img class="btn-icon" border=0 src="{WEB_PATH}/css/images/delete_over.png" /></a>
-				 
+				<button type="button" title="{lbl_borrar}" href="#" onclick="javascript: borrarAusencia('{linkBorrar}','{vigente_oid}','{vigente_profesionalOid}', ausencias_ausenciaChange);return false;" >
+					<i class="icon-remove"></i>
+					</button> 
 				</li>
 				<!-- END: ausencia -->	
 			</ul>

@@ -1,0 +1,38 @@
+<!-- BEGIN:main -->
+<script>
+</script>
+
+<style>
+</style>
+				
+<div class="horizontal-menu" >
+	<a href="#" class="dropdown-toggle" >{menu_label}</a>
+	<ul data-role="dropdown" class="dropdown-menu" data-show='hover'>
+						
+		<!-- BEGIN:asignado -->		 	
+	 	<li><a href="#" 
+			onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;">
+			{enSala_label}</a>
+		</li>
+		<!-- END:asignado -->
+		<!-- BEGIN:ensala -->		 	
+	 	<li><a href="#" onclick="javascript: turnoAsignado('{linkAsignado}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;">
+			{asignado_label}</a>
+		</li>
+		<!-- END:ensala -->
+		<li class="divider"></li>
+	 	<li><a href="#" onclick="javascript: gotoLink('{linkSeleccionarTurno}');"><i class="icon-new-tab on-left"></i>{linkSeleccionarLabel}</a></li>
+	    <li><a href="#" 
+			onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;">
+			<i class="icon-remove on-left"></i>{borrar_label}</a>
+		</li>
+		<li class="divider"></li>
+		<!-- BEGIN:historia -->
+	 	<li><a href="#" onclick="javascript: gotoLink('{linkHistoriaClinica}');"><i class="icon-new-tab on-left"></i>{linkHistoriaClinicaLabel}</a></li>
+		<!-- END:historia -->
+		<!-- BEGIN:modificarCliente -->
+	 	<li><a href="#" onclick="javascript: gotoLink('{linkModificarCliente}');"><i class="icon-new-tab on-left"></i>{linkModificarClienteLabel}</a></li>
+		<!-- END:modificarCliente -->
+	</ul>
+</div>
+<!-- END:main -->

@@ -42,9 +42,9 @@ $(document).ready(function(){
 			);	
 	
 });
-
+reinit();
 </script>
-<script src="{WEB_PATH}/metro/js/metro/metro-dropdown.js"></script>
+
 <style>
 
 </style>
@@ -72,48 +72,54 @@ $(document).ready(function(){
 			<!-- BEGIN: turno_no_disponible -->
 			<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{mensaje}
 			</h2>
+			<p title="{estado}" class="{turno_css}">
+			{hora}
+			</p>
 			<!-- END: turno_no_disponible -->
 			
-			<p>{hora}</p>
-			<!-- BEGIN: turno_disponible -->
 			
-				<!-- BEGIN: editar -->
-				<p>
+			
+			<!-- BEGIN: turno_disponible -->
+				<p title="{estado}" class="{turno_css}">
+					{hora}
+					<!-- BEGIN: ensala -->
+					<a style="cursor: pointer;" title="{asignado_label}" href="#" onclick="javascript: turnoAsignado('{linkAsignado}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
+					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_finalizar.png"/></a>
+					<!-- END: ensala -->
 				
+					<!-- BEGIN: asignado -->
+					<a style="cursor: pointer;" title="{enSala_label}" href="#" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
+					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/></a>
+					<!-- END: asignado -->
+				</p>
+				
+
+				
+
+				<!-- BEGIN: editar -->
+				<p class="toolbar transparent">
 					<!-- eliminar -->
-					<a title="{borrar_label}" class="btn-link" href="#" onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;" >
-					<span class="btn-inner btn-link-left">
-						<span class="btn-text">&nbsp;</span>
-						<span class="btn-icon-left btn-icon-img btn-icon-eliminar"></span>
-					</span>
-					</a>
+					<button type="button" title="{borrar_label}"
+					onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;">
+					<i class="icon-remove"></i>
+					</button>
 				</p>
 				<!-- END: editar -->
-				
-				
-				<!-- BEGIN: otro_estado -->
+			
+				<!-- BEGIN: otro_estado_old -->
 				<p class="{turno_css}">
 					<span class="texto">{estado}</span>
 				</p>
-				<!-- END: otro_estado -->
+				<!-- END: otro_estado_old -->
 				
-				<!-- BEGIN: ensala -->
-				<p class="{turno_css}" style="cursor: pointer;" title="{asignado_label}" onclick="javascript: turnoAsignado('{linkAsignado}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
-					<span class="texto">{estado}</span><img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_finalizar.png"/>
-				</p>
-				<!-- END: ensala -->
-
-				<!-- BEGIN: asignado -->
-				<p class="{turno_css}" style="cursor: pointer;" title="{enSala_label}" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
-					<span class="texto">{estado}</span><img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/>
-				</p>
-				<!-- END: asignado -->
-
 				<!-- BEGIN: ocupado -->
-				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente}<br>
+				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente} 
+				
+				<br>
 				<span>{obra_social}</span>
 				<span>{importe}</span>
 				</h2>
+				
 				<!-- END: ocupado -->
 			
 				<!-- BEGIN: libre -->
@@ -165,8 +171,8 @@ $(document).ready(function(){
 					<div class="horizontal-menu" >
 				
 					<!-- div title='{cliente}/{obra_social}' style="width: 100%;position:relative;cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
-					<a href="#" class="dropdown-toggle" data-show='hover'>{cliente}</a>
-					<ul data-role="dropdown" class="dropdown-menu" onmouseout="display:none;">
+					<a href="#" class="dropdown-toggle" >{cliente}</a>
+					<ul data-role="dropdown" class="dropdown-menu" data-show='hover'>
 						
 						<!-- BEGIN:asignado -->		 	
 					 	<li><a href="#" 

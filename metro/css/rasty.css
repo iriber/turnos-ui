@@ -214,7 +214,7 @@ body.loginform div.logincontainer {
 	box-shadow: 1px 1px 2px #FFFFFF inset;
 	margin-top: 1em;
 	/*padding: 1.5em;*/	
-	text-shadow: 0 1px 0 #FFFFFF;
+	/*text-shadow: 0 1px 0 #FFFFFF;*/
 }
 
 .rasty fieldset .item, 

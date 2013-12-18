@@ -81,8 +81,8 @@ class UIAusenciaService {
 		try{
 			
 			$service = ServiceFactory::getAusenciaService();
+			//return $service->getAusenciasVigentes( $fecha, $profesional);
 			return $service->getAusenciasVigentes( $fecha, $profesional);
-			
 		} catch (\Exception $e) {
 			
 			throw new RastyException($e->getMessage());
