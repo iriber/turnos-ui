@@ -168,7 +168,7 @@ function gotoLinkPopup( link, resultId, title, height, width ){
             }
         };
     $(uiDialog).children().remove();
-    $(uiDialog).dialog("destroy");
+    //$(uiDialog).dialog("destroy");
     $(uiDialog).dialog(dialogOpts);
     $(uiDialog).dialog("open");
 }
