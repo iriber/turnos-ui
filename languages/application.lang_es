@@ -129,6 +129,7 @@
 	"agenda.fecha": "Fecha",
 	"agenda.verficha": "Ver ficha del paciente",
 	"agenda.ver.dia": "Ver detalle del día",
+	"agenda.totalPacientes": "# Pacientes",
 
 	"turno.fecha": "Fecha",
 	"turno.hora": "Hora",

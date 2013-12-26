@@ -56,6 +56,8 @@ class AgendaEnSala extends RastyComponent{
 		$xtpl->assign("iniciar_label", $this->localize( "turno.iniciar" ) );
 		$xtpl->assign("finalizar_label", $this->localize( "turno.finalizar" ) );
 
+		$xtpl->assign("totalPacientes_label", $this->localize( "agenda.totalPacientes" ) );
+		
 		$xtpl->assign("linkIniciar",  LinkBuilder::getActionAjaxUrl( "IniciarTurno") );
 		$xtpl->assign("linkFinalizar",  LinkBuilder::getActionAjaxUrl( "FinalizarTurno") );
 		$xtpl->assign("linkEnSala",  LinkBuilder::getActionAjaxUrl( "TurnoEnSala") );
@@ -132,7 +134,8 @@ class AgendaEnSala extends RastyComponent{
 			$xtpl->assign("last_css", ($index == $totalTurnos)?"last":"");
 			$this->parseTurno($xtpl, $turno);
 		}
-				
+
+		$xtpl->assign("totalPacientes", $totalTurnos);
 	}
 	
 	public function getFecha()

@@ -500,9 +500,9 @@ class TurnosUtils {
 		if( !empty($edad) ){
 		
 			if( $edad > 1)
-				return "$edad anios";
+				return "$edad años";
 			else
-				return "$edad anio";
+				return "$edad año";
 		}return "";
 	}
 	

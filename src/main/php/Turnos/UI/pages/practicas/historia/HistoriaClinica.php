@@ -141,7 +141,7 @@ class HistoriaClinica extends TurnosPage{
 			$xtpl->assign("localidad" , $this->getCliente()->getLocalidad() );
 			$xtpl->assign("domicilio" , $this->getCliente()->getDomicilio() );
 			$xtpl->assign("nroDocumento" , $this->getCliente()->getNroDocumento() );
-			$xtpl->assign("tipoDocumento" , TipoDocumento::getLabel($this->getCliente()->getTipoDocumento()) );
+			$xtpl->assign("tipoDocumento" , $this->localize( TipoDocumento::getLabel($this->getCliente()->getTipoDocumento())) );
 			
 			
 			//si el cliente tiene un turno en curso, lo indicamos.

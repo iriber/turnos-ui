@@ -412,6 +412,12 @@ fieldset .agenda {
     text-align: left;
 }
 
+#profesional_home .totalPacientes{
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+
 .agenda_turno.odd {
     background: none repeat scroll 0 0 #FFFFF4;
 }
