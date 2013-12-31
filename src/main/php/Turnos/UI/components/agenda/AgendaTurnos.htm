@@ -41,8 +41,16 @@ $(document).ready(function(){
 				}
 			);	
 	
+	var isChrome = !!window.chrome && !!window.chrome.webstore;
+	if( isChrome ){
+		$(".agenda_turno").width("95%");
+	}
 });
 reinit();
+
+
+
+
 </script>
 
 <style>

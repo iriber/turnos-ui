@@ -92,7 +92,7 @@ class TurnosMetroLayout extends RastyLayout{
 		
 		$this->addScript( "$webPath/metro/js/metro/metro-button-set.js");
 		$this->addScript( "$webPath/metro/js/metro/metro-dialog.js");
-		$this->addScript( "$webPath/metro/js/metro/metro-drag-title.js");
+		//$this->addScript( "$webPath/metro/js/metro/metro-drag-title.js");
 		$this->addScript( "$webPath/metro/js/metro/metro-fluentmenu.js");
 		$this->addScript( "$webPath/metro/js/metro/metro-hint.js");
 		$this->addScript( "$webPath/metro/js/metro/metro-listview.js");

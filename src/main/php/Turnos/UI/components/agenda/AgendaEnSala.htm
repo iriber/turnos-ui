@@ -6,6 +6,14 @@ function agendaEnSala{id}_turnoChange(data){
 	subject.notify(event);
 }
 
+$(document).ready(function(){
+	
+	var isChrome = !!window.chrome && !!window.chrome.webstore;
+	if( isChrome ){
+		$(".agenda_turno").width("95%");
+	}
+});
+
 </script>
 
 <style>

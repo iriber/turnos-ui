@@ -1,4 +1,13 @@
 <!-- BEGIN:main -->
+<script>
+$(document).ready(function(){
+	
+	var isChrome = !!window.chrome && !!window.chrome.webstore;
+	if( isChrome ){
+		$("#totalesDia .total").width("95%");
+	}
+});
+</script>
 <div id="totalesDia">
 
 	<div class="total">
