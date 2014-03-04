@@ -1,0 +1,89 @@
+<!-- BEGIN: main-->
+
+<style>
+</style>
+<script type="text/javascript">
+$(function() {
+
+	//nos interesa saber cuando cambian los totales de la agenda.
+	observer = new Observer("totalesagend", totalesAgenda);
+	
+	subject.addObserver( observer );
+
+	//nos interesa saber cuando cambia el turno, si se inicia vamos a la historia clínica.
+	observer = new Observer("turnoencurso", turnosChange);
+	
+	subject.addObserver( observer );
+
+	
+});
+
+function actualizarPantalla(){
+
+	event = new Object();
+	event.type = "Turno";
+	event.data = new Object();
+	subject.notify(event, "profesionalHome");
+}
+
+function turnosChange(event){
+	if( event.type == "Turno" ){
+		turno = event.data;
+
+		//chequeamos si el turno fue iniciado, en ese caso, vamos a la ficha del paciente.
+		if(turno["estado"] != undefined && turno["estado"] == '{estadoTurnoEnCurso}'){
+			
+			gotoLink('{linkHistoriaClinica}?clienteOid='+turno["clienteOid"]);	
+		} 
+			
+	}
+}
+
+function totalesAgenda(event){
+	if( event.type == "AgendaTotales" ){
+		totales = event.data;
+		totalesDia(totales["importeTotal"], totales["totalEnSala"], totales["totalAsignados"], totales["totalAtendidos"]);
+	}
+	
+}
+function totalesDia(importeTotal, total_ensala, total_asignados, total_atendidos){
+
+	//alert(total_ensala + "-" +  total_asignados  + "-" + total_atendidos);
+	$("#total_ensala").val(total_ensala);
+	$("#total_asignados").val(total_asignados);
+	$("#total_atendidos").val(total_atendidos);
+	$("#importeTotal").html(importeTotal);
+}
+</script>
+
+
+<div id="profesional_home">
+	
+	
+	<span class="title">
+		{title}
+	</span>
+	<div style="clear: both;"></div>
+			
+	<div id="profesional_home_left" >
+
+		<fieldset>
+			<legend>{enCurso_legend}</legend>
+			<rasty id="turnosEnCurso"/>
+		</fieldset>
+		
+	</div>
+	
+	<div id="profesional_home_right" >
+	
+		<fieldset>
+			<legend>{stats_legend}</legend>
+			<rasty id="totalesDia"/>
+		</fieldset>
+		
+	</div>
+	
+	
+</div>
+	
+<!-- END: main-->

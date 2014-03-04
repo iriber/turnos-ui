@@ -1,0 +1,20 @@
+<rasty specificationClass="Turnos\UI\pages\nomenclador\modificar\NomencladorModificar" templateLocation="pages/nomenclador/modificar/NomencladorModificar.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+	<param name="nomencladorOid" value="get:oid" />
+
+	<layout type="RastyHeaderFooterLayout">
+		<param name="header" value="header" />
+		<param name="footer" value="footer" />
+	</layout>
+
+	<component id="nomencladorForm" type="NomencladorForm">
+		<param name="legend" value="msg:nomenclador.modificar.legend" />
+		<param name="action" value="linkActionModificarNomenclador" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="method" value="str:post" />
+		<param name="nomenclador" value="nomenclador" />
+	</component>
+	
+</rasty>

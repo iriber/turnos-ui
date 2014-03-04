@@ -106,4 +106,23 @@
 		<param name="placeholder" value="msg:turno.importe" />
 	</component>
 	
+	<component id="prioridad" type="InputCombo">
+		<param name="inputId" value="str:prioridad" />
+		<param name="name" value="str:prioridad" />
+		<param name="value" value="turno.prioridad" />
+		<param name="options" value="prioridades" />
+		<param name="placeholder" value="msg:turno.prioridad" />
+		<param name="requiredMessage" value="msg:turno.prioridad.required" />
+	</component>
+	
+	<component id="duracion" type="InputCombo">
+		<param name="inputId" value="str:duracion" />
+		<param name="name" value="str:duracion" />
+		<param name="value" value="turno.duracion" />
+		<param name="options" value="duraciones" />
+		<param name="placeholder" value="msg:turno.duracion" />
+		<param name="requiredMessage" value="msg:turno.duracion.required" />
+	</component>
+	
+	
 </rasty>

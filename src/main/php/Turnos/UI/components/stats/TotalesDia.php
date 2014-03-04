@@ -18,7 +18,7 @@ use Turnos\Core\model\Turno;
 use Rasty\utils\LinkBuilder;
 
 /**
- * Totales del día del profesional logueado.
+ * Totales del día.
  * 
  * @author bernardo
  * @since 01/09/2013
@@ -26,9 +26,6 @@ use Rasty\utils\LinkBuilder;
 class TotalesDia extends RastyComponent{
 		
 	private $fecha;
-	
-	private $profesional;
-	
 	
 	public function getType(){
 		
@@ -38,9 +35,7 @@ class TotalesDia extends RastyComponent{
 
 	public function __construct(){
 		
-		$this->setProfesional(TurnosUtils::getProfesionalLogged());
 		$this->setFecha( new \Datetime() );
-		
 		
 	}
 
@@ -55,7 +50,7 @@ class TotalesDia extends RastyComponent{
 
 	protected function getTurnos(){
 		
-		return UIServiceFactory::getUITurnoService()->getTurnosDelDia( $this->getFecha(), $this->getProfesional() );
+		return UIServiceFactory::getUITurnoService()->getTurnosDelDia( $this->getFecha() );
 		
 	}
 
@@ -97,16 +92,6 @@ class TotalesDia extends RastyComponent{
 	public function setFecha($fecha)
 	{
 	    $this->fecha = $fecha;
-	}
-
-	public function getProfesional()
-	{
-	    return $this->profesional;
-	}
-
-	public function setProfesional($profesional)
-	{
-	    $this->profesional = $profesional;
 	}
 
 	protected function initObserverEventType(){

@@ -23,7 +23,7 @@ function doBorrarPractica( params ){
 	$.ajax({
     		  	url: params["url"],
     		  	type: "GET",
-    		  	datatype: "json",
+    		  	dataType: "json",
     		  	cache: false,
     			complete:function(){
     				//$("#loading").hide();
@@ -80,7 +80,7 @@ function doBorrarTurno( params ){
 	$.ajax({
 	  	url: params["url"],
 	  	type: "GET",
-	  	datatype: "json",
+	  	dataType: "json",
 	  	cache: false,
 		complete:function(){
 			//$("#loading").hide();
@@ -249,7 +249,7 @@ function doBorrarAusencia( params ){
 	$.ajax({
 	  	url: params["url"],
 	  	type: "GET",
-	  	datatype: "json",
+	  	dataType: "json",
 	  	cache: false,
 		complete:function(){
 		},
@@ -267,4 +267,34 @@ function doBorrarAusencia( params ){
 	  	}
 	});        
 	
+}
+
+function doGetProfefionalesByEspecialidad(especialidadOid, onSuccess ){
+	
+	var link = "findProfesionalesByEspecialidad.json" + "?oid=" + especialidadOid;
+	$.ajax({
+    		  	url: link,
+    		  	type: "GET",
+    		  	dataType: "json",
+    		  	cache: false,
+    			complete:function(){
+    				//$("#loading").hide();
+    				//$("#current_action").html("");
+    			},
+    		  	success: function(data){
+        		  	
+    				//$("#nextOffer").html("");
+    				if( data != null && data["error"]!=null){
+    					msg = data["error"];
+    					showErrorMessage(msg);
+    				}
+    				if( data != null && data["info"]!=null){
+						//quitamos de la agenda la fila
+						//que corresponde al turno eliminado
+						//$("#turno_" + oid).fadeOut(500);
+    				}
+    				onSuccess(data["profesionales"]);
+    				
+    		  	}
+    	});      
 }

@@ -1,0 +1,33 @@
+<rasty specificationClass="Turnos\UI\components\form\nomenclador\NomencladorForm" templateLocation="NomencladorForm.htm">
+
+	<param name="error" value="get:error" />
+
+	<component id="backSuccess" type="InputHidden">
+		<param name="inputId" value="str:backToOnSuccess" />
+		<param name="name" value="str:backToOnSuccess" />
+		<param name="value" value="backToOnSuccess" />
+	</component>
+
+	<component id="oid" type="InputHidden">
+		<param name="inputId" value="str:oid" />
+		<param name="name" value="str:oid" />
+		<param name="value" value="nomenclador.oid" />
+	</component>
+	
+	<component id="nombre" type="InputText">
+		<param name="inputId" value="str:nombre" />
+		<param name="name" value="str:nombre" />
+		<param name="value" value="nomenclador.nombre" />
+		<param name="requiredMessage" value="msg:nomenclador.nombre.required" />
+		<param name="placeholder" value="msg:nomenclador.nombre" />
+	</component>
+	
+	<component id="codigo" type="InputText">
+		<param name="inputId" value="str:codigo" />
+		<param name="name" value="str:codigo" />
+		<param name="value" value="nomenclador.codigo" />
+		<param name="requiredMessage" value="msg:nomenclador.codigo.required" />
+		<param name="placeholder" value="msg:nomenclador.codigo" />
+	</component>
+	
+</rasty>

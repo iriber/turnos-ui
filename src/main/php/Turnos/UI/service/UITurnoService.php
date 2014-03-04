@@ -57,7 +57,7 @@ class UITurnoService {
 		
 	}
 		
-	public function getTurnosDelDia( \DateTime $fecha, Profesional $profesional){
+	public function getTurnosDelDia( \DateTime $fecha, Profesional $profesional=null){
 		
 		$service = ServiceFactory::getTurnoService();
 		return $service->getTurnosDelDia( $fecha, $profesional);
@@ -77,7 +77,7 @@ class UITurnoService {
 		return $service->getList( $criteria );
 	}
 	
-	public function getTurnosDelDiaEstados( \DateTime $fecha, Profesional $profesional, $estados){
+	public function getTurnosDelDiaEstados( \DateTime $fecha, Profesional $profesional=null, $estados){
 		
 		$service = ServiceFactory::getTurnoService();
 		
@@ -245,6 +245,11 @@ class UITurnoService {
 			throw new RastyException($e->getMessage());
 			
 		}
+	}
+	
+	public function getTurnosEnCurso( \DateTime $fecha ){
+		
+		return self::getTurnosDelDiaEstados( $fecha, null, array( EstadoTurno::EnCurso ) );
 	}
 }
 ?>

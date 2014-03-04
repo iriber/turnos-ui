@@ -17,9 +17,8 @@
 		<param name="profesional" value="profesional" />
 	</component>
 
-	<component id="totalesDia" type="TotalesDia">
+	<component id="totalesDia" type="TotalesDiaProfesional">
 		<param name="fecha" value="fecha" />
-		<param name="profesional" value="profesional" />
 	</component>
 	
 </rasty>

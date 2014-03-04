@@ -88,8 +88,9 @@ reinit();
 			
 			
 			<!-- BEGIN: turno_disponible -->
+			
 				<p title="{estado}" class="{turno_css}">
-					{hora}
+					{hora}<!-- BEGIN:duracion -->{duracion}<!-- END:duracion -->
 					<!-- BEGIN: ensala -->
 					<a style="cursor: pointer;" title="{asignado_label}" href="#" onclick="javascript: turnoAsignado('{linkAsignado}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
 					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_finalizar.png"/></a>
@@ -121,15 +122,17 @@ reinit();
 				<!-- END: otro_estado_old -->
 				
 				<!-- BEGIN: ocupado -->
-				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente} 
-				
+				<h2 class="{prioridad_css}" title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente} 
 				<br>
 				<span>{obra_social}</span>
 				<span>{importe}</span>
 				</h2>
-				
+				<!-- BEGIN: prioridadddd -->
+				<p class="{prioridad_css}">{prioridad}</p>
+				<!-- END: prioridadddd -->
 				<!-- END: ocupado -->
-			
+				
+				
 				<!-- BEGIN: libre -->
 				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;width:85%;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
 					<br />
@@ -173,7 +176,7 @@ reinit();
 			<!-- BEGIN: dia -->
 			
 			<!-- BEGIN:turno -->
-			<td class="{turno_css}">
+			<td class="{turno_css}" rowspan={turno_filas}>
 				<div class="turno_ocupado">
 				
 					<div class="horizontal-menu" >
@@ -223,6 +226,9 @@ reinit();
 				 {mensajeOculto} 
 			</td>
 			<!-- END:turno_vacio_disponible -->
+
+			<!-- BEGIN:turno_extendido -->
+			<!-- END:turno_extendido -->
 			
 			<!-- END: dia -->
 		</tr>

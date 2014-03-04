@@ -5,6 +5,9 @@ namespace Turnos\UI\pages\turnos;
 use Turnos\UI\pages\TurnosPage;
 
 use Turnos\UI\components\filter\model\UIProfesionalCriteria;
+use Turnos\UI\components\filter\model\UIEspecialidadCriteria;
+
+use Turnos\UI\service\finder\ProfesionalFinder;
 
 use Turnos\UI\service\UIServiceFactory;
 
@@ -18,12 +21,20 @@ use Rasty\i18n\Locale;
 use Rasty\utils\LinkBuilder;
 
 use Turnos\Core\model\Profesional;
+use Turnos\Core\model\Especialidad;
 use Turnos\Core\model\EstadoTurno;
 
 use Rasty\Grid\filter\model\UICriteria;
 
 use Rasty\Menu\menu\model\MenuGroup;
 use Rasty\Menu\menu\model\MenuOption;
+
+/**
+ * FIXME no setea en el combo de especialidades la que está seleccionada en la agenda.
+ * 
+ * @author bernardo
+ * @since 27/02/2014
+ */
 
 class TurnosHome extends TurnosPage{
 
@@ -73,6 +84,20 @@ class TurnosHome extends TurnosPage{
 		return $profesional;
 	}
 	
+	
+	public function getEspecialidad(){
+	
+		$especialidad = new Especialidad();
+				
+		if( TurnosUtils::isEspecialidadAgenda() ){
+			$especialidad= TurnosUtils::getEspecialidadAgenda();
+		}else{
+			
+			$especialidad->setOid(1);
+		}
+		return $especialidad;
+	}
+	
 	public function getFecha(){
 	
 		if(TurnosUtils::isFechaAgenda() ){
@@ -89,9 +114,15 @@ class TurnosHome extends TurnosPage{
 		$profesional = $this->getProfesional();
 		//obtenemos la fecha seleccionada.
 		$fecha = $this->getFecha();
+		//obtenemos la especialidad de la agenda
+		$especialidad = $this->getEspecialidad();
+		
+		//parseamos el combo de especialidades.
+		
+		$this->parseEspecialidades($xtpl, $especialidad );
 		
 		//parseamos el combo de profesionales.
-		$this->parseProfesionales( $xtpl, $profesional);
+		$this->parseProfesionales( $xtpl, $profesional, $especialidad);
 		
 		
 		//ayuda
@@ -110,6 +141,7 @@ class TurnosHome extends TurnosPage{
 		$xtpl->assign("agenda_subtitle", $this->localize( "turnos_home.agenda" ) );
 		$xtpl->assign("calendario_subtitle", $this->localize( "turnos_home.calendario" ) );
 		$xtpl->assign("profesional_subtitle", $this->localize( "turnos_home.profesional" ) );
+		$xtpl->assign("especialidad_subtitle", $this->localize( "turnos_home.especialidad" ) );
 		
 		//parseamos los labels de totales.
 		$xtpl->assign("totales_subtitle", $this->localize( "turnos_home.totales" ) );
@@ -129,13 +161,11 @@ class TurnosHome extends TurnosPage{
 		*/
 	}
 	
-	protected function parseProfesionales(XTemplate $xtpl, Profesional $selected){
+	protected function parseProfesionales(XTemplate $xtpl, Profesional $selected, Especialidad $especialidad){
 	
 		$service = UIServiceFactory::getUIProfesionalService();
 
-		$criteria = new UIProfesionalCriteria();
-		$criteria->addOrder("nombre", UICriteria::TYPE_ASC);
-		$profesionales = $service->getList($criteria);
+		$profesionales = $service->getProfesionalesByEspecialidad($especialidad->getOid());
 
         foreach ($profesionales as $profesional) {
 
@@ -144,7 +174,25 @@ class TurnosHome extends TurnosPage{
 
             $xtpl->parse('main.profesional_option');
         }
+        
+        //$xtpl->assign('profesionalesFinder', urlencode( get_class(new ProfesionalFinder())) );
 	}
 
+	protected function parseEspecialidades(XTemplate $xtpl, Especialidad $selected){
+	
+		$service = UIServiceFactory::getUIEspecialidadService();
+
+		$criteria = new UIEspecialidadCriteria();
+		$criteria->addOrder("nombre", UICriteria::TYPE_ASC);
+		$especialidades = $service->getList($criteria);
+
+        foreach ($especialidades as $especialidad) {
+
+            $xtpl->assign('label', $especialidad->__toString() );
+            $xtpl->assign('value', RastyUtils::selected($especialidad->getOid(), $selected->getOid()));
+
+            $xtpl->parse('main.especialidad_option');
+        }
+	}
 }
 ?>

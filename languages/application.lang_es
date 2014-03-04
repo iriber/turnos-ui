@@ -8,6 +8,7 @@
 	"menu.main":"Menú de navegación",
 	
 	"menu.turnos":"Agenda de turnos",
+	"menu.estadoActual":"Vista general del Instituto",
 	"menu.profesional_home":"Panel de trabajo",
 	"menu.clientes":"Pacientes",
 	"menu.historia":"Historia Clínica",
@@ -17,6 +18,11 @@
 	
 	"menu.cliente.modificar":"Modificar información del Paciente",
 	"menu.cliente.historiaClinica":"Ver historia clínica del Paciente",
+
+	"menu.nomenclador.modificar":"Modificar nomenclador",
+
+	"menu.obraSocial.modificar":"Modificar obra social",
+	
 
 	"user.required.exception.msg": "Debe iniciar sesión para operar el sistema", 
 	"invalid.password.exception.msg": "La clave ingresada no es válida",
@@ -95,6 +101,7 @@
 	"turnos_home.totales": "Totales del día",
 	"turnos_home.en_caja": "En caja",
 	"turnos_home.agenda": "Agenda",
+	"turnos_home.especialidad": "Especialidad",
 	
 	"turno.agregar": "Agregar turno",
 	"turno.agregar.fechaHora": "$1 - $2",
@@ -111,7 +118,8 @@
 	"turno.cliente.required": "Ingrese un paciente",
 	"turno.profesional.required": "Ingrese el médico",
 	"turno.fecha.required": "Ingrese una fecha",
-	"turno.importe.required": "Ingrese un importe",
+	"turno.importe.required": "Ingrese el importe diferencial",
+	"turno.prioridad.required": "Seleccione la prioridad",
 
 	"turno.profesional.unicity": "El médico ya tiene asignado el turno. Elija otro día/horario",
 
@@ -133,12 +141,14 @@
 
 	"turno.fecha": "Fecha",
 	"turno.hora": "Hora",
+	"turno.duracion": "Duración",
 	"turno.profesional": "Médico",
 	"turno.cliente": "Paciente",
 	"turno.estado": "Estado",
-	"turno.importe": "Importe",
+	"turno.importe": "Importe diferencial",
 	"turno.obraSocial": "Obra social",
 	"turno.nroObraSocial": "Nro Afiliado",
+	"turno.prioridad": "Prioridad",
 
 	
 	"ausencia.title":  "Ausencias",
@@ -232,7 +242,12 @@
    	"obraSocial.buscar":"Buscar obras sociales",
    	"obraSocial.buscar.again":"Volver a intentarlo...",
 
-	"obraSocial.agregar.legend": "Ingrese los datos de la obras social",
+	"obraSocial.agregar.legend": "Ingrese los datos de la obra social",
+	"obraSocial.agregar.title": "Agregar Obra Social",
+	"obraSocial.agregar":"Agregar obra social",
+
+	"obraSocial.modificar.legend": "Modifique los datos de la obra social",
+	"obraSocial.modificar.title": "Modificar Obra Social",
 
    	"obraSocial.oid":"Id",
    	"obraSocial.nombre":"Nombre",
@@ -241,12 +256,20 @@
 	"obraSocial.nombre.required":"Ingrese un nombre",
 	"obraSocial.codigo.required":"Ingrese un código",
 
+	"obraSocial.codigo.unicity": "Ya existe una obra social con el código ingresado",
+	"obraSocial.nombre.unicity": "Ya existe una obra social con el nombre ingresado",
+
    	"nomenclador.title":"Nomenclador",
    	"nomenclador.buscar":"Buscar en el nomenclador",
    	"nomenclador.buscar.again":"Volver a intentarlo...",
 
+	"nomenclador.agregar":"Agregar nomenclador",
 	"nomenclador.agregar.title":"Agregar práctica en nomenclador",
    	"nomenclador.agregar.legend":"Ingrese los datos para el nomenclador",
+
+	"nomenclador.modificar":"Modificar nomenclador",
+	"nomenclador.modificar.title":"Modificar nomenclador",
+   	"nomenclador.modificar.legend":"Ingrese los datos para el nomenclador",
    	
    	"nomenclador.oid":"Id",
    	"nomenclador.nombre":"Nombre",
@@ -254,6 +277,10 @@
 
 	"nomenclador.nombre.required":"Ingrese un nombre",
 	"nomenclador.codigo.required":"Ingrese un código",
+
+	"nomenclador.codigo.unicity": "Ya existe un nomenclador con el código ingresado",
+	"nomenclador.nombre.unicity": "Ya existe un nomenclador con el nombre ingresado",
+
 
 	"practica.agregar": "Agregar una nueva práctica",
 	"practica.agregar.title": "Agregar nueva práctica",
@@ -333,6 +360,18 @@
     "turno.atendido.label":"Atendido",
     "turno.encurso.label":"En curso",
    	"turno.ausencia.label":"Ausencia",
+ 
+ 	"prioridad.normal.label": "Normal",
+ 	"prioridad.media.label": "Media",
+ 	"prioridad.alta.label": "Alta",
+ 	
+ 	"prioridad.normal.abreviada.label": "N",
+ 	"prioridad.media.abreviada.label": "M",
+ 	"prioridad.alta.abreviada.label": "A",
+ 	
+ 	"estadoActual.title": "Monitoreo de la clínica",
+ 	"estadoActual.enCurso.legend": "Profesionales atendiendo",
+   	"estadoActual.stats.legend": "Estadísticas de pacientes",
    	
    	"grid.operaciones": "Operaciones",
    	"grid.resultados": "Resultados de la búsqueda",

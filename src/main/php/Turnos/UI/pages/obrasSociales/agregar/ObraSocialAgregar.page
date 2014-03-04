@@ -1,0 +1,14 @@
+<rasty specificationClass="Turnos\UI\pages\obrasSociales\agregar\ObraSocialAgregar" templateLocation="pages/obrasSociales/agregar/ObraSocialAgregar.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+
+	<component id="obraSocialForm" type="ObraSocialForm">
+		<param name="legend" value="msg:obraSocial.agregar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="action" value="linkActionAgregarObraSocial" />
+		<param name="method" value="str:post" />
+		<param name="obraSocial" value="obraSocial" />
+	</component>
+	
+</rasty>

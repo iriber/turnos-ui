@@ -1,0 +1,30 @@
+<!-- BEGIN:main -->
+<script>
+function agendaEnSala{id}_turnoChange(data){
+
+	event = new Event("turnochange", data, "Turno");
+	subject.notify(event);
+}
+
+</script>
+
+<style>
+
+</style>
+
+<div class="agenda">
+	<div class="totalPacientes">{totalPacientes_label}: {totalPacientes}</div>
+		<!-- BEGIN: turno -->
+		<div class="agenda_turno {first_css} {last_css} {odd_css}" style="display: block;">
+			<h1>{profesional}</h1>
+			<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente}<br>
+			<span>{obra_social}</span>
+			<span>{importe}</span>
+			</h2>
+			<p class="{turno_css}">
+				<span>{hora}</span>
+			</p>
+		</div>
+		<!-- END: turno -->
+</div>
+<!-- END:main -->

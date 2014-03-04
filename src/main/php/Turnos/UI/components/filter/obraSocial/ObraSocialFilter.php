@@ -31,7 +31,7 @@ class ObraSocialFilter extends Filter{
 		
 		$this->setUicriteriaClazz( get_class( new UIObraSocialCriteria()) );
 		
-		$this->setSelectRowCallback("seleccionarObraSocial");
+		//$this->setSelectRowCallback("seleccionarObraSocial");
 
 		//agregamos las propiedades a popular en el submit.
 		$this->addProperty("nombre");

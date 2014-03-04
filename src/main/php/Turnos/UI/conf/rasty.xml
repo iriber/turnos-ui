@@ -9,8 +9,12 @@
 	<page name="AusenciaAgregar"   location="pages/horarios/agregar/AusenciaAgregar.page" url="ausencia/agregar"/>
 
 	<page name="Nomencladores"   location="pages/nomenclador/Nomencladores.page" url="nomenclador"/>
+	<page name="NomencladorAgregar"   location="pages/nomenclador/agregar/NomencladorAgregar.page" url="nomenclador/agregar"/>
+	<page name="NomencladorModificar"   location="pages/nomenclador/modificar/NomencladorModificar.page" url="nomenclador/modificar"/>
 
 	<page name="ObrasSociales"   location="pages/obrasSociales/ObrasSociales.page" url="obrasSociales"/>
+	<page name="ObraSocialAgregar"   location="pages/obrasSociales/agregar/ObraSocialAgregar.page" url="obrasSociales/agregar"/>
+	<page name="ObraSocialModificar"   location="pages/obrasSociales/modificar/ObraSocialModificar.page" url="obrasSociales/modificar"/>
 
 	<page name="Clientes"   location="pages/clientes/Clientes.page" url="pacientes"/>
 	<page name="ClienteAgregar"   location="pages/clientes/agregar/ClienteAgregar.page" url="pacientes/agregar"/>
@@ -27,6 +31,8 @@
 	<page name="PracticaModificar"   location="pages/practicas/modificar/PracticaModificar.page" url="practicas/modificar"/>
 
 	<page name="AyudaTurnos"   location="pages/ayuda/AyudaTurnos.page" url="ayuda"/>
+
+	<page name="EstadoActual"   location="pages/reportes/estadoActual/EstadoActual.page" url="estadoActual"/>
 	
 	<!-- declaración de los componentes -->
 	<component name="HeaderNav" location="components/header" />
@@ -41,6 +47,7 @@
 	<component name="MenuTurno" location="components/menu/menuTurno" />
 
 	<component name="TotalesDia" location="components/stats" />
+	<component name="TotalesDiaProfesional" location="components/stats" />
 
 	<component name="HistoriaClinica" location="components/historia" />
 
@@ -48,14 +55,19 @@
 	
 	<component name="TurnoForm"   location="components/form/turno"/>
 	<component name="TurnosCliente"   location="components/turnos"/>
+	<component name="TurnosEnCurso" location="components/turnos/enCurso" />
 
 	<component name="ClienteFilter"   location="components/filter/cliente"/>
 	<component name="ClienteForm"   location="components/form/cliente"/>
 	<component name="ClienteQuickForm"   location="components/form/cliente"/>
 
 	<component name="ObraSocialFilter"   location="components/filter/obraSocial"/>
+	<component name="ObraSocialQuickForm"   location="components/form/obraSocial"/>
+	<component name="ObraSocialForm"   location="components/form/obraSocial"/>
 	
 	<component name="NomencladorQuickForm"   location="components/form/nomenclador"/>
+	<component name="NomencladorForm"   location="components/form/nomenclador"/>
+	<component name="NomencladorFilter"   location="components/filter/nomenclador"/>
 
 	<component name="LocalidadQuickForm"   location="components/form/localidad"/>
 
@@ -63,10 +75,6 @@
 
 	<component name="PracticaForm"   location="components/form/practica"/>
 
-	<component name="NomencladorFilter"   location="components/filter/nomenclador"/>
-
-
-	<component name="ObraSocialQuickForm"   location="components/form/obraSocial"/>
 
 	<component name="AyudaColoresAgenda"   location="components/ayuda/agenda"/>
 	<component name="AyudaIconosAgenda"   location="components/ayuda/agenda"/>
@@ -108,9 +116,16 @@
 	<action name="BorrarPractica" class="Turnos\UI\actions\practicas\BorrarPractica" url="practicas/borrar"/>
 	
 	<action name="AgregarObraSocialJson" class="Turnos\UI\actions\obrasSociales\AgregarObraSocialJson" url="obrasSociales/agregarjson"/>
+	<action name="AgregarObraSocial" class="Turnos\UI\actions\obrasSociales\AgregarObraSocial" url="obrasSociales/agregar"/>
+	<action name="ModificarObraSocial" class="Turnos\UI\actions\obrasSociales\ModificarObraSocial" url="obrasSociales/modificar"/>
+	
 	<action name="AgregarLocalidadJson" class="Turnos\UI\actions\localidades\AgregarLocalidadJson" url="localidades/agregarjson"/>
 
 	<action name="AgregarNomencladorJson" class="Turnos\UI\actions\nomenclador\AgregarNomencladorJson" url="nomenclador/agregarjson"/>
+	<action name="AgregarNomenclador" class="Turnos\UI\actions\nomenclador\AgregarNomenclador" url="nomenclador/agregar"/>
+	<action name="ModificarNomenclador" class="Turnos\UI\actions\nomenclador\ModificarNomenclador" url="nomenclador/modificar"/>
+	
+	<action name="findProfesionalesByEspecialidad" class="Turnos\UI\actions\profesionales\ListarProfesionalesByEspecialidadJson" url="findProfesionalesByEspecialidad"/>
 	
 	<action name="findEntities" class="Turnos\UI\actions\common\ListarEntitiesJson" url="findEntities"/>
 	<action name="findEntity" class="Turnos\UI\actions\common\GetEntityJson" url="findEntity"/>

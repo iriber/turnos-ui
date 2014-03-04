@@ -1,4 +1,4 @@
-<rasty specificationClass="Turnos\UI\pages\clientes\modificar\ClienteModificar" templateLocation="pages/clientes/modificar/cliente_modificar.htm"> 
+<rasty specificationClass="Turnos\UI\pages\clientes\modificar\ClienteModificar" templateLocation="pages/clientes/modificar/clienteModificar.htm"> 
 
 	<param name="layoutType" value="str:TurnosMetroLayout" />
 	<param name="clienteOid" value="get:oid" />

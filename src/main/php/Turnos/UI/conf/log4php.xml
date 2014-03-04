@@ -1,8 +1,12 @@
 <configuration xmlns="http://logging.apache.org/log4php/">
 
-	<appender name="fileAppender" class="LoggerAppenderFile">
-		<layout class="LoggerLayoutPattern" />
-		<param name="file" value="/var/www/turnos_ui/logs/turnos_ui.log" />
+	<appender name="fileAppender" class="LoggerAppenderRollingFile">
+		<layout class="LoggerLayoutPattern">
+			<param name="conversionPattern" value="%date %-5level %msg%n " />
+		</layout>
+		<param name="file" value="/var/www/turnos_ui/logs/file-debug.log" />
+		<param name="maxFileSize" value="1MB" />
+        <param name="maxBackupIndex" value="5" />
 	</appender>
 	
 	<appender name="default" class="LoggerAppenderEcho">

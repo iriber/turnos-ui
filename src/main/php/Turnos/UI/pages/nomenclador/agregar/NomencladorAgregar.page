@@ -1,0 +1,14 @@
+<rasty specificationClass="Turnos\UI\pages\nomenclador\agregar\NomencladorAgregar" templateLocation="pages/nomenclador/agregar/NomencladorAgregar.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+
+	<component id="nomencladorForm" type="NomencladorForm">
+		<param name="legend" value="msg:nomenclador.agregar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="action" value="linkActionAgregarNomenclador" />
+		<param name="method" value="str:post" />
+		<param name="nomenclador" value="nomenclador" />
+	</component>
+	
+</rasty>

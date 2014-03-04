@@ -9,6 +9,9 @@ use Rasty\i18n\Locale;
 use Rasty\exception\RastyException;
 use Cose\criteria\impl\Criteria;
 
+use Turnos\Core\model\Profesional;
+use Turnos\Core\model\Especialidad;
+
 use Turnos\Core\service\ServiceFactory;
 use Cose\Security\model\User;
 
@@ -65,6 +68,26 @@ class UIProfesionalService {
 
 	}
 	
+	public function getProfesionalesByEspecialidad( $especialidadOid ){
+		
+		
+		$especialidadService = ServiceFactory::getEspecialidadService();
+		$especialidad = $especialidadService->get( $especialidadOid );
+		
+		
+		$service = ServiceFactory::getProfesionalService();
+		$profesionales = $service->getProfesionalesByEspecialidad( $especialidad );
+		
+		return $profesionales;
+	}
+	
+	public function hasEspecialidad( Profesional $profesional, Especialidad $especialidad ){
+		
+		$service = ServiceFactory::getProfesionalService();
+		$ok = $service->hasEspecialidad( $profesional, $especialidad );
+		
+		return $ok;
+	}
 	
 }
 ?>

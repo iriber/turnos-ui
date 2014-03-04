@@ -1,0 +1,20 @@
+<rasty specificationClass="Turnos\UI\pages\obrasSociales\modificar\ObraSocialModificar" templateLocation="pages/obrasSociales/modificar/ObraSocialModificar.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+	<param name="obraSocialOid" value="get:oid" />
+
+	<layout type="RastyHeaderFooterLayout">
+		<param name="header" value="header" />
+		<param name="footer" value="footer" />
+	</layout>
+
+	<component id="obraSocialForm" type="ObraSocialForm">
+		<param name="legend" value="msg:obraSocial.modificar.legend" />
+		<param name="action" value="linkActionModificarObraSocial" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="method" value="str:post" />
+		<param name="obraSocial" value="obraSocial" />
+	</component>
+	
+</rasty>

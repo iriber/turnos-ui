@@ -55,6 +55,8 @@ $(function() {
 	observer = new Observer("tipoAgendaChange", tipoAgendaChange);
 	subject.addObserver( observer );
 
+	observer = new Observer("especialidadChange", especialidadChange);
+	subject.addObserver( observer );
 	
 	
 	
@@ -117,9 +119,32 @@ function tipoAgendaChange(event){
 			$('#fechaPicker').datepicker("setDate", $fechaNueva);
 			//alert($fechaNueva);
 		} 
-			
+	}
+}
+
+function especialidadChange(event){
+
+	if( event.type == "Especialidad" ){
+		especialidad = event.data;
+
+		//voy a buscar los profesionales de esa especialidad.
+		doGetProfefionalesByEspecialidad( especialidad["especialidadOid"], loadProfesionales );
+		
 	}
 	
+}
+
+function loadProfesionales( data ){
+
+	$('#profesionalOid')
+    .find('option')
+    .remove();
+    
+	for (var i=0;i<data.length;i++){
+		$("#profesionalOid").append("<option value='" + data[i][0] + "'>" + data[i][1] + "</option>");
+	}
+
+	profesional_change();
 }
 
 /*
@@ -139,10 +164,24 @@ function profesional_change( attrs ){
 
 	data = new Array();
 	data["profesionalOid"] = $("#profesionalOid").val();
+	data["especialidadOid"] = $("#especialidadOid").val();
 	event = new Event("profesionalChange", data, "Profesional");
 	subject.notify(event);
 }
 
+function especialidad_change( attrs ){
+
+	$('#profesionalOid').find('option').remove();
+	
+	
+	//ir a buscar los profesionales de la especialidad.
+
+	data = new Array();
+	data["especialidadOid"] = $("#especialidadOid").val();
+	data["profesionalOid"] = $("#profesionalOid").val();
+	event = new Event("especialidadChange", data, "Especialidad");
+	subject.notify(event);
+}
 
 /*
 function actualizarAgenda(){
@@ -164,6 +203,16 @@ function actualizarAgenda(){
 	<div id="turnos_left" >	
 		
 		<form class="turnos_form" id="form_agenda" action="" >
+		<fieldset>
+			<legend>{especialidad_subtitle}</legend>
+			<select style="font-size:120%; width: 100%;" id="especialidadOid"  name="especialidadOid"  
+					onchange="especialidad_change();" 
+					jVal="{valid:function (val) { return required(val,'{msg_especialidad_required}'); }}">
+					<!-- BEGIN: especialidad_option -->
+				    <option value={value}>{label}</option>
+				    <!-- END: especialidad_option -->
+			</select>
+		</fieldset>
 		<fieldset>
 			<legend>{profesional_subtitle}</legend>
 			<select style="font-size:120%; width: 100%;" id="profesionalOid"  name="profesionalOid"  

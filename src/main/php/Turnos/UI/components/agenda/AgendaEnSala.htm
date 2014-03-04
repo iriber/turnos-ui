@@ -24,12 +24,12 @@ $(document).ready(function(){
 	<div class="totalPacientes">{totalPacientes_label}: {totalPacientes}</div>
 		<!-- BEGIN: turno -->
 		<div class="agenda_turno {first_css} {last_css} {odd_css}" style="display: block;">
-			<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente}<br>
+			<h2 class="{prioridad_css}" title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente}<br>
 			<span>{obra_social}</span>
 			<span>{importe}</span>
 			</h2>
 			<p class="{turno_css}">
-				<span>{hora}</span>
+				<span>{hora}<!-- BEGIN:duracion -->{duracion}<!-- END:duracion --></span>
 				<!-- BEGIN: iniciar -->
 				<a style="cursor: pointer;" title="{iniciar_label}" href="#" onclick="javascript: iniciarTurno('{linkIniciar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaEnSala{id}_turnoChange);return false;" >
 				<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_iniciar.png"/></a>
@@ -48,6 +48,11 @@ $(document).ready(function(){
 				<!-- END: ensala_finalizar -->
 				
 			</p>
+			<!-- BEGIN: prioridaddd -->
+			<p class="{prioridad_css}">
+				{prioridad}
+			</p>
+			<!-- END: prioridaddd -->
 		</div>
 		<!-- END: turno -->
 		

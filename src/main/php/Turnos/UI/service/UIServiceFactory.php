@@ -82,4 +82,12 @@ class UIServiceFactory {
 	
 		return UIPracticaService::getInstance();	
 	}
+	
+	/**
+	 * @return UIEspecialidadService
+	 */
+	public static function getUIEspecialidadService(){
+	
+		return UIEspecialidadService::getInstance();	
+	}
 }

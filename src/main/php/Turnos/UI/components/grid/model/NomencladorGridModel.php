@@ -12,6 +12,9 @@ use Turnos\UI\service\UIServiceFactory;
 use Rasty\utils\RastyUtils;
 use Rasty\utils\Logger;
 
+use Rasty\Menu\menu\model\MenuOption;
+use Rasty\Menu\menu\model\MenuGroup;
+
 /**
  * Model para la grilla de Nomenclador.
  * @author bernardo
@@ -33,8 +36,16 @@ class NomencladorGridModel extends EntityGridModel{
     
     public function getFilter(){
     	
-    	$criteria = new UINomencladorCriteria();
-		return $criteria;    	
+    	$componentConfig = new ComponentConfig();
+	    $componentConfig->setId( "nomencladorfilter" );
+		$componentConfig->setType( "NomencladorFilter" );
+		
+		//TODO esto setearlo en el .rasty
+	    $this->filter = ComponentFactory::buildByType($componentConfig, $this);
+	    
+    	$filter = new UINomencladorCriteria();
+		return $filter;    	
+    	    	
     }
     
     
@@ -57,9 +68,36 @@ class NomencladorGridModel extends EntityGridModel{
 	public function getDefaultOrderField(){
 		return "nombre";
 	}    
-
+	
 	public function getEntityId( $anObject ){
 		return $anObject->getCodigo();
+	}
+	
+	/**
+	 * opciones de menú dado el item
+	 * @param unknown_type $item
+	 */
+	public function getMenuGroups( $item ){
+	
+		//FIXME seguir según NoticiaGridModel.
+		//pasar css y js.
+		
+		$group = new MenuGroup();
+		$group->setLabel("grupo");
+		$options = array();
+		
+		
+		$menuOption = new MenuOption();
+		$menuOption->setLabel( $this->localize( "menu.nomenclador.modificar") );
+		$menuOption->setPageName( "NomencladorModificar" );
+		$menuOption->addParam("oid",$item->getOid());
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/editar_32.png" );
+		$options[] = $menuOption ;
+		
+		$group->setMenuOptions( $options );
+		
+		return array( $group );
+		
 	}
 }
 ?>

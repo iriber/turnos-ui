@@ -18,6 +18,7 @@ use Turnos\Core\model\Turno;
 use Turnos\Core\model\EstadoTurno;
 use Turnos\Core\model\ObraSocial;
 use Turnos\Core\model\Profesional;
+use Turnos\Core\model\Prioridad;
 
 use Rasty\utils\LinkBuilder;
 use Rasty\utils\Logger;
@@ -67,7 +68,9 @@ class TurnoForm extends Form{
 		$this->addProperty("nroObraSocial");
 		$this->addProperty("importe");
 		$this->addProperty("estado");
-
+		$this->addProperty("prioridad");
+		$this->addProperty("duracion");
+		
 		$this->setBackToOnSuccess("TurnosHome");
 		$this->setBackToOnCancel("TurnosHome");	
 	}
@@ -120,6 +123,9 @@ class TurnoForm extends Form{
 		$xtpl->assign("lbl_nroObraSocial", $this->localize("turno.nroObraSocial") );
 		$xtpl->assign("lbl_estado", $this->localize("turno.estado") );
 		$xtpl->assign("lbl_importe", $this->localize("turno.importe") );
+		$xtpl->assign("lbl_prioridad", $this->localize("turno.prioridad") );
+		$xtpl->assign("lbl_duracion", $this->localize("turno.duracion") );
+		
 	}
 
 
@@ -229,5 +235,18 @@ class TurnoForm extends Form{
 	{
 	    $this->estadoUrgente = $estadoUrgente;
 	}
+	
+	public function getPrioridades(){
+		
+		return TurnosUtils::localizeEntities(Prioridad::getItems());	
+		
+	}
+	
+	public function getDuraciones(){
+		
+		return TurnosUtils::getDuracionesTurno();	
+		
+	}
+	
 }
 ?>

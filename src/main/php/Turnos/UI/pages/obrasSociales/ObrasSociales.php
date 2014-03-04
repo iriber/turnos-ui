@@ -39,7 +39,8 @@ class ObrasSociales extends TurnosPage{
 		$menuOption = new MenuOption();
 		$menuOption->setLabel( $this->localize( "obraSocial.agregar") );
 		$menuOption->setPageName("ObraSocialAgregar");
-		//$menuGroup->addMenuOption( $menuOption );
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/obrasSociales_48.png" );
+		$menuGroup->addMenuOption( $menuOption );
 		
 		
 		return array($menuGroup);

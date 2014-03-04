@@ -1,0 +1,13 @@
+<rasty specificationClass="Turnos\UI\pages\reportes\estadoActual\EstadoActual" templateLocation="pages/reportes/estadoActual/EstadoActual.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+
+	<component id="totalesDia" type="TotalesDia">
+		<param name="fecha" value="fecha" />
+	</component>
+
+	<component id="turnosEnCurso" type="TurnosEnCurso">
+		<param name="fecha" value="fecha" />
+	</component>
+	
+</rasty>

@@ -15,6 +15,7 @@ use Rasty\i18n\Locale;
 use Turnos\Core\model\Profesional;
 use Turnos\Core\model\EstadoTurno;
 use Turnos\Core\model\Turno;
+use Turnos\Core\model\Prioridad;
 
 
 /**
@@ -132,16 +133,27 @@ class AgendaDiariaHelper{
 
 		$index=0;
 		$totalTurnos = count($grillaHorarios);
+		$turnoAnteriorHoraDesde = null;
+		$turnoAnteriorHoraHasta = null;
+		
+		$indexMostrados = 0;
 		
 		foreach ($grillaHorarios as $horaDesde => $turno) {
 			
 			$index++;
 			
+			//chequeamos si no es abarcado por el turno anterior.
+			//en este caso, no dibujamos las horas para asignar turnos pero si hay un turno en el medio, lo mostramos igual
+			//por si hay un sobreturno.
+			$correspondeTurnoAnterior = false;
+			if( TurnosUtils::horaSuperpuesta( $horaDesde, $turnoAnteriorHoraDesde, $turnoAnteriorHoraHasta  ) )
+				$correspondeTurnoAnterior = true;;
+			
 			//recuperamos la ausencia para el horario si es que existe.
 			$ausencia = self::getAusencia($horaDesde, $ausencias);
 			
-			//el turno estará disponible si, no hay ausencia y no fue otorgado.
-			$turnoDisponible = ($ausencia==null)|| ($turno != null) ;
+			//el turno estará disponible si, no hay ausencia o no fue otorgado.
+			$turnoDisponible = ($ausencia==null)|| ($turno != null);
 			
 			//el turno se mostrará como no disponible en caso de tener una ausencia para la fecha y horario
 			//o bien puede ser que se haya dado un sobreturno??.
@@ -151,17 +163,14 @@ class AgendaDiariaHelper{
 			$xtpl->assign("hora", $horaDesde );
 			$xtpl->assign("horaEncode", urlencode($horaDesde) );
 			
-			$xtpl->assign("odd_css", (($index % 2) == 0)?"odd":"");
-			$xtpl->assign("first_css", ($index == 1)?"first":"");
-			$xtpl->assign("last_css", ($index == $totalTurnos)?"last":"");
-				
+			
 			//parseamos el turno.
 			if( $turno == null ){
 				
-				//turno vacíó, link para dar de alta.
+				//turno vacío, link para dar de alta.
 				
 				//TODO chequeamos si es un horario no disponible.
-				if( $turnoDisponible ){
+				if( $turnoDisponible && !$correspondeTurnoAnterior){
 
 					$params = array();
 					$params["hora"] = $horaDesde; 
@@ -176,7 +185,7 @@ class AgendaDiariaHelper{
 					$xtpl->parse("main.turno.$templateBlockTurno.agregar");
 
 					$xtpl->parse("main.turno.$templateBlockTurno.libre");
-				}else{
+				}elseif( !$correspondeTurnoAnterior){
 					
 					//mostramos las observaciones si:
 					//si el anterior turno tenía fecha no disponible igual al que estamos mostrando, no mostramos las observaciones
@@ -204,6 +213,26 @@ class AgendaDiariaHelper{
 			}else{
 				
 				//turno ocupado, mostramos el paciente y las distintas opciones
+				
+				//duración del turno
+				$duracion = $turno->getDuracion();
+				if($duracion>15){
+					$xtpl->assign("duracion", " ($duracion min)" );
+					$xtpl->parse("main.turno.$templateBlockTurno.duracion");
+				}
+				
+				//como la duración ya no es fija, puede abarcar varios turnos fijos, vamos
+				//a guardar lo que abarca el turno => horasDesde a horaHasta. Con esto, antes de
+				//mostrar el próximo turno, chequeamos si está incluido por este mismo. 
+				$turnoAnteriorHoraDesde = $horaDesde;
+				$turnoAnteriorHoraHasta = TurnosUtils::addMinutes($horaDesde, "H:i", $duracion);
+				
+				//mostramos la prioridad.
+				if( $turno->getPrioridad() > 1 ){
+					$xtpl->assign("prioridad_css", TurnosUtils::getPrioridadTurnoCss($turno->getPrioridad()));
+					$xtpl->assign("prioridad", TurnosUtils::localize( Prioridad::getLabel($turno->getPrioridad()) ) );
+					$xtpl->parse("main.turno.$templateBlockTurno.ocupado.prioridad");
+				}
 				
 				$xtpl->assign("turno_css", TurnosUtils::getEstadoTurnoCss($turno->getEstado()));
 					
@@ -245,8 +274,27 @@ class AgendaDiariaHelper{
 				$xtpl->parse("main.turno.$templateBlockTurno.ocupado");
 			}
 
-			$xtpl->parse("main.turno.$templateBlockTurno");
-			$xtpl->parse("main.turno");
+			
+			//si na hoy turno dado y el horario se superpone con el turno anterior, no mostramos el horario
+			if( $correspondeTurnoAnterior && $turno == null){
+					
+				//TODO
+				
+			}else{
+
+				$indexMostrados++;
+				
+				$xtpl->assign("odd_css", (($indexMostrados % 2) == 0)?"odd":"");
+				$xtpl->assign("first_css", ($indexMostrados == 1)?"first":"");
+				$xtpl->assign("last_css", ($indexMostrados == $totalTurnos)?"last":"");
+				
+				$xtpl->assign("prioridad_css", "");
+				
+				
+				$xtpl->parse("main.turno.$templateBlockTurno");
+				$xtpl->parse("main.turno");	
+			}
+			
 		}
 		
 		

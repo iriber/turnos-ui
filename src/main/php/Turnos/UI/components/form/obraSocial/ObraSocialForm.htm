@@ -1,0 +1,44 @@
+<!-- BEGIN:main -->
+
+<div>
+<form class="turnos_form" id="obrasSociales_form" onsubmit="return validate('obrasSociales_form');" action="{action}" method="{method}">
+
+		<fieldset>
+		<legend>{legend}</legend>
+
+		<rasty id="backSuccess" />
+		
+	    <rasty id="oid" />
+		
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nombre">{lbl_nombre} *:</label>
+		    <rasty id="nombre" />
+		</div>
+		
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="codigo">{lbl_codigo}:</label>
+		    <rasty id="codigo" />
+		</div>
+		
+	</fieldset>
+
+	<!-- BEGIN: msg_error -->
+	<fieldset class="ui-state-error">
+			{msg}	
+	</fieldset>
+	<!-- END: msg_error -->
+	
+</form>
+<form  class="turnos_form" id="buttons{inputId}">
+	<fieldset class="tblFooters">
+	
+		<button type="button"  id="input_submit" onclick="javascript: submitFormulario('obrasSociales_form'); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
+
+		<button type="button"  id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; "><i class="icon-cancel-2 on-left"></i>{lbl_cancel}</button>
+	
+	</fieldset>
+</form>	
+
+
+</div>
+<!-- END:main -->

@@ -5,6 +5,7 @@
 	<component id="agenda" type="AgendaTurnos">
 		<param name="fecha" value="fecha" />
 		<param name="profesional" value="profesional" />		
+		<param name="especialidad" value="especialidad" />
 	</component>
 		
 </rasty>

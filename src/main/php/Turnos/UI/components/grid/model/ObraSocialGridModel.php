@@ -13,6 +13,9 @@ use Turnos\UI\service\UIServiceFactory;
 use Rasty\utils\RastyUtils;
 use Rasty\utils\Logger;
 
+use Rasty\Menu\menu\model\MenuOption;
+use Rasty\Menu\menu\model\MenuGroup;
+
 /**
  * Model para la grilla de obras sociales.
  * @author bernardo
@@ -33,6 +36,13 @@ class ObraSocialGridModel extends EntityGridModel{
     }
     
     public function getFilter(){
+    	
+    	$componentConfig = new ComponentConfig();
+	    $componentConfig->setId( "obraSocialfilter" );
+		$componentConfig->setType( "ObraSocialFilter" );
+		
+		//TODO esto setearlo en el .rasty
+	    $this->filter = ComponentFactory::buildByType($componentConfig, $this);
     	
     	$criteria = new UIObraSocialCriteria();
 		return $criteria;    	
@@ -68,6 +78,31 @@ class ObraSocialGridModel extends EntityGridModel{
 		return "nombre";
 	}    
 	
+	/**
+	 * opciones de menú dado el item
+	 * @param unknown_type $item
+	 */
+	public function getMenuGroups( $item ){
 	
+		//FIXME seguir según NoticiaGridModel.
+		//pasar css y js.
+		
+		$group = new MenuGroup();
+		$group->setLabel("grupo");
+		$options = array();
+		
+		
+		$menuOption = new MenuOption();
+		$menuOption->setLabel( $this->localize( "menu.obraSocial.modificar") );
+		$menuOption->setPageName( "ObraSocialModificar" );
+		$menuOption->addParam("oid",$item->getOid());
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/editar_32.png" );
+		$options[] = $menuOption ;
+		
+		$group->setMenuOptions( $options );
+		
+		return array( $group );
+		
+	}	
 }
 ?>

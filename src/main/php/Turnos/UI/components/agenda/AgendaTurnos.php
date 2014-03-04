@@ -43,6 +43,10 @@ class AgendaTurnos extends RastyComponent{
 	const AGENDA_DIARIA = "diaria";
 	const AGENDA_SEMANAL = "semanal";
 	
+	private $especialidad;
+	
+	private $especialidadOid;
+	
 	public function getType(){
 		
 		return "AgendaTurnos";
@@ -81,9 +85,50 @@ class AgendaTurnos extends RastyComponent{
 			$this->setTipoAgenda(TurnosUtils::getTipoAgenda());
 		}
 		
+		$especialidad = $this->getEspecialidad();
+		if( $especialidad == null ){
+			
+			$especialidadOid = $this->getEspecialidadOid();
+			if(!empty($especialidadOid) ){
+				
+				//$profesional->setOid( $profesionalOid );
+				$especialidad =  UIServiceFactory::getUIEspecialidadService()->get($especialidadOid) ;
+				
+				$this->setEspecialidad($especialidad);
+			}else{
+				$this->setEspecialidad(TurnosUtils::getEspecialidadAgenda());
+			}
+		}
+		
+		//chequeamos la especialidad que puede haber cambiado
+		//si el profesional no tiene la especialidad, lo quitamos.
+		
+		
 		TurnosUtils::setFechaAgenda($this->getFecha());
-		TurnosUtils::setProfesionalAgenda($this->getProfesional());
+		
+		if( $this->getProfesional() !=null ){
+//			
+//			if( $this->getEspecialidad() !=null ){
+//				
+//				$ok = UIServiceFactory::getUIProfesionalService()->hasEspecialidad( $this->getProfesional(), $this->getEspecialidad() );
+//				
+//				if(!$ok){
+//					$this->setProfesional( null );
+//				}else 
+//					TurnosUtils::setProfesionalAgenda($this->getProfesional());		
+//			}
+//			else 
+//			
+			TurnosUtils::setProfesionalAgenda($this->getProfesional());
+			
+			
+		}
+		
 		TurnosUtils::setTipoAgenda($this->getTipoAgenda());
+		
+		if( $this->getEspecialidad() !=null )
+			TurnosUtils::setEspecialidadAgenda($this->getEspecialidad());
+		
 	}
 	
 	
@@ -91,18 +136,26 @@ class AgendaTurnos extends RastyComponent{
 		
 		$this->initParams();
 		
-		if( $this->getTipoAgenda() == self::AGENDA_DIARIA)
-				
-			AgendaDiariaHelper::parseAgenda($xtpl, $this->getProfesional(), $this->getFecha());
-				
-		elseif($this->getTipoAgenda() == self::AGENDA_SEMANAL){
+		if( $this->getProfesional() != null ){
 			
-			 AgendaSemanalHelper::parseAgenda2($xtpl, $this->getProfesional(), $this->getFecha());
+				if( $this->getTipoAgenda() == self::AGENDA_DIARIA)
 				
+					AgendaDiariaHelper::parseAgenda($xtpl, $this->getProfesional(), $this->getFecha());
+						
+				elseif($this->getTipoAgenda() == self::AGENDA_SEMANAL){
+					
+					 AgendaSemanalHelper::parseAgenda2($xtpl, $this->getProfesional(), $this->getFecha());
+						
+				}else{
+					
+					AgendaSemanalHelper::parseAgenda2($xtpl, $this->getProfesional(), $this->getFecha());
+				}			
 		}else{
 			
-			AgendaSemanalHelper::parseAgenda2($xtpl, $this->getProfesional(), $this->getFecha());
+			
 		}
+		
+
 		
 		$xtpl->assign("tipoAgenda", $this->getTipoAgenda());
 	}
@@ -162,6 +215,7 @@ class AgendaTurnos extends RastyComponent{
 		$this->addEventType( "Turno" );
 		$this->addEventType( "Profesional" );
 		$this->addEventType( "TipoAgenda" );
+		//$this->addEventType( "Especialidad" );
 	}
 	
 	/*
@@ -771,5 +825,25 @@ class AgendaTurnos extends RastyComponent{
 	
 
 	
+
+	public function getEspecialidad()
+	{
+	    return $this->especialidad;
+	}
+
+	public function setEspecialidad($especialidad)
+	{
+	    $this->especialidad = $especialidad;
+	}
+
+	public function getEspecialidadOid()
+	{
+	    return $this->especialidadOid;
+	}
+
+	public function setEspecialidadOid($especialidadOid)
+	{
+	    $this->especialidadOid = $especialidadOid;
+	}
 }
 ?>

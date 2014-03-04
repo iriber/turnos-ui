@@ -11,6 +11,7 @@ use Rasty\utils\RastyUtils;
 use Rasty\utils\LinkBuilder;
 use Rasty\utils\XTemplate;
 use Rasty\i18n\Locale;
+use Rasty\utils\Logger;
 
 use Turnos\Core\model\Profesional;
 use Turnos\Core\model\EstadoTurno;
@@ -157,13 +158,14 @@ class AgendaSemanalHelper{
 	 * Enter description here ...
 	 * @param unknown_type $turnosSemana
 	 */
-	private static function armarGrillaHorarios($rangosMatriz, $ausencias, $horarios, $turnosSemana,\Datetime $fechaDesde, \Datetime $fechaHasta, Profesional $profesional){
+	private static function GrillaHorarios($rangosMatriz, $ausencias, $horarios, $turnosSemana,\Datetime $fechaDesde, \Datetime $fechaHasta, Profesional $profesional){
 		
 		$matriz = array();
 		
 		//la matriz va quedando matriz[dia][horarios] = horarios del día.
 		$fecha = new \Datetime();
 		$fecha->setTimestamp($fechaDesde->getTimestamp() );
+		
 		
 		while ( $fecha <= $fechaHasta ){
 			
@@ -223,7 +225,7 @@ class AgendaSemanalHelper{
 		$rangosMatriz = self::getRangosMatriz( $horarios, $turnosSemana );
 		
 		//armamos la grilla de horarios.
-		$grillaHorarios = self::armarGrillaHorarios($rangosMatriz, $ausencias, $horarios, $turnosSemana, $fechaDesde, $fechaHasta, $profesional);
+		$grillaHorarios = self::GrillaHorarios($rangosMatriz, $ausencias, $horarios, $turnosSemana, $fechaDesde, $fechaHasta, $profesional);
 
 		$xtpl->assign("linkBorrar",   LinkBuilder::getActionAjaxUrl( "BorrarTurno") );
 		$xtpl->assign("borrar_label", self::localize( "turno.borrar" ) );
@@ -247,7 +249,7 @@ class AgendaSemanalHelper{
 			//si para la hora indicada no hay nada (ni horarios, ni turnos) directamente no la mostramos.
 			if(  !self::isGrillaHoraVacia($grillaHorarios, $horaKey)  )
 				
-					self::parseHora($xtpl, $grillaHorarios, $horaKey, $profesional );
+					self::parseHora($xtpl, $grillaHorarios, $horaKey, $profesional, $rangosMatriz );
 			
 			$hora->modify("$duracionMenor minutes");				
 				
@@ -256,11 +258,15 @@ class AgendaSemanalHelper{
 		
 	}
 	
-	private static function parseHora(XTemplate $xtpl, $grillaHorarios, $horaKey, $profesional){
+	private static function parseHora(XTemplate $xtpl, $grillaHorarios, $horaKey, $profesional, $rangosMatriz){
 		
 		$xtpl->assign("hora", $horaKey);
 		
 		//recorremos para cada fecha
+		$fechaAnterior = null;
+
+		$horasMostradas = self::getHorasMostradas($grillaHorarios);
+		
 		foreach ($grillaHorarios as $fecha => $matriz) {
 			
 			//fecha es un string Y-m-d
@@ -268,16 +274,24 @@ class AgendaSemanalHelper{
 			$fechaMostrar = TurnosUtils::getNewDate($fechaArray[2], $fechaArray[1], $fechaArray[0]);
 			$fechaMostrar = TurnosUtils::formatDateToView($fechaMostrar, "D j-M");
 			
-			
 			$horarios = $matriz["horarios"];
 			$ausencias = $matriz["ausencias"];
 			$turnos = $matriz["turnos"];
+			
+			//vemos si el horario+fecha corresponde al turno anterior.
+			//tenemos que comparar con el turno anterior de la fecha dada
+			$correspondeTurnoAnterior = self::correspondeTurnoAnterior( $horaKey, $fecha, $grillaHorarios );
 			
 			//si hay turno, lo muestro
 			if( array_key_exists($horaKey, $turnos)){
 				
 				//hay un turno asignado
 				$turno = $turnos[$horaKey];
+				
+				$cantidadFilas = self::getCantidadFilas( $fecha, $grillaHorarios, $turno, $rangosMatriz, $horasMostradas );
+				
+				$xtpl->assign("turno_filas", $cantidadFilas);
+				
 				
 				$xtpl->assign("turno_css", TurnosUtils::getEstadoTurnoCss($turno->getEstado()));
 					
@@ -316,7 +330,13 @@ class AgendaSemanalHelper{
 				
 				$xtpl->parse("main.hora.dia.turno");
 				
+			}elseif( $correspondeTurnoAnterior){
+				
+				$xtpl->parse("main.hora.dia.turno_extendido");
+				
 			}elseif( array_key_exists($horaKey, $horarios)){
+				
+				$xtpl->assign("turno_filas", 1);
 				
 				//atiende.
 				
@@ -332,6 +352,8 @@ class AgendaSemanalHelper{
 					$xtpl->parse("main.hora.dia.turno_ausencia");
 					
 				}else{
+					
+					//TODO chequear si corresponde a otro turno (mayores a la duración estándar).
 					
 					//agregar turno.
 					$xtpl->assign("turno_css", "turno_vacio_disponible");
@@ -351,6 +373,8 @@ class AgendaSemanalHelper{
 				
 			}else{
 				
+				$xtpl->assign("turno_filas", 1);
+				
 				//vacío, no mostrar nada. posible sobreturno?			
 				$xtpl->assign("turno_css", "turno_vacio_sobreturno");
 				$params = array( $horaKey, $fechaMostrar );
@@ -366,6 +390,9 @@ class AgendaSemanalHelper{
 			}
 			
 			$xtpl->parse("main.hora.dia");
+			
+			$fechaArray = explode("-", $fecha);
+			$fechaAnterior = TurnosUtils::getNewDate($fechaArray[2], $fechaArray[1], $fechaArray[0]);
 		}			
 					
 		
@@ -403,7 +430,7 @@ class AgendaSemanalHelper{
 	 * Enter description here ...
 	 * @param unknown_type $turnosSemana
 	 */
-	private static function armarMatrizTurnos($turnosSemana,\Datetime $fechaDesde, \Datetime $fechaHasta, Profesional $profesional){
+	private static function MatrizTurnos($turnosSemana,\Datetime $fechaDesde, \Datetime $fechaHasta, Profesional $profesional){
 		
 		$matriz = array();
 		
@@ -458,8 +485,10 @@ class AgendaSemanalHelper{
 	private static function agregarSobreturnos($matriz, $turnosSemana, \Datetime $fechaDesde, \Datetime $fechaHasta ){
 		
 		//si la matriz no tiene como clave la hora de la matriz, tenemos que agregar el turno.
-
+		
+		
 		//primero, obtenemos los sobreturnos, los vamos agrupando por hora.
+		
 		$sobreturnos = array();
 		foreach ($turnosSemana as $turno) {
 			
@@ -474,6 +503,8 @@ class AgendaSemanalHelper{
 			 }
 		}
 		
+		$horariosSobreturno = array();
+		
 		foreach ($sobreturnos as $horaTurno => $turnos) {
 			
 			$horaMin = explode(":", $horaTurno);
@@ -482,6 +513,7 @@ class AgendaSemanalHelper{
 			$matriz[$horaTurno] = self::getTurnosHora($hora, $turnos,$fechaDesde, $fechaHasta, "vacio"); //array con los turnos de cada día en ese horario.
 			
 		}
+		
 		
 		return $matriz;
 	}
@@ -608,7 +640,7 @@ class AgendaSemanalHelper{
 		
 		$turnosSemana = UIServiceFactory::getUITurnoService()->getTurnosSemana($fechaDesde, $fechaHasta, $profesional);
 		
-		$turnosMostrar = self::armarMatrizTurnos($turnosSemana,$fechaDesde, $fechaHasta, $profesional);
+		$turnosMostrar = self::MatrizTurnos($turnosSemana,$fechaDesde, $fechaHasta, $profesional);
 		
 
 		foreach ($turnosMostrar as $hora => $turnosHora) {
@@ -697,6 +729,97 @@ class AgendaSemanalHelper{
 	private static function localize($keyMessage){
 		return Locale::localize( $keyMessage );
 	}
+
 	
+	private static function correspondeTurnoAnterior( $horaKey, $fecha, $grillaHorarios ){
+		
+		$turnos = $grillaHorarios[$fecha]["turnos"];	
+	 
+		//vemos si en la grilla hay un turno que tenga la hora incluida
+		$correspondeTurnoAnterior = false;
+		foreach ($turnos as $horaTurno => $turno) {
+			
+			if( $turno!=null ){
+				$turnoHoraDesde = $turno->getHora()->format("H:i");
+				$duracion = $turno->getDuracion();
+				$turnoHoraHasta = TurnosUtils::addMinutes($turnoHoraDesde, "H:i", $duracion);
+				if( TurnosUtils::horaSuperpuesta( $horaKey, $turnoHoraDesde, $turnoHoraHasta  ) )
+					$correspondeTurnoAnterior = true;	
+			}
+			
+			
+		}
+		
+		return $correspondeTurnoAnterior;
+		
+	}
+	
+	private static function getCantidadFilas( $fecha, $grillaHorarios, $turno, $rangosMatriz, $horasMostradas ){
+		
+		//calculamos la cantidad de filas de la grilla que abarca el turno.
+		$turnoHoraDesde = $turno->getHora()->format("H:i");
+		$duracion = $turno->getDuracion();
+		$turnoHoraHasta = TurnosUtils::addMinutes($turnoHoraDesde, "H:i", $duracion);
+		
+		$turnos = $grillaHorarios[$fecha]["turnos"];
+		
+		
+		//vamos viendo los horarios de la grilla.
+		$cantidadFilas = 1;
+		$terminar = false;
+		//while ($hora<=$horaHasta && !$terminar) {
+		$index = 0;
+		while( $index < count($horasMostradas) && !$terminar){
+
+			$horaKey = $horasMostradas[$index];
+			
+			if ( $horaKey == $turno->getHora()->format("H:i") ){
+				//nada.
+				
+			}elseif(TurnosUtils::horaSuperpuesta($horaKey, $turnoHoraDesde, $turnoHoraHasta) ){
+				
+				
+				if( array_key_exists($horaKey, $turnos) ) //si hay otro turno,terminamos. 
+					$terminar = true;
+				else 
+					$cantidadFilas++;
+			}
+			
+			
+			//$hora->modify("$duracionMenor minutes");
+			$index++;
+		}
+		
+		//Logger::log( "cantidad de filas para $horaKey dia  $fecha: $cantidadFilas");
+		return $cantidadFilas;
+		
+	}
+
+	private static function getHorasMostradas($grillaHorarios){
+
+		$hora = new \DateTime();
+		//$hora->setTimestamp( $horaDesde->getTimestamp() );
+		$hora->setTime(0, 0);
+		$horaHasta = new \DateTime();
+		$horaHasta->setTime(23, 59);
+		$duracionMenor = 1;
+		
+		$horariosGrilla = array();
+		while ($hora<=$horaHasta) {
+
+			$horaKey = $hora->format("H:i");
+
+			//si para la hora indicada no hay nada (ni horarios, ni turnos) directamente no la mostramos.
+			if(  !self::isGrillaHoraVacia($grillaHorarios, $horaKey)  )
+				
+					$horariosGrilla[] = $horaKey;
+			
+							
+			$hora->modify("$duracionMenor minutes");			
+		}
+		ksort($horariosGrilla);
+		return $horariosGrilla;
+	}
+
 }
 ?>

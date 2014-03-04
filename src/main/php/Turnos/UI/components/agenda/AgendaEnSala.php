@@ -14,6 +14,7 @@ use Rasty\utils\XTemplate;
 use Turnos\Core\model\Profesional;
 use Turnos\Core\model\EstadoTurno;
 use Turnos\Core\model\Turno;
+use Turnos\Core\model\Prioridad;
 
 use Rasty\utils\LinkBuilder;
 
@@ -38,7 +39,10 @@ class AgendaEnSala extends RastyComponent{
 
 	public function __construct(){
 		
-		$this->setProfesional(TurnosUtils::getProfesionalLogged());
+		
+		if(TurnosUtils::isProfesionalLogged());
+			$this->setProfesional(TurnosUtils::getProfesionalLogged());
+		
 		$this->setFecha( new \Datetime() );
 		
 		
@@ -75,6 +79,19 @@ class AgendaEnSala extends RastyComponent{
 				
 		$xtpl->assign("turno_css", TurnosUtils::getEstadoTurnoCss($turno->getEstado()));
 			
+		//mostramos la prioridad.
+		$xtpl->assign("prioridad_css", TurnosUtils::getPrioridadTurnoCss($turno->getPrioridad()));
+		if( $turno->getPrioridad() > 1 ){
+			$xtpl->assign("prioridad_css", TurnosUtils::getPrioridadTurnoCss($turno->getPrioridad()));
+			$xtpl->assign("prioridad", TurnosUtils::localize( Prioridad::getLabel($turno->getPrioridad()) ) );
+			$xtpl->parse("main.turno.prioridad");
+		}
+		
+		$duracion = $turno->getDuracion();
+		if($duracion>15){
+			$xtpl->assign("duracion", " ($duracion min)" );
+			$xtpl->parse("main.turno.duracion");
+		}
 				
 		$cliente = $turno->getCliente();
 		if($cliente->getOid()>0){
@@ -96,22 +113,30 @@ class AgendaEnSala extends RastyComponent{
 		$xtpl->assign("importe", TurnosUtils::formatMontoToView($turno->getImporte()) );
 		$xtpl->assign("turno_oid",  $turno->getOid() );
 			
-		if( $turno->getEstado() == EstadoTurno::EnCurso ){
+		
+		//TODO esto sólo cuando tengo el profesional.
+		if( $this->getProfesional() != null ){
 			
-			$xtpl->parse("main.turno.finalizar");
-		}
+			if( $turno->getEstado() == EstadoTurno::EnCurso ){
+				
+				$xtpl->parse("main.turno.finalizar");
+			}
+		
+			if( $turno->getEstado() == EstadoTurno::EnSala ){
+				
+				$xtpl->parse("main.turno.iniciar");
+			}
 	
-		if( $turno->getEstado() == EstadoTurno::EnSala ){
-			
-			$xtpl->parse("main.turno.iniciar");
+			if( $turno->getEstado() == EstadoTurno::Asignado || $turno->getEstado() == EstadoTurno::Atendido){
+				
+				$xtpl->parse("main.turno.ensala");
+			}
+				
+			$xtpl->parse("main.turno.editar");
+				
 		}
-
-		if( $turno->getEstado() == EstadoTurno::Asignado || $turno->getEstado() == EstadoTurno::Atendido){
-			
-			$xtpl->parse("main.turno.ensala");
-		}
-			
-		$xtpl->parse("main.turno.editar");
+		
+		
 
 		$xtpl->parse("main.turno");
 	}

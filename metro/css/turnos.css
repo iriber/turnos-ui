@@ -280,6 +280,16 @@
 	font-weight: bold;
 }
 
+.prioridad_normal{
+	
+}
+.prioridad_media{
+	border-left: 4px solid blue;
+}
+.prioridad_alta{
+	border-left: 4px solid red;
+}
+
 #agenda_no_atiende{
 	width: 80%;
 	text-align: center;

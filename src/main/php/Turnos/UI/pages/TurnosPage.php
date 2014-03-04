@@ -82,5 +82,29 @@ abstract class TurnosPage extends RastyPage{
 		return LinkBuilder::getActionUrl( "AgregarAusencia") ;
 		
 	}
+	
+	public function getLinkActionAgregarNomenclador(){
+		
+		return LinkBuilder::getActionUrl( "AgregarNomenclador") ;
+		
+	}
+	
+	public function getLinkActionModificarNomenclador(){
+		
+		return LinkBuilder::getActionUrl( "ModificarNomenclador") ;
+		
+	}
+	
+	public function getLinkActionAgregarObraSocial(){
+		
+		return LinkBuilder::getActionUrl( "AgregarObraSocial") ;
+		
+	}
+	
+	public function getLinkActionModificarObraSocial(){
+		
+		return LinkBuilder::getActionUrl( "ModificarObraSocial") ;
+		
+	}
 }
 ?>

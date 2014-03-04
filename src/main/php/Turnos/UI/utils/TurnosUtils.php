@@ -4,15 +4,20 @@ namespace Turnos\UI\utils;
 use Turnos\UI\components\agenda\AgendaTurnos;
 
 use Rasty\utils\RastyUtils;
+use Rasty\utils\Logger;
 
 use Turnos\Core\model\Profesional;
 use Turnos\Core\model\EstadoTurno;
 use Turnos\Core\model\Ausencia;
+use Turnos\Core\model\Prioridad;
+use Turnos\Core\model\Especialidad;
+
 use Rasty\i18n\Locale;
 use Rasty\conf\RastyConfig;
 
 use Cose\Security\model\Usergroup;
 use Cose\Security\model\User;
+
 
 /**
  * Utilidades para el sistema.
@@ -70,6 +75,8 @@ class TurnosUtils {
     	$appName = RastyConfig::getInstance()->getAppName();
 		
         $_SESSION [$appName]["profesional_oid"] = null;
+        $_SESSION [$appName]["profesional_nombre"] = null;
+        $_SESSION [$appName]["profesional_matricula"] = null;
         unset($_SESSION [$appName]["profesional_oid"]);
         unset($_SESSION [$appName]["profesional_nombre"]);
         unset($_SESSION [$appName]["profesional_matricula"]);
@@ -102,10 +109,14 @@ class TurnosUtils {
     	
     	$data = RastyUtils::getParamSESSION( $appName );
     	
+    	
+    	if( !self::isProfesionalLogged() )
+    		return null;
+    	
     	$profesional = new Profesional();
         $profesional->setOid($data["profesional_oid"]);
         $profesional->setNombre($data["profesional_nombre"]);
-        
+       
         return $profesional;
     }
 
@@ -766,4 +777,88 @@ class TurnosUtils {
 		return $fecha1->format("Ymd") == $fecha2->format("Ymd");
 	}
 	
+	public static function getPrioridadTurnoCss($prioridad){
+		$estilos = array(
+						Prioridad::Normal=> "prioridad_normal",
+						Prioridad::Media=> "prioridad_media",
+						Prioridad::Alta=> "prioridad_alta"
+						);
+		return $estilos[$prioridad];
+	}
+	
+	/**
+     * seteamos la especialidad de la agenda
+     * @param Especialidad $especialidad
+     */
+	public static function setEspecialidadAgenda(Especialidad $especialidad) {
+		
+		$appName = RastyConfig::getInstance()->getAppName();
+    	
+        $_SESSION [$appName]["agenda_especialidad_oid"] = $especialidad->getOid();
+		$_SESSION [$appName]["agenda_especialidad_nombre"] = $especialidad->getNombre();
+    }
+    
+    /**
+     * @return especialidad de la agenda
+     */
+    public static function getEspecialidadAgenda() {
+        
+    	$appName = RastyConfig::getInstance()->getAppName();
+    	
+    	$data = RastyUtils::getParamSESSION( $appName );
+    	
+    	$especialidad = new Especialidad();
+        $especialidad->setOid($data["agenda_especialidad_oid"]);
+        $especialidad->setNombre($data["agenda_especialidad_nombre"]);
+        
+        return $especialidad;
+    }
+
+    public static function isEspecialidadAgenda() {
+        
+		$appName = RastyConfig::getInstance()->getAppName();
+    	
+    	$data = RastyUtils::getParamSESSION( $appName );
+		
+		$especialidad =  ($data != "");
+		
+		if( $especialidad ){
+			$especialidad = isset($data["agenda_especialidad_oid"]) && !empty($data["agenda_especialidad_oid"]); 
+		}
+		
+		return $especialidad;
+		
+    }
+	
+	public static function getDuracionesTurno(){
+		
+		$items = array();
+		$items[15]=15;
+		$items[30]=30;
+		$items[45]=45;
+		$items[60]=60;
+		$items[90]=90;
+		return $items;
+	}	
+	
+	public static function horaSuperpuesta( $hora, $desde, $hasta  ){
+	
+		$superpuesta = false;
+		
+		if( empty($hora)  || empty($desde)  || empty($hasta) )
+			$superpuesta = false;
+			
+		$timeHora = strtotime($hora);
+		$timeDesde = strtotime($desde);
+		$timeHasta = strtotime($hasta);
+		
+		
+			
+		if( ($timeDesde <= $timeHora)  && ($timeHasta > $timeHora) )
+			$superpuesta = true;
+
+		//Logger::log( " horaSuperpuesta( $hora, $desde, $hasta ) = $superpuesta");		
+		
+		return $superpuesta;
+	}
 }

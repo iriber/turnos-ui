@@ -8,6 +8,7 @@ use Turnos\UI\components\grid\model\NomencladorGridModel;
 
 use Rasty\Grid\filter\Filter;
 use Rasty\utils\XTemplate;
+use Rasty\utils\LinkBuilder;
 
 /**
  * Filtro para buscar nomenclador
@@ -31,7 +32,7 @@ class NomencladorFilter extends Filter{
 		
 		$this->setUicriteriaClazz( get_class( new UINomencladorCriteria()) );
 		
-		$this->setSelectRowCallback("seleccionarNomenclador");
+		//$this->setSelectRowCallback("seleccionarNomenclador");
 		
 		//agregamos las propiedades a popular en el submit.
 		$this->addProperty("nombre");
@@ -46,6 +47,7 @@ class NomencladorFilter extends Filter{
 		$xtpl->assign("lbl_nombre",  $this->localize("nomenclador.nombre") );
 		
 		$xtpl->assign("lbl_codigo",  $this->localize("nomenclador.codigo") );
+		
 	}
 }
 ?>

@@ -39,7 +39,8 @@ class Nomencladores extends TurnosPage{
 		$menuOption = new MenuOption();
 		$menuOption->setLabel( $this->localize( "nomenclador.agregar") );
 		$menuOption->setPageName("NomencladorAgregar");
-		//$menuGroup->addMenuOption( $menuOption );
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/nomenclador_48.png" );
+		$menuGroup->addMenuOption( $menuOption );
 		
 		
 		return array($menuGroup);
