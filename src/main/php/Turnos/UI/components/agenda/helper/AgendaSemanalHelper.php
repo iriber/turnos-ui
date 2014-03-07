@@ -249,7 +249,7 @@ class AgendaSemanalHelper{
 			//si para la hora indicada no hay nada (ni horarios, ni turnos) directamente no la mostramos.
 			if(  !self::isGrillaHoraVacia($grillaHorarios, $horaKey)  )
 				
-					self::parseHora($xtpl, $grillaHorarios, $horaKey, $profesional, $rangosMatriz );
+					self::parseHora($xtpl, $grillaHorarios, $horaKey, $profesional, $rangosMatriz, $fechaSeleccionada );
 			
 			$hora->modify("$duracionMenor minutes");				
 				
@@ -258,7 +258,7 @@ class AgendaSemanalHelper{
 		
 	}
 	
-	private static function parseHora(XTemplate $xtpl, $grillaHorarios, $horaKey, $profesional, $rangosMatriz){
+	private static function parseHora(XTemplate $xtpl, $grillaHorarios, $horaKey, $profesional, $rangosMatriz, \Datetime $fechaSeleccionada){
 		
 		$xtpl->assign("hora", $horaKey);
 		
@@ -272,6 +272,21 @@ class AgendaSemanalHelper{
 			//fecha es un string Y-m-d
 			$fechaArray = explode("-", $fecha);
 			$fechaMostrar = TurnosUtils::getNewDate($fechaArray[2], $fechaArray[1], $fechaArray[0]);
+
+			if( TurnosUtils::fechasIguales($fechaSeleccionada, $fechaMostrar)){
+				
+				//chequeo si es la última hora mostrada.(para dar formato a la grilla)
+				$ultimaHora = self::esUltimaHoraGrilla($horaKey, $horasMostradas);
+		
+				if($ultimaHora)
+					$xtpl->assign("turno_dia_css", "agenda_semanal_turno_fechaSeleccionada_last");
+				else	
+					$xtpl->assign("turno_dia_css", "agenda_semanal_turno_fechaSeleccionada");
+				
+			}else{
+				$xtpl->assign("turno_dia_css", "");
+			}
+			
 			$fechaMostrar = TurnosUtils::formatDateToView($fechaMostrar, "D j-M");
 			
 			$horarios = $matriz["horarios"];
@@ -281,6 +296,8 @@ class AgendaSemanalHelper{
 			//vemos si el horario+fecha corresponde al turno anterior.
 			//tenemos que comparar con el turno anterior de la fecha dada
 			$correspondeTurnoAnterior = self::correspondeTurnoAnterior( $horaKey, $fecha, $grillaHorarios );
+			
+		
 			
 			//si hay turno, lo muestro
 			if( array_key_exists($horaKey, $turnos)){
@@ -610,7 +627,7 @@ class AgendaSemanalHelper{
 		while ( $fecha <= $fechaHasta ){
 			
 			if( TurnosUtils::fechasIguales($fecha, $fechaSeleccionada)){
-				$xtpl->assign("dia_css", "agenda_turno_fechaSeleccionada");
+				$xtpl->assign("dia_css", "agenda_semanal_turno_fechaSeleccionada_header");
 			}else{
 				$xtpl->assign("dia_css", "");
 			}
@@ -623,9 +640,11 @@ class AgendaSemanalHelper{
 			$fecha->add(new \DateInterval('P1D'));
 		}
 		
+		$formatoFecha = "j-M";
+		$xtpl->assign("semana", RastyUtils::formatMessage(self::localize( "agenda.semana" ), array(TurnosUtils::formatDateToView($fechaDesde, $formatoFecha), TurnosUtils::formatDateToView($fechaHasta, $formatoFecha)) ) );
 	}
 
-	
+	/*
 	public static function parseAgenda(XTemplate $xtpl, Profesional $profesional, \Datetime $fechaSeleccionada){
 
 		
@@ -654,10 +673,10 @@ class AgendaSemanalHelper{
 				$fechaMostrar = TurnosUtils::getNewDate($fechaArray[2], $fechaArray[1], $fechaArray[0]);
 				$fechaMostrar = TurnosUtils::formatDateToView($fechaMostrar, "D j-M");
 				
+				
 				if($turno==null){
 						
 						$xtpl->assign("turno_css", "turno_vacio_disponible");
-						
 						$params = array( $hora, $fechaMostrar  );
 						$xtpl->assign("mensajeOculto", TurnosUtils::formatMessage( self::localize("turno.agregar.fechaHora"), $params ));
 					
@@ -715,7 +734,7 @@ class AgendaSemanalHelper{
 					$xtpl->parse("main.hora.dia.turno_vacio_sobreturno");	
 				}
 								
-				
+								
 				$xtpl->parse("main.hora.dia");
 			};
 
@@ -724,7 +743,7 @@ class AgendaSemanalHelper{
 		}			
 		
 	}
-	
+	*/
 	
 	private static function localize($keyMessage){
 		return Locale::localize( $keyMessage );
@@ -819,6 +838,14 @@ class AgendaSemanalHelper{
 		}
 		ksort($horariosGrilla);
 		return $horariosGrilla;
+	}
+	
+	private static function esUltimaHoraGrilla( $hora, $horasMostradas){
+		
+		$ultima = $horasMostradas[count($horasMostradas)-1];
+		
+		return ($hora == $ultima);
+		
 	}
 
 }

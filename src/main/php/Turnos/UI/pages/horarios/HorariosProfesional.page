@@ -1,0 +1,31 @@
+<rasty specificationClass="Turnos\UI\pages\horarios\HorariosProfesional" templateLocation="pages/horarios/HorariosProfesional.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+	
+	<param name="profesionalOid" value="get:profesionalOid" />
+
+	<component id="horarioForm" type="HorarioForm">
+		<param name="legend" value="msg:horario.agregar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="method" value="str:post" />
+		<param name="action" value="linkActionAgregarHorario" />
+		<param name="horario.profesional" value="profesional" />
+	</component>
+	
+	<component id="horarios" type="HorariosProfesional">
+		<param name="profesional" value="profesional" />
+	</component>
+	
+	<component id="profesionalMain" type="InputFindEntity">
+		<param name="inputId" value="str:profesionalMain" />
+		<param name="name" value="str:profesionalMain" />
+		<param name="value" value="profesional" />
+		<param name="placeholder" value="msg:horario.profesional" />
+		<param name="finder" value="profesionalFinderClazz" />
+		<param name="requiredMessage" value="msg:horario.profesional.required" />
+		<param name="onSelectCallback" value="str:horariosProfesional_profesional_change" />
+	</component>
+	
+			
+</rasty>

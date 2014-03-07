@@ -312,6 +312,7 @@ class AgendaDiariaHelper{
 
 		
 		$xtpl->assign("fecha_label", self::localize( "agenda.fecha" ) );
+		$xtpl->assign("ver_semana_label", self::localize( "agenda.ver.semana" ) );
 		$xtpl->assign("fecha", TurnosUtils::formatDateToView( $fecha, "d/m/Y ") );
 		$xtpl->assign("profesional_oid",  $profesional->getOid() );
 		

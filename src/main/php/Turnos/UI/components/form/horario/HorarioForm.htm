@@ -1,0 +1,94 @@
+<!-- BEGIN:main -->
+<script language="javascript"
+	src="{WEB_PATH}js/autocomplete/simpleAutoComplete.js"></script>
+<link rel="stylesheet"
+	href="{WEB_PATH}css/autocomplete/simpleAutoComplete.css"
+	type="text/css" />
+
+<script>
+
+$(document).ready(function(){
+	
+	
+});
+
+function horarios_horarioChange(data, profesionalOid){
+
+	//var poid = data["profesionalOid"];
+	data = new Array();
+	data["profesionalOid"] = profesionalOid;
+	event = new Event("horariochange", data, "Horario");
+	subject.notify(event);
+	
+}
+
+</script>
+
+<div>
+<style>
+.ejemplo{
+	font-style: italic;
+	color:#000;
+	
+}
+#form_horario label{
+
+width:10em;
+}
+
+</style>
+
+
+
+<form class="turnos_form" id="form_horario" action="{action}"  method="{method}">		
+	
+	
+		<fieldset>
+			<legend>
+			{horario_agregar_legend}
+			</legend>
+
+			<div class="item">
+		    	<label for="profesional">{lbl_profesional}</label>
+		    	<rasty id="profesional" />
+			</div>
+
+			<div class="item">
+			    <label for="dia">{lbl_dia} *:</label>
+			    <rasty id="dia" />
+			</div>
+			
+			<div class="item">
+		    	<label for="horaDesde">
+		    	{lbl_horaDesde} *: </label>
+		    	<rasty id="horaDesde"/>
+			</div>
+			
+			<div class="item">
+		    	<label for="horaHasta">
+		    	{lbl_horaHasta} *: </label>
+		    	<rasty id="horaHasta"/>
+			</div>
+
+			<div class="item">
+			    <label for="duracionTurno">{lbl_duracionTurno} *:</label>
+			    <rasty id="duracionTurno" />
+			</div>
+			
+			
+		</fieldset>
+		
+		<fieldset id="buttons"  class="tblFooters">
+		
+			<button type="button"  id="input_submit" onclick="javascript: submitFormulario('form_horario'); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
+
+			<button type="button"  id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; "><i class="icon-cancel-2 on-left"></i>{lbl_cancel}</button>
+		
+		</fieldset>
+		<div style="clear: both;"></div>
+	</form>
+		
+	
+
+</div>
+<!-- END:main -->

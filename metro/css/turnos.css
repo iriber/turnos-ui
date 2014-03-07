@@ -1,4 +1,8 @@
 
+.currentTime{
+	font-style: bold;
+	font-size: 120%;
+}
 
 .btn-icon-finalizar-turno{
 	background: url("images/turno_finalizar.png") no-repeat scroll 0 0;
@@ -522,11 +526,28 @@ fieldset .agenda {
 	/*max-height: 400px;*/
 }
 
-.agenda_turno_fechaSeleccionada{
+.agenda_semanal_turno_fechaSeleccionada_header{
 
-	background-color: #000;
-	color:#FFF;
-	font-weight: bold;
+	background-color: #45407B !important;
+	color:#FFF !important;
+	font-weight: bold !important;
+	
+	border-right: 5px solid #45407B !important;
+	border-left: 5px solid #45407B !important; 
+	border-top: 5px solid #45407B !important;
+}
+
+.agenda_semanal_turno_fechaSeleccionada{
+
+	border-right: 5px solid #45407B !important;
+	border-left: 5px solid #45407B !important; 
+}
+
+.agenda_semanal_turno_fechaSeleccionada_last{
+
+	border-right: 5px solid #45407B !important;
+	border-left: 5px solid #45407B !important;
+	border-bottom: 5px solid #45407B !important; 
 }
 
 .table_agenda_semanal td h2{
@@ -632,6 +653,28 @@ fieldset .agenda {
 	font-weight: bold;
 	color: blue;
 	margin-left: 50px;
+}
+
+/* horarios */
+#horarios_home{
+	margin: 30px auto 0;
+    text-align: center;
+    width: 100%;
+}
+#horarios_left{
+	float: left;
+	width: 50%;
+}
+
+#horarios_right{
+	float: right;
+	width: 50%;
+	position:relative;
+}
+
+.horario_dia{
+	font-size: 120%;
+	font-weight: bold;
 }
 
 

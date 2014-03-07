@@ -13,6 +13,7 @@ use Turnos\Core\criteria\HorarioCriteria;
 
 use Turnos\Core\model\Profesional;
 use Turnos\Core\model\Ausencia;
+use Turnos\Core\model\Horario;
 
 /**
  * 
@@ -66,6 +67,43 @@ class UIHorarioService {
 		}
 	}
 	
+	public function add( Horario $horario){
+
+		try {
+
+			$service = ServiceFactory::getHorarioService();
+		
+			$service->add( $horario );
+		
+		} catch(DuplicatedEntityException $ex){
+		
+			$re = new RastyDuplicatedException( $ex->getMessage() );
+			$re->setOid($ex->getOid());
+			throw $re;
+			
+		} catch (\Exception $e) {
+			
+			throw new RastyException($e->getMessage());
+			
+		}
+
+	}
+	
+		
+	public function delete( $oid ){
+		
+		try{
+		
+			$service = ServiceFactory::getHorarioService();
+		
+			return $service->delete( $oid );
+			
+		} catch (ServiceException $e) {
+			
+			throw new RastyException($e->getMessage());
+			
+		}
+	}
 	
 }
 ?>

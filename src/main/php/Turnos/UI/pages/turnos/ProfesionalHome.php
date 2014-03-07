@@ -69,8 +69,13 @@ class ProfesionalHome extends TurnosPage{
 		$menuOption = new MenuOption();
 		$menuOption->setLabel( $this->localize( "ausencia.agregar" ) );
 		$menuOption->setPageName("AusenciaAgregar");
-		
 		$menuOption->setImageSource( $this->getWebPath() . "css/images/ausencias_48.png" );
+		$menuGroup->addMenuOption( $menuOption );
+
+		$menuOption = new MenuOption();
+		$menuOption->setLabel( $this->localize( "horario.definir" ) );
+		$menuOption->setPageName("HorariosProfesional");
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/horarios_48.png" );
 		$menuGroup->addMenuOption( $menuOption );
 		
 		return array($menuGroup);

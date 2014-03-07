@@ -6,6 +6,7 @@
 	
 	"menu.page":"Opciones de la página",
 	"menu.main":"Menú de navegación",
+	"menu.main.reload":"Actualizar la página",
 	
 	"menu.turnos":"Agenda de turnos",
 	"menu.estadoActual":"Vista general del Instituto",
@@ -138,10 +139,12 @@
 	"agenda.verficha": "Ver ficha del paciente",
 	"agenda.ver.dia": "Ver detalle del día",
 	"agenda.totalPacientes": "# Pacientes",
+	"agenda.ver.semana": "Ver semana",
+	"agenda.semana": "Semana del $1 al $2",
 
 	"turno.fecha": "Fecha",
 	"turno.hora": "Hora",
-	"turno.duracion": "Duración",
+	"turno.duracion": "Duración (min)",
 	"turno.profesional": "Médico",
 	"turno.cliente": "Paciente",
 	"turno.estado": "Estado",
@@ -372,6 +375,22 @@
  	"estadoActual.title": "Monitoreo de la clínica",
  	"estadoActual.enCurso.legend": "Profesionales atendiendo",
    	"estadoActual.stats.legend": "Estadísticas de pacientes",
+ 
+ 	"horarios.profesional.title": "Horarios  de Profesional",
+ 	"horarios.profesional_legend": "Profesional",
+ 	"horarios.horarios_legend": "Horarios de",
+ 	
+	"horario.definir": "Definir horarios de atención",
+	"turno.agregar.fechaHora": "$1 - $2",
+	"horario.definir.title": "Horarios del profesional",
+	
+	"horario.agregar.legend": "Ingrese un nuevo horario",
+
+    "horario.dia":"Día",
+    "horario.horaDesde":"Hora de inicio",
+   	"horario.horaHasta":"Hora de fin",
+   	"horario.duracionTurno":"Duración del turno",
+   	"horario.profesional":"Profesional",
    	
    	"grid.operaciones": "Operaciones",
    	"grid.resultados": "Resultados de la búsqueda",

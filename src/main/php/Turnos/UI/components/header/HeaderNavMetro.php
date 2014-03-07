@@ -32,10 +32,12 @@ class HeaderNavMetro extends HeaderNav{
 		$titles[] = $this->localize("app.title");
 		$titles[] = $this->getTitle();
 		
-		$xtpl->assign("mjpanel_titulo", implode(" / ", $titles));
+		//$xtpl->assign("mjpanel_titulo", implode(" / ", $titles));
 		
 		$xtpl->assign("menu_page", $this->localize("menu.page"));
 		$xtpl->assign("menu_main", $this->localize("menu.main"));
+		
+		$xtpl->assign("reloadLabel", $this->localize("menu.main.reload"));
 		
 		$user = RastySecurityContext::getUser();
 		

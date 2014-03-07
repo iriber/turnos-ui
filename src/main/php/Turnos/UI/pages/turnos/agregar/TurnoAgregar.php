@@ -44,8 +44,10 @@ class TurnoAgregar extends TurnosPage{
 		}	
 		
 		$turno->setObraSocial( new ObraSocial() );
-		
+
 		$this->setTurno($turno);
+
+		$this->setearDuracion();
 		
 		$this->backTo = "TurnosHome";		
 	}
@@ -89,6 +91,9 @@ class TurnoAgregar extends TurnosPage{
 				$time = new \DateTime();
 				$time->setTime($arrayHoraMinutos[0],$arrayHoraMinutos[1],0);
 				$this->getTurno()->setHora( $time );
+				
+				$this->setearDuracion();
+				
 			}
 		}
 	}
@@ -129,14 +134,15 @@ class TurnoAgregar extends TurnosPage{
 	 * parametro de la página para setear la fecha del turno.
 	 * @param string (Y-m-d) $fecha
 	 */
-	public function setFecha($fecha)
-	{
+	public function setFecha($fecha){
 		if( !empty($fecha) ){
 				$arrayFecha = explode("-", $fecha);
 				if( count($arrayFecha)>2 ){
 					$f = new \DateTime();
 					$f->setDate($arrayFecha[0],$arrayFecha[1],$arrayFecha[2]);
 					$this->getTurno()->setFecha( $f );
+					
+					$this->setearDuracion();
 				}
 		}
 	}
@@ -149,6 +155,24 @@ class TurnoAgregar extends TurnosPage{
 	
 	public function getMsgError(){
 		return "";
+	}
+	
+	public function setearDuracion(){
+		
+		//dada la fecha y hora buscamos cuánto sería la duración estándar del turno.
+		
+		$hora = $this->getTurno()->getHora();
+		$horariosDelDia = UIServiceFactory::getUIHorarioService()->getHorariosDelDia($this->getTurno()->getFecha(), $this->getTurno()->getProfesional() );
+		$duracionTurno = 15;
+		foreach ($horariosDelDia as $horario) {
+			
+			if( $horario->incluyeHora( $hora ) )
+				$duracionTurno = $horario->getDuracionTurno() ;
+			
+		}
+		
+		$this->getTurno()->setDuracion( $duracionTurno );
+		
 	}
 }
 ?>

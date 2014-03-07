@@ -298,3 +298,61 @@ function doGetProfefionalesByEspecialidad(especialidadOid, onSuccess ){
     		  	}
     	});      
 }
+
+function updateClock( divId ){
+	var d = new Date();
+	var sec = d.getSeconds();
+	var min = d.getMinutes();
+	var hs = d.getHours();
+	
+	if(sec < 10) 
+		sec = "0" + sec;
+	
+	if(min < 10) 
+		min = "0" + min;
+	
+	if(hs < 10) 
+		hs = "0" + hs;
+	
+	var time = hs + ":" + min + ":" + sec;
+	$(divId).html( time );
+}
+
+
+function borrarHorario(link, oid, dia, desde, hasta, onSuccess){
+	$title = "Borrar horario";
+	$texto = "Confirma borrar el horario del dia " + dia + " de " + desde +  " a " + hasta +"?";
+	$params = new Array();
+	$params["url"] = link + "?oid="+oid;
+	$params["onSuccess"] = onSuccess;
+
+	jAlertConfirm( $title, $texto, doBorrarHorario, $params );
+}
+
+function doBorrarHorario( params ){
+	
+	$.ajax({
+    		  	url: params["url"],
+    		  	type: "GET",
+    		  	dataType: "json",
+    		  	cache: false,
+    			complete:function(){
+    				//$("#loading").hide();
+    				//$("#current_action").html("");
+    			},
+    		  	success: function(data){
+        		  	
+    				//$("#nextOffer").html("");
+    				if( data != null && data["error"]!=null){
+    					msg = data["error"];
+    					showErrorMessage(msg);
+    				}
+    				if( data != null && data["info"]!=null){
+						//quitamos de la agenda la fila
+						//que corresponde al turno eliminado
+						//$("#turno_" + oid).fadeOut(500);
+    				}
+    				params["onSuccess"](data);
+    		  	}
+    	});      
+}

@@ -1,0 +1,5 @@
+<rasty specificationClass="Turnos\UI\components\horarios\HorariosProfesional" templateLocation="HorariosProfesional.htm">
+
+	<param name="profesionalOid" value="get:oid" />
+	
+</rasty>

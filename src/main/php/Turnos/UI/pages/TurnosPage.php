@@ -106,5 +106,11 @@ abstract class TurnosPage extends RastyPage{
 		return LinkBuilder::getActionUrl( "ModificarObraSocial") ;
 		
 	}
+	
+	public function getLinkActionAgregarHorario(){
+		
+		return LinkBuilder::getActionUrl( "AgregarHorario") ;
+		
+	}
 }
 ?>

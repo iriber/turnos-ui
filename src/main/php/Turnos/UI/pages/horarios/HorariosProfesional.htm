@@ -1,0 +1,47 @@
+<!-- BEGIN: main-->
+<script>
+
+function horariosProfesional_profesional_change( attrs ){
+
+	$("#profesional_nombre").html( "{horarios_legend} " + attrs["nombre"] );
+
+
+	
+	data = new Array();
+	data["oid"] = attrs["oid"];
+	data["profesionalOid"] = attrs["oid"];
+	event = new Event("profesionalChange", data, "Profesional");
+	subject.notify(event);
+	
+}
+
+</script>
+
+<div id="horarios_home">
+
+	<div align="justify">
+		<p class="titulo">{title}</p>
+	</div>
+
+	<fieldset>
+		<legend>{profesional_legend}</legend>
+		<div class="item">
+	    	<label for="profesionalMain">{lbl_profesional}</label>
+	    	<rasty id="profesionalMain" />
+		</div>
+		
+	</fieldset>
+
+	<div id="horarios_left">
+		<fieldset>
+			<legend id="profesional_nombre">{horarios_legend} {profesionalNombre}</legend>
+			<rasty id="horarios" />	
+		</fieldset>
+	</div>
+	
+	<div id="horarios_right">
+		<rasty id="horarioForm" />
+	</div>
+
+</div>
+<!-- END: main-->

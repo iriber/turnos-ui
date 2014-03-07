@@ -60,14 +60,14 @@ reinit();
 <div class="agenda">
 
 		<!-- BEGIN: agendaSemanalTitle -->
-		<span id="fecha_title">{fecha_label} {fecha}
+		<span id="fecha_title">{fecha_label} {semana}
 		<!-- END: agendaSemanalTitle -->
 		
 		<!-- BEGIN: agendaDiariaTitle -->
 		<span id="fecha_title">{fecha_label} {fecha}
 		
 		&nbsp;&nbsp;
-		<a href="#" onclick="javascript: agendaTurnos{id}_tipoAgendaSemanal();" >Ver semana</a>
+		<a href="#" onclick="javascript: agendaTurnos{id}_tipoAgendaSemanal();" >{ver_semana_label}</a>
 		
 		</span>
 		<!-- END: agendaDiariaTitle -->
@@ -176,7 +176,7 @@ reinit();
 			<!-- BEGIN: dia -->
 			
 			<!-- BEGIN:turno -->
-			<td class="{turno_css}" rowspan={turno_filas}>
+			<td class="{turno_css} {turno_dia_css}" rowspan={turno_filas}>
 				<div class="turno_ocupado">
 				
 					<div class="horizontal-menu" >
@@ -210,19 +210,19 @@ reinit();
 			<!-- END:turno -->
 
 			<!-- BEGIN:turno_ausencia -->
-			<td class="{turno_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+			<td class="{turno_css}  {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
 				 {mensajeOculto}
 			</td>
 			<!-- END:turno_ausencia -->
 			
 			<!-- BEGIN:turno_vacio_sobreturno -->
-			<td class="{turno_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
 				 {mensajeOculto}
 			</td>
 			<!-- END:turno_vacio_sobreturno -->
 			
 			<!-- BEGIN:turno_vacio_disponible -->
-			<td class="{turno_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
 				 {mensajeOculto} 
 			</td>
 			<!-- END:turno_vacio_disponible -->

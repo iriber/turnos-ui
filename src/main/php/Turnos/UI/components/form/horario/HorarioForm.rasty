@@ -1,0 +1,57 @@
+<rasty specificationClass="Turnos\UI\components\form\horario\HorarioForm" templateLocation="HorarioForm.htm">
+
+	<param name="error" value="get:error" />
+	<param name="profesionalOid" value="get:profesionalOid" />
+
+	<component id="backSuccess" type="InputHidden">
+		<param name="inputId" value="str:backToOnSuccess" />
+		<param name="name" value="str:backToOnSuccess" />
+		<param name="value" value="backToOnSuccess" />
+	</component>
+
+	<component id="profesional" type="InputFindEntity">
+		<param name="inputId" value="str:profesional" />
+		<param name="name" value="str:profesional" />
+		<param name="value" value="horario.profesional" />
+		<param name="placeholder" value="msg:horario.profesional" />
+		<param name="finder" value="profesionalFinderClazz" />
+		<param name="requiredMessage" value="msg:horario.profesional.required" />
+		<param name="isEditable" value="boolean:false" />
+	</component>
+
+	<component id="horaDesde" type="InputTime">
+		<param name="inputId" value="str:horaDesde" />
+		<param name="name" value="str:horaDesde" />
+		<param name="value" value="horario.horaDesde" />
+		<param name="placeholder" value="msg:horario.horaDesde" />
+		<param name="interval" value="str:30" />
+	</component>
+
+	<component id="horaHasta" type="InputTime">
+		<param name="inputId" value="str:horaHasta" />
+		<param name="name" value="str:horaHasta" />
+		<param name="value" value="horario.horaHasta" />
+		<param name="placeholder" value="msg:horario.horaHasta" />
+		<param name="interval" value="str:30" />
+	</component>
+	
+
+	<component id="dia" type="InputCombo">
+		<param name="inputId" value="str:dia" />
+		<param name="name" value="str:dia" />
+		<param name="value" value="horario.dia" />
+		<param name="options" value="dias" />
+		<param name="placeholder" value="msg:horario.dia" />
+		<param name="requiredMessage" value="msg:horario.dia.required" />
+	</component>
+	
+	<component id="duracionTurno" type="InputCombo">
+		<param name="inputId" value="str:horario" />
+		<param name="name" value="str:horario" />
+		<param name="value" value="horario.duracionTurno" />
+		<param name="options" value="duraciones" />
+		<param name="placeholder" value="msg:horario.duracionTurno" />
+		<param name="requiredMessage" value="msg:horario.duracionTurno.required" />
+	</component>
+	
+</rasty>

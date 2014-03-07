@@ -8,6 +8,8 @@
 
 	<page name="AusenciaAgregar"   location="pages/horarios/agregar/AusenciaAgregar.page" url="ausencia/agregar"/>
 
+	<page name="HorariosProfesional"   location="pages/horarios/HorariosProfesional.page" url="horarios/profesional"/>
+
 	<page name="Nomencladores"   location="pages/nomenclador/Nomencladores.page" url="nomenclador"/>
 	<page name="NomencladorAgregar"   location="pages/nomenclador/agregar/NomencladorAgregar.page" url="nomenclador/agregar"/>
 	<page name="NomencladorModificar"   location="pages/nomenclador/modificar/NomencladorModificar.page" url="nomenclador/modificar"/>
@@ -52,6 +54,8 @@
 	<component name="HistoriaClinica" location="components/historia" />
 
 	<component name="AusenciaForm"   location="components/form/horario"/>
+	<component name="HorarioForm"   location="components/form/horario"/>
+	<component name="HorariosProfesional"   location="components/horarios"/>
 	
 	<component name="TurnoForm"   location="components/form/turno"/>
 	<component name="TurnosCliente"   location="components/turnos"/>
@@ -97,6 +101,8 @@
 
 	<action name="AgregarAusencia" class="Turnos\UI\actions\horarios\AgregarAusencia" url="ausencia/agregar"/>
 	<action name="BorrarAusencia" class="Turnos\UI\actions\horarios\BorrarAusencia" url="ausencia/borrar"/>
+	<action name="AgregarHorario" class="Turnos\UI\actions\horarios\AgregarHorario" url="horarios/agregar"/>
+	<action name="BorrarHorario" class="Turnos\UI\actions\horarios\BorrarHorario" url="horarios/borrar"/>
 	
 	<action name="AgregarCliente" class="Turnos\UI\actions\clientes\AgregarCliente" url="pacientes/agregar"/>
 	<action name="AgregarClienteJson" class="Turnos\UI\actions\clientes\AgregarClienteJson" url="pacientes/agregarjson"/>
