@@ -61,6 +61,10 @@ class ClienteGridModel extends EntityGridModel{
 		$this->addColumn( $column );
 		//$this->addFilter( GridModelBuilder::buildFilterModelFromColumn( $column ) );
 
+		
+		$column = GridModelBuilder::buildColumn( "nroHistoriaClinica", "cliente.nroHistoriaClinica", 20, EntityGrid::TEXT_ALIGN_RIGHT );
+		$this->addColumn( $column );
+		
 		/*
 		$column = GridModelBuilder::buildColumn( "apellido", TRN_LBL_CLIENTE_APELLIDO, 30 );
 		$this->addColumn( $column );

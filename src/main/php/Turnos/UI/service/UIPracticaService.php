@@ -1,6 +1,8 @@
 <?php
 namespace Turnos\UI\service;
 
+use Turnos\UI\components\filter\model\UIPracticaCriteria;
+
 use Rasty\components\RastyPage;
 use Rasty\utils\XTemplate;
 use Rasty\i18n\Locale;
@@ -112,5 +114,49 @@ class UIPracticaService {
 		}	
 	}
 
+	public function getList( UIPracticaCriteria $uiCriteria){
+
+		try{
+			$criteria = $uiCriteria->buildCoreCriteria() ;
+			
+			$service = ServiceFactory::getPracticaService();
+			
+			$practicas = $service->getList( $criteria );
+	
+			return $practicas;
+			
+		} catch (\Exception $e) {
+			
+			throw new RastyException($e->getMessage());
+			
+		}	
+	}
+	
+	
+	function getEntities($uiCriteria){
+		
+		return $this->getList($uiCriteria);
+
+	}
+	
+
+	function getEntitiesCount($uiCriteria){
+
+		try{
+			
+			$criteria = $uiCriteria->buildCoreCriteria() ;
+			
+			$service = ServiceFactory::getPracticaService();
+			$practicas = $service->getCount( $criteria );
+			
+			return $practicas;
+			
+		} catch (\Exception $e) {
+			
+			throw new RastyException($e->getMessage());
+			
+		}
+	}
+	
 }
 ?>

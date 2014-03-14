@@ -29,6 +29,7 @@
 
 	<page name="HistoriaClinica"   location="pages/practicas/historia/HistoriaClinica.page" url="historia"/>
 
+	<page name="Practicas"   location="pages/practicas/Practicas.page" url="practicas"/>
 	<page name="PracticaAgregar"   location="pages/practicas/agregar/PracticaAgregar.page" url="practicas/agregar"/>
 	<page name="PracticaModificar"   location="pages/practicas/modificar/PracticaModificar.page" url="practicas/modificar"/>
 
@@ -78,7 +79,8 @@
 	<component name="LocalidadFilter"   location="components/filter/localidad"/>
 
 	<component name="PracticaForm"   location="components/form/practica"/>
-
+	<component name="PracticaFilter"   location="components/filter/practica"/>
+	
 
 	<component name="AyudaColoresAgenda"   location="components/ayuda/agenda"/>
 	<component name="AyudaIconosAgenda"   location="components/ayuda/agenda"/>

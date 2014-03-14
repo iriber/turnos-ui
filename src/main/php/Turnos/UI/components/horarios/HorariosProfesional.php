@@ -66,18 +66,18 @@ class HorariosProfesional extends RastyComponent{
 
 		//$xtpl->assign("finalizarTurnoCallback",  $this->getFinalizarTurnoCallback() );
 		
-		$diaAnterior = null;
+		$diaAnterior = -1;
 		foreach ($horarios as $horario) {
 			
 			
-			if( $diaAnterior!=null && $diaAnterior!=$horario->getDia()){
+			if( $diaAnterior>=0 && $diaAnterior!=$horario->getDia()){
+				$xtpl->assign("dia",  $this->localize( DiaSemana::getLabel($diaAnterior) ) );
 				$xtpl->parse("main.horario");	
 			}
 			
 			//$xtpl->assign("turno_css", TurnosUtils::getEstadoTurnoCss($turno->getEstado()));	
 			$xtpl->assign("horario_oid",  $horario->getOid() );
 			$xtpl->assign("profesional_oid",  $horario->getProfesional()->getOid() );
-			$xtpl->assign("dia",  $this->localize( DiaSemana::getLabel($horario->getDia()) ) );
 			$xtpl->assign("horaDesde", TurnosUtils::formatTimeToView($horario->getHoraDesde(), "H:i" ) );
 			$xtpl->assign("horaHasta", TurnosUtils::formatTimeToView($horario->getHoraHasta(), "H:i" ) );
 			$xtpl->assign("duracionTurno", $horario->getDuracionTurno() );
@@ -88,10 +88,11 @@ class HorariosProfesional extends RastyComponent{
 				
 		}
 		
-		if( $diaAnterior!=null){
+		if( $diaAnterior>=0){
+			$xtpl->assign("dia",  $this->localize( DiaSemana::getLabel($diaAnterior) ) );
 			$xtpl->parse("main.horario");	
 		}
-		
+			
 
 	}
 	

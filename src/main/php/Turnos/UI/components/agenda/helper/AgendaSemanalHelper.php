@@ -233,6 +233,7 @@ class AgendaSemanalHelper{
 		$xtpl->assign("asignado_label", self::localize( "turno.asignado" ) );
 		$xtpl->assign("linkEnSala",  LinkBuilder::getActionAjaxUrl( "TurnoEnSala") );
 		$xtpl->assign("linkAsignado",  LinkBuilder::getActionAjaxUrl( "TurnoAsignado") );
+		$xtpl->assign("linkHistoriaClinicaLabel", self::localize( "turno.historiaClinica" ) );		
 		
 		$hora = new \DateTime();
 		//$hora->setTimestamp( $horaDesde->getTimestamp() );
@@ -318,6 +319,8 @@ class AgendaSemanalHelper{
 				if(!empty($cliente) && $cliente->getOid()>0){
 					$xtpl->assign("cliente",  $turno->getCliente()->__toString() );
 					$xtpl->assign("cliente_oid",  $turno->getCliente()->getOid());
+					$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );	
+					
 				}else{
 					$xtpl->assign("cliente", $turno->getNombre() );
 				}	

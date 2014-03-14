@@ -60,6 +60,7 @@
 	"ayuda.agenda.asignado-sala.msg": "Utiliza esta opción para indicar que el paciente, asignado al curso, ya se encuentra en sala de espera",
 	"ayuda.agenda.sala-asignado.msg": "Utiliza esta opción para indicar que el paciente se fue sin ser atendido. Por ejemplo, en caso de haberlo puesto en sala por error, o bien, si el paciente se fue por alguna razón y aún no fue atendido.",
 	"ayuda.agenda.borrar.msg": "Utiliza esta opción para borrar los datos del turno. Sirve para liberar el turno en caso de haberlo reservado por error, o bien, que el paciente lo hayo cancelado.",
+	"ayuda.agenda.historiaClinica.msg": "Utiliza esta opción consultar la historia clínica del paciente que solicitó el turno.",
 	
 	"ayuda.panel.sala-encurso.msg":"Utiliza esta opción para indicar que comienzas a atender al paciente",
 	"ayuda.panel.encurso-atendido.msg": "Utiliza esta opción para indicar que el paciente fue atendido",
@@ -132,6 +133,7 @@
 	"turno.iniciar": "Atender",
 	"turno.finalizar": "Finalizar el turno",
 	"turno.asignado": "Volver el turno a Asignado",
+	"turno.historiaClinica": "Ver Historia Clínica",
 	
 
 	"agenda.no_atiende": "No atiende",

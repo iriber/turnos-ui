@@ -1,0 +1,13 @@
+<rasty specificationClass="Turnos\UI\pages\practicas\Practicas" templateLocation="pages/practicas/Practicas.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+
+	<component id="practicasFilter" type="PracticaFilter">
+		<param name="gridModelClazz" value="modelClazz" />
+		<param name="uicriteriaClazz" value="uicriteriaClazz" />
+		<param name="legend" value="msg:practica.buscar" />
+		<param name="legendAgain" value="msg:practica.buscar.again" />
+		<param name="resultDiv" value="str:searchdiv" />
+	</component>
+	
+</rasty>

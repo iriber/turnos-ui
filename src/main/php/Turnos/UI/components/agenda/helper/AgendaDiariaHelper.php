@@ -248,6 +248,8 @@ class AgendaDiariaHelper{
 				$xtpl->assign("linkSeleccionarTurno",   LinkBuilder::getPageUrl( "TurnoModificar" , array("oid"=> $turno->getOid())) );
 				$xtpl->assign("linkSeleccionarLabel",  self::localize("turno.editar") );
 				
+				$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );
+				
 				$xtpl->assign("estado", self::localize(EstadoTurno::getLabel($turno->getEstado())) );
 				
 				$os = $turno->getObraSocial();
@@ -332,7 +334,8 @@ class AgendaDiariaHelper{
 		$xtpl->assign("iniciar_label", self::localize( "turno.iniciar" ) );
 		$xtpl->assign("finalizar_label", self::localize( "turno.finalizar" ) );
 		$xtpl->assign("agregar_sobreturno_label", self::localize( "turno.agregar_sobreturno" ) );		
-
+		$xtpl->assign("historiaClinica_label", self::localize( "turno.historiaClinica" ) );		
+		
 		$xtpl->assign("linkModificar",  LinkBuilder::getPageUrl( "TurnoModificar") );
 		$xtpl->assign("linkBorrar",  LinkBuilder::getActionAjaxUrl( "BorrarTurno") );
 		$xtpl->assign("linkAgregar",  LinkBuilder::getPageUrl( "TurnoAgregar") );
@@ -340,6 +343,7 @@ class AgendaDiariaHelper{
 		$xtpl->assign("linkFinalizar",  LinkBuilder::getActionAjaxUrl( "FinalizarTurno") );
 		$xtpl->assign("linkEnSala",  LinkBuilder::getActionAjaxUrl( "TurnoEnSala") );
 		$xtpl->assign("linkAsignado",  LinkBuilder::getActionAjaxUrl( "TurnoAsignado") );
+		
 		
 	}
 	

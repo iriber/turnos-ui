@@ -1,0 +1,23 @@
+<rasty specificationClass="Turnos\UI\components\filter\practica\PracticaFilter" templateLocation="PracticaFilter.htm">
+
+	<component id="fechaDesde" type="InputDate">
+		<param name="inputId" value="str:fechaDesde" />
+		<param name="name" value="str:fechaDesde" />
+		<param name="value" value="criteria.fechaDesde" />
+		<param name="placeholder" value="msg:practica.fechaDesde" />
+		<param name="numberOfMonths" value="str:1" />
+		<param name="format" value="str:d/m/Y" />
+	</component>
+
+	<component id="fechaHasta" type="InputDate">
+		<param name="inputId" value="str:fechaHasta" />
+		<param name="name" value="str:fechaHasta" />
+		<param name="value" value="criteria.fechaHasta" />
+		<param name="placeholder" value="msg:practica.fechaHasta" />
+		<param name="numberOfMonths" value="str:1" />
+		<param name="format" value="str:d/m/Y" />
+	</component>
+
+
+
+</rasty>

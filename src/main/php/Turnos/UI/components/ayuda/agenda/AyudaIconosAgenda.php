@@ -44,6 +44,9 @@ class AyudaIconosAgenda extends RastyComponent{
 
 		$xtpl->assign("borrar_label", $this->localize( "turno.borrar" ) ); 
 		$xtpl->assign("borrar_msg", $this->localize( "ayuda.agenda.borrar.msg" ));
+		
+		$xtpl->assign("historiaClinica_label", $this->localize( "turno.historiaClinica" ) ); 
+		$xtpl->assign("historiaClinica_msg", $this->localize( "ayuda.agenda.historiaClinica.msg" ));
 	}
 
 }

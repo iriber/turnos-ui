@@ -59,14 +59,14 @@ class HeaderNav extends RastyComponent{
 			$menuOption->setImageSource( $this->getWebPath() . "css/images/profesional_home_48.png" );
 			$menuGroup->addMenuOption( $menuOption );	
 				
-		}
-		
-		$menuOption = new MenuOption();
-		$menuOption->setLabel( $this->localize( "menu.estadoActual" ) );
-		$menuOption->setPageName("EstadoActual");
-		$menuOption->setImageSource( $this->getWebPath() . "css/images/estadoActual_48.png" );
-		$menuGroup->addMenuOption( $menuOption );	
 			
+			$menuOption = new MenuOption();
+			$menuOption->setLabel( $this->localize( "menu.estadoActual" ) );
+			$menuOption->setPageName("EstadoActual");
+			$menuOption->setImageSource( $this->getWebPath() . "css/images/estadoActual_48.png" );
+			$menuGroup->addMenuOption( $menuOption );	
+				
+		}
 		$menuOption = new MenuOption();
 		$menuOption->setLabel( $this->localize( "menu.turnos") );
 		$menuOption->setPageName( "TurnosHome" );

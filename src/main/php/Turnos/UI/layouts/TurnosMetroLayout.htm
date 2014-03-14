@@ -24,11 +24,49 @@
 <!-- BEGIN: script -->
 <script language="javascript" src="{js}"></script>
 <!-- END: script -->
+<script type="text/javascript">
 
+function showInfoMessage( msg, hide ){
+	$( "#layout_info_message" ).html( msg );
+	updated_right = ($(window).width() / 2) - ($( "#layout_info" ).width()/2);
+	$( "#layout_info" ).css({'right': updated_right});
+	
+	if( hide )
+		$( "#layout_info" ).show().delay(4000).slideUp(300);
+	else
+		$( "#layout_info" ).show();
+}
+
+function showErrorMessage( msg, hide ){
+	$( "#layout_error_message" ).html( msg );
+	updated_right = ($(window).width() / 2) - ($( "#layout_error" ).width()/2);
+	$( "#layout_error" ).css({'right': updated_right});
+	
+	if( hide )
+		$( "#layout_error" ).show().delay(4000).slideUp(300);
+	else
+		$( "#layout_error" ).show();
+}
+
+</script>
 </head>
 <body class="rasty metro">
 
 <rasty id="header" />    
+
+<div id="layout_info" class="ui-state-highlight ui-corner-all" style="display:none;position:absolute; right:50%; top:0px;margin: 10px;padding: 6pt .7em;"> 
+	<p>
+	<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+	<span id="layout_info_message"></span>
+	</p>
+</div>
+<div id="layout_error" class="ui-state-error ui-corner-all" style="display:none;position:absolute; right:50%; top:0px;margin: 10px;padding: 6pt .7em;"> 
+	<p>
+	<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+	<span id="layout_error_message"></span>
+	</p>
+</div>
+	
 {page}
 <div id="ui-ayuda"  style="display:none;"></div>
 </body>
