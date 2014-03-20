@@ -240,15 +240,18 @@ class AgendaDiariaHelper{
 				if(!empty($cliente) && $cliente->getOid()>0){
 					$xtpl->assign("cliente",  $turno->getCliente()->__toString() );
 					$xtpl->assign("cliente_oid",  $turno->getCliente()->getOid());
+					$xtpl->assign("telefono", $turno->getCliente()->getTelefonoFijo() . "  " . $turno->getCliente()->getTelefonoMovil());
 					//$xtpl->assign("linkSeleccionarTurno",  LinkBuilder::getPageUrl( "HistoriaClinica" , array("clienteOid"=> $turno->getCliente()->getOid())) );
 					//$xtpl->assign("linkSeleccionarLabel",  $this->localize("agenda.verficha") );
+					$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );
 				}else{
 					$xtpl->assign("cliente", $turno->getNombre() );
+					$xtpl->assign("telefono", $turno->getTelefono() );
 				}	
 				$xtpl->assign("linkSeleccionarTurno",   LinkBuilder::getPageUrl( "TurnoModificar" , array("oid"=> $turno->getOid())) );
 				$xtpl->assign("linkSeleccionarLabel",  self::localize("turno.editar") );
 				
-				$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );
+				
 				
 				$xtpl->assign("estado", self::localize(EstadoTurno::getLabel($turno->getEstado())) );
 				

@@ -41,6 +41,7 @@ class ClienteQuickForm extends Form{
 		$this->addProperty("fechaNacimiento");
 		$this->addProperty("sexo");
 		$this->addProperty("nroHistoriaClinica");
+		$this->addProperty("telefonoFijo");
 		
 		$this->setLegend( $this->localize("cliente.agregar.legend") );
 		

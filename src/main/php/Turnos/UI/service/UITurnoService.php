@@ -18,8 +18,7 @@ use Turnos\Core\model\Profesional;
 use Turnos\Core\model\Turno;
 use Turnos\Core\model\Cliente;
 use Turnos\Core\model\EstadoTurno;
-
-
+use Turnos\Core\exception\TurnoClienteRequiredException;
 
 /**
  * 
@@ -127,6 +126,10 @@ class UITurnoService {
 			$service->add( $turno );
 
 		
+		} catch(TurnoClienteRequiredException $ex){
+		
+			throw $ex;
+		
 		} catch(DuplicatedEntityException $ex){
 		
 			$re = new RastyDuplicatedException( $ex->getMessage() );
@@ -224,7 +227,11 @@ class UITurnoService {
 			$service = ServiceFactory::getTurnoService();
 		
 			return $service->turnoEnSala( $oid );
-
+			
+		} catch ( TurnoClienteRequiredException $e){
+			
+			throw new $e;
+				
 		} catch (ServiceException $e) {
 			
 			throw new RastyException($e->getMessage());

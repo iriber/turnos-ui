@@ -111,7 +111,8 @@
 	"turno.agregar": "Agregar turno",
 	"turno.agregar.fechaHora": "$1 - $2",
 	"turno.agregar.title": "Agregar un nuevo turno",
-	"turno.agregar.legend": "Ingrese los datos del turno",
+	"turno.agregar.legend": "Ingrese los datos del paciente",
+	"turno.agregar.turno_legend": "Datos del turno solicitado",
 
 	"turno.agregar_sobreturno": "Agregar sobre turno",
 	"turno.agregar_sobreturno.title": "Agregar un nuevo sobre turno",
@@ -125,8 +126,17 @@
 	"turno.fecha.required": "Ingrese una fecha",
 	"turno.importe.required": "Ingrese el importe diferencial",
 	"turno.prioridad.required": "Seleccione la prioridad",
-
+	"turno.nombre.required": "Ingrese el nombre del paciente",
+	"turno.telefono.required": "Ingrese el teléfono del paciente",
+	
+	"turno.cliente.validar.msg": "Valide los datos del paciente",
+	"turno.cliente.validar": "validar",
+	
+	
 	"turno.profesional.unicity": "El médico ya tiene asignado el turno. Elija otro día/horario",
+	"turno.enSala.cliente.required": "Debe registrar al paciente para ponerlo en sala",
+	"turno.enSala.cliente.required.title": "Paciente en sala",
+	"turno.enSala.cliente.required.msg": "Debe registrar al paciente para ponerlo en sala. <br /><br /> Desea continuar?",
 
 	"turno.editar": "Editar turno",
 	"turno.modificar.title": "Modificar un turno",
@@ -157,6 +167,8 @@
 	"turno.obraSocial": "Obra social",
 	"turno.nroObraSocial": "Nro Afiliado",
 	"turno.prioridad": "Prioridad",
+	"turno.nombre": "Paciente",
+	"turno.telefono": "Teléfono",
 
 	
 	"ausencia.title":  "Ausencias",

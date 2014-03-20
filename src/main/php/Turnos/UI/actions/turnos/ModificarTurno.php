@@ -57,7 +57,10 @@ class ModificarTurno extends Action{
 			TurnosUtils::setProfesionalAgenda( $turno->getProfesional() );
 			
 			$forward->setPageName( $turnoForm->getBackToOnSuccess() );
-			$forward->addParam( "clienteOid", $turno->getCliente()->getOid() );
+			
+			$cliente = $turno->getCliente();
+			if( !empty($cliente) )
+				$forward->addParam( "clienteOid", $turno->getCliente()->getOid() );
 		
 		} catch (RastyException $e) {
 		

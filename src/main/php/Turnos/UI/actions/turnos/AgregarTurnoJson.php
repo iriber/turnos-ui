@@ -1,9 +1,9 @@
 <?php
-namespace Turnos\UI\actions\clientes;
+namespace Turnos\UI\actions\turnos;
 
 use Turnos\UI\service\UIServiceFactory;
 use Turnos\UI\utils\TurnosUtils;
-use Turnos\Core\model\Cliente;
+use Turnos\Core\model\Turno;
 
 use Rasty\actions\JsonAction;
 use Rasty\utils\RastyUtils;
@@ -19,11 +19,11 @@ use Rasty\factory\ComponentFactory;
 use Rasty\factory\ComponentConfig;
 
 /**
- * se realiza el alta de un cliente.
+ * se realiza el alta de un turno.
  * @author bernardo
- * @since 19/08/2013
+ * @since 20/03/2014
  */
-class AgregarClienteJson extends JsonAction{
+class AgregarTurnoJson extends JsonAction{
 
 	
 	public function execute(){
@@ -32,25 +32,25 @@ class AgregarClienteJson extends JsonAction{
 		
 		$componentConfig = new ComponentConfig();
 	    $componentConfig->setId( "form" );
-		$componentConfig->setType( "ClienteQuickForm" );
+		$componentConfig->setType( "TurnoQuickForm" );
 		
 		//esto setearlo en el .rasty
-	    $clienteForm = ComponentFactory::buildByType($componentConfig);
-	    $clienteForm->setMethod( "POST" );
+	    $turnoForm = ComponentFactory::buildByType($componentConfig);
+	    $turnoForm->setMethod( "POST" );
 	    
 		try {
 
-			//creamos un nuevo cliente.
-			$cliente = new Cliente();
+			//creamos un nuevo turno.
+			$turno = new Turno();
 			
 			//completados con los datos del formulario.
-			$clienteForm->fillEntity($cliente);
+			$turnoForm->fillEntity($turno);
 			
-			//agregamos el cliente.
-			UIServiceFactory::getUIClienteService()->add( $cliente );
+			//agregamos el turno.
+			UIServiceFactory::getUITurnoService()->add( $turno );
 			
-			$result["oid"] = $cliente->getOid();
-						
+			$result["oid"] = $turno->getOid();
+
 		} catch (RastyException $e) {
 		
 			$result["error"] = $e->getMessage();

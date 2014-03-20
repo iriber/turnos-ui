@@ -63,6 +63,8 @@
 	<component name="HorariosProfesional"   location="components/horarios"/>
 	
 	<component name="TurnoForm"   location="components/form/turno"/>
+	<component name="TurnoQuickForm"   location="components/form/turno"/>
+	
 	<component name="TurnosCliente"   location="components/turnos"/>
 	<component name="TurnosEnCurso" location="components/turnos/enCurso" />
 
@@ -121,7 +123,7 @@
 	<action name="FinalizarTurno" class="Turnos\UI\actions\turnos\FinalizarTurno" url="turnos/finalizar"/>
 	<action name="TurnoEnSala" class="Turnos\UI\actions\turnos\TurnoEnSala" url="turnos/ensala"/>
 	<action name="TurnoAsignado" class="Turnos\UI\actions\turnos\TurnoAsignado" url="turnos/asignado"/>
-	
+	<action name="AgregarTurnoJson" class="Turnos\UI\actions\turnos\AgregarTurnoJson" url="turnos/agregarjson"/>
 
 	<action name="AgregarPractica" class="Turnos\UI\actions\practicas\AgregarPractica" url="practicas/agregar"/>
 	<action name="ModificarPractica" class="Turnos\UI\actions\practicas\ModificarPractica" url="practicas/modificar"/>

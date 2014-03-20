@@ -1,0 +1,94 @@
+<!-- BEGIN:main -->
+
+<script>
+
+function turnoshortsubmit(){
+
+
+	var resp =  validate( "turno_short_form" );
+	
+	if( resp ){
+
+		var formData = $( "#turno_short_form" ).serialize();
+		$.ajax({
+				url: "{WEB_PATH}turnos/agregarjson.json",
+				type: "POST",
+				data: formData,
+				dataType: "json",
+				cache: false,
+				success: function(data){
+
+					if(data["oid"]!=null)
+						{onSuccessCallback}(data["oid"]);
+
+					$("#form_{inputId}_error").html(data["error"]);
+					$("#form_{inputId}_error").show();	
+					
+				}
+		});
+	}
+}
+
+$(function() {
+
+	$("#nombre").focus();
+	
+});
+
+</script>
+
+<div>
+<form class="turnos_form" id="turno_short_form" onsubmit="return validate('turno_short_form');" method="{method}">
+
+	<fieldset>
+		<legend>{turno_legend}</legend>
+
+		<div class="item">
+		    <label for="profesional">{lbl_profesional} *:</label>
+		    <rasty id="profesional" />
+		</div>
+				
+		<div class="item">
+		    <label for="fecha">{lbl_fecha} *:</label>
+		    <rasty id="fecha" />
+		</div>
+
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="hora">{lbl_hora} *:</label>
+		    <rasty id="hora" />
+		</div>
+		
+		<div class="item">
+		    <label for="duracion">{lbl_duracion} *:</label>
+		    <rasty id="duracion" />
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>{legend}</legend>
+	
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nombre">{lbl_nombre} *:</label>
+		    <rasty id="nombre" />
+		</div>
+		
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="telefono">{lbl_telefono} *:</label>
+		    <rasty id="telefono" />
+		</div>
+
+	</fieldset>
+	
+	<fieldset id="form_{inputId}_error" class="ui-state-error" style="display:none">
+				
+	</fieldset>
+	
+</form>
+<form  class="turnos_form" id="buttons{inputId}">
+	<fieldset class="tblFooters">
+	
+		<button type="button"  id="input_submit" onclick="javascript: turnoshortsubmit(); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
+		<button type="button"  id="input_button_2" onclick="javascript: {onClickCancel} "><i class="icon-cancel-2 on-left"></i>{lbl_cancel}</button>
+	</fieldset>
+</form>	
+</div>
+<!-- END:main -->

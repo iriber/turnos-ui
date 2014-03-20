@@ -1,5 +1,59 @@
 <!-- BEGIN:main -->
 <script>
+
+function turnoEnSalaRegistrarCliente{id}( params ){
+
+	//creamos el div donde vamos a escribir el popup
+	//agregamos el div para el dialogo si es que no existe.
+	if (!$("#agendaTurnos{id}_popup").length) {
+		$("body").append("<div id='agendaTurnos{id}_popup' style='display: none;'></div>");
+	}
+	
+	var nombre = params["nombre"];
+	var telefono = params["telefono"];
+	var turnoOid = params["turnoOid"];
+	var initialText = nombre;
+	var title = "Registrando paciente";
+	var width = "60%";
+	var height = "500";
+	var extraParams = "nombre=" + encodeURI(nombre) + "&" + "telefono=" + encodeURI(telefono) + "&" + "turnoOid=" + encodeURI(turnoOid);
+
+	console.log("extraParams:" + extraParams);
+	openAddentityPopup("{WEB_PATH}", "TurnoForm", "agendaTurnos{id}_show_addturnoquick_callback", "#agendaTurnos{id}_popup", initialText, title, extraParams, height, width, "agendaTurnos{id}_popup");
+	
+}
+
+function agendaTurnos{id}_show_addturnoquick(fecha, hora, profesional){
+	
+
+	//creamos el div donde vamos a escribir el popup
+	//agregamos el div para el dialogo si es que no existe.
+	if (!$("#agendaTurnos{id}_popup").length) {
+		$("body").append("<div id='agendaTurnos{id}_popup' style='display: none;'></div>");
+	}
+		
+	var initialText = "";
+	var title = "Asignando nuevo turno";
+	var width = "60%";
+	var height = "500";
+	var extraParams = "hora=" + encodeURI(hora) + "&" + "fecha=" + encodeURI(fecha) + "&" + "profesional=" + encodeURI(profesional);
+
+	console.log("extraParams:" + extraParams);
+	openAddentityPopup("{WEB_PATH}", "TurnoQuickForm", "agendaTurnos{id}_show_addturnoquick_callback", "#agendaTurnos{id}_popup", initialText, title, extraParams, height, width, "agendaTurnos{id}_popup");
+	
+}
+
+function agendaTurnos{id}_show_addturnoquick_callback( oid ){
+	
+	
+	closeFinderPopup("#agendaTurnos{id}_popup");
+
+	data = new Array();
+	data["info"] = "Turno agregado exitosamente";
+	agendaTurnos{id}_turnoChange(data);
+}
+
+
 function agendaTurnos{id}_turnoChange(data){
 
 	
@@ -111,7 +165,7 @@ reinit();
 					<!-- END: ensala -->
 				
 					<!-- BEGIN: asignado -->
-					<a style="cursor: pointer;" title="{enSala_label}" href="#" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
+					<a style="cursor: pointer;" title="{enSala_label}" href="#" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange, turnoEnSalaRegistrarCliente{id});return false;" >
 					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/></a>
 					<!-- END: asignado -->
 				</p>
@@ -148,6 +202,7 @@ reinit();
 				<!-- BEGIN: ocupado -->
 				<h2 class="{prioridad_css}" title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente} 
 				<br>
+				<span>{telefono}</span>
 				<span>{obra_social}</span>
 				<span>{importe}</span>
 				</h2>
@@ -158,7 +213,9 @@ reinit();
 				
 				
 				<!-- BEGIN: libre -->
-				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;width:85%;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;width:85%;" 
+				onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');">
+				<!-- onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
 					<br />
 				</h2>
 				<!-- END: libre -->
@@ -211,7 +268,7 @@ reinit();
 						
 						<!-- BEGIN:asignado -->		 	
 					 	<li><a href="#" 
-							onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;">
+							onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange,turnoEnSalaRegistrarCliente{id});return false;">
 							<i class="icon-alarm-clock on-left"></i>{enSala_label}</a>
 						</li>
 						<!-- END:asignado -->

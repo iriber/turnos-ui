@@ -185,7 +185,7 @@ function iniciarTurno(link, oid, hora, cliente, clienteOid, onSuccess){
  * @param cliente
  * @param clienteOid
  */
-function turnoEnSala(link, oid, hora, cliente, clienteOid, onSuccess){
+function turnoEnSala(link, oid, hora, cliente, clienteOid, onSuccess, onClienteRequired){
 	$.ajax({
 	  	url:  link + "?oid="+oid,
 	  	type: "GET",
@@ -195,15 +195,34 @@ function turnoEnSala(link, oid, hora, cliente, clienteOid, onSuccess){
 		},
 	  	success: function(data){
 			if( data != null && data["error"]!=null){
-				msg = data["error"];
-				showErrorMessage(msg);
+				
+				//antes chequeamos si es el error para registrar el cliente.
+				msg = data["msg"];
+				title = data["title"];
+				
+				if( data["link"]!=null){
+					params = new Array();
+					params["link"] = data["link"];
+					params["nombre"] = data["nombre"];
+					params["telefono"] = data["telefono"];
+					params["turnoOid"] = data["turnoOid"];
+					//jAlertConfirm( title, msg, onClienteRequired, params );
+					jAlertConfirm( title, msg, gotoLink, params["link"] );
+					
+				}else
+					showErrorMessage(msg);
+			}else{
+			
+				if( data != null && data["info"]!=null){
+				}
+				onSuccess(data);
 			}
-			if( data != null && data["info"]!=null){
-			}
-			onSuccess(data);
+			
+			
 	  	}
 	});
 }
+
 
 /**
  * se pone en estado Asignado un turno
@@ -409,3 +428,4 @@ function editarResumenHistoriaClinica(link, resumenOid){
 	gotoLink( url );
 	
 }
+

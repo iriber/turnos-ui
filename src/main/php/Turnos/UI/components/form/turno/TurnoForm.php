@@ -2,6 +2,8 @@
 
 namespace Turnos\UI\components\form\turno;
 
+use Turnos\UI\service\UIServiceFactory;
+
 use Turnos\UI\service\finder\ProfesionalFinder;
 
 use Turnos\UI\utils\TurnosUtils;
@@ -70,9 +72,14 @@ class TurnoForm extends Form{
 		$this->addProperty("estado");
 		$this->addProperty("prioridad");
 		$this->addProperty("duracion");
+		$this->addProperty("telefono");
+		$this->addProperty("nombre");
 		
 		$this->setBackToOnSuccess("TurnosHome");
 		$this->setBackToOnCancel("TurnosHome");	
+		
+		$this->setTurnoOid( RastyUtils::getParamGET("turnoOid",0));
+		
 	}
 	
 	public function getOid(){
@@ -107,6 +114,7 @@ class TurnoForm extends Form{
 		
 		parent::parseXTemplate($xtpl);
 		
+		$xtpl->assign("estadoTurnoEnSala", EstadoTurno::EnSala );
 		
 		$xtpl->assign("cancel", $this->getLinkCancel() );
 		$xtpl->assign("lbl_cancel", $this->localize( $this->getLabelCancel() ) );
@@ -125,6 +133,25 @@ class TurnoForm extends Form{
 		$xtpl->assign("lbl_importe", $this->localize("turno.importe") );
 		$xtpl->assign("lbl_prioridad", $this->localize("turno.prioridad") );
 		$xtpl->assign("lbl_duracion", $this->localize("turno.duracion") );
+		
+		//si el cliente aún no fue registrado, mostramos el nombre y el teléfono indicados en el turno.
+		$cliente = $this->getTurno()->getCliente();
+		if( empty($cliente) ){
+
+			$xtpl->assign("lbl_nombre", $this->localize("turno.nombre") );
+			$xtpl->assign("lbl_telefono", $this->localize("turno.telefono") );
+			
+			$xtpl->assign("lbl_validar", $this->localize("turno.cliente.validar.msg") );
+			$xtpl->assign("btn_validar", $this->localize("turno.cliente.validar") );
+			
+			$xtpl->parse("main.cliente_no_registrado" );
+			
+		}else{
+			
+			$xtpl->parse("main.cliente_registrado" );
+			
+		}
+		
 		
 	}
 
@@ -245,6 +272,19 @@ class TurnoForm extends Form{
 	public function getDuraciones(){
 		
 		return TurnosUtils::getDuracionesTurno();	
+		
+	}
+	
+	public function setTurnoOid($turnoOid)
+	{
+		if(!empty($turnoOid) ){
+
+			//a partir del id buscamos el turno.
+			$turno = UIServiceFactory::getUITurnoService()->get($turnoOid);
+		
+			$this->setTurno($turno);
+		}
+	    
 		
 	}
 	

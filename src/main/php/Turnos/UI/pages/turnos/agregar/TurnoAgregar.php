@@ -11,6 +11,7 @@ use Rasty\utils\XTemplate;
 use Rasty\utils\LinkBuilder;
 
 use Turnos\Core\model\Turno;
+use Turnos\Core\model\EstadoTurno;
 use Turnos\Core\model\Cliente;
 use Turnos\Core\model\ObraSocial;
 
@@ -31,6 +32,7 @@ class TurnoAgregar extends TurnosPage{
 		$hora = new \DateTime();
 		$hora->setTime(0,0,0);
 		$turno->setHora( $hora );
+		$turno->setEstado( EstadoTurno::Asignado );
 		
 		//la fecha es la de la agenda
 		if( TurnosUtils::isFechaAgenda() )
@@ -45,6 +47,8 @@ class TurnoAgregar extends TurnosPage{
 		
 		$turno->setObraSocial( new ObraSocial() );
 
+		$turno->setImporte( 0 );
+		
 		$this->setTurno($turno);
 
 		$this->setearDuracion();

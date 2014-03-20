@@ -97,7 +97,7 @@ class AgendaTurnos extends RastyComponent{
 				
 				$this->setEspecialidad($especialidad);
 			}else{
-				$this->setEspecialidad(TurnosUtils::isEspecialidadAgenda());
+				$this->setEspecialidad(TurnosUtils::getEspecialidadAgenda());
 			}
 		}
 		

@@ -38,14 +38,21 @@ function showInfoMessage( msg, hide ){
 }
 
 function showErrorMessage( msg, hide ){
+
+	
+
 	$( "#layout_error_message" ).html( msg );
 	updated_right = ($(window).width() / 2) - ($( "#layout_error" ).width()/2);
 	$( "#layout_error" ).css({'right': updated_right});
+
+	updated_top = ($(window).height() / 2) - ($( "#layout_error" ).height()/2);
+	$( "#layout_error" ).css({'top': updated_top});
 	
 	if( hide )
 		$( "#layout_error" ).show().delay(4000).slideUp(300);
 	else
 		$( "#layout_error" ).show();
+
 }
 
 </script>
@@ -60,7 +67,7 @@ function showErrorMessage( msg, hide ){
 	<span id="layout_info_message"></span>
 	</p>
 </div>
-<div id="layout_error" class="ui-state-error ui-corner-all" style="display:none;position:absolute; right:50%; top:0px;margin: 10px;padding: 6pt .7em;"> 
+<div id="layout_error" class="ui-state-error ui-corner-all" style="z-index:10000;display:none;position:absolute; right:50%; top:0px;margin: 10px;padding: 6pt .7em;"> 
 	<p>
 	<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
 	<span id="layout_error_message"></span>

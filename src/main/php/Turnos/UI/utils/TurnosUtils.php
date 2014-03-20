@@ -808,15 +808,20 @@ class TurnosUtils {
      */
     public static function getEspecialidadAgenda() {
         
+    	
+    	
     	$appName = RastyConfig::getInstance()->getAppName();
     	
     	$data = RastyUtils::getParamSESSION( $appName );
     	
     	$especialidad = new Especialidad();
-        $especialidad->setOid($data["agenda_especialidad_oid"]);
-        $especialidad->setNombre($data["agenda_especialidad_nombre"]);
-        
+    	if( self::isEspecialidadAgenda() ){
+    		$especialidad->setOid($data["agenda_especialidad_oid"]);
+        	$especialidad->setNombre($data["agenda_especialidad_nombre"]);
+    	}
+    	
         return $especialidad;
+    	
     }
 
     public static function isEspecialidadAgenda() {

@@ -14,6 +14,13 @@
 		<param name="placeholder" value="msg:cliente.nombre" />
 	</component>
 
+	<component id="telefonoFijo" type="InputText">
+		<param name="inputId" value="str:telefonoFijo" />
+		<param name="name" value="str:telefonoFijo" />
+		<param name="value" value="cliente.telefonoFijo" />
+		<param name="placeholder" value="msg:cliente.telefonoFijo" />
+	</component>
+
 	<component id="tipoDocumento" type="InputCombo">
 		<param name="inputId" value="str:tipoDocumento" />
 		<param name="name" value="str:tipoDocumento" />
@@ -50,6 +57,7 @@
 		<param name="name" value="str:nroHistoriaClinica" />
 		<param name="value" value="cliente.nroHistoriaClinica" />
 		<param name="placeholder" value="msg:cliente.nroHistoriaClinica" />
+		<param name="requiredMessage" value="msg:cliente.nroHistoriaClinica.required" />
 	</component>
 
 </rasty>

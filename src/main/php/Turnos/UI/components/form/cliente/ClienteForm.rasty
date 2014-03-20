@@ -59,6 +59,7 @@
 		<param name="name" value="str:nroHistoriaClinica" />
 		<param name="value" value="cliente.nroHistoriaClinica" />
 		<param name="placeholder" value="msg:cliente.nroHistoriaClinica" />
+		<param name="requiredMessage" value="msg:cliente.nroHistoriaClinica.required" />
 	</component>
 
 	<component id="obraSocial" type="InputFindEntity">

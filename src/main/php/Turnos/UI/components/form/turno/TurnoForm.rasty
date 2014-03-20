@@ -42,6 +42,7 @@
 		<param name="options" value="estados" />
 		<param name="placeholder" value="msg:turno.estado" />
 		<param name="requiredMessage" value="msg:turno.estado.required" />
+		<param name="isEditable" value="boolean:false" />
 	</component>
 
 	<component id="obraSocial" type="InputFindEntity">
@@ -124,5 +125,19 @@
 		<param name="requiredMessage" value="msg:turno.duracion.required" />
 	</component>
 	
-	
+	<component id="nombre" type="InputText">
+		<param name="inputId" value="str:nombre" />
+		<param name="name" value="str:nombre" />
+		<param name="value" value="turno.nombre" />
+		<param name="requiredMessage" value="msg:turno.nombre.required" />
+		<param name="placeholder" value="msg:turno.nombre" />
+	</component>
+
+	<component id="telefono" type="InputText">
+		<param name="inputId" value="str:telefono" />
+		<param name="name" value="str:telefono" />
+		<param name="value" value="turno.telefono" />
+		<param name="requiredMessage" value="msg:turno.telefono.required" />
+		<param name="placeholder" value="msg:turno.telefono" />
+	</component>	
 </rasty>

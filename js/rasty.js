@@ -180,11 +180,22 @@ function closeFinderPopup(resultId){
     $(uiDialog).dialog("destroy");
     
 }
-function openFinderPopup(webpath, filterType, fCallback, resultId){
-	var url = webpath + "FinderPopup.rasty?filterType=" + filterType + "&onSelectCallback=" + fCallback;
+function openFinderPopup(webpath, filterType, fCallback, resultId, initialText, title, extraParams, height, width, popupDivId){
+	
+	if ( width == undefined )
+		width = "80%";
+
+	if ( height == undefined )
+		height = "600";
+	
+	//var url = webpath + "AddPopup.rasty?initialText=" + encodeURI(initialText) + "&formType=" + formType + "&popupDivId=" + popupDivId + "&onSuccessCallback=" + fCallback + "&" + extraParams;
+	var url = webpath + "FinderPopup.rasty?filterType=" + filterType + "&onSelectCallback=" + fCallback  + "&initialText="+ encodeURI(initialText) + "&popupDivId=" + popupDivId+ "&" + extraParams;;
+
+	console.log("openFinderPopup: " + url);
+
 	var uiDialog = resultId;
 	var dialogOpts = {
-            //title : "{title}",
+            title : title,
             modal : true,
             autoOpen : false,
             bgiframe : true,
@@ -212,16 +223,24 @@ function contains( arreglo, valor){
 	return false;
 }
 
-function openAddentityPopup(webpath, formType, fCallback, resultId, initialText){
-	var url = webpath + "AddPopup.rasty?initialText=" + encodeURI(initialText) + "&formType=" + formType + "&onSuccessCallback=" + fCallback;
+function openAddentityPopup(webpath, formType, fCallback, resultId, initialText, title, extraParams, height, width, popupDivId){
+	
+	if ( width == undefined )
+		width = "80%";
+
+	if ( height == undefined )
+		height = "600";
+	
+	var url = webpath + "AddPopup.rasty?initialText=" + encodeURI(initialText) + "&formType=" + formType + "&popupDivId=" + popupDivId + "&onSuccessCallback=" + fCallback + "&" + extraParams;
+	console.log("openAddentityPopup: " + url);
 	var uiDialog = resultId;
 	var dialogOpts = {
-            //title : "{title}",
+            title : title,
             modal : true,
             autoOpen : false,
             bgiframe : true,
-            height : "600",
-            width : "80%",
+            height : height,
+            width : width,
             open : function() {
                 $(uiDialog).load(url);
             }

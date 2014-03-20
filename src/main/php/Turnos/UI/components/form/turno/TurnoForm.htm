@@ -6,6 +6,42 @@
 	type="text/css" />
 
 <script>
+
+function validarCliente(){
+
+	
+	
+	if (!$("#turnoForm_{id}_popup").length) {
+		$("body").append("<div id='turnoForm_{id}_popup' style='display: none;'></div>");
+	}
+
+
+	var nombre = $("#nombre").val();
+	var initialText = nombre;
+	var title = "Buscar paciente";
+	var width = "60%";
+	var height = "500";
+	var extraParams = "";
+
+	openFinderPopup("{WEB_PATH}", "ClienteFilter", "clienteSeleccionado_callback", "#turnoForm_{id}_popup", initialText, title, extraParams, height, width, "turnoForm_{id}_popup");
+
+}
+
+function clienteSeleccionado_callback(event, oid){
+
+	closeFinderPopup("#turnoForm_{id}_popup");
+	
+	$("#findentity_cliente_inputCode").val( oid );
+	$("#findentity_cliente_inputCode").blur();
+	$("#cliente").val( oid );
+
+	$(".cliente_no_registrado").hide();
+	$(".cliente_registrado").show();
+	
+	 $("#estado").removeAttr('disabled');
+	 $("#estado").val('{estadoTurnoEnSala}');
+}
+
 function cambiarObraSocial(entity){
 	
 	//buscar la obra social
@@ -66,30 +102,62 @@ function cambiarObraSocial(entity){
 		    <rasty id="estado" />
 		</div>
 
-		<div class="item">
+		
+		<div class="item cliente_no_registrado">
+		    <label for="nombre">{lbl_nombre} *:</label>
+		    <rasty id="nombre" />
+		</div>
+
+		<div class="item cliente_no_registrado">
+		    <label for="telefono">{lbl_telefono} *:</label>
+		    <rasty id="telefono" />
+		</div>
+		
+		<div class="item cliente_no_registrado">
+			<label for="input_validar">&nbsp;</label>
+		    {lbl_validar}:<button type="button"  id="input_validar" onclick="javascript: validarCliente(); "><i class="icon-checkmark on-left"></i>{btn_validar}</button>
+		</div>
+		
+		<div class="item cliente_registrado">
 		    <label for="cliente">{lbl_cliente} *:</label>
 		    <rasty id="cliente" />
 		</div>
 
-		<div class="item">
+		<div class="item cliente_registrado">
 		    <label for="obraSocial">{lbl_obraSocial}:</label>
 		    <rasty id="obraSocial" />
 		</div>
 
-		<div class="item" style="min-width: {minWidth};">
+		<div class="item cliente_registrado" style="min-width: {minWidth};">
 		    <label for="nroObraSocial">{lbl_nroObraSocial}:</label>
 		    <rasty id="nroObraSocial" />
 		</div>
 
-		<div class="item" style="min-width: {minWidth};">
+		<div class="item cliente_registrado" style="min-width: {minWidth};">
 		    <label for="importe">{lbl_importe} *:</label>
 		    <rasty id="importe" />
 		</div>
-		
-		<div class="item">
+
+		<div class="item cliente_registrado">
 		    <label for="prioridad">{lbl_prioridad} *:</label>
 		    <rasty id="prioridad" />
 		</div>
+		
+		
+		<!-- BEGIN: cliente_no_registrado -->
+		<script>
+			$(".cliente_registrado").hide();
+			$(".cliente_no_registrado").show();
+		</script>
+		<!-- END: cliente_no_registrado -->
+		
+		<!-- BEGIN: cliente_registrado -->
+		<script>
+			$(".cliente_no_registrado").hide();
+			$(".cliente_registrado").show();
+		</script>
+		<!-- END: cliente_registrado -->
+		
 		
 	</fieldset>
 	
