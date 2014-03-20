@@ -268,12 +268,18 @@ $(document).ready(function(){
 			
 		</fieldset>	
 		<fieldset>
+			<legend>{resumenes_info_subtitle}</legend>
+			<span class="actions">
+				<button type="button"  id="input_agregar" class="transparent" 
+				onclick="javascript: gotoLink('{linkAgregarResumenHistoriaClinica}')">
+				<i class="icon-plus on-left"></i>{resumen_agregar_label}
+				</button>
+			</span>
+			<rasty id="resumenHC"/>	
+		</fieldset>
+		<fieldset>
 			<legend>{turnos_info_subtitle}</legend>
 			<rasty id="turnosCliente" />	
-		</fieldset>
-		<fieldset style="display:none;">
-			<legend>{resumenes_info_subtitle}</legend>
-			<div id="historia_resumenes_hc"></div>	
 		</fieldset>
 	</div>	
 	

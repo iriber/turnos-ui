@@ -1,0 +1,17 @@
+<rasty specificationClass="Turnos\UI\pages\historia\agregar\ResumenHistoriaClinicaAgregar" templateLocation="pages/historia/agregar/ResumenHistoriaClinicaAgregar.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+	<param name="clienteOid" value="get:clienteOid" />
+	<param name="profesionalOid" value="get:profesionalOid" />
+
+	
+	<component id="resumenHistoriaClinicaForm" type="ResumenHistoriaClinicaForm">
+		<param name="legend" value="msg:resumenHistoriaClinica.agregar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="action" value="linkActionAgregarResumenHistoriaClinica" />
+		<param name="method" value="str:post" />
+		<param name="resumenHistoriaClinica" value="resumenHistoriaClinica" />
+	</component>
+	
+</rasty>

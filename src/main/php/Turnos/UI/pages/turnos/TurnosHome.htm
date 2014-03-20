@@ -58,8 +58,6 @@ $(function() {
 	observer = new Observer("especialidadChange", especialidadChange);
 	subject.addObserver( observer );
 	
-	
-	
 });
 
 function fecha_change( fecha, picker ){
@@ -164,9 +162,12 @@ function profesional_change( attrs ){
 
 	data = new Array();
 	data["profesionalOid"] = $("#profesionalOid").val();
+	data["oid"] = $("#profesionalOid").val();
 	data["especialidadOid"] = $("#especialidadOid").val();
 	event = new Event("profesionalChange", data, "Profesional");
 	subject.notify(event);
+
+	
 }
 
 function especialidad_change( attrs ){

@@ -65,6 +65,11 @@ class TurnosUtils {
         //$_SESSION [APP_NAME]["profesional_matricula"] = $profesional->getMatricula();
         
 		self::setProfesionalAgenda($profesional);
+		
+		$especialidades = $profesional->getEspecialidades();
+		if( count($especialidades) > 0 )
+			self::setEspecialidadAgenda( $especialidades[0] );
+		
     }
 
     /**

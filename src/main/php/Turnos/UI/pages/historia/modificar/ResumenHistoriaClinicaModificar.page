@@ -1,0 +1,17 @@
+<rasty specificationClass="Turnos\UI\pages\historia\modificar\ResumenHistoriaClinicaModificar" templateLocation="pages/historia/modificar/ResumenHistoriaClinicaModificar.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+	<param name="resumenHistoriaClinicaOid" value="get:oid" />
+
+	
+	<component id="resumenHistoriaClinicaForm" type="ResumenHistoriaClinicaForm">
+		<param name="legend" value="msg:resumenHistoriaClinica.modificar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="action" value="linkActionModificarResumenHistoriaClinica" />
+		<param name="method" value="str:post" />
+		<param name="resumenHistoriaClinica" value="resumenHistoriaClinica" />
+		<param name="backToOnSuccess" value="get:backTo" />
+	</component>
+	
+</rasty>

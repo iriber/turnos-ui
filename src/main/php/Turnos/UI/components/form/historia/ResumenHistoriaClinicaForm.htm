@@ -6,24 +6,6 @@
 	type="text/css" />
 
 <script>
-function cambiarObraSocial(entity){
-	
-	//buscar la obra social
-	if(entity["error"] == undefined){
-		var osOid = entity["obraSocial.oid"];
-		var osNro = entity["nroObraSocial"];
-
-		
-		if( osOid != undefined ){		
-			$("#findentity_obraSocial_inputCode").val(osOid);
-			$("#findentity_obraSocial_inputCode").blur();
-		}
-		if( osNro != undefined ){		
-			$("#nroObraSocial").val(osNro);
-		}
-
-	}
-}
 $(function() {
 
 	$("#observaciones").focus();
@@ -32,7 +14,7 @@ $(function() {
 </script>
 
 <div>
-<form class="turnos_form" id="practica_form" onsubmit="return validate('practica_form');" action="{action}" method="{method}">
+<form class="turnos_form" id="resumenHistoriaClinica_form" onsubmit="return validate('resumenHistoriaClinica_form');" action="{action}" method="{method}">
 
 		<fieldset>
 		<legend>{legend}</legend>
@@ -55,19 +37,9 @@ $(function() {
 		    <rasty id="cliente" />
 		</div>
 
-		<div class="item" style="min-width: {minWidth};">
-		    <label for="obraSocial">{lbl_obraSocial}:</label>
-		    <rasty id="obraSocial" />
-		</div>
-
-		<div class="item" style="min-width: {minWidth};">
-		    <label for="nomenclador">{lbl_nomenclador} *:</label>
-		    <rasty id="nomenclador" />
-		</div>
-		
 		<div class="item observaciones" style="min-width: {minWidth}; ">
-		    <label for="observaciones">{lbl_observaciones}:</label>
-		    <rasty id="observaciones" />
+		    <label for="texto">{lbl_texto}:</label>
+		    <rasty id="texto" />
 		</div>
 				
 		
@@ -79,7 +51,7 @@ $(function() {
 <form  class="turnos_form" id="buttons{inputId}">
 	<fieldset class="tblFooters">
 	
-		<button type="button"  id="input_submit" onclick="javascript: submitFormulario('practica_form'); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
+		<button type="button"  id="input_submit" onclick="javascript: submitFormulario('resumenHistoriaClinica_form'); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
 
 		<button type="button"  id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; "><i class="icon-cancel-2 on-left"></i>{lbl_cancel}</button>
 	

@@ -93,7 +93,7 @@ class TurnosHome extends TurnosPage{
 			$especialidad= TurnosUtils::getEspecialidadAgenda();
 		}else{
 			
-			$especialidad->setOid(1);
+			$especialidad = null;
 		}
 		return $especialidad;
 	}
@@ -161,24 +161,41 @@ class TurnosHome extends TurnosPage{
 		*/
 	}
 	
-	protected function parseProfesionales(XTemplate $xtpl, Profesional $selected, Especialidad $especialidad){
+	protected function parseProfesionales(XTemplate $xtpl, Profesional $selected, Especialidad $especialidad=null){
 	
-		$service = UIServiceFactory::getUIProfesionalService();
+		if( $especialidad != null ){
 
-		$profesionales = $service->getProfesionalesByEspecialidad($especialidad->getOid());
-
-        foreach ($profesionales as $profesional) {
-
-            $xtpl->assign('label', $profesional->__toString() );
-            $xtpl->assign('value', RastyUtils::selected($profesional->getOid(), $selected->getOid()));
-
-            $xtpl->parse('main.profesional_option');
-        }
+			$service = UIServiceFactory::getUIProfesionalService();
+	
+			$profesionales = $service->getProfesionalesByEspecialidad($especialidad->getOid());
+	
+	
+			$xtpl->assign('label', $this->localize("turnos_home.profesional.elegir") );
+	        $xtpl->assign('value', "-1");
+	        $xtpl->parse('main.profesional_option');
+			
+	        foreach ($profesionales as $profesional) {
+	
+	            $xtpl->assign('label', $profesional->__toString() );
+	            $xtpl->assign('value', RastyUtils::selected($profesional->getOid(), $selected->getOid()));
+	
+	            $xtpl->parse('main.profesional_option');
+	        }
+	        
+		}else{
+			
+			$xtpl->assign('label', $this->localize("turnos_home.profesional.vacio") );
+	        $xtpl->assign('value', "-1");
+	        $xtpl->parse('main.profesional_option');
+			
+		}
+		
+		
         
         //$xtpl->assign('profesionalesFinder', urlencode( get_class(new ProfesionalFinder())) );
 	}
 
-	protected function parseEspecialidades(XTemplate $xtpl, Especialidad $selected){
+	protected function parseEspecialidades(XTemplate $xtpl, Especialidad $selected=null){
 	
 		$service = UIServiceFactory::getUIEspecialidadService();
 
@@ -186,10 +203,14 @@ class TurnosHome extends TurnosPage{
 		$criteria->addOrder("nombre", UICriteria::TYPE_ASC);
 		$especialidades = $service->getList($criteria);
 
+		$xtpl->assign('label', $this->localize("turnos_home.especialidad.elegir") );
+        $xtpl->assign('value', "-1");
+        $xtpl->parse('main.especialidad_option');
+		
         foreach ($especialidades as $especialidad) {
 
             $xtpl->assign('label', $especialidad->__toString() );
-            $xtpl->assign('value', RastyUtils::selected($especialidad->getOid(), $selected->getOid()));
+            $xtpl->assign('value', RastyUtils::selected($especialidad->getOid(), ($selected!=null)?$selected->getOid():0));
 
             $xtpl->parse('main.especialidad_option');
         }

@@ -1,0 +1,56 @@
+<rasty specificationClass="Turnos\UI\components\form\historia\ResumenHistoriaClinicaForm" templateLocation="ResumenHistoriaClinicaForm.htm">
+
+	<component id="backSuccess" type="InputHidden">
+		<param name="inputId" value="str:backToOnSuccess" />
+		<param name="name" value="str:backToOnSuccess" />
+		<param name="value" value="backToOnSuccess" />
+	</component>
+
+	<component id="oid" type="InputHidden">
+		<param name="inputId" value="str:oid" />
+		<param name="name" value="str:oid" />
+		<param name="value" value="resumenHistoriaClinica.oid" />
+	</component>
+
+	<component id="fecha" type="InputDate">
+		<param name="inputId" value="str:fecha" />
+		<param name="name" value="str:fecha" />
+		<param name="value" value="resumenHistoriaClinica.fecha" />
+		<param name="placeholder" value="msg:resumenHistoriaClinica.fecha" />
+		<param name="format" value="str:d/m/Y" />
+		<param name="isEditable" value="boolean:false" />
+		<param name="requiredMessage" value="msg:resumenHistoriaClinica.fecha.required" />
+	</component>
+
+	<component id="cliente" type="InputFindEntity">
+		<param name="inputId" value="str:cliente" />
+		<param name="name" value="str:cliente" />
+		<param name="value" value="resumenHistoriaClinica.cliente" />
+		<param name="placeholder" value="msg:resumenHistoriaClinica.cliente" />
+		<param name="requiredMessage" value="msg:resumenHistoriaClinica.cliente.required" />
+		<param name="finder" value="clienteFinderClazz" />
+		<param name="hasAddEntity" value="boolean:false" />
+		<param name="hasPopup" value="boolean:false" />
+		<param name="isEditable" value="boolean:false" />
+	</component>
+	
+	<component id="profesional" type="InputFindEntity">
+		<param name="inputId" value="str:profesional" />
+		<param name="name" value="str:profesional" />
+		<param name="value" value="resumenHistoriaClinica.profesional" />
+		<param name="placeholder" value="msg:resumenHistoriaClinica.profesional" />
+		<param name="finder" value="profesionalFinderClazz" />
+		<param name="requiredMessage" value="msg:resumenHistoriaClinica.profesional.required" />
+		<param name="isEditable" value="boolean:true" />
+	</component>
+
+
+	<component id="texto" type="InputTextArea">
+		<param name="inputId" value="str:texto" />
+		<param name="name" value="str:texto" />
+		<param name="value" value="resumenHistoriaClinica.texto" />
+		<param name="placeholder" value="msg:resumenHistoriaClinica.texto" />	
+		<param name="rows" value="str:30" />	
+	</component>
+	
+</rasty>

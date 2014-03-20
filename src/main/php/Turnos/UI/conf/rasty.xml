@@ -28,6 +28,8 @@
 	<page name="SobreturnoAgregar"   location="pages/turnos/agregar/SobreturnoAgregar.page" url="turnos/agregar_sobreturno"/>
 
 	<page name="HistoriaClinica"   location="pages/practicas/historia/HistoriaClinica.page" url="historia"/>
+	<page name="ResumenHistoriaClinicaAgregar"   location="pages/historia/agregar/ResumenHistoriaClinicaAgregar.page" url="resumenHistoriaClinica/agregar"/>
+	<page name="ResumenHistoriaClinicaModificar"   location="pages/historia/modificar/ResumenHistoriaClinicaModificar.page" url="resumenHistoriaClinica/modificar"/>
 
 	<page name="Practicas"   location="pages/practicas/Practicas.page" url="practicas"/>
 	<page name="PracticaAgregar"   location="pages/practicas/agregar/PracticaAgregar.page" url="practicas/agregar"/>
@@ -53,6 +55,8 @@
 	<component name="TotalesDiaProfesional" location="components/stats" />
 
 	<component name="HistoriaClinica" location="components/historia" />
+	<component name="ResumenHistoriaClinica" location="components/historia" />
+	<component name="ResumenHistoriaClinicaForm"   location="components/form/historia"/>
 
 	<component name="AusenciaForm"   location="components/form/horario"/>
 	<component name="HorarioForm"   location="components/form/horario"/>
@@ -123,6 +127,10 @@
 	<action name="ModificarPractica" class="Turnos\UI\actions\practicas\ModificarPractica" url="practicas/modificar"/>
 	<action name="BorrarPractica" class="Turnos\UI\actions\practicas\BorrarPractica" url="practicas/borrar"/>
 	
+	<action name="AgregarResumenHistoriaClinica" class="Turnos\UI\actions\historia\AgregarResumenHistoriaClinica" url="resumenHistoriaClinica/agregar"/>
+	<action name="ModificarResumenHistoriaClinica" class="Turnos\UI\actions\historia\ModificarResumenHistoriaClinica" url="resumenHistoriaClinica/modificar"/>
+	<action name="BorrarResumenHistoriaClinica" class="Turnos\UI\actions\historia\BorrarResumenHistoriaClinica" url="resumenHistoriaClinica/borrar"/>
+
 	<action name="AgregarObraSocialJson" class="Turnos\UI\actions\obrasSociales\AgregarObraSocialJson" url="obrasSociales/agregarjson"/>
 	<action name="AgregarObraSocial" class="Turnos\UI\actions\obrasSociales\AgregarObraSocial" url="obrasSociales/agregar"/>
 	<action name="ModificarObraSocial" class="Turnos\UI\actions\obrasSociales\ModificarObraSocial" url="obrasSociales/modificar"/>

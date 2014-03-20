@@ -1,6 +1,8 @@
 <?php
 namespace Turnos\UI\actions\profesionales;
 
+use Turnos\UI\utils\TurnosUtils;
+
 use Turnos\UI\service\UIServiceFactory;
 
 use Rasty\actions\JsonAction;
@@ -30,7 +32,7 @@ class ListarProfesionalesByEspecialidadJson extends JsonAction{
 			$entities = UIServiceFactory::getUIProfesionalService()->getProfesionalesByEspecialidad( $especialidadOid );
 		
 			$result["profesionales"] = $this->getProfesionales( $entities, array("oid", "nombre")  );
-			
+
 		} catch (RastyException $e) {
 		
 			$result["error"] = $e->getMessage();

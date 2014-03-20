@@ -119,6 +119,7 @@ class HistoriaClinica extends TurnosPage{
 		$xtpl->assign("email_label" , $this->localize("cliente.email") );
 		
 		$agregarPracticaParams = array();
+		$agregarResumenHistoriaClinicaParams = array();
 				
 		if( !empty( $this->cliente )){
 
@@ -159,8 +160,9 @@ class HistoriaClinica extends TurnosPage{
 				$xtpl->parse("main.turnoEnCurso");				
 			}
 
-			//parámetros para agregarle una práctica
+			//parámetros para agregarle una práctica y un resumen
 			$agregarPracticaParams = array("clienteOid" => $this->getCliente()->getOid());
+			$agregarResumenHistoriaClinicaParams = array("clienteOid" => $this->getCliente()->getOid());
 		
 		}
 		
@@ -174,6 +176,8 @@ class HistoriaClinica extends TurnosPage{
 		
 		$xtpl->assign("resumenes_info_subtitle" , $this->localize("practica.historia.resumenes_subtitle") );
 		
+		$xtpl->assign("resumen_agregar_label" , $this->localize( "practica.historia.resumen_agregar_label" ) );
+		$xtpl->assign("linkAgregarResumenHistoriaClinica" , LinkBuilder::getPageUrl( "ResumenHistoriaClinicaAgregar", $agregarResumenHistoriaClinicaParams ));
 		
 		
 	}

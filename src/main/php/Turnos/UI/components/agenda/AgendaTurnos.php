@@ -65,6 +65,7 @@ class AgendaTurnos extends RastyComponent{
 				$profesional =  UIServiceFactory::getUIProfesionalService()->get($profesionalOid) ;
 				
 				$this->setProfesional($profesional);
+				
 			}else{
 				$this->setProfesional(TurnosUtils::getProfesionalAgenda());
 			}
@@ -96,7 +97,7 @@ class AgendaTurnos extends RastyComponent{
 				
 				$this->setEspecialidad($especialidad);
 			}else{
-				$this->setEspecialidad(TurnosUtils::getEspecialidadAgenda());
+				$this->setEspecialidad(TurnosUtils::isEspecialidadAgenda());
 			}
 		}
 		
@@ -128,6 +129,7 @@ class AgendaTurnos extends RastyComponent{
 		
 		if( $this->getEspecialidad() !=null )
 			TurnosUtils::setEspecialidadAgenda($this->getEspecialidad());
+			
 		
 	}
 	

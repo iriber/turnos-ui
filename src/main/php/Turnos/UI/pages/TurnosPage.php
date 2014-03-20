@@ -112,5 +112,18 @@ abstract class TurnosPage extends RastyPage{
 		return LinkBuilder::getActionUrl( "AgregarHorario") ;
 		
 	}
+	
+	public function getLinkActionAgregarResumenHistoriaClinica(){
+		
+		return LinkBuilder::getActionUrl( "AgregarResumenHistoriaClinica") ;
+		
+	}
+	
+	public function getLinkActionModificarResumenHistoriaClinica(){
+		
+		return LinkBuilder::getActionUrl( "ModificarResumenHistoriaClinica") ;
+		
+	}
+	
 }
 ?>

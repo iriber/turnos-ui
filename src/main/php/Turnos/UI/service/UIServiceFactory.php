@@ -1,5 +1,4 @@
 <?php
-
 namespace Turnos\UI\service;
 
 
@@ -89,5 +88,13 @@ class UIServiceFactory {
 	public static function getUIEspecialidadService(){
 	
 		return UIEspecialidadService::getInstance();	
+	}
+
+	/**
+	 * @return UIResumenHistoriaClinicaService 
+	 */
+	public static function getUIResumenHistoriaClinicaService(){
+	
+		return UIResumenHistoriaClinicaService::getInstance();	
 	}
 }

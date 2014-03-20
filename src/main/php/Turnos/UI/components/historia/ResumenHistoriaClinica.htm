@@ -1,0 +1,73 @@
+<!-- BEGIN:main -->
+<style>
+#historia_clinica_resumen{
+	position:relative;
+}
+#historia_clinica_resumen .practicas{
+
+}
+
+#historia_clinica_resumen .botones{
+	text-align: right;
+}
+</style>
+<script type="text/javascript">
+function resumenHistoriaClinica{id}_historiaChange(data){
+
+	data = new Array();
+	data["oid"] = '{cliente_oid}';
+	event = new Event("resumenHistoriachange", data, "ResumenHistoriaClinica");
+	subject.notify(event);
+}
+
+
+$(document).ready(function(){
+	
+	$(".resumen").hover(
+			function () {
+				$(this).find("div.actions").show();
+				},
+				function () {
+					//$(this).find("div.actions").css({"display":"none"});
+					$(this).find("div.actions").hide();
+				}
+			);	
+	
+});
+
+
+</script>
+
+<div id="historia_clinica_resumen_hc" style="width: 100%">
+			
+<!-- BEGIN: resumen -->
+	<div class="resumen" >
+		<div> 
+			<div class="resumen_left">
+				<span class="resumen_fecha">{fecha}</span> 
+			    <span class="resumen_profesional">{profesional}</span>
+			</div>
+		    <div class="resumen_right" style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarResumenHistoriaClinica('{linkModificar}','{resumen_oid}');return false;">
+			{texto}
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		
+		
+		<div class="actions toolbar">
+				<button type="button" title="{editar_label}"
+					onclick="javascript: editarResumenHistoriaClinica('{linkModificar}','{resumen_oid}');return false;">
+					<i class="icon-pencil"></i>
+				</button>
+				<button type="button" title="{borrar_label}"
+					onclick="javascript: borrarResumenHistoriaClinica('{linkBorrar}', '{resumen_oid}', '{cliente_oid}', '{cliente}', resumenHistoriaClinica{id}_historiaChange);return false;">
+					<i class="icon-remove"></i>
+				</button>
+		</div>
+		
+	</div>
+
+<!-- END: practica -->
+
+</div>
+<!-- END:main -->

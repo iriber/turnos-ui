@@ -55,7 +55,6 @@
 		<param name="placeholder" value="msg:practica.profesional" />
 		<param name="finder" value="profesionalFinderClazz" />
 		<param name="requiredMessage" value="msg:practica.profesional.required" />
-		<param name="isEditable" value="boolean:false" />
 	</component>
 
 
