@@ -99,11 +99,14 @@
 
 	"turnos_home.title": "Agenda",
 	"turnos_home.profesional": "Médico",
+	"turnos_home.profesional.elegir": "-- Elija el médico --",
+	"turnos_home.profesional.vacio": "--",
 	"turnos_home.calendario": "Calendario",
 	"turnos_home.totales": "Totales del día",
 	"turnos_home.en_caja": "En caja",
 	"turnos_home.agenda": "Agenda",
 	"turnos_home.especialidad": "Especialidad",
+	"turnos_home.especialidad.elegir": "-- Elija la Especialidad --",
 	
 	"turno.agregar": "Agregar turno",
 	"turno.agregar.fechaHora": "$1 - $2",
@@ -306,7 +309,7 @@
 	"practica.historia.legend": "El paciente está siendo atendido por $1",
 
 	"practica.historia.practica_agregar_label": "Escribir nueva...",
-
+	"practica.historia.resumen_agregar_label": "Escribir resumen...",
 
 	"historia.ver_mas_datos_personales": "ver más...",
    	"historia.ver_menos_datos_personales": "ocultar...",
@@ -393,6 +396,26 @@
    	"horario.horaHasta":"Hora de fin",
    	"horario.duracionTurno":"Duración del turno",
    	"horario.profesional":"Profesional",
+
+   	"resumenHistoriaClinica":"Resumen Historia Clinica",
+   	"resumenHistoriaClinica.fecha":"Fecha",
+   	"resumenHistoriaClinica.cliente":"Paciente",
+   	"resumenHistoriaClinica.profesional":"Médico",
+   	"resumenHistoriaClinica.texto":"Resumen",
+
+   	"resumenHistoriaClinica.agregar": "Agregar un Resumen de Historia Clínica",
+	"resumenHistoriaClinica.agregar.title": "Agregar Resumen de Historia Clínica",
+	"resumenHistoriaClinica.agregar.legend": "Ingrese un Resumen de Historia Clínica",
+	
+	"resumenHistoriaClinica.modificar": "Modificar Resumen de Historia Clínica",
+	"resumenHistoriaClinica.modificar.title": "Modificar Resumen de Historia Clínica",
+	"resumenHistoriaClinica.modificar.legend": "Modifique el Resumen de Historia Clínica",
+	
+	"resumenHistoriaClinica.borrar": "Borrar Resumen de Historia Clínica",
+   	
+   	"resumenHistoriaClinica.profesional.required":"Ingrese un médico",
+	"resumenHistoriaClinica.cliente.required":"Ingrese un paciente",
+	"resumenHistoriaClinica.fecha.required":"Ingrese una fecha",
    	
    	"grid.operaciones": "Operaciones",
    	"grid.resultados": "Resultados de la búsqueda",

@@ -77,8 +77,10 @@ body.loginform div.logincontainer {
 .rasty select:hover,
 .rasty input[type=text]:hover,
 .rasty input[type=password]:hover,
+.rasty input[type=textarea]:hover,
 .rasty input[type=text]:focus,
 .rasty input[type=password]:focus,
+.rasty input[type=textarea]:hover,
 .rasty select:focus
 	{
 	border: 1px solid #4D90FE;
@@ -166,6 +168,17 @@ body.loginform div.logincontainer {
 	/*margin: 6px;*/
 	padding: 4px;
 }
+
+.rasty input[type="textarea"] {
+	border: 1px solid #AAAAAA;
+	border-radius: 2px 2px 2px 2px;
+	box-shadow: 0 1px 2px #DDDDDD;
+	color: #555555;
+	/*margin: 6px;*/
+	padding: 4px;
+	font-family: Arial, helvetica, sans-serif;
+}
+
 
 .rasty  input[type="button"],
 .rasty  input[type="submit"],

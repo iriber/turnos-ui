@@ -56,9 +56,13 @@ function Subject(name){
      * evento
      */
     this.notify = function (event, from) {
+    	
+    	console.log("observers from:" + from + " event:" + event.type);
+    	
     	for ( var int = 0; int < this.observers.length; int++) {
+    		console.log("alertando a " + this.observers[int].name);
     		(this.observers[int]).update(event, from);
-		}
+    	}
     	
     	//notificamos al servidor.
     	//armos el mensaje para cose-observer.

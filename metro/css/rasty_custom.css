@@ -340,8 +340,8 @@ body.loginform {
 }
 
 .rasty form textarea {
-	font-size: 140%;
-	color:#444;
+	font-size: 170%;
+	color:#000;
 }
 
 .rasty form input[type="text"]:focus,

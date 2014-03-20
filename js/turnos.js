@@ -356,3 +356,56 @@ function doBorrarHorario( params ){
     		  	}
     	});      
 }
+
+/* RESUMEN HC */
+function agregarResumenHistoriaClinica(link, cliente, profesional){
+
+	url = link + "?clienteOid="+cliente+ "?profesionalOid="+profesional;
+	gotoLink( url );
+	
+}
+
+function borrarResumenHistoriaClinica(link, oid, cliente_oid, cliente, onSuccess){
+	$title = "Borrar Resumen Historia Clínica";
+	$texto = "Confirma borrar el resumen?";
+	$params = new Array();
+	$params["url"] = link + "?oid="+oid;
+	$params["onSuccess"] = onSuccess;
+
+	jAlertConfirm( $title, $texto, doBorrarResumenHistoriaClinica, $params );
+}
+
+function doBorrarResumenHistoriaClinica( params ){
+	
+	$.ajax({
+    		  	url: params["url"],
+    		  	type: "GET",
+    		  	dataType: "json",
+    		  	cache: false,
+    			complete:function(){
+    				//$("#loading").hide();
+    				//$("#current_action").html("");
+    			},
+    		  	success: function(data){
+        		  	
+    				//$("#nextOffer").html("");
+    				if( data != null && data["error"]!=null){
+    					msg = data["error"];
+    					showErrorMessage(msg);
+    				}
+    				if( data != null && data["info"]!=null){
+						//quitamos de la agenda la fila
+						//que corresponde al turno eliminado
+						//$("#turno_" + oid).fadeOut(500);
+    				}
+    				params["onSuccess"](data);
+    		  	}
+    	});      
+}
+
+function editarResumenHistoriaClinica(link, resumenOid){
+
+	url = link + "?oid="+resumenOid;
+	gotoLink( url );
+	
+}

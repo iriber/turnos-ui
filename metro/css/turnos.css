@@ -136,7 +136,7 @@
 }
 
 
-.practica{
+.practica, .resumen{
 	display: block;
 	border-bottom: 4px solid #D8D8D8;
 	border-left: 8px solid #D8D8D8;
@@ -144,19 +144,19 @@
 	color:#444;
 	position:relative;
 }
-.practica:hover{
+.practica:hover, .resumen:hover{
 
 	/*background: -moz-linear-gradient(center top , #FDFDFD, #EEEEEE) repeat scroll 0 0 #EEEEEE;*/
 	background-color: #CCC;
 }
 
-.practica_actions{
+.practica_actions, .resumen_actions{
 	position:absolute;
 	bottom:5px;
 	right: 0;
 }
 
-.practica div.actions{
+.practica div.actions, .resumen div.actions{
 	top: 0px;
 	right:0;
 	position:absolute;
@@ -165,24 +165,24 @@
 
 
 
-.practica_right{
+.practica_right, .resumen_right{
 	float:right;
 	width: 70%;
 	text-align: left;
 }
 
-.practica_left{
+.practica_left, .resumen_left{
 	float: left;
 	width: 30%;
 }
-.practica_left span{
+.practica_left span, .resumen_left span{
 	display:block;
 	text-align:left;
 	padding:5px;
 	
 }
 
-.practica_fecha{
+.practica_fecha, .resumen_fecha{
 	font-size: 120%;
 	font-weight: bold;
 }
@@ -191,7 +191,7 @@
 	font-weight: bold;
 }
 
-.practica_profesional{
+.practica_profesional, .resumen_profesional{
 }
 
 .practica_obraSocial{
