@@ -4,6 +4,7 @@
 		<param name="name" value="str:nombre" />
 		<param name="value" value="criteria.nombre" />
 		<param name="placeholder" value="msg:localidad.nombre" />
+		<param name="styleCss" value="str:uppercase" />
 	</component>
 
 </rasty>

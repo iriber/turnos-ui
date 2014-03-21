@@ -21,6 +21,7 @@
 		<param name="requiredMessage" value="msg:cliente.nombre.required" />
 		<param name="placeholder" value="msg:cliente.nombre" />
 		<param name="isEditable" value="isEditable" />
+		<param name="styleCss" value="str:uppercase" />
 	</component>
 
 	<component id="tipoDocumento" type="InputCombo">

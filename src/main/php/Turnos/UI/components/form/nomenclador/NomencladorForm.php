@@ -62,6 +62,9 @@ class NomencladorForm extends Form{
 		$input = $this->getComponentById("backSuccess");
 		$value = $input->getPopulatedValue( $this->getMethod() );
 		$this->setBackToOnSuccess($value);
+
+		//uppercase para el nombre.
+		$entity->setNombre( strtoupper( $entity->getNombre() ) );
 		
 	}
 	

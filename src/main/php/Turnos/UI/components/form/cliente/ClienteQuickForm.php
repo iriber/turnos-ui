@@ -57,7 +57,8 @@ class ClienteQuickForm extends Form{
 		
 		parent::fillEntity($entity);
 		
-
+		//uppercase para el nombre.
+		$entity->setNombre( strtoupper( $entity->getNombre() ) );
 	}
 	
 	public function getType(){
@@ -66,6 +67,11 @@ class ClienteQuickForm extends Form{
 		
 	}
 
+	public function getOnClickCancel(){
+
+		$popupDivId = $this->getPopupDivId();
+		return "closeFinderPopup('#$popupDivId');";
+	}
 	
 	protected function parseXTemplate(XTemplate $xtpl){
 
@@ -82,7 +88,8 @@ class ClienteQuickForm extends Form{
 		$xtpl->assign("lbl_sexo", $this->localize("cliente.sexo") );
 		$xtpl->assign("lbl_fechaNacimiento", $this->localize("cliente.fechaNacimiento") );
 		$xtpl->assign("lbl_nroHistoriaClinica", $this->localize("cliente.nroHistoriaClinica") );
-		
+
+		$xtpl->assign("lbl_cancel", $this->localize( "form.cancelar" ) );
 	}
 	public function getCliente()
 	{

@@ -101,6 +101,10 @@ class TurnoQuickForm extends Form{
 		$entity->setPrioridad(Prioridad::Normal);
 		$entity->setImporte( 0 );
 		$entity->setEstado(EstadoTurno::Asignado);
+		
+		//uppercase para el nombre del paciente
+		$entity->setNombre( strtoupper( $entity->getNombre() ) );
+		
 	}
 	
 	public function getType(){

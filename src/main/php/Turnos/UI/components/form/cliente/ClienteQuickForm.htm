@@ -56,7 +56,7 @@ function clienteshortsubmit(){
 		</div>
 
 		<div class="item" style="min-width: {minWidth};">
-		    <label for="telefonoFijo">{lbl_telefonoFijo} *:</label>
+		    <label for="telefonoFijo">{lbl_telefonoFijo}:</label>
 		    <rasty id="telefonoFijo" />
 		</div>
 		
@@ -71,7 +71,7 @@ function clienteshortsubmit(){
 		</div>
 
 		<div class="item" style="min-width: {minWidth};">
-		    <label for="nroHistoriaClinica">{lbl_nroHistoriaClinica}:</label>
+		    <label for="nroHistoriaClinica">{lbl_nroHistoriaClinica} *:</label>
 		    <rasty id="nroHistoriaClinica" />
 		</div>
 
@@ -87,7 +87,7 @@ function clienteshortsubmit(){
 	<fieldset class="tblFooters">
 	
 		<button type="button"  id="input_submit" onclick="javascript: clienteshortsubmit(); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
-		
+		<button type="button"  id="input_button_2" onclick="javascript: {onClickCancel} "><i class="icon-cancel-2 on-left"></i>{lbl_cancel}</button>
 	</fieldset>
 </form>	
 </div>

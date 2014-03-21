@@ -9,8 +9,10 @@ function wakeUp( id ){
 
 
 
-function jAlertConfirm( title, text, fCallback, attr ){
+function jAlertConfirm( title, text, fCallback, attr, icon ){
 	
+	if( icon == undefined )
+		icon = "ui-icon-alert";
 	
 	//creamos el div donde vamos a escribir el popup
 	//agregamos el div para el dialogo si es que no existe.
@@ -18,7 +20,7 @@ function jAlertConfirm( title, text, fCallback, attr ){
 		$("body").append("<div id='dialog-confirm'></div>");
 		
 	}
-	$("#dialog-confirm").html("<p><span class='ui-icon ui-icon-alert' ></span>" + text +  "</p>");
+	$("#dialog-confirm").html("<p><span class='ui-icon " + icon  + "' ></span>" + text +  "</p>");
 	
 	$( "#dialog-confirm" ).dialog({
 		 /*resizable: true,*/
@@ -180,7 +182,7 @@ function closeFinderPopup(resultId){
     $(uiDialog).dialog("destroy");
     
 }
-function openFinderPopup(webpath, filterType, fCallback, resultId, initialText, title, extraParams, height, width, popupDivId){
+function openFinderPopup(webpath, filterType, fCallback, resultId, initialText, title, extraParams, height, width, popupDivId, onAddCallback, labelAdd){
 	
 	if ( width == undefined )
 		width = "80%";
@@ -188,9 +190,18 @@ function openFinderPopup(webpath, filterType, fCallback, resultId, initialText, 
 	if ( height == undefined )
 		height = "600";
 	
+	
 	//var url = webpath + "AddPopup.rasty?initialText=" + encodeURI(initialText) + "&formType=" + formType + "&popupDivId=" + popupDivId + "&onSuccessCallback=" + fCallback + "&" + extraParams;
-	var url = webpath + "FinderPopup.rasty?filterType=" + filterType + "&onSelectCallback=" + fCallback  + "&initialText="+ encodeURI(initialText) + "&popupDivId=" + popupDivId+ "&" + extraParams;;
+	var url = webpath + "FinderPopup.rasty?filterType=" + filterType + "&onSelectCallback=" + fCallback  + "&popupDivId=" + popupDivId+ "&" + extraParams;;
 
+	if ( onAddCallback != undefined )
+		url += "&hasAddEntity=1&onClickAddCallback=" + encodeURI(onAddCallback) +"&msgAdd=" + encodeURI(labelAdd);
+	else
+		url += "&hasAddEntity=0";
+
+	if( initialText != undefined )
+		url += "&initialText="+ encodeURI(initialText);
+	
 	console.log("openFinderPopup: " + url);
 
 	var uiDialog = resultId;

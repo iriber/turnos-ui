@@ -236,14 +236,29 @@ class AgendaDiariaHelper{
 				
 				$xtpl->assign("turno_css", TurnosUtils::getEstadoTurnoCss($turno->getEstado()));
 					
+				
+				
 				$cliente = $turno->getCliente();
 				if(!empty($cliente) && $cliente->getOid()>0){
 					$xtpl->assign("cliente",  $turno->getCliente()->__toString() );
 					$xtpl->assign("cliente_oid",  $turno->getCliente()->getOid());
-					$xtpl->assign("telefono", $turno->getCliente()->getTelefonoFijo() . "  " . $turno->getCliente()->getTelefonoMovil());
+					
+
+					$telefonos = array();
+					$telFijo = $turno->getCliente()->getTelefonoFijo();
+					if(!empty($telFijo))
+						$telefonos[] = $telFijo;	
+						
+					$telMovil = $turno->getCliente()->getTelefonoMovil();
+					if(!empty($telMovil))
+						$telefonos[] = $telMovil;	
+						
+					$xtpl->assign("telefono", implode(" / ", $telefonos));
+					
 					//$xtpl->assign("linkSeleccionarTurno",  LinkBuilder::getPageUrl( "HistoriaClinica" , array("clienteOid"=> $turno->getCliente()->getOid())) );
 					//$xtpl->assign("linkSeleccionarLabel",  $this->localize("agenda.verficha") );
 					$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );
+					$xtpl->parse("main.turno.$templateBlockTurno.editar.historia_clinica");
 				}else{
 					$xtpl->assign("cliente", $turno->getNombre() );
 					$xtpl->assign("telefono", $turno->getTelefono() );
@@ -256,9 +271,10 @@ class AgendaDiariaHelper{
 				$xtpl->assign("estado", self::localize(EstadoTurno::getLabel($turno->getEstado())) );
 				
 				$os = $turno->getObraSocial();
-				$os = ($os!=null)? $os->getNombre() : "";
-				$xtpl->assign("obra_social", $os );
+				$os = ($os!=null)? " / " .$os->getNombre() : "";
+				$xtpl->assign("obra_social",   $os );
 				$xtpl->assign("nroObraSocial", $turno->getNroObraSocial() );
+				
 				
 				$importe = $turno->getImporte();
 				$xtpl->assign("importe", TurnosUtils::formatMontoToView($importe) );

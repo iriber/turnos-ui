@@ -46,7 +46,8 @@ class ObraSocialQuickForm extends Form{
 		
 		parent::fillEntity($entity);
 		
-
+		//uppercase para el nombre.
+		$entity->setNombre( strtoupper( $entity->getNombre() ) );
 	}
 	
 	public function getType(){
@@ -55,6 +56,12 @@ class ObraSocialQuickForm extends Form{
 		
 	}
 
+	public function getOnClickCancel(){
+
+		$popupDivId = $this->getPopupDivId();
+		return "closeFinderPopup('#$popupDivId');";
+	}
+		
 	protected function parseXTemplate(XTemplate $xtpl){
 
 		$this->fillFromSaved( $this->getObraSocial() );
@@ -66,6 +73,8 @@ class ObraSocialQuickForm extends Form{
 		
 		$xtpl->assign("lbl_nombre", $this->localize("obraSocial.nombre") );
 		$xtpl->assign("lbl_codigo", $this->localize("obraSocial.codigo") );
+		
+		$xtpl->assign("lbl_cancel", $this->localize( "form.cancelar" ) );
 		
 	}
 

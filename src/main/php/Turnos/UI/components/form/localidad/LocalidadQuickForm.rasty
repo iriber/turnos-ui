@@ -1,5 +1,7 @@
 <rasty specificationClass="Turnos\UI\components\form\localidad\LocalidadQuickForm" templateLocation="LocalidadQuickForm.htm">
 
+	<param name="popupDivId" value="get:popupDivId" />
+
 	<component id="oid" type="InputHidden">
 		<param name="inputId" value="str:oid" />
 		<param name="name" value="str:oid" />
@@ -12,6 +14,7 @@
 		<param name="value" value="localidad.nombre" />
 		<param name="requiredMessage" value="msg:localidad.nombre.required" />
 		<param name="placeholder" value="msg:localidad.nombre" />
+		<param name="styleCss" value="str:uppercase" />
 	</component>
 	
 </rasty>

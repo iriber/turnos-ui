@@ -6,31 +6,71 @@
 	type="text/css" />
 
 <script>
+function turnoForm_show_addentity(){
+	
+	closeFinderPopup("#turnoForm_{id}_popup_buscar");
+	
+	//creamos el div donde vamos a escribir el popup
+	//agregamos el div para el dialogo si es que no existe.
+	if (!$("#turnoForm_popup_add").length) {
+		$("body").append("<div id='turnoForm_popup_add' style='display: none;'></div>");
+	}
+		
+	var initialText = $("#nombre").val();
+
+	var title = '{agregar_cliente_title}';
+
+	var extraParams = undefined;
+	
+	var height = undefined;
+
+	var width  = undefined;
+
+	var popupDivId = "turnoForm_popup_add";
+
+	openAddentityPopup("{WEB_PATH}", "ClienteQuickForm", "turnoForm_addentity_callback", "#turnoForm_popup_add", initialText, title, extraParams, height, width, popupDivId);
+	
+}
+
+function turnoForm_addentity_callback( oid ){
+
+	closeFinderPopup("#turnoForm_popup_add");
+
+	clienteValidado( oid );
+	
+}
+
+function onAddClienteCallback(){
+	turnoForm_show_addentity();
+}
 
 function validarCliente(){
 
-	
-	
-	if (!$("#turnoForm_{id}_popup").length) {
-		$("body").append("<div id='turnoForm_{id}_popup' style='display: none;'></div>");
+	if (!$("#turnoForm_{id}_popup_buscar").length) {
+		$("body").append("<div id='turnoForm_{id}_popup_buscar' style='display: none;'></div>");
 	}
-
 
 	var nombre = $("#nombre").val();
 	var initialText = nombre;
-	var title = "Buscar paciente";
+	var title = "{buscar_cliente_title}";
 	var width = "60%";
 	var height = "500";
 	var extraParams = "";
+	var onAddCallback = "onAddClienteCallback";
+	var labelAdd = "{lbl_agregar_cliente}";
 
-	openFinderPopup("{WEB_PATH}", "ClienteFilter", "clienteSeleccionado_callback", "#turnoForm_{id}_popup", initialText, title, extraParams, height, width, "turnoForm_{id}_popup");
+	openFinderPopup("{WEB_PATH}", "ClienteFilter", "clienteSeleccionado_callback", "#turnoForm_{id}_popup_buscar", initialText, title, extraParams, height, width, "turnoForm_{id}_popup_buscar", onAddCallback, labelAdd);
 
 }
 
 function clienteSeleccionado_callback(event, oid){
 
-	closeFinderPopup("#turnoForm_{id}_popup");
+	closeFinderPopup("#turnoForm_{id}_popup_buscar");
 	
+	clienteValidado( oid );
+}
+
+function clienteValidado( oid ){
 	$("#findentity_cliente_inputCode").val( oid );
 	$("#findentity_cliente_inputCode").blur();
 	$("#cliente").val( oid );
@@ -39,7 +79,7 @@ function clienteSeleccionado_callback(event, oid){
 	$(".cliente_registrado").show();
 	
 	 $("#estado").removeAttr('disabled');
-	 $("#estado").val('{estadoTurnoEnSala}');
+	 $("#estado").val('{estadoTurnoEnSala}');	
 }
 
 function cambiarObraSocial(entity){

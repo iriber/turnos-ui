@@ -207,7 +207,7 @@ function turnoEnSala(link, oid, hora, cliente, clienteOid, onSuccess, onClienteR
 					params["telefono"] = data["telefono"];
 					params["turnoOid"] = data["turnoOid"];
 					//jAlertConfirm( title, msg, onClienteRequired, params );
-					jAlertConfirm( title, msg, gotoLink, params["link"] );
+					jAlertConfirm( title, msg, gotoLink, params["link"], "ui-icon-info" );
 					
 				}else
 					showErrorMessage(msg);

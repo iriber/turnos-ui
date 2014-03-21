@@ -42,6 +42,9 @@ class NomencladorFilter extends Filter{
 	
 	protected function parseXTemplate(XTemplate $xtpl){
 
+		//rellenamos el nombre con el texto inicial
+		$this->fillInput("nombre", $this->getInitialText() );
+		
 		parent::parseXTemplate($xtpl);
 		
 		$xtpl->assign("lbl_nombre",  $this->localize("nomenclador.nombre") );

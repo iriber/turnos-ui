@@ -67,13 +67,13 @@
 	"ayuda.panel.atendido-ensala.msg": "Utiliza esta opción para indicar que el paciente que está siendo atendido pasa a sala de espera",
 	"ayuda.panel.asignado-ensala.msg": "Utiliza esta opción para indicar que el paciente asignado al curso ya se encuentra en sala de espera", 
 	
-	"cliente.ayuda.autocomplete": "Ingresa el nombre del paciente así te puedo sugerir alguno de los registrados. Recuerda siempre comenzar escribiendo el apellido.",
-	"cliente.ayuda.popup": "Si te resulta más práctico, puedes utilizar la lupa para hacer una búsqueda avanzada.",
-	"cliente.ayuda.add":"Si no encuentras al paciente, utiliza el '+' para ingresar sus datos y registrarlo en el sistema",
+	"cliente.ayuda.autocomplete": "Ingresa el nombre del paciente así te puedo<br />sugerir alguno de los registrados.<br />Recuerda siempre comenzar escribiendo el apellido.",
+	"cliente.ayuda.popup": "Si te resulta más práctico, puedes<br />utilizar la lupa para hacer una búsqueda avanzada.",
+	"cliente.ayuda.add":"Si no encuentras al paciente, utiliza<br />el '+' para ingresar sus datos y registrarlo en el sistema",
 	
-	"obraSocial.ayuda.autocomplete": "Ingresa el nombre de la obra social así te puedo sugerir alguna de las registradas.",
-	"obraSocial.ayuda.popup": "Si te resulta más práctico, puedes utilizar la lupa para hacer una búsqueda avanzada.",
-	"obraSocial.ayuda.add":"Si no encuentras la obra social, utiliza el '+' para ingresar una nueva y registrarla en el sistema",
+	"obraSocial.ayuda.autocomplete": "Ingresa el nombre de la obra social así te<br />puedo sugerir alguna de las registradas.",
+	"obraSocial.ayuda.popup": "Si te resulta más práctico, puedes<br />utilizar la lupa para hacer una búsqueda avanzada.",
+	"obraSocial.ayuda.add":"Si no encuentras la obra social, utiliza<br />el '+' para ingresar una nueva y registrarla en el sistema",
 	
 	
 	"login.title":"Instituto 9 de Julio",
@@ -130,7 +130,9 @@
 	"turno.telefono.required": "Ingrese el teléfono del paciente",
 	
 	"turno.cliente.validar.msg": "Valide los datos del paciente",
-	"turno.cliente.validar": "validar",
+	"turno.cliente.validar": "validar paciente",
+	"turno.cliente.agregar": "Agregar",
+	"turno.cliente.buscar.title": "Buscar pacientes",
 	
 	
 	"turno.profesional.unicity": "El médico ya tiene asignado el turno. Elija otro día/horario",
@@ -168,7 +170,9 @@
 	"turno.nroObraSocial": "Nro Afiliado",
 	"turno.prioridad": "Prioridad",
 	"turno.nombre": "Paciente",
+	"turno.nombre.placeholder": "Nombre del Paciente",
 	"turno.telefono": "Teléfono",
+	"turno.telefono.placeholder": "Teléfono del Paciente",
 
 	
 	"ausencia.title":  "Ausencias",
@@ -225,6 +229,8 @@
 	"cliente.nombre":"Nombre",
 	"cliente.nombre.unicity":"Ya existe un paciente para el nombre indicado",
 	"cliente.nombre.required":"Ingrese un nombre",
+	"cliente.nroHistoriaClinica.required":"Ingrese el número de historia clínica",
+	"cliente.nroHistoriaClinica.unicity":"Ya existe un paciente con el número de historia clínica indicado",
 	
 	"cliente.fechaAlta":"Fecha de alta",
 	"cliente.edad":"Edad",
@@ -446,6 +452,8 @@
     "filter.buscar": "Buscar",
     "filter.buscar.again": "Volver a intentarlo...",
     "filter.resultados": "Resultados de la búsqueda",
+    "filter.opciones": "Opciones",
+    "filter.close.label": "Cerrar",
  
  	"addpopup.legend":"Agregar",
     

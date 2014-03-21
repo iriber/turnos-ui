@@ -45,7 +45,8 @@ class LocalidadQuickForm extends Form{
 		
 		parent::fillEntity($entity);
 		
-
+		//uppercase para el nombre.
+		$entity->setNombre( strtoupper( $entity->getNombre() ) );
 	}
 	
 	public function getType(){
@@ -54,6 +55,12 @@ class LocalidadQuickForm extends Form{
 		
 	}
 
+	public function getOnClickCancel(){
+
+		$popupDivId = $this->getPopupDivId();
+		return "closeFinderPopup('#$popupDivId');";
+	}
+	
 	protected function parseXTemplate(XTemplate $xtpl){
 
 		$this->fillFromSaved( $this->getLocalidad() );
@@ -64,7 +71,7 @@ class LocalidadQuickForm extends Form{
 		parent::parseXTemplate($xtpl);
 		
 		$xtpl->assign("lbl_nombre", $this->localize("localidad.nombre") );
-		
+		$xtpl->assign("lbl_cancel", $this->localize( "form.cancelar" ) );
 	}
 
 	

@@ -63,6 +63,9 @@ class ObraSocialForm extends Form{
 		$value = $input->getPopulatedValue( $this->getMethod() );
 		$this->setBackToOnSuccess($value);
 		
+		//uppercase para el nombre.
+		$entity->setNombre( strtoupper( $entity->getNombre() ) );
+		
 	}
 	
 	public function getType(){

@@ -98,6 +98,9 @@ class TurnoForm extends Form{
 		$value = $input->getPopulatedValue( $this->getMethod() );
 		$this->setBackToOnSuccess($value);
 		
+		//uppercase para el nombre del paciente
+		$entity->setNombre( strtoupper( $entity->getNombre() ) );
+		
 	}
 	
 	public function getType(){
@@ -151,6 +154,9 @@ class TurnoForm extends Form{
 			$xtpl->parse("main.cliente_registrado" );
 			
 		}
+		
+		$xtpl->assign("lbl_agregar_cliente", $this->localize( "turno.cliente.agregar" ) );
+		$xtpl->assign("buscar_cliente_title", $this->localize( "turno.cliente.buscar.title" ) );
 		
 		
 	}

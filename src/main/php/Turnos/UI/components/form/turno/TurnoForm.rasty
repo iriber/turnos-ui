@@ -42,7 +42,7 @@
 		<param name="options" value="estados" />
 		<param name="placeholder" value="msg:turno.estado" />
 		<param name="requiredMessage" value="msg:turno.estado.required" />
-		<param name="isEditable" value="boolean:false" />
+		<param name="isEditable" value="boolean:true" />
 	</component>
 
 	<component id="obraSocial" type="InputFindEntity">
@@ -131,6 +131,7 @@
 		<param name="value" value="turno.nombre" />
 		<param name="requiredMessage" value="msg:turno.nombre.required" />
 		<param name="placeholder" value="msg:turno.nombre" />
+		<param name="styleCss" value="str:uppercase" />
 	</component>
 
 	<component id="telefono" type="InputText">

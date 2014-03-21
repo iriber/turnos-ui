@@ -84,6 +84,8 @@ function agendaTurnos{id}_tipoAgendaDiaria(fecha){
 }
 
 $(document).ready(function(){
+
+	$(this).find(".agenda_turno p.toolbar").hide();
 	
 	$(".turno_ocupado").hover(
 			function () {
@@ -111,7 +113,7 @@ $(document).ready(function(){
 					}
 				);	
 		
-	$(this).find(".agenda_turno p.toolbar").hide();
+	
 	
 });
 reinit();
@@ -180,11 +182,12 @@ reinit();
 					onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
 					<i class="icon-pencil"></i>
 					</button>
-					<!-- historia clínica -->
+					<!-- BEGIN: historia_clinica -->
 					<button type="button" title="{historiaClinica_label}"
 					onclick="javascript: gotoLink('{linkHistoriaClinica}');">
 					<i class="icon-attachment"></i>
 					</button>
+					<!-- END: historia_clinica -->
 					<!-- eliminar -->
 					<button type="button" title="{borrar_label}"
 					onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;">
@@ -204,7 +207,7 @@ reinit();
 				<br>
 				<span>{telefono}</span>
 				<span>{obra_social}</span>
-				<span>{importe}</span>
+				<!-- span>{nroObraSocial}</span-->
 				</h2>
 				<!-- BEGIN: prioridadddd -->
 				<p class="{prioridad_css}">{prioridad}</p>
@@ -277,7 +280,9 @@ reinit();
 							<i class="icon-exit on-left"></i>{asignado_label}</a>
 						</li>
 						<!-- END:ensala -->
+						<!-- BEGIN:historia_clinica -->
 					 	<li><a href="#" onclick="javascript: gotoLink('{linkHistoriaClinica}');"><i class="icon-attachment on-left"></i>{linkHistoriaClinicaLabel}</a></li>					    
+						<!-- END:historia_clinica -->
 						<li class="divider"></li>
 					 	<li><a href="#" onclick="javascript: gotoLink('{linkSeleccionarTurno}');"><i class="icon-new-tab on-left"></i>{linkSeleccionarLabel}</a></li>
 					    <li><a href="#" 
@@ -298,13 +303,17 @@ reinit();
 			<!-- END:turno_ausencia -->
 			
 			<!-- BEGIN:turno_vacio_sobreturno -->
-			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" 
+				onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');">
+				<!-- onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
 				 {mensajeOculto}
 			</td>
 			<!-- END:turno_vacio_sobreturno -->
 			
 			<!-- BEGIN:turno_vacio_disponible -->
-			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" 
+				onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');">
+				<!-- onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
 				 {mensajeOculto} 
 			</td>
 			<!-- END:turno_vacio_disponible -->

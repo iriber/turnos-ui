@@ -273,6 +273,7 @@ class AgendaSemanalHelper{
 			//fecha es un string Y-m-d
 			$fechaArray = explode("-", $fecha);
 			$fechaMostrar = TurnosUtils::getNewDate($fechaArray[2], $fechaArray[1], $fechaArray[0]);
+			$fechaActual = TurnosUtils::getNewDate($fechaArray[2], $fechaArray[1], $fechaArray[0]);
 
 			if( TurnosUtils::fechasIguales($fechaSeleccionada, $fechaMostrar)){
 				
@@ -319,7 +320,8 @@ class AgendaSemanalHelper{
 				if(!empty($cliente) && $cliente->getOid()>0){
 					$xtpl->assign("cliente",  $turno->getCliente()->__toString() );
 					$xtpl->assign("cliente_oid",  $turno->getCliente()->getOid());
-					$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );	
+					$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );
+					$xtpl->parse("main.hora.dia.turno.historia_clinica");	
 					
 				}else{
 					$xtpl->assign("cliente", $turno->getNombre() );
@@ -386,7 +388,7 @@ class AgendaSemanalHelper{
 					$params["fecha"] = $fecha; 
 					$xtpl->assign("linkSeleccionarTurno",  LinkBuilder::getPageUrl( "TurnoAgregar", $params) );
 					$xtpl->assign("linkSeleccionarLabel",  self::localize("turno.agregar") );
-				
+					$xtpl->assign("fecha", TurnosUtils::formatDateToView( $fechaActual, "d/m/Y ") );
 					$xtpl->parse("main.hora.dia.turno_vacio_disponible");
 				
 				}

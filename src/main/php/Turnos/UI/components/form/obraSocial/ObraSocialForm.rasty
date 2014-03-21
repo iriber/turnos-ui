@@ -20,6 +20,7 @@
 		<param name="value" value="obraSocial.nombre" />
 		<param name="requiredMessage" value="msg:obraSocial.nombre.required" />
 		<param name="placeholder" value="msg:obraSocial.nombre" />
+		<param name="styleCss" value="str:uppercase" />
 	</component>
 	
 	<component id="codigo" type="InputText">

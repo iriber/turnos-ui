@@ -1,3 +1,6 @@
+.uppercase{
+	text-transform: uppercase;
+}
 
 .currentTime{
 	font-style: bold;
@@ -42,7 +45,10 @@
 	border-bottom: 4px solid #D8D8D8;
 	border-left: 8px solid #D8D8D8;
 	padding:7px;
-	color:#444;
+	
+	/*color: #444;*/
+    color:#000;
+    
 	position:relative;
 }
 .turno:hover{
@@ -141,7 +147,9 @@
 	border-bottom: 4px solid #D8D8D8;
 	border-left: 8px solid #D8D8D8;
 	padding:7px;
-	color:#444;
+	/*color: #444;*/
+    color:#000;
+    
 	position:relative;
 }
 .practica:hover, .resumen:hover{
@@ -208,7 +216,9 @@
 }
 
 .referencia{
-    color: #2B2B2B;
+    /*color: #2B2B2B;*/
+    color:#000;
+    
     /*float: right;*/
     font-size: 14px;
     /*height: 550px;*/
@@ -222,7 +232,9 @@
 	
 }
 .referencia span{
-	color: #2B2B2B;
+	/*color: #2B2B2B;*/
+    color:#000;
+    
     float: left;
     font-size: 14px;
     line-height: 18px;
@@ -363,7 +375,9 @@
 }
 
 #totalesDia {
-    color: #2B2B2B;
+    /*color: #2B2B2B;*/
+    color:#000;
+    
     /*float: right;*/
     font-size: 14px;
     /*height: 550px;*/
@@ -385,7 +399,8 @@
     width: 100%;
 }
 #totalesDia .total h2 {
-    color: #2B2B2B;
+    /*color: #2B2B2B;*/
+    color:#000;
     float: left;
     font-size: 14px;
     line-height: 18px;
@@ -413,7 +428,9 @@ fieldset .agenda {
 }
 
 .agenda {
-    color: #2B2B2B;
+    /*color: #2B2B2B;*/
+    color:#000;
+    
     /*float: right;*/
     font-size: 14px;
     /*height: 550px;*/
@@ -462,7 +479,9 @@ fieldset .agenda {
 }
  
 .agenda_turno h2 {
-    color: #2B2B2B;
+    /*color: #2B2B2B;*/
+    color:#000;
+    
     float: left;
     font-size: 14px;
     line-height: 18px;
@@ -486,7 +505,9 @@ fieldset .agenda {
     text-shadow: none;
 }
 .agenda_turno h2 span {
-    color: #333001;
+    /*color: #333001;*/
+    color:#000;
+    
     font-size: 11px;
     font-style: italic;
     font-weight: 500;

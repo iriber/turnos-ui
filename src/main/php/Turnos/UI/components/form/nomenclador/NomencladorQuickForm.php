@@ -46,7 +46,9 @@ class NomencladorQuickForm extends Form{
 		
 		parent::fillEntity($entity);
 		
-
+		//uppercase para el nombre.
+		$entity->setNombre( strtoupper( $entity->getNombre() ) );
+		
 	}
 	
 	public function getType(){
@@ -55,6 +57,12 @@ class NomencladorQuickForm extends Form{
 		
 	}
 
+	public function getOnClickCancel(){
+
+		$popupDivId = $this->getPopupDivId();
+		return "closeFinderPopup('#$popupDivId');";
+	}
+		
 	protected function parseXTemplate(XTemplate $xtpl){
 
 		$this->fillFromSaved( $this->getNomenclador() );
@@ -66,7 +74,7 @@ class NomencladorQuickForm extends Form{
 		
 		$xtpl->assign("lbl_nombre", $this->localize("nomenclador.nombre") );
 		$xtpl->assign("lbl_codigo", $this->localize("nomenclador.codigo") );
-		
+		$xtpl->assign("lbl_cancel", $this->localize( "form.cancelar" ) );
 	}
 
 	

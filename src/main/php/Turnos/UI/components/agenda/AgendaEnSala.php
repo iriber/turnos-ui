@@ -94,7 +94,7 @@ class AgendaEnSala extends RastyComponent{
 		}
 				
 		$cliente = $turno->getCliente();
-		if($cliente->getOid()>0){
+		if(!empty($cliente) && $cliente->getOid()>0){
 					$xtpl->assign("cliente",  $turno->getCliente()->__toString() );
 					$xtpl->assign("cliente_oid",  $turno->getCliente()->getOid());
 					$xtpl->assign("linkSeleccionarTurno",  LinkBuilder::getPageUrl( "HistoriaClinica" , array("backTo"=> "ProfesionalHome", "clienteOid"=> $turno->getCliente()->getOid())) );

@@ -20,6 +20,7 @@
 		<param name="value" value="nomenclador.nombre" />
 		<param name="requiredMessage" value="msg:nomenclador.nombre.required" />
 		<param name="placeholder" value="msg:nomenclador.nombre" />
+		<param name="styleCss" value="str:uppercase" />
 	</component>
 	
 	<component id="codigo" type="InputText">
