@@ -8340,3 +8340,23 @@ h2, h3 {
     margin: 20px 0;
 }
 
+.metro .notice:before {
+    background-color: inherit;
+    content: "";
+    display: block;
+    height: 10px;
+    left: -5px;
+    margin-top: -5px;
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 10px;
+}
+.metro .notice {
+    background-color: #4390DF;
+    display: block;
+    height: auto;
+    min-width: 200px;
+    padding: 20px;
+    position: relative;
+}

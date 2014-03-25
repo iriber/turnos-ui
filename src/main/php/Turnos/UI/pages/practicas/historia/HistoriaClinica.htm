@@ -11,7 +11,7 @@
 	width: 100%;
 }
 
-#historia_clinica_left th{
+#historia_clinica_hc th{
 	text-align: left;
 }
 
@@ -119,7 +119,12 @@ $(document).ready(function(){
 	});
 });
 
-
+$(function(){
+	$("#tab-with-event").tabcontrol().bind("tabcontrolchange", function(event, frame){
+		var id = $(frame).attr("id");
+		//alert(" frame id:"+id);
+		})
+	})
 </script>
 <style>
 #estadoActual .title{
@@ -135,155 +140,208 @@ $(document).ready(function(){
 }
 #estadoActual{
 	
-	padding: 10px;
+	padding: 0px 10px;
 	text-align: left;
 }
 </style>
 <div id="historia_clinica">
 
 	<div id="estadoActual">
-		
+		<!-- BEGIN:historia_paciente -->
+		<div class="historia_clinica_left">
+			<h3>{paciente}</h3>
+		</div>
+		<!-- END:historia_paciente -->
 		<!-- BEGIN:turnoEnCurso -->
-		<span class="turnoEnCurso">
-			{paciente_atendido_por}
-
-			<button type="button"  id="input_finalizar" 
+		<div class="historia_clinica_right">
+			<div style="float:right;">
+				<button title="finalizar la atención" class="shortcut bg-red fg-white"  id="input_finalizar" 
 				onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', historiaClinica_turnoFinalizado);return false;">
 				<i class="icon-checkmark on-left"></i>{turno_finalizar_label}
-			</button>
-			
-		</span>
+				</button>
+			</div>
+			<div style="float:right;" class="span3 notice marker-on-bottom bg-green">
+				<span class="fg-white">{paciente_atendido_por}
+				</span>
+			</div>
+		</div>
 		<!-- END:turnoEnCurso -->
+		<div style="clear:both;"></div>
+		<!-- BEGIN:turnoEnCursoo -->
+		<div class="grid fluid">
+			<div class="row">
+				<div class="span5">
+					<div class="notice marker-on-bottom bg-green">
+						<div class="fg-white">{paciente_atendido_por}
+						</div>
+					</div>
+				</div>
+				<div class="span1">
+					<button title="finalizar la atención" class="shortcut bg-red fg-white"  id="input_finalizar" 
+					onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', historiaClinica_turnoFinalizado);return false;">
+					<i class="icon-checkmark on-left"></i>{turno_finalizar_label}
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- END:turnoEnCursoo -->
 	</div>
-	<div id="historia_clinica_left" class="turnos_form" >
-		<fieldset>
-			<legend>{historia_info_subtitle} - <span id="nroHistoriaClinica">{nroHistoriaClinica}</span></legend>
-			
-			<span class="actions">
-				<button type="button"  id="input_agregar" class="transparent" 
-				onclick="javascript: gotoLink('{linkAgregarPractica}')">
-				<i class="icon-plus on-left"></i>{practica_agregar_label}
-				</button>
-			</span>
-			<rasty id="historia" />
-			
-		</fieldset>
-	</div>
-	<div id="historia_clinica_right">
-		<fieldset>
-			<legend>{cliente_info_subtitle}</legend>
-			
-			<div class="dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_cliente">{cliente_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="nombre">{cliente}</span> (<span id="edad">{edad}</span>)
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			
-			<div class="dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_obraSocial">{obraSocial_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="obraSocial">{obraSocial}</span>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			
-			<div class="dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_nroObraSocial">{nroObraSocial_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="nroObraSocial">{nroObraSocial}</span>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			
-			<div class="datoOculto dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_domicilio">{domicilio_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="domicilio">{domicilio}</span> &nbsp; <span id="localidad">{localidad}</span>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			
-			<div class="datoOculto dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_telefono">{telefonos_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="telefonoFijo">{telefonoFijo}</span> / <span id="telefonoMovil">{telefonoMovil}</span>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			
-			<div class="datoOculto dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_email">{email_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="email">{email}</span>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-
-
-			<div class="datoOculto dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_documento">{documento_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="tipoDocumento">{tipoDocumento}</span> <span id="nroDocumento">{nroDocumento}</span>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			
-			<div class="datoOculto dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_fechaAlta">{fechaAlta_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="fechaAlta">{fechaAlta}</span>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-
-			<div class="datoOculto dato_personal">
-				<div class="dato_personal_left">
-			    	<span class="dato_personal_fechaNacimiento">{fechaNacimiento_label}</span>
-				</div>
-		    	<div class="dato_personal_right">
-					<span id="fechaNacimiento">{fechaNacimiento}</span>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-
-			<span style="cursor: pointer;" id="cliente_ver_mas_datos">{ver_mas_datos_label}</span>
-			
-		</fieldset>	
-		<fieldset>
-			<legend>{resumenes_info_subtitle}</legend>
-			<span class="actions">
-				<button type="button"  id="input_agregar" class="transparent" 
-				onclick="javascript: gotoLink('{linkAgregarResumenHistoriaClinica}')">
-				<i class="icon-plus on-left"></i>{resumen_agregar_label}
-				</button>
-			</span>
-			<rasty id="resumenHC"/>	
-		</fieldset>
-		<fieldset>
-			<legend>{turnos_info_subtitle}</legend>
-			<rasty id="turnosCliente" />	
-		</fieldset>
-	</div>	
 	
-	<div style="clear:both;"></div>
+	<div id="tab-with-event" class="tab-control" data-effect="fade[slide]" data-role="tab-control">
+	    <ul class="tabs">
+	    	<li class="active"><a href="#historia_clinica_hc">{historia_tab}</a></li>
+	    	<li><a href="#historia_clinica_resumenes">{resumenes_tab}</a></li>
+	    	<li><a href="#historia_clinica_turnos">{turnos_tab}</a></li>
+	    </ul>
+	     
+	    <div class="frames">
+	    	<div class="frame" id="historia_clinica_hc" class="turnos_form" >
+				<div class="historia_clinica_left">
+				<fieldset>
+					<legend>{historia_info_subtitle} - <span id="nroHistoriaClinica">{nroHistoriaClinica}</span></legend>
+					
+					<span class="actions">
+						<button type="button"  id="input_agregar_practica" class="transparent" 
+						onclick="javascript: gotoLink('{linkAgregarPractica}')">
+						<i class="icon-plus on-left"></i>{practica_agregar_label}
+						</button>
+					</span>
+					<rasty id="historia" />
+				</fieldset>
+				</div>
+				<div class="historia_clinica_right">
+				
+					<fieldset>
+						<legend>{cliente_info_subtitle}</legend>
+						<span class="actions">
+							<button type="button"  id="input_modificar_cliente" class="transparent" 
+							onclick="javascript: gotoLink('{linkModificarCliente}')">
+							<i class="icon-plus on-left"></i>{cliente_modificar_label}
+							</button>
+						</span>
+						
+						<div class="dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_cliente">{cliente_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="nombre">{cliente}</span> (<span id="edad">{edad}</span>)
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+						
+						<div class="dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_obraSocial">{obraSocial_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="obraSocial">{obraSocial}</span>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+						
+						<div class="dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_nroObraSocial">{nroObraSocial_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="nroObraSocial">{nroObraSocial}</span>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+						
+						<div class="datoOculto dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_domicilio">{domicilio_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="domicilio">{domicilio}</span> &nbsp; <span id="localidad">{localidad}</span>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+						
+						<div class="datoOculto dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_telefono">{telefonos_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="telefonoFijo">{telefonoFijo}</span> / <span id="telefonoMovil">{telefonoMovil}</span>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+						
+						<div class="datoOculto dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_email">{email_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="email">{email}</span>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+			
+			
+						<div class="datoOculto dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_documento">{documento_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="tipoDocumento">{tipoDocumento}</span> <span id="nroDocumento">{nroDocumento}</span>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+						
+						<div class="datoOculto dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_fechaAlta">{fechaAlta_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="fechaAlta">{fechaAlta}</span>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+			
+						<div class="datoOculto dato_personal">
+							<div class="dato_personal_left">
+						    	<span class="dato_personal_fechaNacimiento">{fechaNacimiento_label}</span>
+							</div>
+					    	<div class="dato_personal_right">
+								<span id="fechaNacimiento">{fechaNacimiento}</span>
+							</div>
+							<div style="clear: both;"></div>
+						</div>
+			
+						<span style="cursor: pointer;" id="cliente_ver_mas_datos">{ver_mas_datos_label}</span>
+						
+					</fieldset>	
+						
+				</div>
+				<div style="clear:both;"></div>
+	
+			</div>
+			
+	    	<div class="frame" id="historia_clinica_resumenes">
+				<fieldset>
+					<legend>{resumenes_info_subtitle}</legend>
+					<span class="actions">
+						<button type="button"  id="input_agregar" class="transparent" 
+						onclick="javascript: gotoLink('{linkAgregarResumenHistoriaClinica}')">
+						<i class="icon-plus on-left"></i>{resumen_agregar_label}
+						</button>
+					</span>
+					<rasty id="resumenHC"/>	
+				</fieldset>
+			</div>	
+
+	    	<div class="frame" id="historia_clinica_turnos">
+				<fieldset>
+					<legend>{turnos_info_subtitle}</legend>
+					<rasty id="turnosCliente" />	
+				</fieldset>
+			</div>	
+	    </div>
+    </div>
+	
 	
 </div>
 

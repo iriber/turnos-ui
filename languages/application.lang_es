@@ -133,6 +133,7 @@
 	"turno.cliente.validar": "validar paciente",
 	"turno.cliente.agregar": "Agregar",
 	"turno.cliente.buscar.title": "Buscar pacientes",
+	"turno.cliente.validar.buscar.title": "Validando el paciente del turno",
 	
 	
 	"turno.profesional.unicity": "El médico ya tiene asignado el turno. Elija otro día/horario",
@@ -146,7 +147,7 @@
 
 	"turno.borrar": "Borrar turno",
 	"turno.iniciar": "Atender",
-	"turno.finalizar": "Finalizar el turno",
+	"turno.finalizar": "Finalizar",
 	"turno.asignado": "Volver el turno a Asignado",
 	"turno.historiaClinica": "Ver Historia Clínica",
 	
@@ -324,7 +325,12 @@
    	"practica.historia.turnos_subtitle": "Turnos solicitados",
    	"practica.historia.resumenes_subtitle": "Resúmenes de historia clínica",
 
-	"practica.historia.legend": "El paciente está siendo atendido por $1",
+	"practica.historia.practicas_tab": "Historia Clínica",
+   	"practica.historia.turnos_tab": "Histórico de Turnos solicitados",
+   	"practica.historia.resumenes_tab": "Resúmenes de historia clínica",
+
+	"practica.historia.legend": "está siendo atendido/a por $1",
+	"practica.historia.paciente.title": "Ficha de $1",
 
 	"practica.historia.practica_agregar_label": "Escribir nueva...",
 	"practica.historia.resumen_agregar_label": "Escribir resumen...",

@@ -105,6 +105,17 @@ function cambiarObraSocial(entity){
 
 }
 
+$(function() {
+
+	$("#nombre").focus();
+
+	/* si tiene nombre, vamos a validarlo*/
+	if( $("#nombre").val().length > 0 ){
+		validarCliente();
+	}
+	
+});
+
 </script>
 
 <div>
@@ -149,7 +160,7 @@ function cambiarObraSocial(entity){
 		</div>
 
 		<div class="item cliente_no_registrado">
-		    <label for="telefono">{lbl_telefono} *:</label>
+		    <label for="telefono">{lbl_telefono}:</label>
 		    <rasty id="telefono" />
 		</div>
 		

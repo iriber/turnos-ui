@@ -216,9 +216,10 @@ reinit();
 				
 				
 				<!-- BEGIN: libre -->
-				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;width:85%;" 
-				onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');">
-				<!-- onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
+				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;width:85%;"
+					onclick="javascript: gotoLink('{linkSeleccionarTurno}');"> 
+				<!-- onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');"-->
+					
 					<br />
 				</h2>
 				<!-- END: libre -->
@@ -246,7 +247,8 @@ reinit();
 		
 			<th style="width: 50px;">&nbsp;</th>
 			<!-- BEGIN:th_dia -->
-			<th class="{dia_css}" title='{linkSeleccionarDiaLabel}' style="cursor:pointer;" onclick="javascript: agendaTurnos{id}_tipoAgendaDiaria('{fecha}');">{dia}</th>
+			<th class="{dia_css}" title='{linkSeleccionarDiaLabel}' style="cursor:pointer;" 
+			onclick="javascript: agendaTurnos{id}_tipoAgendaDiaria('{fecha}');">{dia}</th>
 			<!-- END: th_dia -->
 		</tr>
 	</thead>
@@ -304,16 +306,16 @@ reinit();
 			
 			<!-- BEGIN:turno_vacio_sobreturno -->
 			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" 
-				onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');">
-				<!-- onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
+				onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				<!-- onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');"-->
 				 {mensajeOculto}
 			</td>
 			<!-- END:turno_vacio_sobreturno -->
 			
 			<!-- BEGIN:turno_vacio_disponible -->
 			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" 
-				onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');">
-				<!-- onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
+				onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+				<!-- onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');"-->
 				 {mensajeOculto} 
 			</td>
 			<!-- END:turno_vacio_disponible -->

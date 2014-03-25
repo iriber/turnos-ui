@@ -156,7 +156,7 @@ class TurnoForm extends Form{
 		}
 		
 		$xtpl->assign("lbl_agregar_cliente", $this->localize( "turno.cliente.agregar" ) );
-		$xtpl->assign("buscar_cliente_title", $this->localize( "turno.cliente.buscar.title" ) );
+		$xtpl->assign("buscar_cliente_title", $this->localize( "turno.cliente.validar.buscar.title" ) );
 		
 		
 	}

@@ -99,7 +99,7 @@ class TurnosMetroLayout extends RastyLayout{
 		$this->addScript( "$webPath/metro/js/metro/metro-live-tile.js");
 		$this->addScript( "$webPath/metro/js/metro/metro-notify.js");
 		$this->addScript( "$webPath/metro/js/metro/metro-plugin-template.js");
-		
+		$this->addScript( "$webPath/metro/js/metro/metro-tab-control.js");
 		
 		$this->addScript(  "$webPath/metro/js/jquery/jquery.ui.core.js" );
 		$this->addScript(  "$webPath/metro/js/jquery/jquery.ui.datepicker.js" );

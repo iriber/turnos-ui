@@ -7,7 +7,7 @@
 	<param name="profesionalOid" value="get:profesionalOid" />
 	
 	
-	<component id="turnoForm" type="TurnoQuickForm">
+	<component id="turnoForm" type="TurnoForm">
 		<param name="legend" value="msg:turno.agregar.legend" />
 		<param name="action" value="linkActionAgregarTurno" />
 		<param name="method" value="str:post" />

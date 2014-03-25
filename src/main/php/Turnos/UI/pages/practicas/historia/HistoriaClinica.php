@@ -143,11 +143,15 @@ class HistoriaClinica extends TurnosPage{
 			$xtpl->assign("domicilio" , $this->getCliente()->getDomicilio() );
 			$xtpl->assign("nroDocumento" , $this->getCliente()->getNroDocumento() );
 			$xtpl->assign("tipoDocumento" , $this->localize( TipoDocumento::getLabel($this->getCliente()->getTipoDocumento())) );
-			
+
+			$xtpl->assign("cliente_modificar_label" , $this->localize("cliente.modificar") );
+			$xtpl->assign("linkModificarCliente" , LinkBuilder::getPageUrl( "ClienteModificar", array("oid" => $this->getCliente()->getOid(),
+																									"backTo" => "HistoriaClinica" ) ));
 			
 			//si el cliente tiene un turno en curso, lo indicamos.
 			$turno = $this->getTurnoEnCurso( $this->getCliente() );
 			if(!empty($turno)){
+				
 				$xtpl->assign("turno_oid",  $turno->getOid() );
 				$xtpl->assign("estado", EstadoTurno::getLabel($turno->getEstado()) );
 				$xtpl->assign("fecha", TurnosUtils::formatDateToView( $turno->getFecha() ) );
@@ -155,11 +159,19 @@ class HistoriaClinica extends TurnosPage{
 				
 				$xtpl->assign("linkFinalizar",  LinkBuilder::getActionAjaxUrl( "FinalizarTurno") );
 				$xtpl->assign("turno_finalizar_label" , $this->localize("turno.finalizar"));
+				//$xtpl->assign("paciente_atendido_por" , TurnosUtils::formatMessage( $this->localize("practica.historia.legend"), array($this->getCliente()->getNombre(), $turno->getProfesional()->__toString())) );
 				$xtpl->assign("paciente_atendido_por" , TurnosUtils::formatMessage( $this->localize("practica.historia.legend"), array($turno->getProfesional()->__toString())) );
+				$xtpl->parse("main.turnoEnCurso");
 				
-				$xtpl->parse("main.turnoEnCurso");				
+			}else{
+				
+				
+				
 			}
-
+			$xtpl->assign("paciente" , TurnosUtils::formatMessage( $this->localize("practica.historia.paciente.title"), array($this->getCliente()->getNombre())) );
+			$xtpl->parse("main.historia_paciente");
+				
+				
 			//parámetros para agregarle una práctica y un resumen
 			$agregarPracticaParams = array("clienteOid" => $this->getCliente()->getOid());
 			$agregarResumenHistoriaClinicaParams = array("clienteOid" => $this->getCliente()->getOid());
@@ -170,15 +182,16 @@ class HistoriaClinica extends TurnosPage{
 		$xtpl->assign("linkAgregarPractica" , LinkBuilder::getPageUrl( "PracticaAgregar", $agregarPracticaParams ));
 		
 		$xtpl->assign("historia_info_subtitle" , $this->localize("practica.historia.practicas_subtitle") );
-		
-		
 		$xtpl->assign("turnos_info_subtitle" , $this->localize("practica.historia.turnos_subtitle") );
-		
 		$xtpl->assign("resumenes_info_subtitle" , $this->localize("practica.historia.resumenes_subtitle") );
 		
 		$xtpl->assign("resumen_agregar_label" , $this->localize( "practica.historia.resumen_agregar_label" ) );
 		$xtpl->assign("linkAgregarResumenHistoriaClinica" , LinkBuilder::getPageUrl( "ResumenHistoriaClinicaAgregar", $agregarResumenHistoriaClinicaParams ));
 		
+
+		$xtpl->assign("historia_tab" , $this->localize("practica.historia.practicas_tab") );
+		$xtpl->assign("turnos_tab" , $this->localize("practica.historia.turnos_tab") );
+		$xtpl->assign("resumenes_tab" , $this->localize("practica.historia.resumenes_tab") );
 		
 	}
 	

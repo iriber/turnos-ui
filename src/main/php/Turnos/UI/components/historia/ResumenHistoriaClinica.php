@@ -72,7 +72,7 @@ class ResumenHistoriaClinica extends RastyComponent{
 			
 			$xtpl->assign("fecha" , TurnosUtils::formatDateToView($resumen->getFecha()) );
 			
-			$xtpl->assign("texto", $resumen->getTexto() );
+			$xtpl->assign("texto", str_replace("\n", "<br/>", $resumen->getTexto()) );
 			$xtpl->assign("profesional", $resumen->getProfesional() );
 			
 			$xtpl->parse("main.resumen");

@@ -177,6 +177,7 @@
 	float:right;
 	width: 70%;
 	text-align: left;
+	font-size: 130%;
 }
 
 .practica_left, .resumen_left{
@@ -705,19 +706,19 @@ fieldset .agenda {
     text-align: center;
     width: 100%;
 }
-#historia_clinica_left{
+#historia_clinica_left,.historia_clinica_left{
 	float: left;
 	width: 53%;
 	position:relative;
 }
 
-#historia_clinica_left span.actions{
+#historia_clinica_left span.actions,.historia_clinica_left span.actions{
 	top: 8px;
 	right:0;
 	position:absolute;
 }
 
-#historia_clinica_right{
+#historia_clinica_right,.historia_clinica_right{
 	float: right;
 	width: 45%;
 }
@@ -907,13 +908,13 @@ fieldset .agenda {
 	
 	/* historia clínica */
 	
-	#historia_clinica_left {
+	#historia_clinica_left,.historia_clinica_left {
     	float: none;
     	width: 100%;
     	clear: both;
 		
 	}
-	#historia_clinica_right {
+	#historia_clinica_right,.historia_clinica_right {
     	float: none;
     	width: 100%;
     	clear: both;

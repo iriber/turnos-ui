@@ -60,6 +60,15 @@ $(document).ready(function(){
 		$('#divClientes{id}Toggle2').toggle( 5, 'linear', function() {
 		});
 	});
+
+
+	if( $("#nombre").val().length > 0 ){
+		$('#divClientes{id}Toggle1').toggle( 5, 'linear', function() {
+		});
+		$('#divClientes{id}Toggle2').toggle( 5, 'linear', function() {
+		});
+	}
+	
 });
 
 

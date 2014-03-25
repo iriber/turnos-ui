@@ -105,6 +105,7 @@
 		<param name="value" value="turno.importe" />
 		<param name="requiredMessage" value="msg:turno.importe.required" />
 		<param name="placeholder" value="msg:turno.importe" />
+		<param name="autocomplete" value="str:off" />
 	</component>
 	
 	<component id="prioridad" type="InputCombo">
@@ -130,7 +131,7 @@
 		<param name="name" value="str:nombre" />
 		<param name="value" value="turno.nombre" />
 		<param name="requiredMessage" value="msg:turno.nombre.required" />
-		<param name="placeholder" value="msg:turno.nombre" />
+		<param name="placeholder" value="msg:turno.nombre.placeholder" />
 		<param name="styleCss" value="str:uppercase" />
 	</component>
 
@@ -138,7 +139,6 @@
 		<param name="inputId" value="str:telefono" />
 		<param name="name" value="str:telefono" />
 		<param name="value" value="turno.telefono" />
-		<param name="requiredMessage" value="msg:turno.telefono.required" />
-		<param name="placeholder" value="msg:turno.telefono" />
+		<param name="placeholder" value="msg:turno.telefono.placeholder" />
 	</component>	
 </rasty>

@@ -46,7 +46,7 @@ class TurnosCliente extends RastyComponent{
 
 	protected function parseXTemplate(XTemplate $xtpl){
 
-		$cantidad_ver = 1;
+		$cantidad_ver = 5;
 		
 		if( empty( $this->cliente) )
 			return;
