@@ -2,6 +2,8 @@
 
 namespace Turnos\UI\components\agenda\helper;
 
+use Turnos\UI\components\agenda\AgendaTurnos;
+
 use Turnos\UI\utils\TurnosUtils;
 
 use Turnos\UI\service\UIServiceFactory;
@@ -354,6 +356,7 @@ class AgendaDiariaHelper{
 		$xtpl->assign("finalizar_label", self::localize( "turno.finalizar" ) );
 		$xtpl->assign("agregar_sobreturno_label", self::localize( "turno.agregar_sobreturno" ) );		
 		$xtpl->assign("historiaClinica_label", self::localize( "turno.historiaClinica" ) );		
+		$xtpl->assign("imprimir_label" , self::localize( "agenda.imprimir" ) );
 		
 		$xtpl->assign("linkModificar",  LinkBuilder::getPageUrl( "TurnoModificar") );
 		$xtpl->assign("linkBorrar",  LinkBuilder::getActionAjaxUrl( "BorrarTurno") );
@@ -362,6 +365,10 @@ class AgendaDiariaHelper{
 		$xtpl->assign("linkFinalizar",  LinkBuilder::getActionAjaxUrl( "FinalizarTurno") );
 		$xtpl->assign("linkEnSala",  LinkBuilder::getActionAjaxUrl( "TurnoEnSala") );
 		$xtpl->assign("linkAsignado",  LinkBuilder::getActionAjaxUrl( "TurnoAsignado") );
+		
+		$imprimirParams = array("tipoAgenda" => AgendaTurnos::AGENDA_DIARIA  );
+		$xtpl->assign("linkImprimir" , LinkBuilder::getPdfUrl( "AgendaTurnos", $imprimirParams ));
+		
 		
 		
 	}

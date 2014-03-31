@@ -162,6 +162,10 @@
 	"agenda.ver.semana": "Ver semana",
 	"agenda.semana": "Semana del $1 al $2",
 
+	"agenda.pdf.titulo": "Agenda de $1",
+   	"agenda.pdf.fecha.subtitulo": "Día $1",
+   	"agenda.imprimir": "Imprimir",
+
 	"turno.fecha": "Fecha",
 	"turno.hora": "Hora",
 	"turno.duracion": "Duración (min)",

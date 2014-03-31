@@ -2,6 +2,10 @@
 
 namespace Turnos\UI\components\agenda;
 
+use Turnos\UI\render\agenda\AgendaSemanalPDFRenderer;
+
+use Turnos\UI\render\agenda\AgendaDiariaPDFRenderer;
+
 use Turnos\UI\components\agenda\helper\AgendaSemanalHelper;
 
 use Turnos\UI\components\agenda\helper\AgendaDiariaHelper;
@@ -53,7 +57,7 @@ class AgendaTurnos extends RastyComponent{
 		
 	}
 
-	private function initParams(){
+	public function initParams(){
 		
 		$profesional = $this->getProfesional();
 		if( $profesional == null ){
@@ -846,6 +850,33 @@ class AgendaTurnos extends RastyComponent{
 	public function setEspecialidadOid($especialidadOid)
 	{
 	    $this->especialidadOid = $especialidadOid;
+	}
+	
+
+	public function getPDFRenderer(){
+		
+		$name = "Agenda_";
+		$profesional = $this->getProfesional();
+		if(!empty($profesional)){
+			$name .= "_" . $profesional->getNombre();
+		}
+
+		if( $this->getTipoAgenda() == self::AGENDA_DIARIA)
+			$renderer = new AgendaDiariaPDFRenderer();
+		else
+			$renderer = new AgendaSemanalPDFRenderer();
+				
+		$renderer->setName($name);
+		
+		return $renderer;
+	}
+	
+	public function getTurnos(){
+
+		//buscamos los turnos dado el profesional y la fecha.
+		$turnoService = UIServiceFactory::getUITurnoService();
+		return $turnoService->getTurnosDelDia( $this->getFecha(), $this->getProfesional());
+		
 	}
 }
 ?>

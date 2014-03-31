@@ -23,7 +23,7 @@ class ResumenHistoriaClinicaPDFRenderer extends HistoriaClinicaPDFRenderer{
 		$resumenOid = RastyUtils::getParamGET( 'resumenOid' ) ;
 		
 		$this->initFontTitle();
-		$this->Cell( 30 , 5 , $this->localize("historia.pdf.resumen.subtitulo") , 0 , 0 , "L" );
+		$this->Cell( 30 , 5 , $this->localize("historia.pdf.resumen.subtitulo", true) , 0 , 0 , "L" );
 		$this->Ln(5);
 		$this->Ln(5);
 		

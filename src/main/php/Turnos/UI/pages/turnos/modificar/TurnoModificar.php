@@ -21,8 +21,8 @@ class TurnoModificar extends TurnosPage{
 		
 		//inicializamos el turno.
 		$turno = new Turno();
+		
 		$this->setTurno($turno);
-
 		
 	}
 	
@@ -59,6 +59,13 @@ class TurnoModificar extends TurnosPage{
 
 	public function setTurno($turno)
 	{
+		//si aún no fue validado y tiene importe 0, le pongo importe null
+		//asi lo obligo a cargarlo.
+		$cliente = $turno->getCliente();
+		if( empty($cliente) ){
+			$turno->setImporte( null );
+		}
+		
 	    $this->turno = $turno;
 	}
 	

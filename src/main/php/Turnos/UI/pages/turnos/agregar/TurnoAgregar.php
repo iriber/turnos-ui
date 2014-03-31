@@ -47,7 +47,7 @@ class TurnoAgregar extends TurnosPage{
 		
 		$turno->setObraSocial( new ObraSocial() );
 
-		$turno->setImporte( 0 );
+		//$turno->setImporte( 0 );
 		
 		$this->setTurno($turno);
 

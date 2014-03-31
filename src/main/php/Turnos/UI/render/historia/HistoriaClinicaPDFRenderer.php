@@ -44,7 +44,7 @@ class HistoriaClinicaPDFRenderer extends TurnosPDFRenderer{
 		$practicas = $this->getComponent()->getPracticas();
 		
 		$this->initFontTitle();
-		$this->Cell( 30 , 5 , $this->localize("historia.pdf.practicas.subtitulo") , 0 , 0 , "L" );
+		$this->Cell( 30 , 5 , $this->localize("historia.pdf.practicas.subtitulo", true) , 0 , 0 , "L" );
 		$this->Ln(5);
 		$this->Ln(5);
 		
@@ -111,20 +111,20 @@ class HistoriaClinicaPDFRenderer extends TurnosPDFRenderer{
 		$anchoColumnaLabel = 30;
 		$anchoColumnaValue = 60;
 		
-		$this->renderLabelValue($this->localize("cliente.documento"), $this->encodeCharactersPDF( "$tipoDoc $nroDoc" ));
-		$this->renderLabelValue($this->localize("cliente.fechaAlta"), $this->encodeCharactersPDF( $fechaAlta ));
+		$this->renderLabelValue($this->localize("cliente.documento", true), $this->encodeCharactersPDF( "$tipoDoc $nroDoc" ));
+		$this->renderLabelValue($this->localize("cliente.fechaAlta", true), $this->encodeCharactersPDF( $fechaAlta ));
 		$this->Ln(5);
 		
-		$this->renderLabelValue($this->localize("cliente.fechaNacimiento"), $this->encodeCharactersPDF( $fechaNacimiento ));
-		$this->renderLabelValue($this->localize("cliente.edad"), $this->encodeCharactersPDF( $edad ));
+		$this->renderLabelValue($this->localize("cliente.fechaNacimiento", true), $this->encodeCharactersPDF( $fechaNacimiento ));
+		$this->renderLabelValue($this->localize("cliente.edad", true), $this->encodeCharactersPDF( $edad ));
 		$this->Ln(5);
 		
-		$this->renderLabelValue($this->localize("cliente.obraSocial"), $this->encodeCharactersPDF( $osNombre ));
-		$this->renderLabelValue($this->localize("cliente.nroObraSocial"), $this->encodeCharactersPDF( $nroObraSocial ));
+		$this->renderLabelValue($this->localize("cliente.obraSocial", true), $this->encodeCharactersPDF( $osNombre ));
+		$this->renderLabelValue($this->localize("cliente.nroObraSocial", true), $this->encodeCharactersPDF( $nroObraSocial ));
 		$this->Ln(5);
 
-		$this->renderLabelValue($this->localize("cliente.telefonos"), $this->encodeCharactersPDF( $telefonos ));
-		$this->renderLabelValue($this->localize("cliente.domicilio"), $this->encodeCharactersPDF( $domicilio ));
+		$this->renderLabelValue($this->localize("cliente.telefonos", true), $this->encodeCharactersPDF( $telefonos ));
+		$this->renderLabelValue($this->localize("cliente.domicilio", true), $this->encodeCharactersPDF( $domicilio ));
 		$this->Ln(5);
 		
 		
@@ -153,7 +153,7 @@ class HistoriaClinicaPDFRenderer extends TurnosPDFRenderer{
 		$this->initFontTitle();
 		$cliente = $this->getComponent()->getCliente();
 		$titulo = RastyUtils::formatMessage($this->localize("historia.pdf.titulo"), array( $cliente->getNroHistoriaClinica(), $cliente->getNombre() ));
-		$this->Cell( 30 , 5 , $titulo , 0 , 0 , "L" );
+		$this->Cell( 30 , 5 , $this->encodeCharactersPDF( $titulo ), 0 , 0 , "L" );
 				
 		/* fecha */
 //		$this->y = $this->tMargin;
