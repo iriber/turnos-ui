@@ -339,7 +339,7 @@ class AgendaDiariaHelper{
 		$xtpl->assign("fecha", TurnosUtils::formatDateToView( $fecha, "d/m/Y ") );
 		$xtpl->assign("profesional_oid",  $profesional->getOid() );
 		
-		$xtpl->parse("main.agendaDiariaTitle");
+		
 		
 		$xtpl->assign("hora_label",  self::localize( "turno.hora" ) );
 		$xtpl->assign("cliente_label",  self::localize( "turno.cliente" ) );
@@ -369,7 +369,7 @@ class AgendaDiariaHelper{
 		$imprimirParams = array("tipoAgenda" => AgendaTurnos::AGENDA_DIARIA  );
 		$xtpl->assign("linkImprimir" , LinkBuilder::getPdfUrl( "AgendaTurnos", $imprimirParams ));
 		
-		
+		$xtpl->parse("main.agendaDiariaTitle");
 		
 	}
 	
