@@ -21,12 +21,15 @@ class ResumenHistoriaClinicaPDFRenderer extends HistoriaClinicaPDFRenderer{
 		$resumenes = $this->getComponent()->getResumenes();
 		
 		$this->initFontTitle();
-		$this->Cell( 30 , 5 , $this->localize("historia.pdf.practicas.subtitulo") , 0 , 0 , "L" );
+		$this->Cell( 30 , 5 , $this->localize("historia.pdf.resumen.subtitulo") , 0 , 0 , "L" );
 		$this->Ln(5);
 		$this->Ln(5);
 		
 		$maxWidth = $this->getMaxWidth();
 
+		$this->initFontValue();
+
+		
 		
 		foreach ($resumenes as $resumen) {
 			

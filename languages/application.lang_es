@@ -347,6 +347,7 @@
    	"historia.pdf.titulo": "Historia Clínica Nro: $1 - $2",
    	"historia.pdf.datosPersonales.subtitulo": "Datos personales",
    	"historia.pdf.practicas.subtitulo": "Prácticas realizadas",
+   	"historia.pdf.resumen.subtitulo": "Resumen de historia clínica",
    	
    	"practica":"Práctica",
    	"practica.fecha":"Fecha",
@@ -443,6 +444,7 @@
 	"resumenHistoriaClinica.modificar.legend": "Modifique el Resumen de Historia Clínica",
 	
 	"resumenHistoriaClinica.borrar": "Borrar Resumen de Historia Clínica",
+   	"resumenHistoriaClinica.imprimir": "Imprimir Resumen de Historia Clínica",
    	
    	"resumenHistoriaClinica.profesional.required":"Ingrese un médico",
 	"resumenHistoriaClinica.cliente.required":"Ingrese un paciente",

@@ -69,8 +69,9 @@ class ResumenHistoriaClinica extends RastyComponent{
 		
 		foreach ($resumenes as $resumen) {
 
-			$imprimirParams = array("clienteOid" => $this->getCliente()->getOid() );
-			$imprimirParams = array("oid" => $resumen->getOid() );
+			$imprimirParams = array("resumenOid" => $resumen->getOid(),
+									 "oid" => $this->getCliente()->getOid() );
+			
 			$xtpl->assign("linkImprimir" , LinkBuilder::getPdfUrl( "ResumenHistoriaClinica", $imprimirParams ));
 		
 			$xtpl->assign("resumen_oid", $resumen->getOid() );
