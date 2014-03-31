@@ -20,6 +20,8 @@ class ResumenHistoriaClinicaPDFRenderer extends HistoriaClinicaPDFRenderer{
 		
 		$resumenes = $this->getComponent()->getResumenes();
 		
+		$resumenOid = RastyUtils::getParamGET( 'resumenOid' ) ;
+		
 		$this->initFontTitle();
 		$this->Cell( 30 , 5 , $this->localize("historia.pdf.resumen.subtitulo") , 0 , 0 , "L" );
 		$this->Ln(5);
@@ -33,11 +35,18 @@ class ResumenHistoriaClinicaPDFRenderer extends HistoriaClinicaPDFRenderer{
 		
 		foreach ($resumenes as $resumen) {
 			
-			//($w, $h, $txt, $border=0, $align='J', $fill=false
-			$this->MultiCell( $maxWidth , 5 , $this->encodeCharactersPDF( $resumen->getTexto() ) , 1 ,  "J", 1 );
+			if( empty($resumenOid) ){
 			
-			$this->Ln(5);
+				$this->MultiCell( $maxWidth , 5 , $this->encodeCharactersPDF( $resumen->getTexto() ) , 1 ,  "J", 1 );
 			
+				$this->Ln(5);
+				
+			}elseif($resumenOid == $resumen->getOid() ){
+				
+				$this->MultiCell( $maxWidth , 5 , $this->encodeCharactersPDF( $resumen->getTexto() ) , 1 ,  "J", 1 );
+			
+				$this->Ln(5);
+			}
 			
 		}
 		
