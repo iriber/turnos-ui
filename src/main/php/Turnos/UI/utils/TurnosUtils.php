@@ -33,7 +33,7 @@ class TurnosUtils {
 	const TRN_DATETIME_FORMAT = 'd/m/y H:i:s';
 	const TRN_TIME_FORMAT = 'H:i';
 	
-	const TRN_PRACTICA_DEFAULT = "42.01.01";
+	const TRN_PRACTICA_DEFAULT = "42.01.02";
 	
 	//números
 	const TRN_DECIMALES = '2';

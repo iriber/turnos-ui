@@ -1,6 +1,8 @@
 <?php
 namespace Turnos\UI\pages\turnos\agregar;
 
+use Turnos\UI\service\finder\NomencladorFinder;
+
 use Turnos\UI\service\UIServiceFactory;
 
 use Turnos\UI\pages\TurnosPage;
@@ -44,6 +46,11 @@ class TurnoAgregar extends TurnosPage{
 		if( TurnosUtils::isProfesionalAgenda() ){
 			$turno->setProfesional( TurnosUtils::getProfesionalAgenda() );
 		}	
+		
+		//el nomenclador default es la consulta.
+		$codigoConsulta = TurnosUtils::TRN_PRACTICA_DEFAULT;
+		$finder = new NomencladorFinder();
+		$turno->setNomenclador( $finder->findEntityByCode($codigoConsulta) );
 		
 		$turno->setObraSocial( new ObraSocial() );
 

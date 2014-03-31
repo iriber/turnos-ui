@@ -130,6 +130,7 @@
 	"turno.prioridad.required": "Seleccione la prioridad",
 	"turno.nombre.required": "Ingrese el nombre del paciente",
 	"turno.telefono.required": "Ingrese el teléfono del paciente",
+	"turno.nomenclador.required": "Ingrese el nomenclador",
 	
 	"turno.cliente.validar.msg": "Valide los datos del paciente",
 	"turno.cliente.validar": "validar paciente",
@@ -174,6 +175,7 @@
 	"turno.estado": "Estado",
 	"turno.importe": "Importe diferencial",
 	"turno.obraSocial": "Obra social",
+	"turno.nomenclador": "Nomenclador",
 	"turno.nroObraSocial": "Nro Afiliado",
 	"turno.prioridad": "Prioridad",
 	"turno.nombre": "Paciente",
@@ -338,7 +340,7 @@
 	"practica.historia.legend": "está siendo atendido/a por $1",
 	"practica.historia.paciente.title": "Ficha de $1",
 
-	"practica.historia.practica_agregar_label": "Escribir nueva...",
+	"practica.historia.practica_agregar_label": "Agregar",
 	"practica.historia.practicas_imprimir_label": "Imprimir",
 	"practica.historia.resumen_agregar_label": "Escribir resumen...",
 

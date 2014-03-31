@@ -2,6 +2,8 @@
 
 namespace Turnos\UI\components\form\turno;
 
+use Turnos\UI\service\finder\NomencladorFinder;
+
 use Turnos\UI\service\UIServiceFactory;
 
 use Turnos\UI\service\finder\ProfesionalFinder;
@@ -74,6 +76,7 @@ class TurnoForm extends Form{
 		$this->addProperty("duracion");
 		$this->addProperty("telefono");
 		$this->addProperty("nombre");
+		$this->addProperty("nomenclador");
 		
 		$this->setBackToOnSuccess("TurnosHome");
 		$this->setBackToOnCancel("TurnosHome");	
@@ -136,6 +139,7 @@ class TurnoForm extends Form{
 		$xtpl->assign("lbl_importe", $this->localize("turno.importe") );
 		$xtpl->assign("lbl_prioridad", $this->localize("turno.prioridad") );
 		$xtpl->assign("lbl_duracion", $this->localize("turno.duracion") );
+		$xtpl->assign("lbl_nomenclador", $this->localize("turno.nomenclador") );
 		
 		//si el cliente aún no fue registrado, mostramos el nombre y el teléfono indicados en el turno.
 		$cliente = $this->getTurno()->getCliente();
@@ -293,6 +297,12 @@ class TurnoForm extends Form{
 	    
 		
 	}
+
+	public function getNomencladorFinderClazz(){
+		
+		return get_class( new NomencladorFinder() );
+		
+	}	
 	
 }
 ?>

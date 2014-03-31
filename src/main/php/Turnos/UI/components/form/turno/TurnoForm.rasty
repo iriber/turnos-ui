@@ -140,5 +140,19 @@
 		<param name="name" value="str:telefono" />
 		<param name="value" value="turno.telefono" />
 		<param name="placeholder" value="msg:turno.telefono.placeholder" />
-	</component>	
+	</component>
+
+	<component id="nomenclador" type="InputFindEntity">
+		<param name="inputId" value="str:nomenclador" />
+		<param name="name" value="str:nomenclador" />
+		<param name="value" value="turno.nomenclador" />
+		<param name="placeholder" value="msg:turno.nomenclador" />
+		<param name="finder" value="nomencladorFinderClazz" />
+		<param name="hasAddEntity" value="boolean:true" />
+		<param name="hasPopup" value="boolean:true" />
+		<param name="popupFilterType" value="str:NomencladorFilter" />
+		<param name="popupFormType" value="str:NomencladorQuickForm" />
+		<param name="requiredMessage" value="msg:turno.nomenclador.required" />
+	</component>
+		
 </rasty>

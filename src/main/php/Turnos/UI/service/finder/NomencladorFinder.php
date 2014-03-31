@@ -38,6 +38,8 @@ class NomencladorFinder implements  IAutocompleteFinder {
 		
 		
 		try {
+			$code = str_replace("_", ".", $code);
+			$code = str_replace(" ", ".", $code);
 			return UIServiceFactory::getUINomencladorService()->getByCodigo($code);	
 		} catch (\Exception $e) {
 			return null;
