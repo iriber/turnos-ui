@@ -2,6 +2,8 @@
 
 namespace Turnos\UI\components\historia;
 
+use Turnos\UI\render\historia\HistoriaClinicaPDFRenderer;
+
 use Turnos\UI\utils\TurnosUtils;
 
 use Turnos\UI\service\UIServiceFactory;
@@ -63,7 +65,7 @@ class HistoriaClinica extends RastyComponent{
 		$xtpl->assign("profesional_lbl", $this->localize("practica.profesional") ); 
 		$xtpl->assign("obraSocial_lbl", $this->localize("practica.obraSocial") );
 		
-		$practicas = UIServiceFactory::getUIPracticaService()->getHistoriaClinica($this->getCliente());
+		$practicas = $this->getPracticas();
 		
 		foreach ($practicas as $practica) {
 			
@@ -88,7 +90,10 @@ class HistoriaClinica extends RastyComponent{
 		
 	}
 	
-	
+	public function getPracticas(){
+		
+		return UIServiceFactory::getUIPracticaService()->getHistoriaClinica($this->getCliente());
+	}
 
 	public function setClienteOid($clienteOid)
 	{
@@ -117,6 +122,21 @@ class HistoriaClinica extends RastyComponent{
 
 		$this->addEventType( "Cliente" );
 		$this->addEventType( "HistoriaClinica" );
+	}
+	
+	public function getPDFRenderer(){
+		
+		$name = "Historia_Clinica";
+		$cliente = $this->getCliente();
+		if(!empty($cliente)){
+			$name .= "_Nro_" . $cliente->getNroHistoriaClinica();
+			$name .= "_" . $cliente->getNombre();
+		}
+		
+		$renderer = new HistoriaClinicaPDFRenderer();
+		$renderer->setName($name);
+		
+		return $renderer;
 	}
 }
 ?>

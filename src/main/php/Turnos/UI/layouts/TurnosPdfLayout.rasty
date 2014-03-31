@@ -1,0 +1,6 @@
+<rasty specificationClass="Turnos\UI\layouts\TurnosPdfLayout" templateLocation="TurnosPdfLayout.htm">
+
+	<component id="footer" type="FooterTurnos">
+	</component>
+
+</rasty>

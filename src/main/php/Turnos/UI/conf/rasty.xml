@@ -22,6 +22,7 @@
 	<page name="ClienteAgregar"   location="pages/clientes/agregar/ClienteAgregar.page" url="pacientes/agregar"/>
 	<page name="ClienteModificar"   location="pages/clientes/modificar/ClienteModificar.page" url="pacientes/modificar"/>
 	<page name="ClienteConsultar"   location="pages/clientes/consultar/ClienteConsultar.page" url="pacientes/consultar"/>
+	<page name="ClientesExportar"   location="pages/clientes/ClientesExportar.page" url="pacientes/exportar"/>
 
 	<page name="TurnoAgregar"   location="pages/turnos/agregar/TurnoAgregar.page" url="turnos/agregar"/>
 	<page name="TurnoModificar"   location="pages/turnos/modificar/TurnoModificar.page" url="turnos/modificar"/>
@@ -102,6 +103,7 @@
 
 	<component name="TurnosMetroLayout" location="layouts" />
 	<component name="TurnosLoginMetroLayout" location="layouts" />
+	<component name="TurnosPdfLayout" location="layouts" />
 	
 	<!-- declaración de las actions -->
 	<action name="Login" class="Turnos\UI\actions\login\Login" url="login"/>

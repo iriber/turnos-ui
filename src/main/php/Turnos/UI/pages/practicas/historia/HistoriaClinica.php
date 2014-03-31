@@ -1,6 +1,8 @@
 <?php
 namespace Turnos\UI\pages\practicas\historia;
 
+use Turnos\UI\render\historia\HistoriaClinicaPDFRenderer;
+
 use Turnos\UI\service\UITurnoService;
 
 use Turnos\UI\service\finder\ClienteFinder;
@@ -175,11 +177,14 @@ class HistoriaClinica extends TurnosPage{
 			//parámetros para agregarle una práctica y un resumen
 			$agregarPracticaParams = array("clienteOid" => $this->getCliente()->getOid());
 			$agregarResumenHistoriaClinicaParams = array("clienteOid" => $this->getCliente()->getOid());
-		
+			$imprimirPracticasParams = array("componentId" => "historia", "oid" => $this->getCliente()->getNroHistoriaClinica() );
 		}
 		
 		$xtpl->assign("practica_agregar_label" , $this->localize( "practica.historia.practica_agregar_label" ) );
 		$xtpl->assign("linkAgregarPractica" , LinkBuilder::getPageUrl( "PracticaAgregar", $agregarPracticaParams ));
+		
+		$xtpl->assign("practicas_imprimir_label" , $this->localize( "practica.historia.practicas_imprimir_label" ) );
+		$xtpl->assign("linkImprimirPracticas" , LinkBuilder::getPdfUrl( "HistoriaClinica", $imprimirPracticasParams ));
 		
 		$xtpl->assign("historia_info_subtitle" , $this->localize("practica.historia.practicas_subtitle") );
 		$xtpl->assign("turnos_info_subtitle" , $this->localize("practica.historia.turnos_subtitle") );
@@ -239,6 +244,9 @@ class HistoriaClinica extends TurnosPage{
 		if(!empty($backTo))
 	    	$this->backTo = $backTo;
 	}
-	
+
+	public function getPDFRenderer(){
+		return new HistoriaClinicaPDFRenderer();
+	}
 }
 ?>

@@ -1,0 +1,6 @@
+<rasty specificationClass="Turnos\UI\pages\clientes\ClientesExportar" templateLocation="pages/clientes/ClientesExportar.htm"> 
+
+	<param name="layoutType" value="str:TurnosPdfLayout" />
+
+	
+</rasty>

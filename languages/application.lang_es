@@ -3,6 +3,8 @@
 	"common.campos_obligatorios":"Campos requeridos",
 
 	"app.title":"Instituto 9 de Julio",
+
+	"app.pdf.footer":"Instituto 9 de Julio / Tel. (02281) 430 296 / Dir. 9 de Julio 344 - Azul - Bs As",
 	
 	"menu.page":"Opciones de la página",
 	"menu.main":"Menú de navegación",
@@ -333,6 +335,7 @@
 	"practica.historia.paciente.title": "Ficha de $1",
 
 	"practica.historia.practica_agregar_label": "Escribir nueva...",
+	"practica.historia.practicas_imprimir_label": "Imprimir",
 	"practica.historia.resumen_agregar_label": "Escribir resumen...",
 
 	"historia.ver_mas_datos_personales": "ver más...",
@@ -340,6 +343,10 @@
    	
    	"historia.ver_mas_turnos": "ver todos...",
    	"historia.ver_menos_turnos": "ocultar...",
+   	
+   	"historia.pdf.titulo": "Historia Clínica Nro: $1 - $2",
+   	"historia.pdf.datosPersonales.subtitulo": "Datos personales",
+   	"historia.pdf.practicas.subtitulo": "Prácticas realizadas",
    	
    	"practica":"Práctica",
    	"practica.fecha":"Fecha",

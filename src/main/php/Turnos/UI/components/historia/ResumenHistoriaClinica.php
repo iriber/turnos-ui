@@ -2,6 +2,8 @@
 
 namespace Turnos\UI\components\historia;
 
+use Turnos\UI\render\historia\ResumenHistoriaClinicaPDFRenderer;
+
 use Turnos\UI\utils\TurnosUtils;
 
 use Turnos\UI\service\UIServiceFactory;
@@ -57,6 +59,7 @@ class ResumenHistoriaClinica extends RastyComponent{
 		$xtpl->assign("agregarResumenHistoriaClinica_label", $this->localize("resumenHistoriaClinica.agregar") );
 		$xtpl->assign("editar_label", $this->localize("resumenHistoriaClinica.modificar") );
 		$xtpl->assign("borrar_label", $this->localize("resumenHistoriaClinica.borrar") );
+		$xtpl->assign("imprimir_label", $this->localize("resumenHistoriaClinica.imprimir") );
 		
 		$xtpl->assign("resumen_lbl", $this->localize("resumenHistoriaClinica") ); 
 		$xtpl->assign("fecha_lbl" , $this->localize("resumenHistoriaClinica.fecha") );
@@ -65,7 +68,11 @@ class ResumenHistoriaClinica extends RastyComponent{
 		$resumenes = UIServiceFactory::getUIResumenHistoriaClinicaService()->getResumenHistoriaClinica($this->getCliente());
 		
 		foreach ($resumenes as $resumen) {
-			
+
+			$imprimirParams = array("clienteOid" => $this->getCliente()->getOid() );
+			$imprimirParams = array("oid" => $resumen->getOid() );
+			$xtpl->assign("linkImprimir" , LinkBuilder::getPdfUrl( "ResumenHistoriaClinica", $imprimirParams ));
+		
 			$xtpl->assign("resumen_oid", $resumen->getOid() );
 			$xtpl->assign("cliente", $this->getCliente()->__toString() );
 			$xtpl->assign("cliente_oid", $this->getCliente()->getOid() );
@@ -80,7 +87,10 @@ class ResumenHistoriaClinica extends RastyComponent{
 		
 	}
 	
-	
+	public function getResumenes(){
+		
+		return UIServiceFactory::getUIResumenHistoriaClinicaService()->getResumenHistoriaClinica($this->getCliente());
+	}
 
 	public function setClienteOid($clienteOid)
 	{
@@ -109,6 +119,21 @@ class ResumenHistoriaClinica extends RastyComponent{
 
 		$this->addEventType( "Cliente" );
 		$this->addEventType( "ResumenHistoriaClinica" );
+	}
+	
+	public function getPDFRenderer(){
+		
+		$name = "Resumen_Historia_Clinica";
+		$cliente = $this->getCliente();
+		if(!empty($cliente)){
+			$name .= "_Nro_" . $cliente->getNroHistoriaClinica();
+			$name .= "_" . $cliente->getNombre();
+		}
+		
+		$renderer = new ResumenHistoriaClinicaPDFRenderer();
+		$renderer->setName($name);
+		
+		return $renderer;
 	}
 }
 ?>

@@ -18,11 +18,28 @@
         {
             "type": "vcs",
             "url": "https://github.com/apache/logging-log4php"
+        },
+    	{
+            "type": "package",
+            "package": {
+                "name": "phprasty/fpdf",
+                "version": "1.0.1",
+                "dist": {
+                    "url": "http://codnet.no-ip.org/phprasty-libs/fpdf17.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "psr-0": { "Rasty": "" }
+                },
+                "target-dir": "Rasty"
+            }
         }
     ],
     "require": {
         "apache/log4php": "2.3.0",
         "doctrine/orm": "2.4.0",
-        "niktux/addendum": "dev-master"
+        "niktux/addendum": "dev-master",
+        "dompdf/dompdf" : "dev-master"
     }
+    
 }
