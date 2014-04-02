@@ -68,7 +68,7 @@ class PracticaAgregar extends TurnosPage{
 		
 			$this->getPractica()->setCliente($cliente);
 			
-			$this->getPractica()->setObraSocial($cliente->getObraSocial());
+			$this->getPractica()->setClienteObraSocial($cliente->getClienteObraSocial());
 			
 		}	    
 		

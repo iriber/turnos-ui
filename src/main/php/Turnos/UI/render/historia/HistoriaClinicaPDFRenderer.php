@@ -6,6 +6,7 @@ use Turnos\UI\utils\TurnosUtils;
 
 use Turnos\UI\render\TurnosPDFRenderer;
 use Turnos\Core\model\TipoDocumento;
+use Turnos\Core\model\TipoAfiliadoObraSocial;
 
 use Rasty\conf\RastyConfig;
 use Rasty\utils\RastyUtils;
@@ -68,13 +69,13 @@ class HistoriaClinicaPDFRenderer extends TurnosPDFRenderer{
 			
 			$this->initFontValue();
 			$this->Cell( 100 , 5 , $this->encodeCharactersPDF( "$nomencladorCodigo $nomencladorNombre" ) , 1 , 0 , "L" );
-			$atendio = $this->localize("practica.profesional") . " " . $this->encodeCharactersPDF( $practica->getProfesional() );
+			$atendio = $this->localize("practica.profesional") . " " .  $practica->getProfesional() ;
 			$os = $practica->getObraSocial();
 			if(!empty($os)){
 				$osNombre = $os->getNombre();
 				$atendio .= " / $osNombre";
 			}
-			$this->Cell( $maxWidth-130 , 5 , $atendio , 1 , 0 , "L" );
+			$this->Cell( $maxWidth-130 , 5 , $this->encodeCharactersPDF( $atendio ), 1 , 0 , "L" );
 			$this->Ln(5);
 			
 			//($w, $h, $txt, $border=0, $align='J', $fill=false
@@ -103,28 +104,44 @@ class HistoriaClinicaPDFRenderer extends TurnosPDFRenderer{
 			$osNombre = "-";
 		$fechaAlta = TurnosUtils::formatDateToView($cliente->getFechaAlta());
 		$fechaNacimiento = TurnosUtils::formatDateToView($cliente->getFechaNacimiento());
-		$domicilio = $cliente->getDomicilio() . " " . $cliente->getLocalidad();
-		$telefonos = $cliente->getTelefonoFijo() . " " . $cliente->getTelefonoMovil();
+		$domicilio = $cliente->getDomicilio();
+		
+		$telefonos = array();
+		$fijo = $cliente->getTelefonoFijo();
+		$movil = $cliente->getTelefonoMovil();
+		if(!empty($fijo))
+			$telefonos[] = $fijo;
+		if(!empty($movil))
+			$telefonos[] = $movil;
+			
+		$telefonos = implode(" / ", $telefonos);
+		
+		
+		$tipoAfiliado = $this->localize( TipoAfiliadoObraSocial::getLabel( $cliente->getTipoAfiliado() ) );
+		
 		//	$xtpl->assign("email" , $this->getCliente()->getEmail() );
 			
 			
 		$anchoColumnaLabel = 30;
 		$anchoColumnaValue = 60;
 		
+		$this->renderLabelValue($this->localize("cliente.nombre", true), $this->encodeCharactersPDF( $cliente->getNombre() ), 30, 130);
 		$this->renderLabelValue($this->localize("cliente.documento", true), $this->encodeCharactersPDF( "$tipoDoc $nroDoc" ));
-		$this->renderLabelValue($this->localize("cliente.fechaAlta", true), $this->encodeCharactersPDF( $fechaAlta ));
 		$this->Ln(5);
 		
 		$this->renderLabelValue($this->localize("cliente.fechaNacimiento", true), $this->encodeCharactersPDF( $fechaNacimiento ));
 		$this->renderLabelValue($this->localize("cliente.edad", true), $this->encodeCharactersPDF( $edad ));
+		$this->renderLabelValue($this->localize("cliente.fechaAlta", true), $this->encodeCharactersPDF( $fechaAlta ));
 		$this->Ln(5);
 		
 		$this->renderLabelValue($this->localize("cliente.obraSocial", true), $this->encodeCharactersPDF( $osNombre ));
 		$this->renderLabelValue($this->localize("cliente.nroObraSocial", true), $this->encodeCharactersPDF( $nroObraSocial ));
+		$this->renderLabelValue($this->localize("cliente.tipoAfiliado", true), $this->encodeCharactersPDF( $tipoAfiliado ));
 		$this->Ln(5);
 
 		$this->renderLabelValue($this->localize("cliente.telefonos", true), $this->encodeCharactersPDF( $telefonos ));
 		$this->renderLabelValue($this->localize("cliente.domicilio", true), $this->encodeCharactersPDF( $domicilio ));
+		$this->renderLabelValue($this->localize("cliente.localidad", true), $this->encodeCharactersPDF( $cliente->getLocalidad() ));
 		$this->Ln(5);
 		
 		

@@ -78,7 +78,7 @@
 	<component id="nroObraSocial" type="InputText">
 		<param name="inputId" value="str:nroObraSocial" />
 		<param name="name" value="str:nroObraSocial" />
-		<param name="value" value="cliente.nroObraSocial" />
+		<param name="value" value="cliente.clienteObraSocial.nroObraSocial" />
 		<param name="placeholder" value="msg:cliente.nroObraSocial" />
 	</component>
 
@@ -130,5 +130,16 @@
 		<param name="rows" value="str:5" />	
 		
 	</component>
+	
+	
+	<component id="tipoAfiliado" type="InputCombo">
+		<param name="inputId" value="str:tipoAfiliado" />
+		<param name="name" value="str:tipoAfiliado" />
+		<param name="value" value="cliente.tipoAfiliado" />
+		<param name="options" value="tiposAfiliado" />
+		<param name="placeholder" value="msg:cliente.tipoAfiliado" />
+		<param name="isEditable" value="boolean:true" />
+	</component>
+	
 	
 </rasty>

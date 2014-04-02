@@ -19,6 +19,7 @@ use Turnos\Core\model\Cliente;
 use Turnos\Core\model\Practica;
 use Turnos\Core\model\ObraSocial;
 use Turnos\Core\model\Profesional;
+use Turnos\Core\model\TipoAfiliadoObraSocial;
 
 use Rasty\utils\LinkBuilder;
 
@@ -54,6 +55,8 @@ class PracticaForm extends Form{
 		$this->addProperty("cliente");
 		$this->addProperty("profesional");
 		$this->addProperty("obraSocial");
+		$this->addProperty("nroObraSocial");
+		$this->addProperty("tipoAfiliado");
 		$this->addProperty("nomenclador");
 		$this->addProperty("observaciones");
 		
@@ -91,6 +94,8 @@ class PracticaForm extends Form{
 		$xtpl->assign("lbl_profesional", $this->localize("practica.profesional") );
 		$xtpl->assign("lbl_cliente", $this->localize("practica.cliente") );
 		$xtpl->assign("lbl_obraSocial", $this->localize("practica.obraSocial") );
+		$xtpl->assign("lbl_nroObraSocial", $this->localize("practica.nroObraSocial") );
+		$xtpl->assign("lbl_tipoAfiliado", $this->localize("turno.tipoAfiliado") );
 		$xtpl->assign("lbl_nomenclador", $this->localize("practica.nomenclador") );
 		$xtpl->assign("lbl_observaciones", $this->localize("practica.observaciones") );
 	}
@@ -157,5 +162,13 @@ class PracticaForm extends Form{
 			
 		return LinkBuilder::getPageUrl( $this->getBackToOnCancel() , $params) ;
 	}
+	
+	public function getTiposAfiliado(){
+		
+		return TurnosUtils::localizeEntities(TipoAfiliadoObraSocial::getItems());	
+		
+	}
+	
+	
 }
 ?>

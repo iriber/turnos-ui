@@ -121,6 +121,8 @@ class TurnoAgregar extends TurnosPage{
 			$cliente = UIServiceFactory::getUIClienteService()->get($clienteOid);
 		
 			$this->getTurno()->setCliente($cliente);
+			
+			$this->getTurno()->setClienteObraSocial($cliente->getClienteObraSocial());
 		}	    
 		
 	}

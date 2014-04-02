@@ -66,7 +66,7 @@
 	<component id="nroObraSocial" type="InputText">
 		<param name="inputId" value="str:nroObraSocial" />
 		<param name="name" value="str:nroObraSocial" />
-		<param name="value" value="turno.nroObraSocial" />
+		<param name="value" value="turno.clienteObraSocial.nroObraSocial" />
 		<param name="placeholder" value="msg:turno.nroObraSocial" />
 	</component>
 
@@ -153,6 +153,15 @@
 		<param name="popupFilterType" value="str:NomencladorFilter" />
 		<param name="popupFormType" value="str:NomencladorQuickForm" />
 		<param name="requiredMessage" value="msg:turno.nomenclador.required" />
+	</component>
+
+	<component id="tipoAfiliado" type="InputCombo">
+		<param name="inputId" value="str:tipoAfiliado" />
+		<param name="name" value="str:tipoAfiliado" />
+		<param name="value" value="turno.tipoAfiliado" />
+		<param name="options" value="tiposAfiliado" />
+		<param name="placeholder" value="msg:turno.tipoAfiliado" />
+		<param name="isEditable" value="boolean:true" />
 	</component>
 		
 </rasty>

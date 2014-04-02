@@ -23,6 +23,7 @@ use Turnos\Core\model\EstadoTurno;
 use Turnos\Core\model\ObraSocial;
 use Turnos\Core\model\Profesional;
 use Turnos\Core\model\Prioridad;
+use Turnos\Core\model\TipoAfiliadoObraSocial;
 
 use Rasty\utils\LinkBuilder;
 use Rasty\utils\Logger;
@@ -70,6 +71,7 @@ class TurnoForm extends Form{
 		$this->addProperty("profesional");
 		$this->addProperty("obraSocial");
 		$this->addProperty("nroObraSocial");
+		$this->addProperty("tipoAfiliado");
 		$this->addProperty("importe");
 		$this->addProperty("estado");
 		$this->addProperty("prioridad");
@@ -135,6 +137,7 @@ class TurnoForm extends Form{
 		
 		$xtpl->assign("lbl_obraSocial", $this->localize("turno.obraSocial") );
 		$xtpl->assign("lbl_nroObraSocial", $this->localize("turno.nroObraSocial") );
+		$xtpl->assign("lbl_tipoAfiliado", $this->localize("turno.tipoAfiliado") );
 		$xtpl->assign("lbl_estado", $this->localize("turno.estado") );
 		$xtpl->assign("lbl_importe", $this->localize("turno.importe") );
 		$xtpl->assign("lbl_prioridad", $this->localize("turno.prioridad") );
@@ -303,6 +306,13 @@ class TurnoForm extends Form{
 		return get_class( new NomencladorFinder() );
 		
 	}	
+	
+	public function getTiposAfiliado(){
+		
+		return TurnosUtils::localizeEntities(TipoAfiliadoObraSocial::getItems());	
+		
+	}
+	
 	
 }
 ?>

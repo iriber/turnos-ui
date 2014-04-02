@@ -52,6 +52,7 @@ function historia_mostrar_infoPersonal(event){
 		
 		$("#obraSocial").html("");
 		$("#nroObraSocial").html("");
+		$("#tipoAfiliado").html("");
 		$("#fechaNacimiento").html("");
 		$("#fechaAlta").html("");
 		$("#nroHistoriaClinica").html("");
@@ -70,11 +71,16 @@ function historia_mostrar_infoPersonal(event){
 			var osOid = cliente["obraSocial.oid"];
 			var osNombre = cliente["obraSocial.nombre"];
 			var osNro = cliente["nroObraSocial"];
+			var osTipoAfiliado = cliente["tipoAfiliado"];
+
 			if( osNombre != undefined ){		
 				$("#obraSocial").html(osNombre);
 			}
 			if( osNro != undefined ){		
 				$("#nroObraSocial").html(osNro);
+			}
+			if( osTipoAfiliado != undefined ){		
+				$("#tipoAfiliado").html(osTipoAfiliado);
 			}
 		}
 	}	
@@ -239,7 +245,7 @@ $(function(){
 						    	<span class="dato_personal_obraSocial">{obraSocial_label}</span>
 							</div>
 					    	<div class="dato_personal_right">
-								<span id="obraSocial">{obraSocial}</span>
+								<span id="obraSocial">{obraSocial}</span>&nbsp;&#47;&nbsp;<span id="tipoAfiliado">{tipoAfiliado}</span>
 							</div>
 							<div style="clear: both;"></div>
 						</div>

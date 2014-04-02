@@ -16,6 +16,8 @@ use Turnos\Core\model\TipoDocumento;
 use Turnos\Core\model\Sexo;
 use Turnos\Core\model\ObraSocial;
 use Turnos\Core\model\Localidad;
+use Turnos\Core\model\TipoAfiliadoObraSocial;
+
 use Rasty\utils\LinkBuilder;
 /**
  * Formulario para cliente
@@ -53,6 +55,7 @@ class ClienteForm extends Form{
 		$this->addProperty("nroHistoriaClinica");
 		$this->addProperty("obraSocial");
 		$this->addProperty("nroObraSocial");
+		$this->addProperty("tipoAfiliado");
 		$this->addProperty("telefonoFijo");
 		$this->addProperty("telefonoMovil");
 		$this->addProperty("email");
@@ -112,6 +115,7 @@ class ClienteForm extends Form{
 		
 		$xtpl->assign("lbl_obraSocial", $this->localize("cliente.obraSocial") );
 		$xtpl->assign("lbl_nroObraSocial", $this->localize("cliente.nroObraSocial") );
+		$xtpl->assign("lbl_tipoAfiliado", $this->localize("cliente.tipoAfiliado") );
 		
 		$xtpl->assign("lbl_telefonoFijo", $this->localize("cliente.telefonoFijo") );
 		$xtpl->assign("lbl_telefonoMovil", $this->localize("cliente.telefonoMovil") );
@@ -178,6 +182,10 @@ class ClienteForm extends Form{
 		return LinkBuilder::getPageUrl( $this->getBackToOnCancel() , $params) ;
 	}
 	
-	
+	public function getTiposAfiliado(){
+		
+		return TurnosUtils::localizeEntities(TipoAfiliadoObraSocial::getItems());	
+		
+	}
 }
 ?>

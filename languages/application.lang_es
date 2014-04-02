@@ -177,6 +177,7 @@
 	"turno.obraSocial": "Obra social",
 	"turno.nomenclador": "Nomenclador",
 	"turno.nroObraSocial": "Nro Afiliado",
+	"turno.tipoAfiliado": "Tipo de Afiliado",
 	"turno.prioridad": "Prioridad",
 	"turno.nombre": "Paciente",
 	"turno.nombre.placeholder": "Nombre del Paciente",
@@ -251,6 +252,7 @@
 	"cliente.nroHistoriaClinica":"Historia Clínica",
 	"cliente.nroObraSocial":"Nro Afiliado",
 	"cliente.obraSocial":"Obra Social",
+   	"cliente.tipoAfiliado":"Tipo de Afiliado",
    	
    	"cliente.documento":"Documento",
    	"cliente.documento.unicity":"Ya existe un paciente con el documento indicado",
@@ -360,6 +362,9 @@
    	"practica.cliente":"Paciente",
    	"practica.profesional":"Médico",
    	"practica.obraSocial":"Obra social",
+   	"practica.nroObraSocial":"Nro Afiliado",
+   	"practica.tipoAfiliado": "Tipo de Afiliado",
+   	"practica.afiliadoVoluntario":"Nro Afiliado",
    	"practica.nomenclador":"Nomenclador",
    	"practica.observaciones":"Observaciones",
 
@@ -394,6 +399,10 @@
 	
 	"sexo.m.label": "Masculino",
 	"sexo.f.label": "Femenino",
+	
+	"tipoAfiliado.voluntario.label": "Voluntario",
+	"tipoAfiliado.obligatorio.label": "Obligatorio",
+	
 	
 	"iva.ri.label":"Responsable Inscripto",
 	"iva.m.label": "Responsable Monotributo",

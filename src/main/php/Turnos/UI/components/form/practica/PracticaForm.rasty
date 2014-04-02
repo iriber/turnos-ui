@@ -34,6 +34,12 @@
 		<param name="popupFormType" value="str:ObraSocialQuickForm" />
 	</component>
 
+	<component id="nroObraSocial" type="InputText">
+		<param name="inputId" value="str:nroObraSocial" />
+		<param name="name" value="str:nroObraSocial" />
+		<param name="value" value="practica.nroObraSocial" />
+		<param name="placeholder" value="msg:practica.nroObraSocial" />
+	</component>
 
 	<component id="cliente" type="InputFindEntity">
 		<param name="inputId" value="str:cliente" />
@@ -81,4 +87,12 @@
 		
 	</component>
 	
+	<component id="tipoAfiliado" type="InputCombo">
+		<param name="inputId" value="str:tipoAfiliado" />
+		<param name="name" value="str:tipoAfiliado" />
+		<param name="value" value="practica.tipoAfiliado" />
+		<param name="options" value="tiposAfiliado" />
+		<param name="placeholder" value="msg:practica.tipoAfiliado" />
+		<param name="isEditable" value="boolean:true" />
+	</component>
 </rasty>

@@ -23,6 +23,7 @@ use Rasty\Menu\menu\model\MenuOption;
 use Turnos\Core\model\TipoDocumento;
 use Turnos\Core\model\EstadoTurno;
 use Turnos\Core\model\Cliente;
+use Turnos\Core\model\TipoAfiliadoObraSocial;
 
 class HistoriaClinica extends TurnosPage{
 
@@ -137,6 +138,8 @@ class HistoriaClinica extends TurnosPage{
 			if(!empty($os))
 				$xtpl->assign("obraSocial" , $this->getCliente()->getObraSocial()->getNombre() );
 			$xtpl->assign("nroObraSocial" , $this->getCliente()->getNroObraSocial() );
+			
+			$xtpl->assign("tipoAfiliado" ,  $this->localize( TipoAfiliadoObraSocial::getLabel( $this->getCliente()->getTipoAfiliado() ) ));
 
 			$xtpl->assign("telefonoFijo" , $this->getCliente()->getTelefonoFijo() );
 			$xtpl->assign("telefonoMovil" , $this->getCliente()->getTelefonoMovil() );
@@ -177,7 +180,7 @@ class HistoriaClinica extends TurnosPage{
 			//parámetros para agregarle una práctica y un resumen
 			$agregarPracticaParams = array("clienteOid" => $this->getCliente()->getOid());
 			$agregarResumenHistoriaClinicaParams = array("clienteOid" => $this->getCliente()->getOid());
-			$imprimirPracticasParams = array("componentId" => "historia", "oid" => $this->getCliente()->getNroHistoriaClinica() );
+			$imprimirPracticasParams = array("componentId" => "historia", "oid" => $this->getCliente()->getOid() );
 		}
 		
 		$xtpl->assign("practica_agregar_label" , $this->localize( "practica.historia.practica_agregar_label" ) );

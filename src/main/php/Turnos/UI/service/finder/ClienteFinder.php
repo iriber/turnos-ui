@@ -56,7 +56,7 @@ class ClienteFinder implements  IAutocompleteFinder {
 	 * @see service/finder/Rasty\Forms\finder\model.IAutocompleteFinder::getAttributesCallback()
 	 */
 	public function getAttributesCallback(){
-		return array("oid", "nombre", "fechaAltaFormateada", "fechaNacimientoFormateada", "edad", "obraSocial.oid", "obraSocial.nombre", "nroObraSocial", "nroHistoriaClinica");		
+		return array("oid", "nombre", "fechaAltaFormateada", "fechaNacimientoFormateada", "edad", "obraSocial.oid", "obraSocial.nombre", "nroObraSocial", "tipoAfiliado", "nroHistoriaClinica");		
 	}
 	
 	/**

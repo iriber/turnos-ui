@@ -12,6 +12,7 @@ function cambiarObraSocial(entity){
 	if(entity["error"] == undefined){
 		var osOid = entity["obraSocial.oid"];
 		var osNro = entity["nroObraSocial"];
+		var tipoAfiliado = entity["tipoAfiliado"];
 
 		
 		if( osOid != undefined ){		
@@ -20,6 +21,9 @@ function cambiarObraSocial(entity){
 		}
 		if( osNro != undefined ){		
 			$("#nroObraSocial").val(osNro);
+		}
+		if( tipoAfiliado != undefined ){		
+			$("#tipoAfiliado").val(tipoAfiliado);
 		}
 
 	}
@@ -59,6 +63,17 @@ $(function() {
 		    <label for="obraSocial">{lbl_obraSocial}:</label>
 		    <rasty id="obraSocial" />
 		</div>
+
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nroObraSocial">{lbl_nroObraSocial}:</label>
+		    <rasty id="nroObraSocial" />
+		</div>
+
+		<div class="item">
+		    <label for="tipoAfiliado">{lbl_tipoAfiliado}:</label>
+		    <rasty id="tipoAfiliado" />
+		</div>
+		
 
 		<div class="item" style="min-width: {minWidth};">
 		    <label for="nomenclador">{lbl_nomenclador} *:</label>
