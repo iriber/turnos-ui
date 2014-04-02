@@ -18,8 +18,8 @@ function clienteshortsubmit(){
 				cache: false,
 				success: function(data){
 
-					if(data["oid"]!=null)
-						{onSuccessCallback}(data["oid"]);
+					if(data["nroHistoriaClinica"]!=null)
+						{onSuccessCallback}(data["nroHistoriaClinica"]);
 
 					$("#form_{inputId}_error").html(data["error"]);
 					$("#form_{inputId}_error").show();	

@@ -49,7 +49,7 @@ class GetEntityJson extends JsonAction{
 		
 		
 		//va siempre oid + label, + los atributos que defina el finder.
-		$values["oid"] = $finder->getEntityCode($entity); 
+		$values["code"] = $finder->getEntityCode($entity); 
 		$values["label"] = $finder->getEntityLabel($entity);
 		 
 		$attributes = $finder->getAttributesCallback();

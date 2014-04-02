@@ -53,23 +53,17 @@ class ClienteGridModel extends EntityGridModel{
 
 		$this->setHasCheckboxes( false );
 		
-		$column = GridModelBuilder::buildColumn( "oid", "cliente.oid", 20, EntityGrid::TEXT_ALIGN_RIGHT );
+		$column = GridModelBuilder::buildColumn( "nroHistoriaClinica", "cliente.nroHistoriaClinica", 20, EntityGrid::TEXT_ALIGN_RIGHT );
 		$this->addColumn( $column );
+
+//		$column = GridModelBuilder::buildColumn( "oid", "cliente.oid", 20, EntityGrid::TEXT_ALIGN_RIGHT );
+//		$this->addColumn( $column );
 		//$this->addFilter( GridModelBuilder::buildFilterModelFromColumn( $column ) );
 		 
 		$column = GridModelBuilder::buildColumn( "nombre", "cliente.nombre", 30 ) ;
 		$this->addColumn( $column );
 		//$this->addFilter( GridModelBuilder::buildFilterModelFromColumn( $column ) );
 
-		
-		$column = GridModelBuilder::buildColumn( "nroHistoriaClinica", "cliente.nroHistoriaClinica", 20, EntityGrid::TEXT_ALIGN_RIGHT );
-		$this->addColumn( $column );
-		
-		/*
-		$column = GridModelBuilder::buildColumn( "apellido", TRN_LBL_CLIENTE_APELLIDO, 30 );
-		$this->addColumn( $column );
-		$this->addFilter( GridModelBuilder::buildFilterModelFromColumn( $column ) );
-		*/
 		
 		//$column = GridModelBuilder::buildColumn( "tipoDocumento", "cliente.tipoDocumento", 10, EntityGrid::TEXT_ALIGN_LEFT );
 		//$this->addColumn( $column );
@@ -140,13 +134,9 @@ class ClienteGridModel extends EntityGridModel{
 	 */
 	public function getMenuGroups( $item ){
 	
-		//FIXME seguir según NoticiaGridModel.
-		//pasar css y js.
-		
 		$group = new MenuGroup();
 		$group->setLabel("grupo");
 		$options = array();
-		
 		
 		$menuOption = new MenuOption();
 		$menuOption->setLabel( $this->localize( "menu.cliente.modificar") );

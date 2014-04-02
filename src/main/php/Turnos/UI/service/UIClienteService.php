@@ -146,6 +146,24 @@ class UIClienteService implements IEntityGridService{
 		}
 
 	}
-	
+
+	public function getByHistoriaClinica( $nroHistoriaClinica ){
+
+		try{
+		
+			$service = ServiceFactory::getClienteService();
+			
+			$criteria = new ClienteCriteria();
+			$criteria->setNroHistoriaClinica($nroHistoriaClinica);
+			
+			return $service->getSingleResult( $criteria );
+			
+		} catch (\Exception $e) {
+			
+			throw new RastyException($e->getMessage());
+			
+		}	
+		
+	}
 }
 ?>

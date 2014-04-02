@@ -50,6 +50,7 @@ class AgregarClienteJson extends JsonAction{
 			UIServiceFactory::getUIClienteService()->add( $cliente );
 			
 			$result["oid"] = $cliente->getOid();
+			$result["nroHistoriaClinica"] = $cliente->getNroHistoriaClinica();
 						
 		} catch (RastyException $e) {
 		

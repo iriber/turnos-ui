@@ -37,10 +37,8 @@ class ClienteFinder implements  IAutocompleteFinder {
 	 */
 	function findEntityByCode( $code, $parent=null ){
 		
-		//$uiCriteria = new UIObraSocialCriteria();
-		//$uiCriteria->setOid( $code );
-		
-		return UIServiceFactory::getUIClienteService()->get( $code );
+		//return UIServiceFactory::getUIClienteService()->get( $code );
+		return UIServiceFactory::getUIClienteService()->getByHistoriaClinica($code);
 	}
 	
 	/**
@@ -48,7 +46,7 @@ class ClienteFinder implements  IAutocompleteFinder {
 	 * @see service/finder/Rasty\Forms\finder\model.IAutocompleteFinder::getAttributes()
 	 */
 	public function getAttributes(){
-		return array("nombre", "obraSocial.nombre,nroObraSocial", "telefonoFijo,telefonoMovil,domicilio");		
+		return array("nroHistoriaClinica","nombre", "oid", "obraSocial.nombre,nroObraSocial", "telefonoFijo,telefonoMovil,domicilio");		
 	}
 
 	/**
@@ -56,7 +54,7 @@ class ClienteFinder implements  IAutocompleteFinder {
 	 * @see service/finder/Rasty\Forms\finder\model.IAutocompleteFinder::getAttributesCallback()
 	 */
 	public function getAttributesCallback(){
-		return array("oid", "nombre", "fechaAltaFormateada", "fechaNacimientoFormateada", "edad", "obraSocial.oid", "obraSocial.nombre", "nroObraSocial", "tipoAfiliado", "nroHistoriaClinica");		
+		return array("nroHistoriaClinica","nombre", "oid", "fechaAltaFormateada", "fechaNacimientoFormateada", "edad", "obraSocial.oid", "obraSocial.nombre", "nroObraSocial", "tipoAfiliado");		
 	}
 	
 	/**
@@ -66,7 +64,8 @@ class ClienteFinder implements  IAutocompleteFinder {
 	function getEntityCode( $entity ){
 		if( !empty( $entity)  )
 		
-		return $entity->getOid();
+		//return $entity->getOid();
+		return $entity->getNroHistoriaClinica();
 	}
 	
 	/**
@@ -83,7 +82,8 @@ class ClienteFinder implements  IAutocompleteFinder {
 	 * @see service/finder/Rasty\Forms\finder\model.IAutocompleteFinder::getEntityFieldCode()
 	 */
 	function getEntityFieldCode( $entity ){
-		return "oid";
+		//return "oid";
+		return "nroHistoriaClinica";
 	}
 	
 	/**
