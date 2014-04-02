@@ -102,6 +102,15 @@ abstract class TurnosPDFRenderer extends PDFRenderer{
 		$this->SetFont('Arial','B',14);
 	}
 	
+	function initFontSubtitle(){
+		$this->SetFillColor(218,218,218);
+		$this->SetTextColor(1,77,137);
+		$this->SetDrawColor(192,192,192);
+		$this->SetLineWidth(.1);
+		$this->SetFont('Arial','B',12);
+	}
+	
+	
 	function initFontLabel(){
 		$this->SetFillColor(218,218,218);
 		$this->SetTextColor(1,77,137);

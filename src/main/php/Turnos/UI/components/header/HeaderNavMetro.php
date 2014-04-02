@@ -2,10 +2,13 @@
 
 namespace Turnos\UI\components\header;
 
+use Turnos\UI\utils\TurnosUtils;
+
 use Rasty\security\RastySecurityContext;
 use Rasty\components\RastyComponent;
 use Rasty\utils\RastyUtils;
 use Rasty\utils\XTemplate;
+use Rasty\utils\LinkBuilder;
 
 use Rasty\Menu\menu\model\MenuGroup;
 use Rasty\Menu\menu\model\MenuOption;
@@ -38,6 +41,16 @@ class HeaderNavMetro extends HeaderNav{
 		$xtpl->assign("menu_main", $this->localize("menu.main"));
 		
 		$xtpl->assign("reloadLabel", $this->localize("menu.main.reload"));
+		
+		if( TurnosUtils::isProfesionalLogged()) {
+			$xtpl->assign("homeLabel", $this->localize("menu.main.panel"));
+			$xtpl->assign("linkHome", LinkBuilder::getPageUrl( "ProfesionalHome") );
+			$xtpl->parse("main.menu_home");	
+		}else{
+			$xtpl->assign("homeLabel", $this->localize("menu.main.turnos"));
+			$xtpl->assign("linkHome", LinkBuilder::getPageUrl( "TurnosHome") );
+			$xtpl->parse("main.menu_home");	
+		}
 		
 		$user = RastySecurityContext::getUser();
 		
@@ -96,6 +109,7 @@ class HeaderNavMetro extends HeaderNav{
 		$this->parseMenuOption($xtpl, $menuOption, "main.menuOptionExit");
 		
 	}
+
 
 	public function parseMenuProfile( XTemplate $xtpl, $user){
 		

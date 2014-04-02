@@ -9,6 +9,8 @@
 	"menu.page":"Opciones de la página",
 	"menu.main":"Menú de navegación",
 	"menu.main.reload":"Actualizar la página",
+	"menu.main.turnos":"Agenda de turnos",
+	"menu.main.panel":"Panel de trabajo",
 	
 	"menu.turnos":"Agenda de turnos",
 	"menu.estadoActual":"Vista general del Instituto",
@@ -165,6 +167,7 @@
 
 	"agenda.pdf.titulo": "Agenda de $1",
    	"agenda.pdf.fecha.subtitulo": "Día $1",
+   	"agenda.pdf.total.subtitulo": "Cantidad de pacientes: $1",
    	"agenda.imprimir": "Imprimir",
 
 	"turno.fecha": "Fecha",

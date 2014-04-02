@@ -45,11 +45,18 @@ class AgendaDiariaPDFRenderer extends TurnosPDFRenderer{
 		
 		$turnos = $this->getComponent()->getTurnos();
 		
+		$cantidad = count( $turnos );
+		
 		$fecha = TurnosUtils::formatDateToView( $this->getComponent()->getFecha() );
 		
 		$this->initFontTitle();
 		$titulo = RastyUtils::formatMessage($this->localize("agenda.pdf.fecha.subtitulo"), array($fecha));
 		$this->Cell( 100 , 5 ,  $this->encodeCharactersPDF( $titulo ), 0 , 0 , "L" );
+		$this->Ln(5);
+		
+		$this->initFontSubtitle();
+		$total = RastyUtils::formatMessage($this->localize("agenda.pdf.total.subtitulo"), array($cantidad));
+		$this->Cell( 100 , 5 ,  $this->encodeCharactersPDF( $total), 0 , 0 , "L" );
 		$this->Ln(5);
 		$this->Ln(5);
 		
