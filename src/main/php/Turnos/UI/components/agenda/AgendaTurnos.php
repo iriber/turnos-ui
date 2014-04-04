@@ -63,7 +63,7 @@ class AgendaTurnos extends RastyComponent{
 		if( $profesional == null ){
 			
 			$profesionalOid = $this->getProfesionalOid();
-			if(!empty($profesionalOid) ){
+			if(!empty($profesionalOid) && ($profesionalOid>0)){
 				
 				//$profesional->setOid( $profesionalOid );
 				$profesional =  UIServiceFactory::getUIProfesionalService()->get($profesionalOid) ;

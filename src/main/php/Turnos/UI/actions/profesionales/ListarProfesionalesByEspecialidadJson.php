@@ -27,11 +27,22 @@ class ListarProfesionalesByEspecialidadJson extends JsonAction{
 		
 		try {
 
-			$especialidadOid = RastyUtils::getParamGET("oid");
+			$especialidadOid = RastyUtils::getParamGET("oid", -1);
+
+			$empty = array(-1, "-- Elija el médico --");
 			
-			$entities = UIServiceFactory::getUIProfesionalService()->getProfesionalesByEspecialidad( $especialidadOid );
-		
-			$result["profesionales"] = $this->getProfesionales( $entities, array("oid", "nombre")  );
+			if($especialidadOid > 0){
+				
+				$entities = UIServiceFactory::getUIProfesionalService()->getProfesionalesByEspecialidad( $especialidadOid );
+
+				
+				$result["profesionales"] = $this->getProfesionales( $entities, array("oid", "nombre")  );	
+			}else{
+				
+				$result["profesionales"] = array($empty);
+			}
+			
+			
 
 		} catch (RastyException $e) {
 		
@@ -43,10 +54,12 @@ class ListarProfesionalesByEspecialidadJson extends JsonAction{
 		
 	}
 
-	private function getProfesionales( $entities, $attributes ){
+	private function getProfesionales( $entities, $attributes, $empty=null ){
 		
 		$result = array();
 		
+		if($empty!=null)
+		$result[] = $empty;
 		foreach ($entities as $entity) {
 			
 			$next = $this->build( $entity, $attributes );

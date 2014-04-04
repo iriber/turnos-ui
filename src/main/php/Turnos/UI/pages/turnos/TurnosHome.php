@@ -79,7 +79,7 @@ class TurnosHome extends TurnosPage{
 			$profesional = TurnosUtils::getProfesionalAgenda();
 		}else{
 			
-			$profesional->setOid(1);
+			$profesional->setOid(0);
 		}
 		return $profesional;
 	}

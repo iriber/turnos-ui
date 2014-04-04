@@ -322,9 +322,16 @@ class AgendaDiariaHelper{
 		}
 		
 		
-		//si no hay nada, no atiende. mostramos el mensaje
+		//si no hay nada, no atiende o no hay profesional seleccionado. mostramos el mensaje
 		if($totalTurnos==0){
-			$xtpl->assign("no_atiende_msg",  self::localize("agenda.no_atiende")  );
+			$oid = $profesional->getOid();
+			$msg = "";
+			if( !empty($oid))
+				$msg = self::localize("agenda.no_atiende");	
+			else
+				$msg = self::localize("agenda.profesional.required");
+			
+			$xtpl->assign("no_atiende_msg",  $msg  );
 			$xtpl->parse("main.no_atiende");
 		}
 		
