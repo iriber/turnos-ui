@@ -256,6 +256,7 @@ body.loginform div.logincontainer {
 	color: #444444;
 	font-weight: bold;
 	padding: 5px 10px;
+	text-align:left;
 }
 
 .rasty table caption,
@@ -1089,3 +1090,23 @@ body.loginform div.logincontainer {
 	background: none repeat scroll 0 0 #FFFFCC;
 	color: #222222;
 }
+
+.col3{
+	width: 10% !important;
+}
+.col3_label{
+	/*float: left;
+	font-weight: bolder;
+	text-align: right;
+	
+	margin-right: 10px;
+	*/
+	float: none !important;
+	text-align: right;
+	width: 15em;
+	/*width: 15%;*/
+	white-space: nowrap;
+	display: inline !important;
+	
+}
+

@@ -57,7 +57,7 @@ class HeaderNavMetro extends HeaderNav{
 		$xtpl->assign("user", $user->getName() );
 		
 		$this->parseMenuExit( $xtpl );
-		//$this->parseMenuProfile( $xtpl, $user );
+		$this->parseMenuProfile( $xtpl, $user );
 		
 		//parseamos las opciones del menú principal.
 		$this->parseMenuMain( $xtpl );
@@ -113,13 +113,27 @@ class HeaderNavMetro extends HeaderNav{
 
 	public function parseMenuProfile( XTemplate $xtpl, $user){
 		
-		$menuOption = new MenuOption();
-		$menuOption->setLabel( $this->localize( "menu.profile") );
-		$menuOption->setIconClass( "icon-cog" );
-		$menuOption->setPageName( "UserProfile");
-		$menuOption->addParam("oid",$user->getOid());
-		$menuOption->setImageSource( $this->getWebPath() . "css/images/profile.png" );
-		$this->parseMenuOption($xtpl, $menuOption, "main.menuOptionProfile");
+//		$menuOption = new MenuOption();
+//		$menuOption->setLabel( $this->localize( "menu.profile") );
+//		$menuOption->setIconClass( "icon-cog" );
+//		$menuOption->setPageName( "UserProfile");
+//		$menuOption->addParam("oid",$user->getOid());
+//		$menuOption->setImageSource( $this->getWebPath() . "css/images/profile.png" );
+//		$this->parseMenuOption($xtpl, $menuOption, "main.menuOptionProfile");
+		
+		if( TurnosUtils::isProfesionalLogged()) {
+			$menuOption = new MenuOption();
+			$menuOption->setLabel( $this->localize( "ausencia.agregar" ) );
+			$menuOption->setPageName("AusenciaAgregar");
+			$menuOption->setImageSource( $this->getWebPath() . "css/images/ausencias_48.png" );
+			$this->parseMenuOption($xtpl, $menuOption, "main.menuOptionProfile");
+	
+			$menuOption = new MenuOption();
+			$menuOption->setLabel( $this->localize( "horario.definir" ) );
+			$menuOption->setPageName("HorariosProfesional");
+			$menuOption->setImageSource( $this->getWebPath() . "css/images/horarios_48.png" );
+			$this->parseMenuOption($xtpl, $menuOption, "main.menuOptionProfile");
+		}
 		
 	}
 	

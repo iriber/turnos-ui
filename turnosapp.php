@@ -1,6 +1,6 @@
 <?php
 
-session_set_cookie_params(0, "TURNOS" );
+session_set_cookie_params(0, "turnos_ui" );
 session_start ();
 
 use Turnos\UI\conf\TurnosUISetup;
@@ -11,7 +11,7 @@ use Rasty\security\RastySecurityContext;
 
 include_once   'vendor/autoload.php';
 
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 7200)) {
 	RastySecurityContext::logout();
 }
 

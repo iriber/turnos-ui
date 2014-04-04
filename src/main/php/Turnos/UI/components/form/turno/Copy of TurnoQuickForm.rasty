@@ -10,12 +10,6 @@
 		<param name="name" value="str:oid" />
 		<param name="value" value="turno.oid" />
 	</component>
-
-	<component id="fechaHidden" type="InputHidden">
-		<param name="inputId" value="str:fecha2" />
-		<param name="name" value="str:fecha" />
-		<param name="value" value="turno.fecha" />
-	</component>
 	
 	<component id="fecha" type="InputDate">
 		<param name="inputId" value="str:fecha" />

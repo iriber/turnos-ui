@@ -88,6 +88,7 @@ class ClienteQuickForm extends Form{
 		$xtpl->assign("lbl_sexo", $this->localize("cliente.sexo") );
 		$xtpl->assign("lbl_fechaNacimiento", $this->localize("cliente.fechaNacimiento") );
 		$xtpl->assign("lbl_nroHistoriaClinica", $this->localize("cliente.nroHistoriaClinica") );
+		$xtpl->assign("lbl_telefonoFijo", $this->localize("cliente.telefonoFijo") );
 
 		$xtpl->assign("lbl_cancel", $this->localize( "form.cancelar" ) );
 	}

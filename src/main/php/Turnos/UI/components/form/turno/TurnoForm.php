@@ -122,7 +122,13 @@ class TurnoForm extends Form{
 		
 		parent::parseXTemplate($xtpl);
 		
-		$xtpl->assign("estadoTurnoEnSala", EstadoTurno::EnSala );
+		//$xtpl->assign("estadoTurnoEnSala", EstadoTurno::EnSala );
+		//si la fecha es la de hoy, dejamos el paciente en sala.
+		$esHoy = TurnosUtils::isSameDay( $this->getTurno()->getFecha() , new \DateTime());
+		if( $esHoy )
+			$xtpl->assign("estadoTurnoDefault", EstadoTurno::EnSala );
+		else
+			$xtpl->assign("estadoTurnoDefault", EstadoTurno::Asignado );
 		
 		$xtpl->assign("cancel", $this->getLinkCancel() );
 		$xtpl->assign("lbl_cancel", $this->localize( $this->getLabelCancel() ) );

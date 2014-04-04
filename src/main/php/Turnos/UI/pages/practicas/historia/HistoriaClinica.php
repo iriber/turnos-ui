@@ -120,6 +120,7 @@ class HistoriaClinica extends TurnosPage{
 		$xtpl->assign("domicilio_label" , $this->localize("cliente.domicilio") );
 		$xtpl->assign("telefonos_label" , $this->localize("cliente.telefonos") );
 		$xtpl->assign("email_label" , $this->localize("cliente.email") );
+		$xtpl->assign("observaciones_label" , $this->localize("cliente.observaciones") );
 		
 		$agregarPracticaParams = array();
 		$agregarResumenHistoriaClinicaParams = array();
@@ -148,6 +149,7 @@ class HistoriaClinica extends TurnosPage{
 			$xtpl->assign("domicilio" , $this->getCliente()->getDomicilio() );
 			$xtpl->assign("nroDocumento" , $this->getCliente()->getNroDocumento() );
 			$xtpl->assign("tipoDocumento" , $this->localize( TipoDocumento::getLabel($this->getCliente()->getTipoDocumento())) );
+			$xtpl->assign("observaciones", str_replace("\n", "<br/>", $this->getCliente()->getObservaciones()) );
 
 			$xtpl->assign("cliente_modificar_label" , $this->localize("cliente.modificar") );
 			$xtpl->assign("linkModificarCliente" , LinkBuilder::getPageUrl( "ClienteModificar", array("oid" => $this->getCliente()->getOid(),

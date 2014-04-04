@@ -95,6 +95,7 @@
 	<component name="AyudaAgregarSobreturno"   location="components/ayuda/agenda"/>
 	<component name="AyudaEstadoTurno"   location="components/ayuda"/>
 	<component name="AyudaIconosPanel"   location="components/ayuda/panel"/>
+	<component name="AyudaPacienteEnSala"   location="components/ayuda/agenda"/>
 
 	<!-- layouts -->
 	<component name="TurnosLoginLayout" location="layouts" />

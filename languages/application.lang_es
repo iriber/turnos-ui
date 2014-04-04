@@ -54,6 +54,7 @@
 	"ayuda.agenda.colores.titulo": "Qué significan los colores en mi agenda?",
 	"ayuda.agenda.agregarTurno.titulo": "Cómo agrego un turno?",
 	"ayuda.agenda.agregarSobreturno.titulo": "Cómo agrego un sobre-turno?",
+	"ayuda.agenda.pacienteEnSala.titulo": "Cómo pongo un paciente en sala?",
 	
 	"ayuda.agenda.asignado": "El turno se encuentra asignado a un paciente",
 	"ayuda.agenda.ensala": "El paciente del turno se encuentra en la sala de espera",
@@ -135,10 +136,10 @@
 	"turno.nomenclador.required": "Ingrese el nomenclador",
 	
 	"turno.cliente.validar.msg": "Valide los datos del paciente",
-	"turno.cliente.validar": "validar paciente",
+	"turno.cliente.validar": "buscar paciente",
 	"turno.cliente.agregar": "Agregar",
 	"turno.cliente.buscar.title": "Buscar pacientes",
-	"turno.cliente.validar.buscar.title": "Validando el paciente del turno",
+	"turno.cliente.validar.buscar.title": "Buscando el paciente del turno",
 	
 	
 	"turno.profesional.unicity": "El médico ya tiene asignado el turno. Elija otro día/horario",
@@ -237,7 +238,7 @@
 	"cliente.modificar.legend": "Modifique los datos del paciente",
 	
 	"cliente.buscar": "Buscar pacientes",
-	"cliente.buscar.again": "Volver a intentarlo...",
+	"cliente.buscar.again": "Afinar búsqueda...",
 
 	"cliente.nombre":"Nombre",
 	"cliente.nombre.unicity":"Ya existe un paciente para el nombre indicado",
@@ -280,7 +281,7 @@
    	
    	"obraSocial.title":"Obras sociales",
    	"obraSocial.buscar":"Buscar obras sociales",
-   	"obraSocial.buscar.again":"Volver a intentarlo...",
+   	"obraSocial.buscar.again":"Afinar búsqueda...",
 
 	"obraSocial.agregar.legend": "Ingrese los datos de la obra social",
 	"obraSocial.agregar.title": "Agregar Obra Social",
@@ -301,7 +302,7 @@
 
    	"nomenclador.title":"Nomenclador",
    	"nomenclador.buscar":"Buscar en el nomenclador",
-   	"nomenclador.buscar.again":"Volver a intentarlo...",
+   	"nomenclador.buscar.again":"Afinar búsqueda...",
 
 	"nomenclador.agregar":"Agregar nomenclador",
 	"nomenclador.agregar.title":"Agregar práctica en nomenclador",
@@ -440,6 +441,7 @@
 	"horario.definir.title": "Horarios del profesional",
 	
 	"horario.agregar.legend": "Ingrese un nuevo horario",
+	"horario.borrar": "Borrar horario",
 
     "horario.dia":"Día",
     "horario.horaDesde":"Hora de inicio",
@@ -483,7 +485,7 @@
     "form.volver": "Volver",
     
     "filter.buscar": "Buscar",
-    "filter.buscar.again": "Volver a intentarlo...",
+    "filter.buscar.again": "Afinar búsqueda...",
     "filter.resultados": "Resultados de la búsqueda",
     "filter.opciones": "Opciones",
     "filter.close.label": "Cerrar",

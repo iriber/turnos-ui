@@ -6,6 +6,7 @@ use Turnos\UI\utils\TurnosUtils;
 
 use Turnos\UI\render\TurnosPDFRenderer;
 use Turnos\Core\model\TipoDocumento;
+use Turnos\Core\model\Turno;
 
 use Rasty\conf\RastyConfig;
 use Rasty\utils\RastyUtils;
@@ -41,6 +42,46 @@ class AgendaDiariaPDFRenderer extends TurnosPDFRenderer{
 		
 	}
 	
+	protected function renderTurno(Turno $turno, $nroFila){
+		
+//		if($nroFila%2==0)
+//			$this->SetFillColor(0,0,0);
+//		else 
+//			$this->SetFillColor(192,192,192);
+		
+		$maxWidth = $this->getMaxWidth();
+		
+		$hora = TurnosUtils::formatTimeToView( $turno->getHora() );
+		$clienteNombre = $turno->getNombre();
+		$clienteTelefono = $turno->getTelefono();
+		$clienteHC = "";
+		$cliente = $turno->getCliente();
+		if(!empty($cliente) && $cliente->getOid()>0){
+			$clienteNombre = $turno->getCliente()->__toString();
+			$telefonos = array();
+			$telFijo = $cliente->getTelefonoFijo();
+			if(!empty($telFijo))
+				$telefonos[] = $telFijo;	
+					
+			$telMovil = $cliente->getTelefonoMovil();
+			if(!empty($telMovil))
+				$telefonos[] = $telMovil;	
+					
+			$clienteTelefono = implode(" / ", $telefonos);
+			
+			$clienteHC = $this->localize("cliente.nroHistoriaClinica") . " " . $cliente->getNroHistoriaClinica();
+		}	
+		
+		$fillColors = $this->getFillColor($nroFila);
+		$this->initFontLabel();
+		$this->SetFillColor( $fillColors[0], $fillColors[1], $fillColors[2] );
+		$this->Cell( 30 , 5 , $this->encodeCharactersPDF( $hora ) , 1 , 0 , "L",true );
+		
+		$this->initFontValue();
+		$this->SetFillColor( $fillColors[0], $fillColors[1], $fillColors[2] );
+		$this->Cell( $maxWidth-30 , 5 , $this->encodeCharactersPDF( "$clienteNombre / $clienteHC / $clienteTelefono " ) , 1 , 0 , "L", true );
+	}
+	
 	protected function renderTurnos(){
 		
 		$turnos = $this->getComponent()->getTurnos();
@@ -60,38 +101,11 @@ class AgendaDiariaPDFRenderer extends TurnosPDFRenderer{
 		$this->Ln(5);
 		$this->Ln(5);
 		
-		$maxWidth = $this->getMaxWidth();
+		$nroFila = 1;
 		
 		foreach ($turnos as $turno) {
 
-			$hora = TurnosUtils::formatTimeToView( $turno->getHora() );
-			$clienteNombre = $turno->getNombre();
-			$clienteTelefono = $turno->getTelefono();
-			$clienteHC = "";
-			$cliente = $turno->getCliente();
-			if(!empty($cliente) && $cliente->getOid()>0){
-				$clienteNombre = $turno->getCliente()->__toString();
-				$telefonos = array();
-				$telFijo = $cliente->getTelefonoFijo();
-				if(!empty($telFijo))
-					$telefonos[] = $telFijo;	
-						
-				$telMovil = $cliente->getTelefonoMovil();
-				if(!empty($telMovil))
-					$telefonos[] = $telMovil;	
-						
-				$clienteTelefono = implode(" / ", $telefonos);
-				
-				$clienteHC = $this->localize("cliente.nroHistoriaClinica") . " " . $cliente->getNroHistoriaClinica();
-			}	
-			
-			
-			$this->initFontLabel();
-			$this->Cell( 30 , 5 , $this->encodeCharactersPDF( $hora ) , 1 , 0 , "L" );
-			
-			$this->initFontValue();
-			$this->Cell( $maxWidth-30 , 5 , $this->encodeCharactersPDF( "$clienteNombre / $clienteHC / $clienteTelefono " ) , 1 , 0 , "L" );
-			
+			$this->renderTurno($turno, $nroFila++);			
 			
 			$this->Ln(5);
 			

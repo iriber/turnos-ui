@@ -153,10 +153,7 @@ class UIClienteService implements IEntityGridService{
 		
 			$service = ServiceFactory::getClienteService();
 			
-			$criteria = new ClienteCriteria();
-			$criteria->setNroHistoriaClinica($nroHistoriaClinica);
-			
-			return $service->getSingleResult( $criteria );
+			return $service->getByHistoriaClinica( $nroHistoriaClinica );
 			
 		} catch (\Exception $e) {
 			

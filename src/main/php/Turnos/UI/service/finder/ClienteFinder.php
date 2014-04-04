@@ -38,6 +38,8 @@ class ClienteFinder implements  IAutocompleteFinder {
 	function findEntityByCode( $code, $parent=null ){
 		
 		//return UIServiceFactory::getUIClienteService()->get( $code );
+		
+		if(!empty($code))
 		return UIServiceFactory::getUIClienteService()->getByHistoriaClinica($code);
 	}
 	

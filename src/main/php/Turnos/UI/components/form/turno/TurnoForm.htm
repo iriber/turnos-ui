@@ -78,8 +78,10 @@ function clienteValidado( oid ){
 	$(".cliente_no_registrado").hide();
 	$(".cliente_registrado").show();
 	
-	 $("#estado").removeAttr('disabled');
-	 $("#estado").val('{estadoTurnoEnSala}');	
+	$("#estado").removeAttr('disabled');
+
+	
+	$("#estado").val('{estadoTurnoDefault}');	
 }
 
 function cambiarObraSocial(entity){
@@ -113,10 +115,14 @@ $(function() {
 
 	$("#nombre").focus();
 
-	/* si tiene nombre, vamos a validarlo*/
-	if( $("#nombre").val().length > 0 ){
+	/* si tiene nombre y aún no se seleccionó el cliente, vamos a validarlo*/
+	if( ($("#nombre").val().length > 0) && ($("#cliente").val().length==0) ){
 		validarCliente();
 	}
+
+
+	
+	
 	
 });
 
@@ -152,16 +158,6 @@ $(function() {
 		    <rasty id="duracion" />
 		</div>
 
-		<div class="item">
-		    <label for="estado">{lbl_estado} *:</label>
-		    <rasty id="estado" />
-		</div>
-
-		<div class="item" style="min-width: {minWidth};">
-		    <label for="nomenclador">{lbl_nomenclador} *:</label>
-		    <rasty id="nomenclador" />
-		</div>
-
 		<div class="item cliente_no_registrado">
 		    <label for="nombre">{lbl_nombre} *:</label>
 		    <rasty id="nombre" />
@@ -174,7 +170,7 @@ $(function() {
 		
 		<div class="item cliente_no_registrado">
 			<label for="input_validar">&nbsp;</label>
-		    {lbl_validar}:<button type="button"  id="input_validar" onclick="javascript: validarCliente(); "><i class="icon-checkmark on-left"></i>{btn_validar}</button>
+		    {lbl_validar}:<button type="button"  id="input_validar" onclick="javascript: validarCliente(); "><i class="icon-search on-left"></i>{btn_validar}</button>
 		</div>
 		
 		<div class="item cliente_registrado">
@@ -196,6 +192,12 @@ $(function() {
 		    <label for="tipoAfiliado">{lbl_tipoAfiliado}:</label>
 		    <rasty id="tipoAfiliado" />
 		</div>
+
+		<div class="item cliente_registrado" style="min-width: {minWidth};">
+		    <label for="nomenclador">{lbl_nomenclador} *:</label>
+		    <rasty id="nomenclador" />
+		</div>
+
 		
 		<div class="item cliente_registrado" style="min-width: {minWidth};">
 		    <label for="importe">{lbl_importe} *:</label>
@@ -203,11 +205,15 @@ $(function() {
 		</div>
 
 		<div class="item cliente_registrado">
+		    <label for="estado">{lbl_estado} *:</label>
+		    <rasty id="estado" />
+		</div>
+
+		<div class="item cliente_registrado">
 		    <label for="prioridad">{lbl_prioridad} *:</label>
 		    <rasty id="prioridad" />
 		</div>
-		
-		
+
 		<!-- BEGIN: cliente_no_registrado -->
 		<script>
 			$(".cliente_registrado").hide();

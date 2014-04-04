@@ -78,7 +78,7 @@ class ProfesionalHome extends TurnosPage{
 		$menuOption->setImageSource( $this->getWebPath() . "css/images/horarios_48.png" );
 		$menuGroup->addMenuOption( $menuOption );
 		
-		return array($menuGroup);
+		return array();
 	}
 		
 	public function getType(){

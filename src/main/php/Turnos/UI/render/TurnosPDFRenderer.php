@@ -105,7 +105,6 @@ abstract class TurnosPDFRenderer extends PDFRenderer{
 	function initFontSubtitle(){
 		$this->SetFillColor(218,218,218);
 		$this->SetTextColor(1,77,137);
-		$this->SetDrawColor(192,192,192);
 		$this->SetLineWidth(.1);
 		$this->SetFont('Arial','B',12);
 	}
@@ -114,7 +113,6 @@ abstract class TurnosPDFRenderer extends PDFRenderer{
 	function initFontLabel(){
 		$this->SetFillColor(218,218,218);
 		$this->SetTextColor(1,77,137);
-		$this->SetDrawColor(192,192,192);
 		$this->SetLineWidth(.1);
 		$this->SetFont('Arial','B',8);
 	}
@@ -129,6 +127,13 @@ abstract class TurnosPDFRenderer extends PDFRenderer{
 		
 		return ($this->w) - $this->lMargin - $this->rMargin;
 		
+	}
+	
+	function getFillColor( $nroFila ){
+		if($nroFila%2==0)
+			return array (255, 255, 244);
+		else 
+			return array(246,250,255);
 	}
 
 }

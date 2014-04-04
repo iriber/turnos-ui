@@ -71,6 +71,7 @@ function openAyuda(link, title ){
 	var height = $(window).height()-20;
 	var width = $(window).width()/2;
 		
-	gotoLinkPopup( link, "#ui-ayuda", title, height, width );
+	/*gotoLinkPopup( link, "#ui-ayuda", title, height, width );*/
+	gotoLink( link, "_blank" );
 	
 }

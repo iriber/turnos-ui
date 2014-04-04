@@ -86,6 +86,7 @@ function agendaTurnos{id}_tipoAgendaDiaria(fecha){
 $(document).ready(function(){
 
 	$(this).find(".agenda_turno p.toolbar").hide();
+	$(this).find(".agenda_turno .turno_libre .btn-agregar-turno").hide();
 	
 	$(".turno_ocupado").hover(
 			function () {
@@ -104,12 +105,16 @@ $(document).ready(function(){
 
 		
 	$(".agenda_turno").hover(
-				function () {
-					$(this).find("p.toolbar").show();
-					},
+					function () {
+						$(this).find("p.toolbar").show();
+						$(this).find("h2.toolbar").show();
+						$(this).find(".turno_libre .btn-agregar-turno").show();
+						},
 					function () {
 						//$(this).find("div.actions").css({"display":"none"});
 						$(this).find("p.toolbar").hide();
+						$(this).find("h2.toolbar").hide();
+						$(this).find(".turno_libre .btn-agregar-turno").hide();
 					}
 				);	
 		
@@ -152,7 +157,7 @@ reinit();
 
 		
 		<!-- BEGIN: turno -->
-		<div class="agenda_turno {first_css} {last_css} {odd_css}" style="display: block;">
+		<div class="agenda_turno {first_css} {last_css} {odd_css}" style="display: block;" >
 		
 			<!-- BEGIN: turno_no_disponible -->
 			<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{mensaje}
@@ -167,7 +172,16 @@ reinit();
 			<!-- BEGIN: turno_disponible -->
 			
 				<p title="{estado}" class="{turno_css}">
+					
 					{hora}<!-- BEGIN:duracion -->{duracion}<!-- END:duracion -->
+					
+					<!-- BEGIN: libre -->
+					<a style="cursor: pointer;" title="{linkSeleccionarLabel}" href="#" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
+					
+					<!-- a style="cursor: pointer;" title="{linkSeleccionarLabel}" href="#" onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}', '{hora}', '{profesional_oid}');"-->
+					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/add_over.png"/></a>
+					<!-- END: libre -->
+					
 					<!-- BEGIN: ensala -->
 					<a style="cursor: pointer;" title="{asignado_label}" href="#" onclick="javascript: turnoAsignado('{linkAsignado}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
 					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_finalizar.png"/></a>
@@ -179,9 +193,6 @@ reinit();
 					<!-- END: asignado -->
 				</p>
 				
-
-				
-
 				<!-- BEGIN: editar -->
 				<p class="toolbar transparent">
 					<!-- editar turno -->
@@ -222,14 +233,12 @@ reinit();
 				<!-- END: ocupado -->
 				
 				
-				<!-- BEGIN: libre -->
-				<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;width:85%;"
-					onclick="javascript: gotoLink('{linkSeleccionarTurno}');"> 
+				<!-- BEGIN: libre_altaa -->
+				<h2 class="toolbar transparent"> 
 				<!-- onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');"-->
-					
-					<br />
+					Paciente: <input type="text" /> Tel.:<input type="text" /> 
 				</h2>
-				<!-- END: libre -->
+				<!-- END: libre_altaa -->
 			
 			<!-- END: turno_disponible -->
 			

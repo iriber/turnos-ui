@@ -187,6 +187,7 @@ class AgendaDiariaHelper{
 					$xtpl->parse("main.turno.$templateBlockTurno.agregar");
 
 					$xtpl->parse("main.turno.$templateBlockTurno.libre");
+					$xtpl->parse("main.turno.$templateBlockTurno.libre_alta");
 				}elseif( !$correspondeTurnoAnterior){
 					
 					//mostramos las observaciones si:

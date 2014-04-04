@@ -144,10 +144,15 @@ function submitFormularioAjax(webpath, url, formId, resultId){
 }
 
 
-function gotoLink( link ){
+function gotoLink( link, target ){
 	
-	window.location.href = link;
+	if( target != undefined )
+		window.open(link, target);
+	else
+		window.location.href = link;
+			
 }
+
 
 function gotoLinkPopup( link, resultId, title, height, width ){
 	

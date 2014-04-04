@@ -1,6 +1,8 @@
 <?php
 namespace Turnos\UI\pages\ayuda;
 
+use Turnos\UI\pages\TurnosPage;
+
 use Turnos\UI\utils\TurnosUtils;
 
 use Rasty\utils\XTemplate;
@@ -10,7 +12,7 @@ use Rasty\security\RastySecurityContext;
 
 use Rasty\utils\LinkBuilder;
 
-class AyudaTurnos extends RastyPage{
+class AyudaTurnos extends TurnosPage{
 
 	
 	public function __construct(){
@@ -55,11 +57,12 @@ class AyudaTurnos extends RastyPage{
 		
 		//items para agenda de turnos
 		$items = array();
+		$items[] = $this->buildItem( "ayuda.agenda.agregarTurno.titulo" , "AyudaAgregarTurno" );			
+		$items[] = $this->buildItem( "ayuda.agenda.agregarSobreturno.titulo" , "AyudaAgregarSobreturno" );			
+		$items[] = $this->buildItem( "ayuda.agenda.pacienteEnSala.titulo" , "AyudaPacienteEnSala" );			
 		$items[] = $this->buildItem( "ayuda.turno.estados.titulo" , "AyudaEstadoTurno" ); 
 		$items[] = $this->buildItem( "ayuda.agenda.colores.titulo" , "AyudaColoresAgenda" ); 
 		$items[] = $this->buildItem( "ayuda.agenda.iconos.titulo" , "AyudaIconosAgenda" );
-		$items[] = $this->buildItem( "ayuda.agenda.agregarTurno.titulo" , "AyudaAgregarTurno" );			
-		$items[] = $this->buildItem( "ayuda.agenda.agregarSobreturno.titulo" , "AyudaAgregarSobreturno" );			
 		
 		$contenido = array ( "titulo" =>  $this->localize( "ayuda.agenda.header" ), "items" =>$items, "img" =>$this->getWebPath() . "css/images/turnos_48.png" );
 		$this->parseContenido($xtpl, $contenido);
