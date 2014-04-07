@@ -44,6 +44,7 @@ class TotalesDia extends RastyComponent{
 		$xtpl->assign("lbl_enSala",  $this->localize( "stats.totales.enSala" ) );
 		$xtpl->assign("lbl_asignados",  $this->localize( "stats.totales.asignados" ) );
 		$xtpl->assign("lbl_atendidos",  $this->localize( "stats.totales.atendidos" ) );
+		$xtpl->assign("lbl_totalPacientes",  $this->localize( "stats.totales.totalPacientes" ) );
 		$xtpl->assign("lbl_importe",  $this->localize( "stats.totales.importe" ) );
 		
 	}
@@ -69,10 +70,11 @@ class TotalesDia extends RastyComponent{
 								EstadoTurno::EnSala => 0,
 								EstadoTurno::EnCurso => 0
 							);
-		
+		$totalPacientes = 0;
 		foreach ($turnos as $turno) {
 			
 			$importe += $turno->getImporte();
+			$totalPacientes++;
 			if( array_key_exists($turno->getEstado(), $totalPorEstado))
 					$totalPorEstado[$turno->getEstado()] +=1;
 				
@@ -81,6 +83,7 @@ class TotalesDia extends RastyComponent{
 		$xtpl->assign("enSala", $totalPorEstado[EstadoTurno::EnSala] + $totalPorEstado[EstadoTurno::EnCurso] );
 		$xtpl->assign("asignados", $totalPorEstado[EstadoTurno::Asignado]);
 		$xtpl->assign("atendidos", $totalPorEstado[EstadoTurno::Atendido] );
+		$xtpl->assign("totalPacientes", $totalPacientes );
 		$xtpl->assign("importe",  TurnosUtils::formatMontoToView($importe) );
 	}
 	

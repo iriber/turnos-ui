@@ -98,7 +98,7 @@
 	"profesional_home.legend": "Resumen del día de $1",
 	
 	"profesional_home.enSala.legend": "Pacientes en sala",
-	"profesional_home.asignados.legend": "Pacientes con turno que aún no se han presentado",
+	"profesional_home.asignados.legend": "Pacientes asignados (aún no se han presentado)",
 	"profesional_home.atendidos.legend": "Pacientes que ya fueron atendidos",
 	"profesional_home.stats.legend": "Totales del día",
 
@@ -372,6 +372,8 @@
    	"practica.afiliadoVoluntario":"Nro Afiliado",
    	"practica.nomenclador":"Nomenclador",
    	"practica.observaciones":"Observaciones",
+	
+	"practica.completarObservaciones":"Escribir observaciones...",
 
 	"practica.profesional.required":"Ingrese un médico",
 	"practica.cliente.required":"Ingrese un paciente",
@@ -382,6 +384,7 @@
  	"stats.totales.enSala": "En sala",
  	"stats.totales.asignados": "Asignados",
  	"stats.totales.atendidos": "Atendidos",
+ 	"stats.totales.totalPacientes": "# Pacientes",
  	"stats.totales.importe": "Importe",
  
  

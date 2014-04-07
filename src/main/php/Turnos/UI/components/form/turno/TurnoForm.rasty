@@ -133,6 +133,7 @@
 		<param name="requiredMessage" value="msg:turno.nombre.required" />
 		<param name="placeholder" value="msg:turno.nombre.placeholder" />
 		<param name="styleCss" value="str:uppercase" />
+		<param name="autocomplete" value="str:off" />
 	</component>
 
 	<component id="telefono" type="InputText">
@@ -140,6 +141,7 @@
 		<param name="name" value="str:telefono" />
 		<param name="value" value="turno.telefono" />
 		<param name="placeholder" value="msg:turno.telefono.placeholder" />
+		<param name="autocomplete" value="str:off" />
 	</component>
 
 	<component id="nomenclador" type="InputFindEntity">

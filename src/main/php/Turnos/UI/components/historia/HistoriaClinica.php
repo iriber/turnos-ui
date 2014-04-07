@@ -81,7 +81,10 @@ class HistoriaClinica extends RastyComponent{
 			if(!empty($os))
 			$xtpl->assign("obraSocial", $practica->getObraSocial()->getNombre() );
 			
-			$xtpl->assign("observaciones", str_replace("\n", "<br/>", $practica->getObservaciones()) );
+			$observaciones = str_replace("\n", "<br/>", $practica->getObservaciones());
+			if(empty($observaciones))
+				$observaciones = $this->localize("practica.completarObservaciones");
+			$xtpl->assign("observaciones", $observaciones );
 			
 			$xtpl->assign("profesional", $practica->getProfesional() );
 			
