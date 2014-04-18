@@ -1,3 +1,5 @@
 <rasty specificationClass="Turnos\UI\components\stats\TotalesDia" templateLocation="TotalesDia.htm">
 
+	<param name="strFecha" value="get:fecha" />
+
 </rasty>

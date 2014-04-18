@@ -39,6 +39,7 @@
 	<page name="AyudaTurnos"   location="pages/ayuda/AyudaTurnos.page" url="ayuda"/>
 
 	<page name="EstadoActual"   location="pages/reportes/estadoActual/EstadoActual.page" url="estadoActual"/>
+	<page name="Atenciones"   location="pages/reportes/profesionales/Atenciones.page" url="atenciones"/>
 	
 	<!-- declaración de los componentes -->
 	<component name="HeaderNav" location="components/header" />
@@ -54,6 +55,7 @@
 
 	<component name="TotalesDia" location="components/stats" />
 	<component name="TotalesDiaProfesional" location="components/stats" />
+	<component name="PacientesMes" location="components/stats" />
 
 	<component name="HistoriaClinica" location="components/historia" />
 	<component name="ResumenHistoriaClinica" location="components/historia" />

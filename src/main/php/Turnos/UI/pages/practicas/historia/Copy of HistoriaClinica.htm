@@ -26,13 +26,13 @@ function historiaClinica_turnoFinalizado(data){
 
 	data = new Array();
 	data["oid"] = '{cliente_oid}';
-	event = new Event("hcTurnoFinalizado", data, "TurnoFinalizado");
+	event = new $.fn.rasty.RastyEvent("hcTurnoFinalizado", data, "TurnoFinalizado");
 	subject.notify(event);
 }
 
 function cliente_historia_change(attrs){
 
-	event = new Event("HistoriClinicaPage", attrs, "Cliente");
+	event = new $.fn.rasty.RastyEvent("HistoriClinicaPage", attrs, "Cliente");
 	subject.notify(event);
 
 }
@@ -96,11 +96,11 @@ $(document).ready(function(){
 $(document).ready(function(){
 
 	//escuchamos cambios en el cliente.
-	observer = new Observer("hc_infopersonal", historia_mostrar_infoPersonal);
+	observer = new $.fn.rasty.RastyObserver("hc_infopersonal", historia_mostrar_infoPersonal);
 	subject.addObserver( observer );
 
 	//escuchamos cambios en el turno
-	observer = new Observer("hc_turnochange", turnoChange);
+	observer = new $.fn.rasty.RastyObserver("hc_turnochange", turnoChange);
 	subject.addObserver( observer );
 
 

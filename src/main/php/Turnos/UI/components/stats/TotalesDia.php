@@ -100,5 +100,12 @@ class TotalesDia extends RastyComponent{
 	protected function initObserverEventType(){
 		$this->addEventType( "Turno" );
 	}
+	
+	public function setStrFecha($strFecha){
+		if( !empty($strFecha) ){
+			$fecha = TurnosUtils::newDateTime($strFecha) ;
+			$this->setFecha($fecha);
+		}
+	}
 }
 ?>

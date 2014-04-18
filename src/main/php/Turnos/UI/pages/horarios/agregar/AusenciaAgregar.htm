@@ -2,7 +2,7 @@
 <script>
 $(function() {
 	//nos interesa saber cambios en las ausencias
-	observer = new Observer("ausenciaChange", ausenciaChange);
+	observer = new $.fn.rasty.RastyObserver("ausenciaChange", ausenciaChange);
 	
 	subject.addObserver( observer );
 });

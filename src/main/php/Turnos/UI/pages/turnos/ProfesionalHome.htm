@@ -6,12 +6,12 @@
 $(function() {
 
 	//nos interesa saber cuando cambian los totales de la agenda.
-	observer = new Observer("totalesagend", totalesAgenda);
+	observer = new $.fn.rasty.RastyObserver("totalesagend", totalesAgenda);
 	
 	subject.addObserver( observer );
 
 	//nos interesa saber cuando cambia el turno, si se inicia vamos a la historia clínica.
-	observer = new Observer("turnoencurso", turnosChange);
+	observer = new $.fn.rasty.RastyObserver("turnoencurso", turnosChange);
 	
 	subject.addObserver( observer );
 

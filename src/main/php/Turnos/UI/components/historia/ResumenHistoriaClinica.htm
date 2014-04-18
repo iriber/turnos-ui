@@ -16,7 +16,7 @@ function resumenHistoriaClinica{id}_historiaChange(data){
 
 	data = new Array();
 	data["oid"] = '{cliente_oid}';
-	event = new Event("resumenHistoriachange", data, "ResumenHistoriaClinica");
+	event = new $.fn.rasty.RastyEvent("resumenHistoriachange", data, "ResumenHistoriaClinica");
 	subject.notify(event);
 }
 

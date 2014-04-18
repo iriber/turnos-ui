@@ -39,7 +39,8 @@
         "apache/log4php": "2.3.0",
         "doctrine/orm": "2.4.0",
         "niktux/addendum": "dev-master",
-        "dompdf/dompdf" : "dev-master"
+        "dompdf/dompdf" : "dev-master",
+        "realityking/pchart": "dev-master"
     }
     
 }

@@ -81,9 +81,22 @@ class HistoriaClinica extends RastyComponent{
 			if(!empty($os))
 			$xtpl->assign("obraSocial", $practica->getObraSocial()->getNombre() );
 			
+			$xtpl->assign("escribir_css" , "" );
+			
 			$observaciones = str_replace("\n", "<br/>", $practica->getObservaciones());
-			if(empty($observaciones))
-				$observaciones = $this->localize("practica.completarObservaciones");
+			
+			$esHoy = TurnosUtils::isSameDay($practica->getFecha(), new \DateTime());
+			 
+			if( $esHoy ){
+				$xtpl->assign("fecha_hoy_css" , "fecha_hoy" );
+				
+				if(empty($observaciones)){
+					$observaciones = $this->localize("practica.completarObservaciones");
+					$xtpl->assign("escribir_css" , "escribir_observaciones" );
+				}
+			}
+			
+			
 			$xtpl->assign("observaciones", $observaciones );
 			
 			$xtpl->assign("profesional", $practica->getProfesional() );

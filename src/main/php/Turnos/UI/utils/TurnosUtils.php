@@ -52,6 +52,30 @@ class TurnosUtils {
 		return RastyConfig::getInstance()->getWebPath();
 		
 	}
+	
+	public static function getAppPath(){
+	
+		return RastyConfig::getInstance()->getAppPath();
+		
+	}
+	
+	public static function getChartsWebPath(){
+	
+		return RastyConfig::getInstance()->getWebPath() . "/tmp/";
+		
+	}
+	
+	public static function getChartsAppPath(){
+	
+		return RastyConfig::getInstance()->getAppPath() . "/tmp/";
+		
+	}
+	
+	public static function getChartsFontPath(){
+	
+		return "vendor/realityking/pchart/Fonts/";
+	}
+	
 	/**
 	 * registramos la sesión del profesional
 	 * @param Profesional $profesional
@@ -306,7 +330,26 @@ class TurnosUtils {
 	}
 
 	
-
+	public static function formatMesToView( $mes ){
+	
+		$meses = array (
+			"1" => "Enero",
+			"2" => "Febrero",
+			"3" => "Marzo",
+			"4" => "Abril",
+			"5" => "Mayo",
+			"6" => "Junio",
+			"7" => "Julio",
+			"8" => "Agosto",
+			"9" => "Septiembre",
+			"10" => "Octubre",
+			"11" => "Noviembre",
+			"12" => "Diciembre"
+		);
+		
+		return $meses[$mes];
+	}
+	
 	public static function formatDateToView($value, $format=self::TRN_DATE_FORMAT) {
 		
 		$res = "";

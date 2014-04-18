@@ -45,6 +45,7 @@ function Subject(name){
     	}
     	
     	if(!exists){
+    		//alert("agregando observer " + observer.name);
     		this.observers[this.observers.length] = observer;
         	observer.setSubject(this);	
     	}

@@ -2,7 +2,7 @@
 <script>
 function agendaTurnos{id}_turnoChange(data){
 
-	event = new Event("turnochange", data, "Turno");
+	event = new $.fn.rasty.RastyEvent("turnochange", data, "Turno");
 	subject.notify(event);
 }
 

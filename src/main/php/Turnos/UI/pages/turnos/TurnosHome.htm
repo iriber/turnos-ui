@@ -27,7 +27,7 @@ $(function() {
               }
             }   
             $t.datepicker('setDate', newDate);
-            fecha_change( newDate, $t);
+            fecha_calendarClick( newDate, $t);
           },  
             
           beforeShow: function(dateText, datePicker) {
@@ -42,24 +42,30 @@ $(function() {
 
 
 	//nos interesa saber cuando cambian los totales de la agenda.
-	//observer = new Observer("totalesagend", totalesAgenda);
+	//observer = new $.fn.rasty.RastyObserver("totalesagend", totalesAgenda);
 	//subject.addObserver( observer );
 
 	//appObserver.listen( "all", subject.notifyServerChanges );
 		
 	//nos interesa saber cambios en los turnos
-	observer = new Observer("turnosChange", turnosChange);
+	observer = new $.fn.rasty.RastyObserver("turnosChange", turnosChange);
 	subject.addObserver( observer );
 
 	//nos interesa saber cambios en el tipo de agenda
-	observer = new Observer("tipoAgendaChange", tipoAgendaChange);
+	observer = new $.fn.rasty.RastyObserver("tipoAgendaChange", tipoAgendaChange);
 	subject.addObserver( observer );
 
-	observer = new Observer("especialidadChange", especialidadChange);
+	observer = new $.fn.rasty.RastyObserver("especialidadChange", especialidadChange);
 	subject.addObserver( observer );
 	
 });
 
+function fecha_calendarClick( fecha, picker ){
+
+	strFecha = fecha.getDate() + "/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear();
+	
+	fecha_change( strFecha, picker );
+}
 function fecha_change( fecha, picker ){
 
 	$("#fecha").val(fecha);
@@ -69,7 +75,7 @@ function fecha_change( fecha, picker ){
 
 	data = new Array();
 	data["fecha"] = $("#fecha").val();
-	event = new Event("fechaChange", data, "Turno");
+	event = new $.fn.rasty.RastyEvent("fechaChange", data, "Turno");
 	subject.notify(event);
 }
 
@@ -164,7 +170,7 @@ function profesional_change( attrs ){
 	data["profesionalOid"] = $("#profesionalOid").val();
 	data["oid"] = $("#profesionalOid").val();
 	data["especialidadOid"] = $("#especialidadOid").val();
-	event = new Event("profesionalChange", data, "Profesional");
+	event = new $.fn.rasty.RastyEvent("profesionalChange", data, "Profesional");
 	subject.notify(event);
 
 	
@@ -180,7 +186,7 @@ function especialidad_change( attrs ){
 	data = new Array();
 	data["especialidadOid"] = $("#especialidadOid").val();
 	data["profesionalOid"] = $("#profesionalOid").val();
-	event = new Event("especialidadChange", data, "Especialidad");
+	event = new $.fn.rasty.RastyEvent("especialidadChange", data, "Especialidad");
 	subject.notify(event);
 }
 
@@ -190,7 +196,7 @@ function actualizarAgenda(){
 	data["fecha"] = $("#fecha").val();
 	data["profesionalOid"] = $("#profesionalOid").val();
 	
-	event = new Event("fechaProfesionalChange", data, "Turno");
+	event = new $.fn.rasty.RastyEvent("fechaProfesionalChange", data, "Turno");
 	subject.notify(event);
 }
 */

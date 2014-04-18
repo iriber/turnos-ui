@@ -1,0 +1,28 @@
+<!-- BEGIN:main -->
+<script>
+$(document).ready(function(){
+	
+	var isChrome = !!window.chrome && !!window.chrome.webstore;
+	if( isChrome ){
+		$("#pacientesMes .total").width("95%");
+	}
+});
+</script>
+<div id="totalesReporte">
+
+	<div class="total">
+		<h2>{lbl_totalPacientes}</h2>
+		<p>{totalPacientes}</p>
+	</div>
+	<div class="total">
+		<h2>{lbl_importe}</h2>
+		<p>{importe}</p>
+	</div>
+	<!-- BEGIN:chart -->
+	<div class="chart">
+		<img alt="chart" src="{chart_uri}"> 
+	</div>
+	<!-- END:chart -->
+	
+</div>
+<!-- END:main -->

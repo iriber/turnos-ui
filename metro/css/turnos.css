@@ -191,6 +191,13 @@
 	
 }
 
+.fecha_hoy{
+	font-weight: bold !important;
+}
+.escribir_observaciones{
+	font-weight: bold !important;
+	color:red !important;
+}
 .practica_fecha, .resumen_fecha{
 	font-size: 120%;
 	font-weight: bold;
@@ -348,6 +355,38 @@
 	font-size:100%;
 }
 
+/* profesional stats */
+#profesional_stats{
+	margin: 30px auto 0;
+    width: 100%;
+	text-align: center;
+	
+}
+#profesional_stats_left{
+	float: left;
+	width: 25%;
+	position:relative;
+}
+
+#profesional_stats_right{
+	float: right;
+	width: 75%;
+}
+
+.reporte_item{
+	display: block;
+	border-bottom: 4px solid #D8D8D8;
+	border-left: 8px solid #D8D8D8;
+	padding:7px;
+	color:#444;
+	position:relative;
+}
+.reporte_item:hover{
+
+	/*background: -moz-linear-gradient(center top , #FDFDFD, #EEEEEE) repeat scroll 0 0 #EEEEEE;*/
+	background-color: #D8D8D8;
+}
+
 /*home profesional*/
 #profesional_home{
 	margin: 30px auto 0;
@@ -412,6 +451,52 @@
 }
 
 #totalesDia .total p {
+    float: right;
+    font-size: 14px;
+    line-height: 28px;
+    margin: 0;
+    font-weight: bold;
+    /*width: 50%;*/
+    border-radius: 5px;
+    padding:4px;
+}
+
+#totalesReporte {
+    /*color: #2B2B2B;*/
+    color:#000;
+    
+    /*float: right;*/
+    font-size: 14px;
+    /*height: 550px;*/
+    line-height: 28px;
+    overflow: hidden;
+    padding: 10px 0 0;
+    position: relative;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+}
+#totalesReporte .total {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 #F6FAFF;
+    border-bottom: 1px solid #D8D8D8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    float: left;
+    padding: 0px 30px;
+    width: 100%;
+}
+#totalesReporte .total h2 {
+    /*color: #2B2B2B;*/
+    color:#000;
+    float: left;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 5px 2% 0 0;
+    width: 80%;
+    font-weight: 400;
+}
+
+#totalesReporte .total p {
     float: right;
     font-size: 14px;
     line-height: 28px;

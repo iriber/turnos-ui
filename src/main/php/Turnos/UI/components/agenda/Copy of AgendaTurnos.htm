@@ -3,14 +3,14 @@
 function agendaTurnos{id}_turnoChange(data){
 
 	
-	event = new Event("turnochange", data, "Turno");
+	event = new $.fn.rasty.RastyEvent("turnochange", data, "Turno");
 	subject.notify(event);
 }
 
 function agendaTurnos{id}_tipoAgendaSemanal(){
 	data = new Array();
 	data["tipoAgenda"] = "semanal";
-	event = new Event("turnochange", data, "TipoAgenda");
+	event = new $.fn.rasty.RastyEvent("turnochange", data, "TipoAgenda");
 	
 	subject.notify(event);
 }
@@ -24,7 +24,7 @@ function agendaTurnos{id}_tipoAgendaDiaria(fecha){
 		
 	}
 	data["tipoAgenda"] = "diaria";
-	event = new Event("turnochange", data, "TipoAgenda");
+	event = new $.fn.rasty.RastyEvent("turnochange", data, "TipoAgenda");
 	
 	subject.notify(event);
 }

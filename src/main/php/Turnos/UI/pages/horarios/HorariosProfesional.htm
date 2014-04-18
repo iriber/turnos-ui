@@ -10,7 +10,7 @@ function horariosProfesional_profesional_change( attrs ){
 	data = new Array();
 	data["oid"] = attrs["oid"];
 	data["profesionalOid"] = attrs["oid"];
-	event = new Event("profesionalChange", data, "Profesional");
+	event = new $.fn.rasty.RastyEvent("profesionalChange", data, "Profesional");
 	subject.notify(event);
 	
 }

@@ -17,7 +17,7 @@ function horarios_horarioChange(data, profesionalOid){
 	//var poid = data["profesionalOid"];
 	data = new Array();
 	data["profesionalOid"] = profesionalOid;
-	event = new Event("horariochange", data, "Horario");
+	event = new $.fn.rasty.RastyEvent("horariochange", data, "Horario");
 	subject.notify(event);
 	
 }

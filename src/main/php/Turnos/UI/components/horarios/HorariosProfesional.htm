@@ -6,7 +6,7 @@ function horariosProfesional{id}_borrar(data){
 
 	data = new Array();
 	data["oid"] = '{profesional_oid}';
-	event = new Event("horariosProfesional{id}", data, "Horario");
+	event = new $.fn.rasty.RastyEvent("horariosProfesional{id}", data, "Horario");
 	subject.notify(event);
 }
 

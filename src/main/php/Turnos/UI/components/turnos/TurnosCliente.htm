@@ -12,7 +12,7 @@ function turnosCliente{id}_turnoFinalizado(data){
 
 	data = new Array();
 	data["oid"] = '{cliente_oid}';
-	event = new Event("turnosCliente{id}", data, "TurnoFinalizado");
+	event = new $.fn.rasty.RastyEvent("turnosCliente{id}", data, "TurnoFinalizado");
 	subject.notify(event);
 }
 
@@ -20,7 +20,7 @@ function turnosCliente{id}_turnoIniciado(data){
 
 	data = new Array();
 	data["oid"] = '{cliente_oid}';
-	event = new Event("turnosCliente{id}", data, "Turno");
+	event = new $.fn.rasty.RastyEvent("turnosCliente{id}", data, "Turno");
 	subject.notify(event);
 }
 

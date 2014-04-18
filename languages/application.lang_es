@@ -373,7 +373,7 @@
    	"practica.nomenclador":"Nomenclador",
    	"practica.observaciones":"Observaciones",
 	
-	"practica.completarObservaciones":"Escribir observaciones...",
+	"practica.completarObservaciones":"Click aquí para escribir observaciones...",
 
 	"practica.profesional.required":"Ingrese un médico",
 	"practica.cliente.required":"Ingrese un paciente",
@@ -384,7 +384,7 @@
  	"stats.totales.enSala": "En sala",
  	"stats.totales.asignados": "Asignados",
  	"stats.totales.atendidos": "Atendidos",
- 	"stats.totales.totalPacientes": "# Pacientes",
+ 	"stats.totales.totalPacientes": "Pacientes totales",
  	"stats.totales.importe": "Importe",
  
  

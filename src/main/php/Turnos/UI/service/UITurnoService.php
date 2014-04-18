@@ -76,6 +76,7 @@ class UITurnoService {
 		return $service->getList( $criteria );
 	}
 	
+	
 	public function getTurnosDelDiaEstados( \DateTime $fecha, Profesional $profesional=null, $estados){
 		
 		$service = ServiceFactory::getTurnoService();
@@ -258,5 +259,7 @@ class UITurnoService {
 		
 		return self::getTurnosDelDiaEstados( $fecha, null, array( EstadoTurno::EnCurso ) );
 	}
+	
+	
 }
 ?>

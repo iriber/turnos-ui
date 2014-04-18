@@ -1,0 +1,53 @@
+<!-- BEGIN: main-->
+
+<style>
+</style>
+<script type="text/javascript">
+$(function() {
+
+});
+
+
+function ver_reporte( name, params, title ){
+
+	var params = new Array();
+	
+	$("#reporte").rasty(
+			{
+                name: name,
+				webPath: "{WEB_PATH}",
+				params:params,
+				title: title
+            }).load();
+    
+}
+</script>
+
+
+<div id="profesional_stats">
+	
+	
+	<span class="title">
+		{title}
+	</span>
+	<div style="clear: both;"></div>
+			
+	<div id="profesional_stats_left" >
+
+		<fieldset>
+			<legend>{reportes_legend}</legend>
+			<!-- BEGIN: reporte -->
+			<div class="reporte_item" title="{title}" onclick="javascript: ver_reporte('{linkReporte}', null, '{titulo}');">{titulo}</div>
+			<!-- END: reporte -->
+		</fieldset>
+		
+	</div>
+	
+	<div id="profesional_stats_right" >
+	
+		<div id="reporte" class="rasty"></div>	
+	</div>
+	
+</div>
+	
+<!-- END: main-->

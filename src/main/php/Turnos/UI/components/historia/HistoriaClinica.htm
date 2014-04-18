@@ -17,7 +17,7 @@ function historiaClinica{id}_historiaChange(data){
 
 	data = new Array();
 	data["oid"] = '{cliente_oid}';
-	event = new Event("historiachange", data, "HistoriaClinica");
+	event = new $.fn.rasty.RastyEvent("historiachange", data, "HistoriaClinica");
 	subject.notify(event);
 }
 
@@ -46,12 +46,12 @@ $(document).ready(function(){
 		<!--div style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;"--> 
 		<div> 
 			<div class="practica_left" style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;">
-				<span class="practica_fecha">{fecha}</span> 
+				<span class="{fecha_hoy_css} practica_fecha ">{fecha}</span> 
 			    <span class="practica_nomenclador">{nomenclador_codigo} - {nomenclador_nombre}</span>
 				<span class="practica_obraSocial">{obraSocial}</span>
 			    <span class="practica_profesional">{profesional}</span>
 			</div>
-		    <div class="practica_right" style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;">
+		    <div class="{escribir_css} practica_right" style="cursor: pointer;" title="{editar_label}"  onclick="javascript: editarPractica('{linkModificar}','{practica_oid}');return false;">
 			{observaciones}
 			</div>
 			<div style="clear: both;"></div>

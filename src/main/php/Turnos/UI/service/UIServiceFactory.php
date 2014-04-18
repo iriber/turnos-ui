@@ -97,4 +97,12 @@ class UIServiceFactory {
 	
 		return UIResumenHistoriaClinicaService::getInstance();	
 	}
+	
+	/**
+	 * @return UIStatsService
+	 */
+	public static function getUIStatsService(){
+	
+		return UIStatsService::getInstance();	
+	}	
 }

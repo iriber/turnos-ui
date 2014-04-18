@@ -1,0 +1,39 @@
+.rasty {
+    -ms-touch-action: none;
+    position:relative;
+}
+
+.rasty_common {
+    position:absolute;
+    bottom:10px;
+    /*border: 1px  solid #000;*/
+    height: 28px;
+    z-index: 5000;
+}
+
+.rasty_cursor {
+    cursor: url(images/hand.cur) 6 8, pointer;
+}
+
+.rasty_drag_cursor {
+    cursor: url(images/grab.cur) 6 8, pointer;
+}
+
+.rasty_button {
+    width: 28px;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.rasty_refresh {
+	top:-15px;
+    right: 20px;
+    background: url(images/refresh.png);
+}
+
+.rasty_loading {
+	top:5px;
+    left: 20px;
+    background: url(images/loading.gif)  no-repeat;
+}
