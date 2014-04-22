@@ -27,7 +27,8 @@ use Rasty\utils\LinkBuilder;
  */
 class PacientesMes extends RastyComponent{
 		
-	private $fecha;
+	private $anio;
+
 	
 	public function getType(){
 		
@@ -37,7 +38,7 @@ class PacientesMes extends RastyComponent{
 
 	public function __construct(){
 		
-		$this->setFecha( new \Datetime() );
+		$this->setAnio( date("Y") );
 		
 	}
 
@@ -60,8 +61,7 @@ class PacientesMes extends RastyComponent{
 		$totalPacientes = 0;
 
 		//obtenemos la cantidad de pacientes por mes.
-		$anio = 2014;
-		$clientesPorMes = UIStatsService::getInstance()->getClientesPorMes( $anio );
+		$clientesPorMes = UIStatsService::getInstance()->getClientesPorMes( $this->getAnio() );
 		
 		$cantidades = array();
  		$meses =  array();
@@ -147,7 +147,7 @@ class PacientesMes extends RastyComponent{
 	
 	protected function parseChart(\pChart $chart, XTemplate $xtpl ){
 		
-		$chartName = "pacientesMes" . date("u"); 
+		$chartName = "pacientesMes" . date("YmdHis"); 
 		$chartUri = TurnosUtils::getChartsWebPath() . "$chartName.png";
 		$chartFile = TurnosUtils::getChartsAppPath() . "$chartName.png";
 				 
@@ -162,16 +162,27 @@ class PacientesMes extends RastyComponent{
 		$xtpl->parse("main.chart");
 	}
 	
-	public function getFecha()
+	public function getAnio()
 	{
-	    return $this->fecha;
+	    return $this->anio;
 	}
 
-	public function setFecha($fecha)
+	public function setAnio($anio)
 	{
-	    $this->fecha = $fecha;
+	    $this->anio = $anio;
 	}
 
-
+	public function getAnios()
+	{
+		$anios = array();
+		
+		$anioActual = date("Y");
+		
+		for ($i = $anioActual; $i > 2010; $i--) {
+			$anios[$i] = $i;
+		}
+		
+	    return $anios;
+	}
 }
 ?>

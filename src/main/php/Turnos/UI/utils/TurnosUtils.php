@@ -831,7 +831,10 @@ class TurnosUtils {
 						Prioridad::Media=> "prioridad_media",
 						Prioridad::Alta=> "prioridad_alta"
 						);
-		return $estilos[$prioridad];
+		if( array_key_exists($prioridad, $estilos))
+			return $estilos[$prioridad];
+			
+		else return "";	
 	}
 	
 	/**
@@ -887,6 +890,7 @@ class TurnosUtils {
 		
 		$items = array();
 		$items[15]=15;
+		$items[20]=20;
 		$items[30]=30;
 		$items[45]=45;
 		$items[60]=60;

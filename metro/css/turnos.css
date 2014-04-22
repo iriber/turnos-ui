@@ -1,3 +1,10 @@
+
+.ui-datepicker-week-end a{
+
+	color:red !important;
+	font-weight: bold !important; 
+}
+
 .uppercase{
 	text-transform: uppercase;
 }

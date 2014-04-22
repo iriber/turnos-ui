@@ -1,3 +1,12 @@
 <rasty specificationClass="Turnos\UI\components\stats\PacientesMes" templateLocation="PacientesMes.htm">
 
+	<component id="anio" type="InputCombo">
+		<param name="inputId" value="str:anio" />
+		<param name="name" value="str:anio" />
+		<param name="value" value="anio" />
+		<param name="options" value="anios" />
+		<param name="placeholder" value="msg:stats.anio" />
+		<param name="requiredMessage" value="msg:stats.anio.required" />
+		<param name="isEditable" value="boolean:true" />
+	</component>
 </rasty>

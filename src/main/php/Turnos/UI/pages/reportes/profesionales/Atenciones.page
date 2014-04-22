@@ -2,12 +2,6 @@
 
 	<param name="layoutType" value="str:TurnosMetroLayout" />
 
-	<component id="totalesDia" type="TotalesDia">
-		<param name="fecha" value="fecha" />
-	</component>
 
-	<component id="pacientesMes" type="PacientesMes">
-		<param name="fecha" value="fecha" />
-	</component>
 	
 </rasty>
