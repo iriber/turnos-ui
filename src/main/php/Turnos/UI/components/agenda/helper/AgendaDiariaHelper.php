@@ -180,6 +180,7 @@ class AgendaDiariaHelper{
 					$xtpl->assign("linkSeleccionarLabel",  self::localize("turno.agregar") );
 					
 					$xtpl->assign("cliente", "");
+					$xtpl->assign("hc", "");
 					$xtpl->assign("estado", "");
 					$xtpl->assign("obra_social", ""); //$turno->getObraSocial()->__toString());
 					$xtpl->assign("importe", "" );
@@ -243,9 +244,13 @@ class AgendaDiariaHelper{
 				
 				$cliente = $turno->getCliente();
 				if(!empty($cliente) && $cliente->getOid()>0){
-					$xtpl->assign("cliente",  $turno->getCliente()->__toString() );
-					$xtpl->assign("cliente_oid",  $turno->getCliente()->getOid());
+					$xtpl->assign("cliente",  $cliente->__toString() );
+					$xtpl->assign("cliente_oid",  $cliente->getOid());
 					
+					$hcLabel = TurnosUtils::localize("cliente.nroHistoriaClinica.abreviado");
+					
+					$hc = " - $hcLabel: " . $cliente->getNroHistoriaClinica();
+					$xtpl->assign("hc", $hc);
 
 					$telefonos = array();
 					$telFijo = $turno->getCliente()->getTelefonoFijo();
