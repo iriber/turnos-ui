@@ -101,8 +101,9 @@ class HistoriaClinica extends RastyComponent{
 			
 			
 			$p = $practica->getProfesional();
+			//var_dump($p);
 			if(!empty($p) && $p!=null) 
-				$xtpl->assign("profesional", $practica->getProfesional() );
+				$xtpl->assign("profesional", $practica->getProfesional()->getNombre() );
 			else	
 				$xtpl->assign("profesional","");
 			$xtpl->parse("main.practica");

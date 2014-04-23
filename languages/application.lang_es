@@ -473,6 +473,19 @@
    	"resumenHistoriaClinica.profesional.required":"Ingrese un médico",
 	"resumenHistoriaClinica.cliente.required":"Ingrese un paciente",
 	"resumenHistoriaClinica.fecha.required":"Ingrese una fecha",
+ 
+	 "stats.profesional.title":"Reporte de Atenciones",
+   	 "stats.profesional.reportes.legend":"Reportes",
+   	
+ 	"stats.profesional.pacientesDia.legend":"Pacientes del día",
+   	
+   	"stats.profesional.pacientesMes.legend":"Pacientes por mes",
+   	"stats.pacientesMes.anio":"Año",
+   	"stats.pacientesMes.totalPacientes":"Total de pacientes",
+   	"stats.pacientesMes.totalImporte":"Importe total",
+
+
+   	"stats.profesional.pacientesAnio.legend":"Pacientes por año",
    	
    	"grid.operaciones": "Operaciones",
    	"grid.resultados": "Resultados de la búsqueda",

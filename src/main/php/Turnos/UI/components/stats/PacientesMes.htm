@@ -1,5 +1,15 @@
 <!-- BEGIN:main -->
 <script>
+
+function onchangeAnio(element){
+
+	//evento notificando que se modifica el anio
+	data = new Array();
+	data["anio"] = element.value;
+	event = new $.fn.rasty.RastyEvent("aniochange", data, "Anio");
+	subject.notify(event);
+}
+
 $(document).ready(function(){
 	
 	var isChrome = !!window.chrome && !!window.chrome.webstore;

@@ -1,5 +1,7 @@
 <rasty specificationClass="Turnos\UI\components\stats\PacientesMes" templateLocation="PacientesMes.htm">
 
+	<param name="anio" value="get:anio" />
+
 	<component id="anio" type="InputCombo">
 		<param name="inputId" value="str:anio" />
 		<param name="name" value="str:anio" />
@@ -8,5 +10,6 @@
 		<param name="placeholder" value="msg:stats.anio" />
 		<param name="requiredMessage" value="msg:stats.anio.required" />
 		<param name="isEditable" value="boolean:true" />
+		<param name="onChangeCallback" value="str: javascript:onchangeAnio(this);" />
 	</component>
 </rasty>
