@@ -255,7 +255,7 @@
 	"cliente.email":"E-mail",
    	"cliente.oid":"Código",
 	"cliente.nroHistoriaClinica":"Historia Clínica",
-	"cliente.nroHistoriaClinica.abreviado":"Nro H.C.",
+	"cliente.nroHistoriaClinica.abreviado":"H.C.",
 	"cliente.nroObraSocial":"Nro Afiliado",
 	"cliente.obraSocial":"Obra Social",
    	"cliente.tipoAfiliado":"Tipo de Afiliado",
