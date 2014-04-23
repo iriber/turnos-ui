@@ -239,7 +239,8 @@ class AgendaDiariaHelper{
 				}
 				
 				$xtpl->assign("turno_css", TurnosUtils::getEstadoTurnoCss($turno->getEstado()));
-					
+
+				$xtpl->assign("hc", "");
 				
 				
 				$cliente = $turno->getCliente();
