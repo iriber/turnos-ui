@@ -188,6 +188,8 @@
 	"turno.nombre.placeholder": "Nombre del Paciente",
 	"turno.telefono": "Teléfono",
 	"turno.telefono.placeholder": "Teléfono del Paciente",
+	"turno.observaciones": "Observaciones",
+	"turno.observaciones.placeholder": "Indique observaciones sobre el turno",
 
 	
 	"ausencia.title":  "Ausencias",

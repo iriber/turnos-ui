@@ -40,6 +40,8 @@
 
 	<page name="EstadoActual"   location="pages/reportes/estadoActual/EstadoActual.page" url="estadoActual"/>
 	<page name="Atenciones"   location="pages/reportes/profesionales/Atenciones.page" url="atenciones"/>
+
+	<page name="ConsultarHistoriaClinica"   location="pages/historia/consultar/ConsultarHistoriaClinica.page" url="historia/consultar"/>
 	
 	<!-- declaración de los componentes -->
 	<component name="HeaderNav" location="components/header" />

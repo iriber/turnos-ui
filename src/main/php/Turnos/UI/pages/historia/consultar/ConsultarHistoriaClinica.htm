@@ -1,0 +1,56 @@
+<!-- BEGIN: main-->
+<script language="javascript"
+	src="{WEB_PATH}js/autocomplete/simpleAutoComplete.js"></script>
+<link rel="stylesheet"
+	href="{WEB_PATH}css/autocomplete/simpleAutoComplete.css"
+	type="text/css" />
+
+<style>
+</style>
+<script type="text/javascript">
+$(function() {
+
+});
+
+function consultarHC(data){
+
+	var params = new Array();
+	params["oid"] = data["oid"];
+
+	$("#historia").rasty(
+			{
+                name: "HistoriaClinica",
+				webPath: "{WEB_PATH}",
+				params:params,
+				title: "{lbl_historiaClinica} " + data["oid"]
+            }).load();
+	
+}
+
+</script>
+
+
+<div id="historiaClinica_quick">
+	
+	<div class="historiaClinica_quick_left" >
+		
+		<form>
+		<fieldset>
+			<legend>{historia_legend}</legend>
+			<div class="item">
+			    <label for="cliente">{lbl_cliente} *:</label>
+			    <rasty id="cliente" />
+			</div>
+
+		</fieldset>
+		</form>
+	</div>
+	
+	<div class="historiaClinica_quick_right" >
+	
+		<div id="historia" class="rasty"></div>	
+	</div>
+	
+</div>
+	
+<!-- END: main-->

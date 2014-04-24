@@ -79,6 +79,7 @@ class TurnoForm extends Form{
 		$this->addProperty("telefono");
 		$this->addProperty("nombre");
 		$this->addProperty("nomenclador");
+		$this->addProperty("observaciones");
 		
 		$this->setBackToOnSuccess("TurnosHome");
 		$this->setBackToOnCancel("TurnosHome");	
@@ -105,7 +106,7 @@ class TurnoForm extends Form{
 		
 		//uppercase para el nombre del paciente
 		$entity->setNombre( strtoupper( $entity->getNombre() ) );
-		
+		$entity->setObservaciones( strtoupper( $entity->getObservaciones() ) );
 	}
 	
 	public function getType(){
@@ -130,6 +131,8 @@ class TurnoForm extends Form{
 		else
 			$xtpl->assign("estadoTurnoDefault", EstadoTurno::Asignado );
 		
+		$xtpl->assign("quirofanoOid", TurnosUtils::getQuirofanoOid() );
+			
 		$xtpl->assign("cancel", $this->getLinkCancel() );
 		$xtpl->assign("lbl_cancel", $this->localize( $this->getLabelCancel() ) );
 		
@@ -140,6 +143,7 @@ class TurnoForm extends Form{
 		$xtpl->assign("lbl_cliente", $this->localize("turno.cliente") );
 		$xtpl->assign("lbl_cliente_ayuda", $this->localize("turno.cliente.ayuda.autocomplete") );
 		
+		$xtpl->assign("lbl_observaciones", $this->localize("turno.observaciones") );
 		
 		$xtpl->assign("lbl_obraSocial", $this->localize("turno.obraSocial") );
 		$xtpl->assign("lbl_nroObraSocial", $this->localize("turno.nroObraSocial") );
@@ -149,6 +153,8 @@ class TurnoForm extends Form{
 		$xtpl->assign("lbl_prioridad", $this->localize("turno.prioridad") );
 		$xtpl->assign("lbl_duracion", $this->localize("turno.duracion") );
 		$xtpl->assign("lbl_nomenclador", $this->localize("turno.nomenclador") );
+		
+		$xtpl->assign("lbl_profesionalOpera", $this->localize("turno.profesionalOpera") );
 		
 		//si el cliente aún no fue registrado, mostramos el nombre y el teléfono indicados en el turno.
 		$cliente = $this->getTurno()->getCliente();

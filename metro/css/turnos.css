@@ -394,6 +394,24 @@
 	background-color: #D8D8D8;
 }
 
+/* historia clínica quick */
+#historiaClinica_quick{
+	margin: 30px auto 0;
+    width: 100%;
+	text-align: center;
+	
+}
+.historiaClinica_quick_left{
+	float: left;
+	width: 40%;
+	position:relative;
+}
+
+.historiaClinica_quick_right{
+	float: right;
+	width: 60%;
+}
+
 /*home profesional*/
 #profesional_home{
 	margin: 30px auto 0;
@@ -605,6 +623,17 @@ fieldset .agenda {
     font-size: 11px;
     font-style: italic;
     font-weight: 500;
+}
+
+.agenda_turno h2 span.observaciones {
+    color:#A90000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    border-radius: 5px;
+    padding:2px;
+    background-color: #FFD0D0;
+    
 }
 
 .agenda_turno p span.texto{
@@ -952,7 +981,12 @@ fieldset .agenda {
 	}
 	
 	
-	
+	/* historia clínica quick */
+	.historiaClinica_quick_left, .historiaClinica_quick_right{
+		float: none;
+    	width: 100%;
+    	clear: both;
+	}
 }
 
 @media screen and (min-width: 100px) and (max-width: 800px) {
@@ -1035,6 +1069,13 @@ fieldset .agenda {
 	 	float:none; 
 	 	clear: both;
 	 	width:90%;
+	}
+
+	/* historia clínica quick */
+	.historiaClinica_quick_left, .historiaClinica_quick_right{
+		float: none;
+    	width: 100%;
+    	clear: both;
 	}
 	
 }

@@ -165,5 +165,14 @@
 		<param name="placeholder" value="msg:turno.tipoAfiliado" />
 		<param name="isEditable" value="boolean:true" />
 	</component>
+
+	<component id="observaciones" type="InputText">
+		<param name="inputId" value="str:observaciones" />
+		<param name="name" value="str:observaciones" />
+		<param name="value" value="turno.observaciones" />
+		<param name="placeholder" value="msg:turno.observaciones.placeholder" />
+		<param name="autocomplete" value="str:off" />
+		<param name="styleCss" value="str:uppercase" />		
+	</component>
 		
 </rasty>

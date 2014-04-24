@@ -52,6 +52,7 @@ class AgendaDiariaPDFRenderer extends TurnosPDFRenderer{
 		$maxWidth = $this->getMaxWidth();
 		
 		$hora = TurnosUtils::formatTimeToView( $turno->getHora() );
+		$observaciones = $turno->getObservaciones();
 		$clienteNombre = $turno->getNombre();
 		$clienteTelefono = $turno->getTelefono();
 		$clienteHC = "";
@@ -77,9 +78,20 @@ class AgendaDiariaPDFRenderer extends TurnosPDFRenderer{
 		$this->SetFillColor( $fillColors[0], $fillColors[1], $fillColors[2] );
 		$this->Cell( 30 , 5 , $this->encodeCharactersPDF( $hora ) , 1 , 0 , "L",true );
 		
+		$infoAdicional=array();
+		
+		if(!empty($clienteNombre))
+			$infoAdicional[] = $clienteNombre;
+		if(!empty($clienteHC))
+			$infoAdicional[] = $clienteHC;
+		if(!empty($clienteTelefono))
+			$infoAdicional[] = $clienteTelefono;
+		if(!empty($observaciones))
+			$infoAdicional[] = $observaciones;
+		
 		$this->initFontValue();
 		$this->SetFillColor( $fillColors[0], $fillColors[1], $fillColors[2] );
-		$this->Cell( $maxWidth-30 , 5 , $this->encodeCharactersPDF( "$clienteNombre / $clienteHC / $clienteTelefono " ) , 1 , 0 , "L", true );
+		$this->Cell( $maxWidth-30 , 5 , $this->encodeCharactersPDF( implode(" / ", $infoAdicional) ) , 1 , 0 , "L", true );
 	}
 	
 	protected function renderTurnos(){

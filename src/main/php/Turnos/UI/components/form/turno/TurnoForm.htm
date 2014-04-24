@@ -117,11 +117,20 @@ $(function() {
 
 	/* si tiene nombre y aún no se seleccionó el cliente, vamos a validarlo*/
 	if( ($("#nombre").val().length > 0) && ($("#cliente").val().length==0) ){
-		validarCliente();
+
+		//si estamos en quirófano, no lo obligamos a validar.
+		if( $("#profesional").val() != '{quirofanoOid}' )
+			validarCliente();
 	}
 
 
-	
+	/*
+	  si el profesional es quirófano, mostramos para que se seleccione
+	  el profesional que opera.
+	*/
+	if( $("#profesional").val() == '{quirofanoOid}' ){
+	}else{
+	}
 	
 	
 });
@@ -161,6 +170,11 @@ $(function() {
 		<div class="item cliente_no_registrado">
 		    <label for="nombre">{lbl_nombre} *:</label>
 		    <rasty id="nombre" />
+		</div>
+
+		<div class="item">
+		    <label for="observaciones">{lbl_observaciones}:</label>
+		    <rasty id="observaciones" />
 		</div>
 
 		<div class="item cliente_no_registrado">
@@ -227,7 +241,6 @@ $(function() {
 			$(".cliente_registrado").show();
 		</script>
 		<!-- END: cliente_registrado -->
-		
 		
 	</fieldset>
 	

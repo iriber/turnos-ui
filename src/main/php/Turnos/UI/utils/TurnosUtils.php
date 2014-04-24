@@ -125,7 +125,6 @@ class TurnosUtils {
 		if( $logueado ){
 			$logueado = isset($data["profesional_oid"]) && !empty($data["profesional_oid"]); 
 		}
-		
 		return $logueado;
     }
     
@@ -917,5 +916,9 @@ class TurnosUtils {
 		//Logger::log( " horaSuperpuesta( $hora, $desde, $hasta ) = $superpuesta");		
 		
 		return $superpuesta;
+	}
+	
+	public static function getQuirofanoOid(){
+		return 23;
 	}
 }

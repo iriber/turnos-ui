@@ -181,6 +181,7 @@ class AgendaDiariaHelper{
 					
 					$xtpl->assign("cliente", "");
 					$xtpl->assign("hc", "");
+					$xtpl->assign("observaciones", "");
 					$xtpl->assign("estado", "");
 					$xtpl->assign("obra_social", ""); //$turno->getObraSocial()->__toString());
 					$xtpl->assign("importe", "" );
@@ -242,6 +243,11 @@ class AgendaDiariaHelper{
 
 				$xtpl->assign("hc", "");
 				
+				$observaciones = $turno->getObservaciones();
+				if(!empty($observaciones)){
+					$xtpl->assign("observaciones", $turno->getObservaciones());
+					$xtpl->parse("main.turno.$templateBlockTurno.ocupado.observaciones");
+				}
 				
 				$cliente = $turno->getCliente();
 				if(!empty($cliente) && $cliente->getOid()>0){

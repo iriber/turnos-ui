@@ -1,0 +1,23 @@
+<rasty specificationClass="Turnos\UI\pages\historia\consultar\ConsultarHistoriaClinica" templateLocation="pages/historia/consultar/ConsultarHistoriaClinica.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+
+	<component id="cliente" type="InputFindEntity">
+		<param name="inputId" value="str:cliente" />
+		<param name="name" value="str:cliente" />
+		<param name="value" value="cliente" />
+		<param name="placeholder" value="msg:cliente" />
+		<param name="requiredMessage" value="msg:turno.cliente.required" />
+		<param name="finder" value="clienteFinderClazz" />
+		<param name="hasAddEntity" value="boolean:false" />
+		<param name="hasPopup" value="boolean:true" />
+		<param name="popupFilterType" value="str:ClienteFilter" />
+		<param name="onSelectCallback" value="str:consultarHC" />
+		<param name="popupFormType" value="str:ClienteQuickForm" />
+		
+		<param name="hasHelp" value="boolean:false" />
+		<param name="popupHelpMsg" value="msg:cliente.ayuda.popup" />
+		<param name="autocompleteHelpMsg" value="msg:cliente.ayuda.autocomplete" />
+		<param name="addHelpMsg" value="msg:cliente.ayuda.add" />
+	</component>	
+</rasty>

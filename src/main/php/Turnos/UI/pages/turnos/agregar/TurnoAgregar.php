@@ -27,10 +27,16 @@ class TurnoAgregar extends TurnosPage{
 	 */
 	private $turno;
 
+	private function getTurnoInstance(){
+		
+		$turno =  new Turno();
+		
+		return $turno;
+	}
 	public function __construct(){
 		
 		//inicializamos el turno.
-		$turno = new Turno();
+		$turno = $this->getTurnoInstance();
 		$hora = new \DateTime();
 		$hora->setTime(0,0,0);
 		$turno->setHora( $hora );
