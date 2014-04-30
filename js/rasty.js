@@ -261,9 +261,19 @@ function openAddentityPopup(webpath, formType, fCallback, resultId, initialText,
                 $(uiDialog).load(url);
             }
         };
-    $(uiDialog).children().remove();
+	
+	$(uiDialog).children().remove();
     //$(uiDialog).dialog("destroy");
     $(uiDialog).dialog(dialogOpts);
+    $(uiDialog).dialog( "option", "draggable", true );
+    //$( ".selector" ).dialog( "option", "draggable", false );
     $(uiDialog).dialog("open");
 	
+}
+
+function closePopup(resultId){
+	var uiDialog = resultId;
+	$(uiDialog).children().remove();
+    $(uiDialog).dialog("destroy");
+    
 }

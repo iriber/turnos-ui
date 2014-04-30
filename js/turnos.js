@@ -430,3 +430,70 @@ function editarResumenHistoriaClinica(link, resumenOid){
 	
 }
 
+function borrarPlanObraSocial(link, oid, nombre, onSuccess){
+	$title = "Borrar Plan de Obra Social";
+	$texto = "Confirma borrar el plan " + nombre +"?";
+	$params = new Array();
+	$params["url"] = link + "?oid="+oid;
+	$params["onSuccess"] = onSuccess;
+
+	jAlertConfirm( $title, $texto, doBorrarPlanObraSocial, $params );
+}
+
+function doBorrarPlanObraSocial( params ){
+	
+	$.ajax({
+    		  	url: params["url"],
+    		  	type: "GET",
+    		  	dataType: "json",
+    		  	cache: false,
+    			complete:function(){
+    				//$("#loading").hide();
+    				//$("#current_action").html("");
+    			},
+    		  	success: function(data){
+        		  	
+    				//$("#nextOffer").html("");
+    				if( data != null && data["error"]!=null){
+    					msg = data["error"];
+    					showErrorMessage(msg);
+    				}
+    				if( data != null && data["info"]!=null){
+						//quitamos de la agenda la fila
+						//que corresponde al turno eliminado
+						//$("#turno_" + oid).fadeOut(500);
+    				}
+    				params["onSuccess"](data);
+    		  	}
+    	});      
+}
+
+function doGetPlanesByObraSocial(webPath, osOid, onSuccess, planActualOid ){
+	
+	var link = webPath + "/findPlanesByObraSocial.json" + "?oid=" + osOid;
+	$.ajax({
+    		  	url: link,
+    		  	type: "GET",
+    		  	dataType: "json",
+    		  	cache: false,
+    			complete:function(){
+    				//$("#loading").hide();
+    				//$("#current_action").html("");
+    			},
+    		  	success: function(data){
+        		  	
+    				//$("#nextOffer").html("");
+    				if( data != null && data["error"]!=null){
+    					msg = data["error"];
+    					showErrorMessage(msg);
+    				}
+    				if( data != null && data["info"]!=null){
+						//quitamos de la agenda la fila
+						//que corresponde al turno eliminado
+						//$("#turno_" + oid).fadeOut(500);
+    				}
+    				onSuccess(data["planes"], planActualOid);
+    				
+    		  	}
+    	});      
+}

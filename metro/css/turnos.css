@@ -1,4 +1,26 @@
 
+#agenda_diaria_totales {
+
+}
+
+#agenda_diaria_totales span{
+
+	padding: 0 10px;
+	font-size: 120%;
+}
+
+#agenda_diaria_totales span.turno_ensala{
+
+	font-weight: bold;
+	
+}
+
+#agenda_diaria_totales span.turno_totales{
+
+	background-color: #CCC;
+	font-weight: bold;
+}
+
 .ui-datepicker-week-end a{
 
 	color:red !important;
@@ -633,6 +655,11 @@ fieldset .agenda {
     border-radius: 5px;
     padding:2px;
     background-color: #FFD0D0;
+    
+}
+
+.agenda_turno h2 span.importe {
+    font-weight: bold;
     
 }
 
