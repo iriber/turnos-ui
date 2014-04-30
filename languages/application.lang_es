@@ -125,6 +125,7 @@
 
 	"turno.enSala": "Poner el paciente en sala",
 	
+	"turno.buscarClienteObraSocial.title": "Seleccionar la obra social del paciente",
 	
 	"turno.cliente.required": "Ingrese un paciente",
 	"turno.profesional.required": "Ingrese el médico",
@@ -137,6 +138,9 @@
 	
 	"turno.cliente.validar.msg": "Valide los datos del paciente",
 	"turno.cliente.validar": "buscar paciente",
+	"turno.clienteObraSocial.buscar.msg": "Busque las obras sociales con las que se ha atendido el paciente",
+	"turno.clienteObraSocial.buscar": "buscar otras obras sociales del paciente",
+	
 	"turno.cliente.agregar": "Agregar",
 	"turno.cliente.buscar.title": "Buscar pacientes",
 	"turno.cliente.validar.buscar.title": "Buscando el paciente del turno",
@@ -150,6 +154,7 @@
 	"turno.editar": "Editar turno",
 	"turno.modificar.title": "Modificar un turno",
 	"turno.modificar.legend": "Modifique los datos del turno",
+	"turno.cliente.registrar": "Registrar paciente",
 
 	"turno.borrar": "Borrar turno",
 	"turno.iniciar": "Atender",
@@ -167,6 +172,12 @@
 	"agenda.ver.semana": "Ver semana",
 	"agenda.semana": "Semana del $1 al $2",
 
+	"agenda.diaria.totales_encurso": "Total de pacientes en curso",
+	"agenda.diaria.totales_ensala": "Total de pacientes en sala",
+	"agenda.diaria.totales_atendidos": "Total de pacientes atendidos",
+	"agenda.diaria.totales_asignados": "Total de pacientes asignados",
+	"agenda.diaria.totales": "Total de pacientes del día",
+
 	"agenda.pdf.titulo": "Agenda de $1",
    	"agenda.pdf.fecha.subtitulo": "Día $1",
    	"agenda.pdf.total.subtitulo": "Cantidad de pacientes: $1",
@@ -180,6 +191,7 @@
 	"turno.estado": "Estado",
 	"turno.importe": "Importe diferencial",
 	"turno.obraSocial": "Obra social",
+	"turno.planObraSocial": "Plan de Obra social",
 	"turno.nomenclador": "Nomenclador",
 	"turno.nroObraSocial": "Nro Afiliado",
 	"turno.tipoAfiliado": "Tipo de Afiliado",
@@ -260,6 +272,7 @@
 	"cliente.nroHistoriaClinica.abreviado":"H.C.",
 	"cliente.nroObraSocial":"Nro Afiliado",
 	"cliente.obraSocial":"Obra Social",
+   	"cliente.planObraSocial":"Plan Obra Social",
    	"cliente.tipoAfiliado":"Tipo de Afiliado",
    	
    	"cliente.documento":"Documento",
@@ -275,6 +288,13 @@
    	"cliente.tipoDocumento":"Tipo Documento",
    	"cliente.observaciones":"Notas",
    	
+   	"cliente.obrasSociales_legend":"Obras Sociales",
+   	
+   	
+	"cliente.clienteObraSocial.buscar.msg": "Busque las obras sociales con las que se ha atendido el paciente",
+	"cliente.clienteObraSocial.buscar": "buscar otras obras sociales del paciente",
+	"cliente.buscarClienteObraSocial.title": "Seleccionar obra social del paciente",
+	
    	"documento.tipo":"Tipo",
    	"documento.nro":"Nro",
    	
@@ -370,11 +390,16 @@
    	"practica.cliente":"Paciente",
    	"practica.profesional":"Médico",
    	"practica.obraSocial":"Obra social",
+   	"practica.planObraSocial":"Plan Obra social",
    	"practica.nroObraSocial":"Nro Afiliado",
    	"practica.tipoAfiliado": "Tipo de Afiliado",
    	"practica.afiliadoVoluntario":"Nro Afiliado",
    	"practica.nomenclador":"Nomenclador",
    	"practica.observaciones":"Observaciones",
+	
+	"practica.clienteObraSocial.buscar.msg": "Busque las obras sociales con las que se ha atendido el paciente",
+	"practica.clienteObraSocial.buscar": "buscar otras obras sociales del paciente",
+	"practica.buscarClienteObraSocial.title": "Seleccionar obra social del paciente",
 	
 	"practica.completarObservaciones":"Click aquí para escribir observaciones...",
 
@@ -413,7 +438,7 @@
 	
 	"tipoAfiliado.voluntario.label": "Voluntario",
 	"tipoAfiliado.obligatorio.label": "Obligatorio",
-	
+	"tipoAfiliado.elegir": "-- sin especificar --",
 	
 	"iva.ri.label":"Responsable Inscripto",
 	"iva.m.label": "Responsable Monotributo",
@@ -489,6 +514,18 @@
 
 
    	"stats.profesional.pacientesAnio.legend":"Pacientes por año",
+ 
+ 	"planObraSocial.agregar.legend" : "Nuevo plan",
+ 	"planes.planes_legend" : "Planes",
+ 	"planes.obraSocial_legend" : "Obra Social",
+
+	"planObraSocial.elegir": "-- sin especificar --",
+
+ 	"planObraSocial.nombre" : "Plan",
+ 	"planObraSocial.obraSocial" : "Obra Social",
+ 
+ 	"planObraSocial.nombre.unicity" : "Ya existe el plan", 
+ 
    	
    	"grid.operaciones": "Operaciones",
    	"grid.resultados": "Resultados de la búsqueda",
