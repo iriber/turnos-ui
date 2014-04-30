@@ -1,6 +1,8 @@
 <?php
 namespace Turnos\UI\service;
 
+use Turnos\UI\components\obrasSociales\planes\PlanesObraSocial;
+
 use Turnos\UI\components\filter\model\UIClienteCriteria;
 
 use Rasty\components\RastyPage;
@@ -15,6 +17,8 @@ use Cose\criteria\impl\Criteria;
 use Turnos\Core\service\ServiceFactory;
 use Turnos\Core\criteria\ClienteCriteria;
 use Turnos\Core\model\Cliente;
+use Turnos\Core\model\ObraSocial;
+use Turnos\Core\model\PlanObraSocial;
 
 use Rasty\Grid\entitygrid\model\IEntityGridService;
 use Rasty\Grid\filter\model\UICriteria;
@@ -154,6 +158,49 @@ class UIClienteService implements IEntityGridService{
 			$service = ServiceFactory::getClienteService();
 			
 			return $service->getByHistoriaClinica( $nroHistoriaClinica );
+			
+		} catch (\Exception $e) {
+			
+			throw new RastyException($e->getMessage());
+			
+		}	
+		
+	}
+	
+	/**
+	 * se obtienen las obras sociales del cliente.
+	 * @param Cliente $cliente
+	 */
+	public function getObrasSociales( Cliente $cliente ){
+		
+		try{
+		
+			$service = ServiceFactory::getClienteObraSocialService();
+			
+			return $service->getObrasSociales( $cliente );
+			
+		} catch (\Exception $e) {
+			
+			throw new RastyException($e->getMessage());
+			
+		}	
+		
+	}
+
+	/**
+	 * se obtiene un cliente obra social dado datos de la obra social del cliente.
+	 * @param ObraSocial $obraSocial
+	 * @param PlanObraSocial $planObraSocial
+	 * @param string $nroAfiliado
+	 * @param int $tipoAfiliado
+	 */
+	public function getClienteObraSocial( ObraSocial $obraSocial=null, PlanObraSocial $planObraSocial=null, $nroAfiliado="", $tipoAfiliado=null ){
+		
+		try{
+		
+			$service = ServiceFactory::getClienteObraSocialService();
+			
+			return $service->getByObraSocialPlan( $obraSocial, $planObraSocial, $nroAfiliado, $tipoAfiliado );
 			
 		} catch (\Exception $e) {
 			

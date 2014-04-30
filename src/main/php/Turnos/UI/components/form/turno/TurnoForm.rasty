@@ -48,14 +48,14 @@
 	<component id="obraSocial" type="InputFindEntity">
 		<param name="inputId" value="str:obraSocial" />
 		<param name="name" value="str:obraSocial" />
-		<param name="value" value="turno.obraSocial" />
+		<param name="value" value="clienteObraSocial.obraSocial" />
 		<param name="placeholder" value="msg:turno.obraSocial" />
 		<param name="finder" value="obraSocialFinderClazz" />
 		<param name="hasAddEntity" value="boolean:true" />
 		<param name="hasPopup" value="boolean:true" />
 		<param name="popupFilterType" value="str:ObraSocialFilter" />
 		<param name="popupFormType" value="str:ObraSocialQuickForm" />
-		
+		<param name="onSelectCallback" value="str:obraSocialchange" />
 		<param name="hasHelp" value="boolean:true" />
 		<param name="popupHelpMsg" value="msg:obraSocial.ayuda.popup" />
 		<param name="autocompleteHelpMsg" value="msg:obraSocial.ayuda.autocomplete" />
@@ -66,7 +66,7 @@
 	<component id="nroObraSocial" type="InputText">
 		<param name="inputId" value="str:nroObraSocial" />
 		<param name="name" value="str:nroObraSocial" />
-		<param name="value" value="turno.clienteObraSocial.nroObraSocial" />
+		<param name="value" value="clienteObraSocial.nroObraSocial" />
 		<param name="placeholder" value="msg:turno.nroObraSocial" />
 	</component>
 
@@ -80,7 +80,7 @@
 		<param name="hasAddEntity" value="boolean:true" />
 		<param name="hasPopup" value="boolean:true" />
 		<param name="popupFilterType" value="str:ClienteFilter" />
-		<param name="onSelectCallback" value="str:cambiarObraSocial" />
+		<param name="onSelectCallback" value="str:clientechange" />
 		<param name="popupFormType" value="str:ClienteQuickForm" />
 		
 		<param name="hasHelp" value="boolean:true" />
@@ -160,7 +160,7 @@
 	<component id="tipoAfiliado" type="InputCombo">
 		<param name="inputId" value="str:tipoAfiliado" />
 		<param name="name" value="str:tipoAfiliado" />
-		<param name="value" value="turno.tipoAfiliado" />
+		<param name="value" value="clienteObraSocial.tipoAfiliado" />
 		<param name="options" value="tiposAfiliado" />
 		<param name="placeholder" value="msg:turno.tipoAfiliado" />
 		<param name="isEditable" value="boolean:true" />
@@ -173,6 +173,15 @@
 		<param name="placeholder" value="msg:turno.observaciones.placeholder" />
 		<param name="autocomplete" value="str:off" />
 		<param name="styleCss" value="str:uppercase" />		
+	</component>
+		
+	<component id="planObraSocial" type="InputCombo">
+		<param name="inputId" value="str:planObraSocial" />
+		<param name="name" value="str:planObraSocial" />
+		<param name="value" value="clienteObraSocial.planObraSocial.oid" />
+		<param name="options" value="planesObraSocial" />
+		<param name="placeholder" value="msg:turno.planObraSocial" />
+		<param name="isEditable" value="boolean:true" />
 	</component>
 		
 </rasty>

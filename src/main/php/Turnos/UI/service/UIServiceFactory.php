@@ -1,4 +1,5 @@
 <?php
+
 namespace Turnos\UI\service;
 
 
@@ -105,4 +106,13 @@ class UIServiceFactory {
 	
 		return UIStatsService::getInstance();	
 	}	
+	
+	/**
+	 * @return UIPlanObraSocialService
+	 */
+	public static function getUIPlanObraSocialService(){
+	
+		return UIPlanObraSocialService::getInstance();	
+	}
+	
 }

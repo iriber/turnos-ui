@@ -1,0 +1,44 @@
+<!-- BEGIN:main -->
+<style>
+</style>
+<script>
+function planesObraSocial{id}_borrar(data){
+
+	data = new Array();
+	data["obraSocialOid"] = '{obraSocial_oid}';
+	event = new $.fn.rasty.RastyEvent("planesObraSocial{id}", data, "PlanObraSocial");
+	subject.notify(event);
+}
+
+$(document).ready(function(){
+
+
+});
+
+</script>
+
+<div id="horarios_profesional">
+
+
+	
+	<div class="horario">
+		
+		<table>
+			<!-- BEGIN: plan -->			
+			<tr>
+				<td>{nombre}</td>
+				<td>
+				<button type="button" title="{borrar_label}"
+					onclick="javascript: borrarPlanObraSocial('{linkBorrar}','{plan_oid}', '{nombre}', planesObraSocial{id}_borrar);return false;">
+					<i class="icon-remove"></i>
+				</button>
+				</td>
+			</tr>
+			<!-- END: plan -->					
+		</table>
+				
+	</div>
+
+
+</div>
+<!-- END:main -->

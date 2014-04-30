@@ -44,7 +44,8 @@ function eliminarCallback(data){
 $(document).ready(function(){
 
 	submitBuscar("{WEB_PATH}", "#clientes_filter{id}", "#{resultDiv}");
-	
+
+	/*
 	$('#input_submit_ajax_Cliente{id}').click(function() {
 		
 		$('#divClientes{id}Toggle1').toggle( 5, 'linear', function() {
@@ -68,6 +69,14 @@ $(document).ready(function(){
 		$('#divClientes{id}Toggle2').toggle( 5, 'linear', function() {
 		});
 	}
+	*/
+
+	 $(".item input").keyup(function (e) {
+         if (e.keyCode == 13) {
+             // función para capturar el enter en el filtro default.
+        	 submitBuscar("{WEB_PATH}", "#clientes_filter{id}", "#{resultDiv}");
+         }
+     });
 	
 });
 

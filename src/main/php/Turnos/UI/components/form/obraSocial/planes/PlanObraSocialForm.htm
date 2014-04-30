@@ -1,0 +1,79 @@
+<!-- BEGIN:main -->
+<script language="javascript"
+	src="{WEB_PATH}js/autocomplete/simpleAutoComplete.js"></script>
+<link rel="stylesheet"
+	href="{WEB_PATH}css/autocomplete/simpleAutoComplete.css"
+	type="text/css" />
+
+<script>
+
+$(document).ready(function(){
+
+	
+	
+});
+
+function planes_Change(data, obraSocialOid){
+
+	//var poid = data["profesionalOid"];
+	data = new Array();
+	data["obraSocialOid"] = obraSocialOid;
+	event = new $.fn.rasty.RastyEvent("planObraSocialchange", data, "PlanObraSocial");
+	subject.notify(event);
+	
+}
+
+</script>
+
+<div>
+<style>
+#planesObrasSociales_form label{
+
+width:10em;
+}
+
+</style>
+
+
+<div>
+<form class="turnos_form" id="planesObrasSociales_form" onsubmit="return validate('planesObrasSociales_form');" action="{action}" method="{method}">
+
+		<fieldset>
+		<legend>{plan_agregar_legend}</legend>
+
+		<rasty id="backSuccess" />
+		
+	    <rasty id="oid" />
+	
+		<div class="item">
+	    	<label for="obraSocial">{lbl_obraSocial}</label>
+	    	<rasty id="obraSocial" />
+		</div>
+
+		<div class="item" style="min-width: {minWidth};">
+		    <label for="nombre">{lbl_nombre} *:</label>
+		    <rasty id="nombre" />
+		</div>
+		
+	</fieldset>
+
+	<!-- BEGIN: msg_error -->
+	<fieldset class="ui-state-error">
+			{msg}	
+	</fieldset>
+	<!-- END: msg_error -->
+	
+</form>
+<form  class="turnos_form" id="buttons{inputId}">
+	<fieldset class="tblFooters">
+	
+		<button type="button"  id="input_submit" onclick="javascript: submitFormulario('planesObrasSociales_form'); "><i class="icon-checkmark on-left"></i>{lbl_submit}</button>
+
+		<button type="button"  id="input_button_2" onclick="javascript: window.location.href = '{cancel}'; "><i class="icon-cancel-2 on-left"></i>{lbl_cancel}</button>
+	
+	</fieldset>
+</form>	
+
+
+</div>
+<!-- END:main -->

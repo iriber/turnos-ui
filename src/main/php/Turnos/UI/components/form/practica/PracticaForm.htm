@@ -6,27 +6,125 @@
 	type="text/css" />
 
 <script>
-function cambiarObraSocial(entity){
+function selectClienteObraSocialCallback(data){
+
+	osOid = data["obraSocialOid"];
+	osNombre = data["obraSocialNombre"];
+	planOid = data["planObraSocialOid"];
+	osNro = data["nroObraSocial"];
+	tipoAfiliado = data["tipoAfiliado"];
 	
+	dataOS = new Array();
+	dataOS["oid"] = osOid;
+	obraSocialchange( dataOS, planOid );
+	
+	if( osOid != undefined ){		
+		$("#findentity_obraSocial_inputCode").val(osOid);
+		$("#findentity_obraSocial_autocomplete").val(osNombre);
+		$("#obraSocial").val(osOid);;
+	}
+	
+	if( osNro != undefined ){		
+		$("#nroObraSocial").val(osNro);
+	}else{
+		$("#nroObraSocial").val("");
+		}
+
+	if( tipoAfiliado != undefined ){		
+		$("#tipoAfiliado").val(tipoAfiliado);
+	}
+
+	$("#importe").focus();
+
+}
+
+
+function verObrasSocialesCliente(){
+
+	//creamos el div donde vamos a escribir el popup
+	//agregamos el div para el dialogo si es que no existe.
+	if (!$("#practicaForm_popup_obrassociales").length) {
+		$("body").append("<div id='practicaForm_popup_obrassociales' style='display: none;'></div>");
+	}
+		
+	var clienteOid = $("#findentity_cliente_inputCode").val();
+	
+	var title = '{buscar_obraSocial_title}';
+
+	var fCallback = "selectClienteObraSocialCallback";
+	
+	var height = "600";
+
+	var width  = "80%";
+
+	var popupDivId = "practicaForm_popup_obrassociales";
+
+	
+	var url = "{WEB_PATH}obrasSociales/cliente.html?clienteOid=" + clienteOid  + "&selectRowCallback=" + fCallback + "&popupDivId=" + popupDivId ;
+	var uiDialog = "#"+popupDivId;
+	var dialogOpts = {
+            title : title,
+            modal : true,
+            autoOpen : false,
+            bgiframe : true,
+            height : height,
+            width : width,
+            open : function() {
+                $(uiDialog).load(url);
+            }
+        };
+    $(uiDialog).children().remove();
+    //$(uiDialog).dialog("destroy");
+    $(uiDialog).dialog(dialogOpts);
+    $(uiDialog).dialog("open");
+}
+function obraSocialchange(entity, planActual){
+
+	var planActualOid = '';
+
+	if(planActual == undefined ){
+		planActualOid = '{planObraSocialOid}';
+	}else
+		planActualOid = planActual;
+
 	//buscar la obra social
 	if(entity["error"] == undefined){
-		var osOid = entity["obraSocial.oid"];
-		var osNro = entity["nroObraSocial"];
-		var tipoAfiliado = entity["tipoAfiliado"];
+
+		var osOid = entity["oid"];
 
 		
 		if( osOid != undefined ){		
-			$("#findentity_obraSocial_inputCode").val(osOid);
-			$("#findentity_obraSocial_inputCode").blur();
-		}
-		if( osNro != undefined ){		
-			$("#nroObraSocial").val(osNro);
-		}
-		if( tipoAfiliado != undefined ){		
-			$("#tipoAfiliado").val(tipoAfiliado);
+
+			//voy a buscar los planes de la obra social
+			doGetPlanesByObraSocial('{WEB_PATH}', osOid, loadPlanes, planActualOid );
+				
+			//setear el del cliente actual.
 		}
 
 	}
+}
+
+function loadPlanes( data, planActualOid ){
+
+	//me quedo con la del cliente para setearla luego de cargar los planes
+
+	$('#planObraSocial')
+    .find('option')
+    .remove();
+    
+	for (var i=0;i<data.length;i++){
+
+		if(data[i][0] == planActualOid){
+			$("#planObraSocial").append("<option value='" + data[i][0] + "' selected>" + data[i][1] + "</option>");
+		}else{
+			$("#planObraSocial").append("<option value='" + data[i][0] + "'>" + data[i][1] + "</option>");
+		}
+		
+		
+	}
+	$('#planObralSocial option[value='+planActualOid+']').attr('selected','selected');
+	//$("#planObralSocial").val( planActualOid );
+
 }
 $(function() {
 
@@ -59,9 +157,19 @@ $(function() {
 		    <rasty id="cliente" />
 		</div>
 
+		<div class="item ">
+			<label for="input_verObrasSociales">&nbsp;</label>
+		    {lbl_verObrasSociales}<button type="button"  id="input_verObrasSociales" onclick="javascript: verObrasSocialesCliente(); "><i class="icon-search on-left"></i>{btn_verObrasSociales}</button>
+		</div>
+
 		<div class="item" style="min-width: {minWidth};">
 		    <label for="obraSocial">{lbl_obraSocial}:</label>
 		    <rasty id="obraSocial" />
+		</div>
+
+		<div class="item">
+		    <label for="planObraSocial">{lbl_planObraSocial}:</label>
+		    <rasty id="planObraSocial" />
 		</div>
 
 		<div class="item" style="min-width: {minWidth};">

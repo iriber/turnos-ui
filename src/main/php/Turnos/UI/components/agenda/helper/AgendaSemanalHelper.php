@@ -322,9 +322,11 @@ class AgendaSemanalHelper{
 					$xtpl->assign("cliente_oid",  $turno->getCliente()->getOid());
 					$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );
 					$xtpl->parse("main.hora.dia.turno.historia_clinica");	
+					$xtpl->parse("main.hora.dia.turno.editar_turno");	
 					
 				}else{
 					$xtpl->assign("cliente", $turno->getNombre() );
+					$xtpl->parse("main.hora.dia.turno.editar_turno_quick");
 				}	
 				$xtpl->assign("estado", self::localize(EstadoTurno::getLabel($turno->getEstado())) );
 				
@@ -348,6 +350,7 @@ class AgendaSemanalHelper{
 
 				$xtpl->assign("linkSeleccionarTurno",   LinkBuilder::getPageUrl( "TurnoModificar" , array("oid"=> $turno->getOid())) );
 				$xtpl->assign("linkSeleccionarLabel",  self::localize("turno.editar") );
+				$xtpl->assign("linkRegistrarLabel",  self::localize("turno.cliente.registrar") );
 				
 				
 				$xtpl->parse("main.hora.dia.turno");

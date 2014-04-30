@@ -53,6 +53,9 @@ class ClienteGridModel extends EntityGridModel{
 
 		$this->setHasCheckboxes( false );
 		
+		$column = GridModelBuilder::buildColumn( "oid", "cliente.oid", 20, EntityGrid::TEXT_ALIGN_RIGHT );
+		$this->addColumn( $column );
+		
 		$column = GridModelBuilder::buildColumn( "nroHistoriaClinica", "cliente.nroHistoriaClinica", 20, EntityGrid::TEXT_ALIGN_RIGHT );
 		$this->addColumn( $column );
 

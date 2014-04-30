@@ -1,0 +1,31 @@
+<rasty specificationClass="Turnos\UI\pages\obrasSociales\planes\PlanesObraSocial" templateLocation="pages/obrasSociales/planes/PlanesObraSocial.htm"> 
+
+	<param name="layoutType" value="str:TurnosMetroLayout" />
+	
+	<param name="obraSocialOid" value="get:obraSocialOid" />
+
+	<component id="planObraSocialForm" type="PlanObraSocialForm">
+		<param name="legend" value="msg:planObraSocial.agregar.legend" />
+		<param name="backToOnSuccess" value="get:backTo" />
+		<param name="backToOnCancel" value="get:backTo" />
+		<param name="method" value="str:post" />
+		<param name="action" value="linkActionAgregarPlanObraSocial" />
+		<param name="planObraSocial.obraSocial" value="obraSocial" />
+	</component>
+	
+	<component id="planes" type="PlanesObraSocial">
+		<param name="obraSocial" value="obraSocial" />
+	</component>
+	
+	<component id="obraSocialMain" type="InputFindEntity">
+		<param name="inputId" value="str:obraSocialMain" />
+		<param name="name" value="str:obraSocialMain" />
+		<param name="value" value="obraSocial" />
+		<param name="placeholder" value="msg:planObraSocial.obraSocial" />
+		<param name="finder" value="obraSocialFinderClazz" />
+		<param name="requiredMessage" value="msg:planObraSocial.obraSocial.required" />
+		<param name="onSelectCallback" value="str:planes_obraSocial_change" />
+	</component>
+	
+			
+</rasty>

@@ -25,7 +25,6 @@ function turnoEnSalaRegistrarCliente{id}( params ){
 
 function agendaTurnos{id}_show_addturnoquick(fecha, hora, profesional){
 	
-
 	//creamos el div donde vamos a escribir el popup
 	//agregamos el div para el dialogo si es que no existe.
 	if (!$("#agendaTurnos{id}_popup").length) {
@@ -35,8 +34,8 @@ function agendaTurnos{id}_show_addturnoquick(fecha, hora, profesional){
 	var initialText = "";
 	var title = "Asignando nuevo turno";
 	var width = "60%";
-	var height = "500";
-	var extraParams = "hora=" + encodeURI(hora) + "&" + "fecha=" + encodeURI(fecha) + "&" + "profesional=" + encodeURI(profesional);
+	var height = "550";
+	extraParams = "hora=" + encodeURI(hora) + "&" + "fecha=" + encodeURI(fecha) + "&" + "profesional=" + encodeURI(profesional)+ "&" + "action=AgregarTurnoJson";
 
 	console.log("extraParams:" + extraParams);
 	openAddentityPopup("{WEB_PATH}", "TurnoQuickForm", "agendaTurnos{id}_show_addturnoquick_callback", "#agendaTurnos{id}_popup", initialText, title, extraParams, height, width, "agendaTurnos{id}_popup");
@@ -81,6 +80,35 @@ function agendaTurnos{id}_tipoAgendaDiaria(fecha){
 	event = new $.fn.rasty.RastyEvent("turnochange", data, "TipoAgenda");
 	
 	subject.notify(event);
+}
+
+function agendaTurnos{id}_show_updateturnoquick( turnoOid ){
+	
+	//creamos el div donde vamos a escribir el popup
+	//agregamos el div para el dialogo si es que no existe.
+	if (!$("#agendaTurnos{id}_popup").length) {
+		$("body").append("<div id='agendaTurnos{id}_popup' style='display: none;'></div>");
+	}
+		
+	var initialText = "";
+	var title = "Modificando turno";
+	var width = "60%";
+	var height = "550";
+	var extraParams = "turnoOid=" + encodeURI(turnoOid)+ "&" + "action=ModificarTurnoJson";
+
+	console.log("extraParams:" + extraParams);
+	openAddentityPopup("{WEB_PATH}", "TurnoQuickForm", "agendaTurnos{id}_show_updateturnoquick_callback", "#agendaTurnos{id}_popup", initialText, title, extraParams, height, width, "agendaTurnos{id}_popup");
+	
+}
+
+function agendaTurnos{id}_show_updateturnoquick_callback( oid ){
+	
+	
+	closeFinderPopup("#agendaTurnos{id}_popup");
+
+	data = new Array();
+	data["info"] = "Turno modificado exitosamente";
+	agendaTurnos{id}_turnoChange(data);
 }
 
 $(document).ready(function(){
@@ -146,7 +174,19 @@ reinit();
 
 		</span>
 		
+		<span id="agenda_diaria_totales">
+			<span title="{pacientes_ensala_label}" class="turno_ensala">{pacientes_ensala}</span>
+			<span title="{pacientes_asignados_label}" class="turno_asignado">{pacientes_asignados}</span>
+			<span title="{pacientes_encurso_label}" class="turno_encurso">{pacientes_encurso}</span>
+			<span title="{pacientes_atendidos_label}" class="turno_atendido">{pacientes_atendidos}</span>
+			<span title="{pacientes_totales_label}" class="turno_totales">{pacientes_totales}</span>
+		</span>
+		
 		<span style="float: right;">
+		<button type="button"  id="input_imprimir_hc" class="transparent" 
+				onclick="javascript: gotoLink('{linkAgregarSobreturno}')">
+				<i class="icon-plus on-left"></i>{agregar_sobreturno_label}
+		</button>
 		<button type="button"  id="input_imprimir_hc" class="transparent" 
 				onclick="javascript: gotoLink('{linkImprimir}')">
 				<i class="icon-printer on-left"></i>{imprimir_label}
@@ -176,30 +216,40 @@ reinit();
 					{hora}<!-- BEGIN:duracion -->{duracion}<!-- END:duracion -->
 					
 					<!-- BEGIN: libre -->
-					<a style="cursor: pointer;" title="{linkSeleccionarLabel}" href="#" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
-					
-					<!-- a style="cursor: pointer;" title="{linkSeleccionarLabel}" href="#" onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}', '{hora}', '{profesional_oid}');"-->
+					<!-- a style="cursor: pointer;" title="{linkSeleccionarLabel}" href="#" onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
+					<a style="cursor: pointer;" title="{linkSeleccionarLabel}" href="#" onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}', '{hora}', '{profesional_oid}');return false;">
 					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/add_over.png"/></a>
 					<!-- END: libre -->
 					
 					<!-- BEGIN: ensala -->
 					<a style="cursor: pointer;" title="{asignado_label}" href="#" onclick="javascript: turnoAsignado('{linkAsignado}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange);return false;" >
-					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_finalizar.png"/></a>
+					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/></a>
 					<!-- END: ensala -->
 				
 					<!-- BEGIN: asignado -->
 					<a style="cursor: pointer;" title="{enSala_label}" href="#" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaTurnos{id}_turnoChange, turnoEnSalaRegistrarCliente{id});return false;" >
-					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/></a>
+					<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_registrar.png"/></a>
 					<!-- END: asignado -->
 				</p>
 				
 				<!-- BEGIN: editar -->
 				<p class="toolbar transparent">
 					<!-- editar turno -->
+					
+					<!-- BEGIN: editar_turno_quick -->
+					<button type="button" title="{linkSeleccionarLabel}"
+					onclick="javascript: agendaTurnos{id}_show_updateturnoquick('{turno_oid}');return false;">
+					<i class="icon-pencil"></i>
+					</button>
+					<!-- END: editar_turno_quick -->
+					
+					<!-- BEGIN: editar_turno -->
 					<button type="button" title="{linkSeleccionarLabel}"
 					onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
 					<i class="icon-pencil"></i>
 					</button>
+					<!-- END: editar_turno -->
+					
 					<!-- BEGIN: historia_clinica -->
 					<button type="button" title="{historiaClinica_label}"
 					onclick="javascript: gotoLink('{linkHistoriaClinica}');">
@@ -226,6 +276,7 @@ reinit();
 				<span>{telefono}</span>
 				<span>{obra_social}</span>
 				<span>{nroObraSocial}</span>
+				<span class="importe">{importe}</span>
 				<!-- BEGIN:observaciones -->
 				<span class="observaciones">{observaciones}</span>
 				<!-- END:observaciones -->
@@ -305,7 +356,9 @@ reinit();
 					 	<li><a href="#" onclick="javascript: gotoLink('{linkHistoriaClinica}');"><i class="icon-attachment on-left"></i>{linkHistoriaClinicaLabel}</a></li>					    
 						<!-- END:historia_clinica -->
 						<li class="divider"></li>
+					 	
 					 	<li><a href="#" onclick="javascript: gotoLink('{linkSeleccionarTurno}');"><i class="icon-new-tab on-left"></i>{linkSeleccionarLabel}</a></li>
+					    
 					    <li><a href="#" 
 							onclick="javascript: borrarTurno('{linkBorrar}','{turno_oid}', '{hora}', '{cliente}', agendaTurnos{id}_turnoChange);return false;">
 							<i class="icon-remove on-left"></i>{borrar_label}</a>
@@ -325,16 +378,16 @@ reinit();
 			
 			<!-- BEGIN:turno_vacio_sobreturno -->
 			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" 
-				onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
-				<!-- onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');"-->
+				onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');">
+				<!-- onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
 				 {mensajeOculto}
 			</td>
 			<!-- END:turno_vacio_sobreturno -->
 			
 			<!-- BEGIN:turno_vacio_disponible -->
 			<td class="{turno_css} {turno_dia_css}"  title='{linkSeleccionarLabel}' style="cursor:pointer;" 
-				onclick="javascript: gotoLink('{linkSeleccionarTurno}');">
-				<!-- onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');"-->
+				onclick="javascript: agendaTurnos{id}_show_addturnoquick('{fecha}','{hora}','{profesional_oid}');">
+				<!-- onclick="javascript: gotoLink('{linkSeleccionarTurno}');"-->
 				 {mensajeOculto} 
 			</td>
 			<!-- END:turno_vacio_disponible -->

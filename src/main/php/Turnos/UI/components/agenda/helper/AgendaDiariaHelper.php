@@ -140,6 +140,13 @@ class AgendaDiariaHelper{
 		
 		$indexMostrados = 0;
 		
+		//sumarizamos los pacientes por estado.
+		$pacientesPorEstado = array();
+		$pacientesPorEstado[EstadoTurno::EnSala] = 0;
+		$pacientesPorEstado[EstadoTurno::Asignado] = 0;
+		$pacientesPorEstado[EstadoTurno::EnCurso] = 0;
+		$pacientesPorEstado[EstadoTurno::Atendido] = 0;
+		
 		foreach ($grillaHorarios as $horaDesde => $turno) {
 			
 			$index++;
@@ -164,6 +171,7 @@ class AgendaDiariaHelper{
 			
 			$xtpl->assign("hora", $horaDesde );
 			$xtpl->assign("horaEncode", urlencode($horaDesde) );
+
 			
 			
 			//parseamos el turno.
@@ -218,6 +226,10 @@ class AgendaDiariaHelper{
 			}else{
 				
 				//turno ocupado, mostramos el paciente y las distintas opciones
+				$xtpl->assign("turno_oid",  $turno->getOid() );
+				
+				$importe = $turno->getImporte();
+				$xtpl->assign("importe", TurnosUtils::formatMontoToView($importe) );
 				
 				//duración del turno
 				$duracion = $turno->getDuracion();
@@ -239,6 +251,9 @@ class AgendaDiariaHelper{
 					$xtpl->parse("main.turno.$templateBlockTurno.ocupado.prioridad");
 				}
 				
+				if(array_key_exists($turno->getEstado(), $pacientesPorEstado))
+					$pacientesPorEstado[$turno->getEstado()] += 1;
+				
 				$xtpl->assign("turno_css", TurnosUtils::getEstadoTurnoCss($turno->getEstado()));
 
 				$xtpl->assign("hc", "");
@@ -248,6 +263,9 @@ class AgendaDiariaHelper{
 					$xtpl->assign("observaciones", $turno->getObservaciones());
 					$xtpl->parse("main.turno.$templateBlockTurno.ocupado.observaciones");
 				}
+				
+				$xtpl->assign("linkSeleccionarTurno",   LinkBuilder::getPageUrl( "TurnoModificar" , array("oid"=> $turno->getOid())) );
+				$xtpl->assign("linkSeleccionarLabel",  self::localize("turno.editar") );
 				
 				$cliente = $turno->getCliente();
 				if(!empty($cliente) && $cliente->getOid()>0){
@@ -274,12 +292,14 @@ class AgendaDiariaHelper{
 					//$xtpl->assign("linkSeleccionarLabel",  $this->localize("agenda.verficha") );
 					$xtpl->assign("linkHistoriaClinica",  LinkBuilder::getPageUrl( "HistoriaClinica", array("clienteOid"=> $turno->getCliente()->getOid())) );
 					$xtpl->parse("main.turno.$templateBlockTurno.editar.historia_clinica");
+					$xtpl->parse("main.turno.$templateBlockTurno.editar.editar_turno");	
+					
 				}else{
 					$xtpl->assign("cliente", $turno->getNombre() );
 					$xtpl->assign("telefono", $turno->getTelefono() );
+					$xtpl->assign("importe", "" );
+					$xtpl->parse("main.turno.$templateBlockTurno.editar.editar_turno_quick");
 				}	
-				$xtpl->assign("linkSeleccionarTurno",   LinkBuilder::getPageUrl( "TurnoModificar" , array("oid"=> $turno->getOid())) );
-				$xtpl->assign("linkSeleccionarLabel",  self::localize("turno.editar") );
 				
 				
 				
@@ -287,13 +307,13 @@ class AgendaDiariaHelper{
 				
 				$os = $turno->getObraSocial();
 				$os = ($os!=null)? " / " .$os->getNombre() : "";
-				$xtpl->assign("obra_social",   $os );
+				
+				$plan = $turno->getPlanObraSocial();
+				$plan = ($plan!=null)? " " .$plan->getNombre() : "";
+				
+				$xtpl->assign("obra_social",   $os . $plan );
 				$xtpl->assign("nroObraSocial", $turno->getNroObraSocial() );
 				
-				
-				$importe = $turno->getImporte();
-				$xtpl->assign("importe", TurnosUtils::formatMontoToView($importe) );
-				$xtpl->assign("turno_oid",  $turno->getOid() );
 				
 				if( $turno->getEstado() == EstadoTurno::EnSala ){
 				
@@ -333,6 +353,22 @@ class AgendaDiariaHelper{
 			
 		}
 		
+		$xtpl->assign("pacientes_ensala_label",  self::localize("agenda.diaria.totales_ensala"));
+		$xtpl->assign("pacientes_asignados_label",  self::localize("agenda.diaria.totales_asignados") );
+		$xtpl->assign("pacientes_atendidos_label",  self::localize("agenda.diaria.totales_atendidos") );
+		$xtpl->assign("pacientes_encurso_label",  self::localize("agenda.diaria.totales_encurso") );
+		$xtpl->assign("pacientes_totales_label",  self::localize("agenda.diaria.totales") );
+		
+		$xtpl->assign("pacientes_ensala",  $pacientesPorEstado[EstadoTurno::EnSala] );
+		$xtpl->assign("pacientes_asignados",  $pacientesPorEstado[EstadoTurno::Asignado] );
+		$xtpl->assign("pacientes_atendidos",  $pacientesPorEstado[EstadoTurno::Atendido] );
+		$xtpl->assign("pacientes_encurso",  $pacientesPorEstado[EstadoTurno::EnCurso] );
+		$xtpl->assign("pacientes_totales",  $pacientesPorEstado[EstadoTurno::EnSala]+
+											$pacientesPorEstado[EstadoTurno::Asignado]+
+											$pacientesPorEstado[EstadoTurno::Atendido]+
+											$pacientesPorEstado[EstadoTurno::EnCurso] );
+											
+		$xtpl->parse("main.agendaDiariaTitle");
 		
 		//si no hay nada, no atiende o no hay profesional seleccionado. mostramos el mensaje
 		if($totalTurnos==0){
@@ -389,8 +425,7 @@ class AgendaDiariaHelper{
 		$imprimirParams = array("tipoAgenda" => AgendaTurnos::AGENDA_DIARIA  );
 		$xtpl->assign("linkImprimir" , LinkBuilder::getPdfUrl( "AgendaTurnos", $imprimirParams ));
 		
-		$xtpl->parse("main.agendaDiariaTitle");
-		
+		$xtpl->assign("linkAgregarSobreturno",  LinkBuilder::getPageUrl( "SobreturnoAgregar") );
 	}
 	
 	private static function localize($keyMessage){

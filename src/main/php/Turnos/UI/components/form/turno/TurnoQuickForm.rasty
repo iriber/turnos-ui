@@ -4,6 +4,8 @@
 	<param name="fecha" value="get:fecha" />
 	<param name="profesionalOid" value="get:profesionalOid" />
 	<param name="popupDivId" value="get:popupDivId" />
+	<param name="turnoOid" value="get:turnoOid" />
+	<param name="action" value="get:action" />
 
 	<component id="oid" type="InputHidden">
 		<param name="inputId" value="str:oid" />
@@ -11,12 +13,6 @@
 		<param name="value" value="turno.oid" />
 	</component>
 
-	<component id="fechaHidden" type="InputHidden">
-		<param name="inputId" value="str:fecha2" />
-		<param name="name" value="str:fecha" />
-		<param name="value" value="turno.fecha" />
-	</component>
-	
 	<component id="fecha" type="InputDate">
 		<param name="inputId" value="str:fecha" />
 		<param name="name" value="str:fecha" />
@@ -64,6 +60,7 @@
 		<param name="requiredMessage" value="msg:turno.nombre.required" />
 		<param name="placeholder" value="msg:turno.nombre.placeholder" />
 		<param name="styleCss" value="str:uppercase" />
+		<param name="autocomplete" value="str:off" />
 	</component>
 
 	<component id="telefono" type="InputText">
@@ -71,5 +68,16 @@
 		<param name="name" value="str:telefono" />
 		<param name="value" value="turno.telefono" />
 		<param name="placeholder" value="msg:turno.telefono.placeholder" />
+		<param name="autocomplete" value="str:off" />
 	</component>
+	
+	<component id="observaciones" type="InputText">
+		<param name="inputId" value="str:observaciones" />
+		<param name="name" value="str:observaciones" />
+		<param name="value" value="turno.observaciones" />
+		<param name="placeholder" value="msg:turno.observaciones.placeholder" />
+		<param name="autocomplete" value="str:off" />
+		<param name="styleCss" value="str:uppercase" />
+	</component>
+	
 </rasty>

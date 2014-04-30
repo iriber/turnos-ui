@@ -35,7 +35,7 @@ $(function() {
 
 	submitBuscar("{WEB_PATH}", "#nomenclador_filter{id}", "#{resultDiv}");
 	
-	
+	/*
 	$('#input_submit_ajax_Nomen{id}').click(function() {
 		
 		$('#divNomen{id}Toggle1').toggle( 5, 'linear', function() {
@@ -50,7 +50,14 @@ $(function() {
 		});
 		$('#divNomen{id}Toggle2').toggle( 5, 'linear', function() {
 		});
-	});	
+	});
+	*/
+	$(".item input").keyup(function (e) {
+        if (e.keyCode == 13) {
+            // función para capturar el enter en el filtro default.
+       	 submitBuscar("{WEB_PATH}", "#nomenclador_filter{id}", "#{resultDiv}");
+        }
+    });	
 });
 
 </script>

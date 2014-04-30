@@ -18,11 +18,15 @@
 	<page name="ObraSocialAgregar"   location="pages/obrasSociales/agregar/ObraSocialAgregar.page" url="obrasSociales/agregar"/>
 	<page name="ObraSocialModificar"   location="pages/obrasSociales/modificar/ObraSocialModificar.page" url="obrasSociales/modificar"/>
 
+	<page name="PlanesObraSocial"   location="pages/obrasSociales/planes/PlanesObraSocial.page" url="obrasSociales/planes"/>
+	<page name="ClienteObrasSociales"   location="pages/obrasSociales/cliente/ClienteObrasSociales.page" url="obrasSociales/cliente"/>
+
 	<page name="Clientes"   location="pages/clientes/Clientes.page" url="pacientes"/>
 	<page name="ClienteAgregar"   location="pages/clientes/agregar/ClienteAgregar.page" url="pacientes/agregar"/>
 	<page name="ClienteModificar"   location="pages/clientes/modificar/ClienteModificar.page" url="pacientes/modificar"/>
 	<page name="ClienteConsultar"   location="pages/clientes/consultar/ClienteConsultar.page" url="pacientes/consultar"/>
 	<page name="ClientesExportar"   location="pages/clientes/ClientesExportar.page" url="pacientes/exportar"/>
+
 
 	<page name="TurnoAgregar"   location="pages/turnos/agregar/TurnoAgregar.page" url="turnos/agregar"/>
 	<page name="TurnoModificar"   location="pages/turnos/modificar/TurnoModificar.page" url="turnos/modificar"/>
@@ -81,6 +85,9 @@
 	<component name="ObraSocialQuickForm"   location="components/form/obraSocial"/>
 	<component name="ObraSocialForm"   location="components/form/obraSocial"/>
 	
+	<component name="PlanObraSocialForm"   location="components/form/obraSocial/planes"/>
+	<component name="PlanesObraSocial"   location="components/obrasSociales/planes"/>
+	
 	<component name="NomencladorQuickForm"   location="components/form/nomenclador"/>
 	<component name="NomencladorForm"   location="components/form/nomenclador"/>
 	<component name="NomencladorFilter"   location="components/filter/nomenclador"/>
@@ -131,6 +138,7 @@
 	<action name="TurnoEnSala" class="Turnos\UI\actions\turnos\TurnoEnSala" url="turnos/ensala"/>
 	<action name="TurnoAsignado" class="Turnos\UI\actions\turnos\TurnoAsignado" url="turnos/asignado"/>
 	<action name="AgregarTurnoJson" class="Turnos\UI\actions\turnos\AgregarTurnoJson" url="turnos/agregarjson"/>
+	<action name="ModificarTurnoJson" class="Turnos\UI\actions\turnos\ModificarTurnoJson" url="turnos/modificarjson"/>
 
 	<action name="AgregarPractica" class="Turnos\UI\actions\practicas\AgregarPractica" url="practicas/agregar"/>
 	<action name="ModificarPractica" class="Turnos\UI\actions\practicas\ModificarPractica" url="practicas/modificar"/>
@@ -144,6 +152,9 @@
 	<action name="AgregarObraSocial" class="Turnos\UI\actions\obrasSociales\AgregarObraSocial" url="obrasSociales/agregar"/>
 	<action name="ModificarObraSocial" class="Turnos\UI\actions\obrasSociales\ModificarObraSocial" url="obrasSociales/modificar"/>
 	
+	<action name="AgregarPlanObraSocial" class="Turnos\UI\actions\obrasSociales\planes\AgregarPlanObraSocial" url="obrasSociales/planes/agregar"/>
+	<action name="BorrarPlanObraSocial" class="Turnos\UI\actions\obrasSociales\planes\BorrarPlanObraSocial" url="obrasSociales/planes/borrar"/>
+	
 	<action name="AgregarLocalidadJson" class="Turnos\UI\actions\localidades\AgregarLocalidadJson" url="localidades/agregarjson"/>
 
 	<action name="AgregarNomencladorJson" class="Turnos\UI\actions\nomenclador\AgregarNomencladorJson" url="nomenclador/agregarjson"/>
@@ -151,6 +162,8 @@
 	<action name="ModificarNomenclador" class="Turnos\UI\actions\nomenclador\ModificarNomenclador" url="nomenclador/modificar"/>
 	
 	<action name="findProfesionalesByEspecialidad" class="Turnos\UI\actions\profesionales\ListarProfesionalesByEspecialidadJson" url="findProfesionalesByEspecialidad"/>
+	
+	<action name="findPlanesByObraSocial" class="Turnos\UI\actions\obrasSociales\planes\ListarPlanesByObraSocialJson" url="findPlanesByObraSocial"/>
 	
 	<action name="findEntities" class="Turnos\UI\actions\common\ListarEntitiesJson" url="findEntities"/>
 	<action name="findEntity" class="Turnos\UI\actions\common\GetEntityJson" url="findEntity"/>

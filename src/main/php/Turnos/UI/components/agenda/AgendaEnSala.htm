@@ -32,7 +32,7 @@ $(document).ready(function(){
 				<span>{hora}<!-- BEGIN:duracion -->{duracion}<!-- END:duracion --></span>
 				<!-- BEGIN: iniciar -->
 				<a style="cursor: pointer;" title="{iniciar_label}" href="#" onclick="javascript: iniciarTurno('{linkIniciar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaEnSala{id}_turnoChange);return false;" >
-				<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_iniciar.png"/></a>
+				<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/></a>
 				<!-- END: iniciar -->
 				<!-- BEGIN: finalizar -->
 				<a style="cursor: pointer;" title="{finalizar_label}" href="#" onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaEnSala{id}_turnoChange);return false;" >
@@ -40,7 +40,7 @@ $(document).ready(function(){
 				<!-- END: finalizar -->
 				<!-- BEGIN: ensala -->
 				<a style="cursor: pointer;" title="{enSala_label}" href="#" onclick="javascript: turnoEnSala('{linkEnSala}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaEnSala{id}_turnoChange);return false;" >
-				<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/ensala.png"/></a>
+				<img class="btn-icon"  border=0 src="{WEB_PATH}/css/images/turno_registrar.png"/></a>
 				<!-- END: ensala -->
 				<!-- BEGIN: ensala_finalizar -->
 				<a style="cursor: pointer;" title="{ensala_finalizar_label}" href="#" onclick="javascript: finalizarTurno('{linkFinalizar}','{turno_oid}', '{hora}', '{cliente}', '{cliente_oid}', agendaEnSala{id}_turnoChange);return false;" >

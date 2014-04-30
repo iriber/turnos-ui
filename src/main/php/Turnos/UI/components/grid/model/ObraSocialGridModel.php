@@ -98,6 +98,13 @@ class ObraSocialGridModel extends EntityGridModel{
 		$menuOption->addParam("oid",$item->getOid());
 		$menuOption->setImageSource( $this->getWebPath() . "css/images/editar_32.png" );
 		$options[] = $menuOption ;
+
+		$menuOption = new MenuOption();
+		$menuOption->setLabel( $this->localize( "menu.obraSocial.planes") );
+		$menuOption->setPageName( "PlanesObraSocial" );
+		$menuOption->addParam("obraSocialOid",$item->getOid());
+		$menuOption->setImageSource( $this->getWebPath() . "css/images/editar_32.png" );
+		$options[] = $menuOption ;
 		
 		$group->setMenuOptions( $options );
 		

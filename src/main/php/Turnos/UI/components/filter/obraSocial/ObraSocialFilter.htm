@@ -34,7 +34,7 @@ function seleccionarObraSocial(event, oid, rowId, checkboxId){
 $(document).ready(function(){
 
 	submitBuscar("{WEB_PATH}", "#os_filter{id}", "#{resultDiv}");
-	
+	/*
 	
 	$('#input_submit_ajax_OS{id}').click(function() {
 		
@@ -51,6 +51,13 @@ $(document).ready(function(){
 		$('#divOS{id}Toggle2').toggle( 5, 'linear', function() {
 		});
 	});
+	*/
+	$(".item input").keyup(function (e) {
+        if (e.keyCode == 13) {
+            // función para capturar el enter en el filtro default.
+       	 submitBuscar("{WEB_PATH}", "#os_filter{id}", "#{resultDiv}");
+        }
+    });
 });
 
 </script>

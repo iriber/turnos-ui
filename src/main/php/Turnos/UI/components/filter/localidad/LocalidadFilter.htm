@@ -34,7 +34,13 @@ function seleccionarLocalidad(event, oid, rowId, checkboxId){
 $(function() {
 
 	submitBuscar("{WEB_PATH}", "#localidad_filter{id}", "#{resultDiv}");
-	
+
+	$(".item input").keyup(function (e) {
+        if (e.keyCode == 13) {
+            // función para capturar el enter en el filtro default.
+       	 submitBuscar("{WEB_PATH}", "#localidad_filter{id}", "#{resultDiv}");
+        }
+    });
 	
 });
 

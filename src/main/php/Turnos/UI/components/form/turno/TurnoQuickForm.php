@@ -2,6 +2,8 @@
 
 namespace Turnos\UI\components\form\turno;
 
+use Turnos\UI\service\finder\NomencladorFinder;
+
 use Turnos\UI\service\UIServiceFactory;
 
 use Turnos\UI\utils\TurnosUtils;
@@ -38,6 +40,8 @@ class TurnoQuickForm extends Form{
 	 * @var Turno
 	 */
 	private $turno;
+
+	private $action;
 	
 	public function __construct(){
 
@@ -54,6 +58,7 @@ class TurnoQuickForm extends Form{
 		$this->addProperty("nombre");
 		$this->addProperty("telefono");
 		$this->addProperty("duracion");
+		$this->addProperty("observaciones");
 		
 		$this->setLegend( $this->localize("turno.agregar.legend") );
 		$this->setTurnoLegend( $this->localize("turno.agregar.turno_legend") );
@@ -63,6 +68,11 @@ class TurnoQuickForm extends Form{
 		$hora = new \DateTime();
 		$hora->setTime(0,0,0);
 		$turno->setHora( $hora );
+
+		//el nomenclador default es la consulta.
+		$codigoConsulta = TurnosUtils::TRN_PRACTICA_DEFAULT;
+		$finder = new NomencladorFinder();
+		$turno->setNomenclador( $finder->findEntityByCode($codigoConsulta) );
 		
 		
 		//la fecha es la de la agenda
@@ -82,6 +92,7 @@ class TurnoQuickForm extends Form{
 
 		$this->setearDuracion();
 		
+		$this->setAction("AgregarTurnoJson");
 	}
 	
 	public function getOid(){
@@ -104,6 +115,12 @@ class TurnoQuickForm extends Form{
 		
 		//uppercase para el nombre del paciente
 		$entity->setNombre( strtoupper( $entity->getNombre() ) );
+		$entity->setObservaciones( strtoupper( $entity->getObservaciones() ) );
+		
+		//el nomenclador default es la consulta.
+		$codigoConsulta = TurnosUtils::TRN_PRACTICA_DEFAULT;
+		$finder = new NomencladorFinder();
+		$entity->setNomenclador( $finder->findEntityByCode($codigoConsulta) );
 		
 	}
 	
@@ -132,6 +149,7 @@ class TurnoQuickForm extends Form{
 		$xtpl->assign("lbl_hora", $this->localize("turno.hora") );
 		$xtpl->assign("lbl_profesional", $this->localize("turno.profesional") );
 		$xtpl->assign("lbl_duracion", $this->localize("turno.duracion") );
+		$xtpl->assign("lbl_observaciones", $this->localize("turno.observaciones") );
 		
 		$xtpl->assign("lbl_nombre", $this->localize("turno.nombre") );
 		$xtpl->assign("lbl_telefono", $this->localize("turno.telefono") );
@@ -140,6 +158,7 @@ class TurnoQuickForm extends Form{
 		
 		$xtpl->assign("turno_legend", $this->getTurnoLegend() );
 		
+		$xtpl->assign("urlSubmit", LinkBuilder::getActionAjaxUrl( $this->getAction() )  );
 		
 	}
 	
@@ -244,6 +263,32 @@ class TurnoQuickForm extends Form{
 	public function setTurnoLegend($turnoLegend)
 	{
 	    $this->turnoLegend = $turnoLegend;
+	}
+	
+	public function setTurnoOid($turnoOid)
+	{
+		if(!empty($turnoOid) ){
+
+			//a partir del id buscamos el turno.
+			$turno = UIServiceFactory::getUITurnoService()->get($turnoOid);
+		
+			$this->setTurno($turno);
+		}
+		
+	}
+	
+	
+	
+
+	public function getAction()
+	{
+	    return $this->action;
+	}
+
+	public function setAction($action)
+	{
+		if(!empty($action))
+	    	$this->action = $action;
 	}
 }
 ?>

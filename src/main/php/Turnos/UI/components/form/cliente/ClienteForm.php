@@ -2,6 +2,8 @@
 
 namespace Turnos\UI\components\form\cliente;
 
+use Turnos\UI\service\UIServiceFactory;
+
 use Turnos\UI\utils\TurnosUtils;
 
 use Rasty\Forms\form\Form;
@@ -15,6 +17,8 @@ use Turnos\Core\model\Cliente;
 use Turnos\Core\model\TipoDocumento;
 use Turnos\Core\model\Sexo;
 use Turnos\Core\model\ObraSocial;
+use Turnos\Core\model\PlanObraSocial;
+use Turnos\Core\model\ClienteObraSocial;
 use Turnos\Core\model\Localidad;
 use Turnos\Core\model\TipoAfiliadoObraSocial;
 
@@ -40,6 +44,8 @@ class ClienteForm extends Form{
 	 * @var Cliente
 	 */
 	private $cliente;
+
+	private $clienteObraSocial;
 	
 	public function __construct(){
 
@@ -52,10 +58,15 @@ class ClienteForm extends Form{
 		$this->addProperty("nroDocumento");
 		$this->addProperty("fechaNacimiento");
 		$this->addProperty("sexo");
-		$this->addProperty("nroHistoriaClinica");
-		$this->addProperty("obraSocial");
-		$this->addProperty("nroObraSocial");
-		$this->addProperty("tipoAfiliado");
+		
+//		$this->addProperty("nroHistoriaClinica");
+//		$this->addProperty("obraSocial");
+//		$this->addProperty("nroObraSocial");
+//		$this->addProperty("tipoAfiliado");
+		$this->addProperty("obraSocial", "clienteObraSocial");
+		$this->addProperty("nroObraSocial", "clienteObraSocial");
+		$this->addProperty("tipoAfiliado", "clienteObraSocial");
+		
 		$this->addProperty("telefonoFijo");
 		$this->addProperty("telefonoMovil");
 		$this->addProperty("email");
@@ -66,6 +77,7 @@ class ClienteForm extends Form{
 		$this->setBackToOnSuccess("Clientes");
 		$this->setBackToOnCancel("Clientes");
 
+		$this->clienteObraSocial = new ClienteObraSocial();
 		
 	}
 	
@@ -82,6 +94,18 @@ class ClienteForm extends Form{
 		$input = $this->getComponentById("backSuccess");
 		$value = $input->getPopulatedValue( $this->getMethod() );
 		$this->setBackToOnSuccess($value);
+		
+		$planOid = $this->getComponentById("planObraSocial")->getPopulatedValue( $this->getMethod() );
+		if(!empty($planOid)){
+			$this->clienteObraSocial->setPlanObraSocial( UIServiceFactory::getUIPlanObraSocialService()->get($planOid) );
+		}
+		
+		$this->fillRelatedEntity("clienteObraSocial", $this->clienteObraSocial );
+
+		$this->clienteObraSocial->setCliente($entity);
+		
+		$entity->setClienteObraSocial($this->clienteObraSocial);
+		
 		
 		//uppercase para el nombre.
 		$entity->setNombre( strtoupper( $entity->getNombre() ) );
@@ -124,7 +148,14 @@ class ClienteForm extends Form{
 		$xtpl->assign("lbl_localidad", $this->localize("cliente.localidad") );
 		$xtpl->assign("lbl_observaciones", $this->localize("cliente.observaciones") );
 		
+		$xtpl->assign("lbl_planObraSocial", $this->localize("cliente.planObraSocial") );
+		$xtpl->assign("buscar_obraSocial_title", $this->localize("cliente.buscarClienteObraSocial.title") );
 		
+		$plan = $this->getCliente()->getPlanObraSocial();
+		if($plan!=null)
+			$xtpl->assign("planObraSocialOid", $plan->getOid() );
+		
+		$xtpl->assign("btn_verObrasSociales", $this->localize("cliente.clienteObraSocial.buscar") );
 		
 	}
 
@@ -147,6 +178,12 @@ class ClienteForm extends Form{
 	{
 	    $this->cliente = $cliente;
 	    
+	    if(!empty($cliente)){
+		    $this->getClienteObraSocial()->setObraSocial($cliente->getObraSocial());
+			$this->getClienteObraSocial()->setNroObraSocial($cliente->getNroObraSocial());
+			$this->getClienteObraSocial()->setPlanObraSocial($cliente->getPlanObraSocial());
+			$this->getClienteObraSocial()->setTipoAfiliado($cliente->getTipoAfiliado());
+	    }
 	}
 	
 	public function getTiposDocumento(){
@@ -184,8 +221,39 @@ class ClienteForm extends Form{
 	
 	public function getTiposAfiliado(){
 		
-		return TurnosUtils::localizeEntities(TipoAfiliadoObraSocial::getItems());	
+		$tipos[-1] = $this->localize("tipoAfiliado.elegir");
 		
+		$tipos = array_merge($tipos, TurnosUtils::localizeEntities(TipoAfiliadoObraSocial::getItems()));
+		
+		return $tipos;	
+				
 	}
+	
+	public function getPlanesObraSocial(){
+		
+		$os = $this->getClienteObraSocial()->getObraSocial();
+		
+		$planesArray = array();
+		$planesArray[-1] = $this->localize("planObraSocial.elegir");;
+		if( !empty($os) && $os!= null && $os->getOid()!=null ){
+			$planes = UIServiceFactory::getUIPlanObraSocialService()->getPlanes($os);
+			foreach ($planes as $plan) {
+				$planesArray[$plan->getOid()] = $plan->getNombre();
+			}
+		}	
+		
+		return $planesArray;
+	}
+	
+	public function getClienteObraSocial()
+	{
+	    return $this->clienteObraSocial;
+	}
+
+	public function setClienteObraSocial($clienteObraSocial)
+	{
+	    $this->clienteObraSocial = $clienteObraSocial;
+	}
+	
 }
 ?>

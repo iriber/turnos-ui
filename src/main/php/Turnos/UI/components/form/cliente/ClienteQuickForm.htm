@@ -19,7 +19,7 @@ function clienteshortsubmit(){
 				success: function(data){
 
 					if(data["nroHistoriaClinica"]!=null)
-						{onSuccessCallback}(data["nroHistoriaClinica"]);
+						{onSuccessCallback}(data["oid"]);
 
 					$("#form_{inputId}_error").html(data["error"]);
 					$("#form_{inputId}_error").show();	

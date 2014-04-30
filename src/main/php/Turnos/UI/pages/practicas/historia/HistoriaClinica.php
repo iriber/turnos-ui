@@ -136,8 +136,18 @@ class HistoriaClinica extends TurnosPage{
 			$xtpl->assign("edad" , TurnosUtils::formatEdad( TurnosUtils::getEdad( $this->getCliente()->getFechaNacimiento()) ));
 			
 			$os = $this->getCliente()->getObraSocial();
+			
+			$osNombre = "";
 			if(!empty($os))
-				$xtpl->assign("obraSocial" , $this->getCliente()->getObraSocial()->getNombre() );
+				$osNombre = $os->getNombre();
+			
+			$pos = $this->getCliente()->getPlanObraSocial();
+			if(!empty($pos))
+				$osNombre .= " " . $pos->getNombre();
+			
+			if(!empty($os))
+				$xtpl->assign("obraSocial" , $osNombre );
+			
 			$xtpl->assign("nroObraSocial" , $this->getCliente()->getNroObraSocial() );
 			
 			$xtpl->assign("tipoAfiliado" ,  $this->localize( TipoAfiliadoObraSocial::getLabel( $this->getCliente()->getTipoAfiliado() ) ));

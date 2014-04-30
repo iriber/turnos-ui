@@ -1,0 +1,44 @@
+<!-- BEGIN: main-->
+<script>
+
+function planes_obraSocial_change( attrs ){
+
+	$("#obraSocial_nombre").html( "{planes_legend} " + attrs["nombre"] );
+
+	data = new Array();
+	data["obraSocialOid"] = attrs["oid"];
+	event = new $.fn.rasty.RastyEvent("obraSocialChange", data, "ObraSocial");
+	subject.notify(event);
+	
+}
+
+</script>
+
+<div id="horarios_home">
+
+	<div align="justify">
+		<p class="titulo">{title}</p>
+	</div>
+
+	<fieldset>
+		<legend>{obraSocial_legend}</legend>
+		<div class="item">
+	    	<label for="obraSocialMain">{lbl_obraSocial}</label>
+	    	<rasty id="obraSocialMain" />
+		</div>
+		
+	</fieldset>
+
+	<div id="horarios_left">
+		<fieldset>
+			<legend id="obraSocial_nombre">{planes_legend} {obraSocialNombre}</legend>
+			<rasty id="planes" />	
+		</fieldset>
+	</div>
+	
+	<div id="horarios_right">
+		<rasty id="planObraSocialForm" />
+	</div>
+
+</div>
+<!-- END: main-->

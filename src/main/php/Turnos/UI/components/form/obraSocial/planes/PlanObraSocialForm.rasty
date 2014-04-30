@@ -1,0 +1,38 @@
+<rasty specificationClass="Turnos\UI\components\form\obraSocial\planes\PlanObraSocialForm" templateLocation="PlanObraSocialForm.htm">
+
+	<param name="error" value="get:error" />
+	<param name="obraSocialOid" value="get:obraSocialOid" />
+
+	<component id="backSuccess" type="InputHidden">
+		<param name="inputId" value="str:backToOnSuccess" />
+		<param name="name" value="str:backToOnSuccess" />
+		<param name="value" value="backToOnSuccess" />
+	</component>
+
+	<component id="oid" type="InputHidden">
+		<param name="inputId" value="str:oid" />
+		<param name="name" value="str:oid" />
+		<param name="value" value="planObraSocial.oid" />
+	</component>
+	
+	<component id="nombre" type="InputText">
+		<param name="inputId" value="str:nombre" />
+		<param name="name" value="str:nombre" />
+		<param name="value" value="planObraSocial.nombre" />
+		<param name="requiredMessage" value="msg:obraSocial.nombre.required" />
+		<param name="placeholder" value="msg:obraSocial.nombre" />
+		<param name="styleCss" value="str:uppercase" />
+	</component>
+	
+
+	<component id="obraSocial" type="InputFindEntity">
+		<param name="inputId" value="str:obraSocial" />
+		<param name="name" value="str:obraSocial" />
+		<param name="value" value="planObraSocial.obraSocial" />
+		<param name="placeholder" value="msg:planObraSocial.obraSocial" />
+		<param name="finder" value="obraSocialFinderClazz" />
+		<param name="requiredMessage" value="msg:planObraSocial.obraSocial.required" />
+		<param name="isEditable" value="boolean:false" />
+	</component>
+	
+</rasty>

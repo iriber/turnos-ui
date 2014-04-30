@@ -141,5 +141,12 @@
 		<param name="isEditable" value="boolean:true" />
 	</component>
 	
-	
+	<component id="planObraSocial" type="InputCombo">
+		<param name="inputId" value="str:planObraSocial" />
+		<param name="name" value="str:planObraSocial" />
+		<param name="value" value="clienteObraSocial.planObraSocial.oid" />
+		<param name="options" value="planesObraSocial" />
+		<param name="placeholder" value="msg:cliente.planObraSocial" />
+		<param name="isEditable" value="boolean:true" />
+	</component>
 </rasty>

@@ -43,7 +43,7 @@ class Atenciones extends TurnosPage{
 		//reportes
 		$this->parseReporte( $xtpl, $this->localize("stats.profesional.pacientesDia.legend"), "TotalesDia" );
 		$this->parseReporte( $xtpl, $this->localize("stats.profesional.pacientesMes.legend"), "PacientesMes" );
-		$this->parseReporte( $xtpl, $this->localize("stats.profesional.pacientesAnio.legend"), "AgendaTurnos" );
+		//$this->parseReporte( $xtpl, $this->localize("stats.profesional.pacientesAnio.legend"), "AgendaTurnos" );
 		
 		
 		

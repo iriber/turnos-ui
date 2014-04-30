@@ -77,9 +77,21 @@ class HistoriaClinica extends RastyComponent{
 			$xtpl->assign("nomenclador_codigo", $practica->getNomenclador()->getCodigo() ); 
 			$xtpl->assign("nomenclador_nombre", $practica->getNomenclador()->getNombre() ); 
 			
+			$osNombre = "";
 			$os = $practica->getObraSocial();
 			if(!empty($os))
-			$xtpl->assign("obraSocial", $practica->getObraSocial()->getNombre() );
+				$osNombre = $os->getNombre();
+			
+			$pos = $practica->getPlanObraSocial();
+			if(!empty($pos))
+				$osNombre .= " " . $pos->getNombre();
+			
+			$osNombre .= " / " . $practica->getNroObraSocial();
+					
+			$xtpl->assign("obraSocial", $osNombre );
+			
+			
+			
 			
 			$xtpl->assign("escribir_css" , "" );
 			

@@ -125,5 +125,11 @@ abstract class TurnosPage extends RastyPage{
 		
 	}
 	
+	public function getLinkActionAgregarPlanObraSocial(){
+		
+		return LinkBuilder::getActionUrl( "AgregarPlanObraSocial") ;
+		
+	}
+	
 }
 ?>

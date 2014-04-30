@@ -1,4 +1,9 @@
 <!-- BEGIN:main -->
+<script language="javascript"
+	src="{WEB_PATH}js/autocomplete/simpleAutoComplete.js"></script>
+<link rel="stylesheet"
+	href="{WEB_PATH}css/autocomplete/simpleAutoComplete.css"
+	type="text/css" />
 
 <script>
 
@@ -6,12 +11,16 @@ function turnoshortsubmit(){
 
 
 	var resp =  validate( "turno_short_form" );
+
+	//vemos si agregamos o modificamos
+	var url = '{urlSubmit}';
+	
 	
 	if( resp ){
 
 		var formData = $( "#turno_short_form" ).serialize();
 		$.ajax({
-				url: "{WEB_PATH}turnos/agregarjson.json",
+				url: url,
 				type: "POST",
 				data: formData,
 				dataType: "json",
@@ -43,6 +52,8 @@ $(function() {
 	<fieldset>
 		<legend>{turno_legend}</legend>
 
+		<rasty id="oid" />
+		
 		<div class="item">
 		    <label for="profesional">{lbl_profesional} *:</label>
 		    <rasty id="profesional" />
@@ -74,6 +85,11 @@ $(function() {
 		<div class="item" style="min-width: {minWidth};">
 		    <label for="telefono">{lbl_telefono}:</label>
 		    <rasty id="telefono" />
+		</div>
+
+		<div class="item">
+		    <label for="observaciones">{lbl_observaciones}:</label>
+		    <rasty id="observaciones" />
 		</div>
 
 	</fieldset>

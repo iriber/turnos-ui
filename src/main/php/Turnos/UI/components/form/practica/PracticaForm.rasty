@@ -25,19 +25,20 @@
 	<component id="obraSocial" type="InputFindEntity">
 		<param name="inputId" value="str:obraSocial" />
 		<param name="name" value="str:obraSocial" />
-		<param name="value" value="practica.obraSocial" />
+		<param name="value" value="clienteObraSocial.obraSocial" />
 		<param name="placeholder" value="msg:practica.obraSocial" />
 		<param name="finder" value="obraSocialFinderClazz" />
 		<param name="hasAddEntity" value="boolean:true" />
 		<param name="hasPopup" value="boolean:true" />
 		<param name="popupFilterType" value="str:ObraSocialFilter" />
 		<param name="popupFormType" value="str:ObraSocialQuickForm" />
+		<param name="onSelectCallback" value="str:obraSocialchange" />
 	</component>
 
 	<component id="nroObraSocial" type="InputText">
 		<param name="inputId" value="str:nroObraSocial" />
 		<param name="name" value="str:nroObraSocial" />
-		<param name="value" value="practica.nroObraSocial" />
+		<param name="value" value="clienteObraSocial.nroObraSocial" />
 		<param name="placeholder" value="msg:practica.nroObraSocial" />
 	</component>
 
@@ -90,9 +91,18 @@
 	<component id="tipoAfiliado" type="InputCombo">
 		<param name="inputId" value="str:tipoAfiliado" />
 		<param name="name" value="str:tipoAfiliado" />
-		<param name="value" value="practica.tipoAfiliado" />
+		<param name="value" value="clienteObraSocial.tipoAfiliado" />
 		<param name="options" value="tiposAfiliado" />
 		<param name="placeholder" value="msg:practica.tipoAfiliado" />
+		<param name="isEditable" value="boolean:true" />
+	</component>
+	
+	<component id="planObraSocial" type="InputCombo">
+		<param name="inputId" value="str:planObraSocial" />
+		<param name="name" value="str:planObraSocial" />
+		<param name="value" value="clienteObraSocial.planObraSocial.oid" />
+		<param name="options" value="planesObraSocial" />
+		<param name="placeholder" value="msg:practica.planObraSocial" />
 		<param name="isEditable" value="boolean:true" />
 	</component>
 </rasty>

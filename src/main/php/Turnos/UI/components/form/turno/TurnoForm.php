@@ -21,6 +21,7 @@ use Turnos\Core\model\Cliente;
 use Turnos\Core\model\Turno;
 use Turnos\Core\model\EstadoTurno;
 use Turnos\Core\model\ObraSocial;
+use Turnos\Core\model\ClienteObraSocial;
 use Turnos\Core\model\Profesional;
 use Turnos\Core\model\Prioridad;
 use Turnos\Core\model\TipoAfiliadoObraSocial;
@@ -56,6 +57,8 @@ class TurnoForm extends Form{
 	 */
 	private $turno;
 	
+	private $clienteObraSocial;
+	
 	public function __construct(){
 
 		parent::__construct();
@@ -69,9 +72,6 @@ class TurnoForm extends Form{
 		$this->addProperty("hora");
 		$this->addProperty("cliente");
 		$this->addProperty("profesional");
-		$this->addProperty("obraSocial");
-		$this->addProperty("nroObraSocial");
-		$this->addProperty("tipoAfiliado");
 		$this->addProperty("importe");
 		$this->addProperty("estado");
 		$this->addProperty("prioridad");
@@ -80,11 +80,19 @@ class TurnoForm extends Form{
 		$this->addProperty("nombre");
 		$this->addProperty("nomenclador");
 		$this->addProperty("observaciones");
+
+		$this->addProperty("obraSocial", "clienteObraSocial");
+		$this->addProperty("nroObraSocial", "clienteObraSocial");
+		$this->addProperty("tipoAfiliado", "clienteObraSocial");
+		//$this->addProperty("planObraSocial", "clienteObraSocial");
 		
 		$this->setBackToOnSuccess("TurnosHome");
 		$this->setBackToOnCancel("TurnosHome");	
 		
-		$this->setTurnoOid( RastyUtils::getParamGET("turnoOid",0));
+		$this->clienteObraSocial = new ClienteObraSocial();
+		
+		//$this->setTurnoOid( RastyUtils::getParamGET("turnoOid",0));
+
 		
 	}
 	
@@ -103,6 +111,19 @@ class TurnoForm extends Form{
 		$input = $this->getComponentById("backSuccess");
 		$value = $input->getPopulatedValue( $this->getMethod() );
 		$this->setBackToOnSuccess($value);
+
+		//buscamos el plan de obra social (está en un combo asi que tenemos el oid)
+		
+		$planOid = $this->getComponentById("planObraSocial")->getPopulatedValue( $this->getMethod() );
+		if(!empty($planOid)){
+			$this->clienteObraSocial->setPlanObraSocial( UIServiceFactory::getUIPlanObraSocialService()->get($planOid) );
+		}
+		
+		$this->fillRelatedEntity("clienteObraSocial", $this->clienteObraSocial );
+		
+		$this->clienteObraSocial->setCliente($entity->getCliente());
+		$entity->setClienteObraSocial($this->clienteObraSocial);
+		
 		
 		//uppercase para el nombre del paciente
 		$entity->setNombre( strtoupper( $entity->getNombre() ) );
@@ -132,7 +153,11 @@ class TurnoForm extends Form{
 			$xtpl->assign("estadoTurnoDefault", EstadoTurno::Asignado );
 		
 		$xtpl->assign("quirofanoOid", TurnosUtils::getQuirofanoOid() );
-			
+		
+		$plan = $this->getTurno()->getPlanObraSocial();
+		if($plan!=null)
+			$xtpl->assign("planObraSocialOid", $plan->getOid() );
+				
 		$xtpl->assign("cancel", $this->getLinkCancel() );
 		$xtpl->assign("lbl_cancel", $this->localize( $this->getLabelCancel() ) );
 		
@@ -148,6 +173,9 @@ class TurnoForm extends Form{
 		$xtpl->assign("lbl_obraSocial", $this->localize("turno.obraSocial") );
 		$xtpl->assign("lbl_nroObraSocial", $this->localize("turno.nroObraSocial") );
 		$xtpl->assign("lbl_tipoAfiliado", $this->localize("turno.tipoAfiliado") );
+		$xtpl->assign("lbl_planObraSocial", $this->localize("turno.planObraSocial") );
+		$xtpl->assign("buscar_obraSocial_title", $this->localize("turno.buscarClienteObraSocial.title") );
+		
 		$xtpl->assign("lbl_estado", $this->localize("turno.estado") );
 		$xtpl->assign("lbl_importe", $this->localize("turno.importe") );
 		$xtpl->assign("lbl_prioridad", $this->localize("turno.prioridad") );
@@ -155,6 +183,7 @@ class TurnoForm extends Form{
 		$xtpl->assign("lbl_nomenclador", $this->localize("turno.nomenclador") );
 		
 		$xtpl->assign("lbl_profesionalOpera", $this->localize("turno.profesionalOpera") );
+		
 		
 		//si el cliente aún no fue registrado, mostramos el nombre y el teléfono indicados en el turno.
 		$cliente = $this->getTurno()->getCliente();
@@ -173,7 +202,8 @@ class TurnoForm extends Form{
 			$xtpl->parse("main.cliente_registrado" );
 			
 		}
-		
+		//$xtpl->assign("lbl_verObrasSociales", $this->localize("turno.clienteObraSocial.buscar.msg") );
+		$xtpl->assign("btn_verObrasSociales", $this->localize("turno.clienteObraSocial.buscar") );
 		$xtpl->assign("lbl_agregar_cliente", $this->localize( "turno.cliente.agregar" ) );
 		$xtpl->assign("buscar_cliente_title", $this->localize( "turno.cliente.validar.buscar.title" ) );
 		
@@ -224,6 +254,11 @@ class TurnoForm extends Form{
 	public function setTurno($turno)
 	{
 	    $this->turno = $turno;
+	    
+	    $this->getClienteObraSocial()->setObraSocial($turno->getObraSocial());
+		$this->getClienteObraSocial()->setNroObraSocial($turno->getNroObraSocial());
+		$this->getClienteObraSocial()->setPlanObraSocial($turno->getPlanObraSocial());
+		$this->getClienteObraSocial()->setTipoAfiliado($turno->getTipoAfiliado());
 	}
 	
 	public function getHoras(){
@@ -308,6 +343,8 @@ class TurnoForm extends Form{
 			$turno = UIServiceFactory::getUITurnoService()->get($turnoOid);
 		
 			$this->setTurno($turno);
+			
+			
 		}
 	    
 		
@@ -321,10 +358,71 @@ class TurnoForm extends Form{
 	
 	public function getTiposAfiliado(){
 		
-		return TurnosUtils::localizeEntities(TipoAfiliadoObraSocial::getItems());	
+		$tipos[-1] = $this->localize("tipoAfiliado.elegir");
+		
+		$tipos = array_merge($tipos, TurnosUtils::localizeEntities(TipoAfiliadoObraSocial::getItems()));
+		
+		return $tipos;
 		
 	}
 	
+	public function getPlanesObraSocial(){
+		
+		$os = $this->getTurno()->getObraSocial();
+		
+		$planesArray = array();
+		$planesArray[-1] = $this->localize("planObraSocial.elegir");;
+		if( !empty($os) && $os!= null && $os->getOid()!=null ){
+			$planes = UIServiceFactory::getUIPlanObraSocialService()->getPlanes($os);
+			foreach ($planes as $plan) {
+				$planesArray[$plan->getOid()] = $plan->getNombre();
+			}
+		}	
+		
+		return $planesArray;
+	}
+	
+
+	public function getClienteObraSocial()
+	{
+	    return $this->clienteObraSocial;
+	}
+
+	public function setClienteObraSocial($clienteObraSocial)
+	{
+	    $this->clienteObraSocial = $clienteObraSocial;
+	}
+	
+	
+	/**
+	 * redefinimos para llenar clienteObraSocial
+	 */
+	public function fillFromSaved($entity=null){
+	
+		//$page = RastyUtils::getParamSESSION("page",1);
+    	//$this->setPage($page);
+
+		parent::fillFromSaved($entity);
+		//Logger::log("begin fillFromSaved");
+		
+		$properties = array("obraSocial", "nroObraSocial", "tipoAfiliado");
+		
+		foreach ($properties as $property) {
+			
+			$value = $this->getSavedProperty($property);
+
+			if(!empty($value )){
+				
+				$input = $this->getComponentById($property);
+				$value = $input->formatValue($value);
+				$input->setValue($value);	
+				
+				if(!empty($this->clienteObraSocial))
+					ReflectionUtils::doSetter( $this->clienteObraSocial, $property, $value );
+			}
+			
+		}
+	}
 	
 }
 ?>

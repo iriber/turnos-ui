@@ -40,7 +40,8 @@ class ClienteFinder implements  IAutocompleteFinder {
 		//return UIServiceFactory::getUIClienteService()->get( $code );
 		
 		if(!empty($code))
-		return UIServiceFactory::getUIClienteService()->getByHistoriaClinica($code);
+		//return UIServiceFactory::getUIClienteService()->getByHistoriaClinica($code);
+		return UIServiceFactory::getUIClienteService()->get( $code );
 	}
 	
 	/**
@@ -56,7 +57,7 @@ class ClienteFinder implements  IAutocompleteFinder {
 	 * @see service/finder/Rasty\Forms\finder\model.IAutocompleteFinder::getAttributesCallback()
 	 */
 	public function getAttributesCallback(){
-		return array("nroHistoriaClinica","nombre", "oid", "fechaAltaFormateada", "fechaNacimientoFormateada", "edad", "obraSocial.oid", "obraSocial.nombre", "nroObraSocial", "tipoAfiliado");		
+		return array("nroHistoriaClinica","nombre", "oid", "fechaAltaFormateada", "fechaNacimientoFormateada", "edad", "obraSocial.oid", "obraSocial.nombre", "nroObraSocial", "tipoAfiliado", "planObraSocial.oid");		
 	}
 	
 	/**
@@ -66,8 +67,8 @@ class ClienteFinder implements  IAutocompleteFinder {
 	function getEntityCode( $entity ){
 		if( !empty( $entity)  )
 		
-		//return $entity->getOid();
-		return $entity->getNroHistoriaClinica();
+		return $entity->getOid();
+		//return $entity->getNroHistoriaClinica();
 	}
 	
 	/**
@@ -84,8 +85,8 @@ class ClienteFinder implements  IAutocompleteFinder {
 	 * @see service/finder/Rasty\Forms\finder\model.IAutocompleteFinder::getEntityFieldCode()
 	 */
 	function getEntityFieldCode( $entity ){
-		//return "oid";
-		return "nroHistoriaClinica";
+		return "oid";
+		//return "nroHistoriaClinica";
 	}
 	
 	/**

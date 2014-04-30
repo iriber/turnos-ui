@@ -1,0 +1,5 @@
+<rasty specificationClass="Turnos\UI\components\obrasSociales\planes\PlanesObraSocial" templateLocation="PlanesObraSocial.htm">
+
+	<param name="obraSocialOid" value="get:obraSocialOid" />
+	
+</rasty>

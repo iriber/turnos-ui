@@ -1,0 +1,87 @@
+<!-- BEGIN: main-->
+<script>
+function selectItemClienteObraSocial(clienteObraSocialOid, obraSocialOid, obraSocialNombre, planObraSocialOid, nroObraSocial,tipoAfiliado){
+
+	//cerramos el diálogo
+	closePopup("#{popupDivId}");
+	
+	//notificamos el evento
+	data = new Array();
+	data["obraSocialOid"] = obraSocialOid;
+	data["obraSocialNombre"] = obraSocialNombre;
+	data["planObraSocialOid"] = planObraSocialOid;
+	data["nroObraSocial"] = nroObraSocial;
+	data["tipoAfiliado"] = tipoAfiliado;
+
+	{selectRowCallback}(data);
+}
+
+</script>
+
+<div class="grid" >
+
+	<div class="grid_filters">
+	<fieldset>
+        
+       	<legend>{obras_legend} - {clienteNombre}</legend>
+    	
+    </fieldset>
+    </div>
+    <div class="grid_filters_actions">
+	<fieldset>
+		<legend>{legend_opciones}</legend>
+		<!-- BEGIN: add -->
+		<button class="shortcut"
+			onclick="javascript: {onClickAdd}(); return false;">
+			<i class="icon-plus"></i>{label_add}
+		</button>
+		<!-- END: add -->
+		<button class="shortcut"
+			onclick="javascript: closePopup('#{popupDivId}'); return false;">
+			<i class="icon-exit"></i>{label_close}
+		</button>
+	</fieldset>
+	</div>
+    
+    <!-- BEGIN: obrasSociales -->
+    <div class="block">
+    	<table border="1">
+			<thead>
+				<tr style="white-space: nowrap;">
+					<th>{obraSocialOid_label}</th>
+					<th>{obraSocialNombre_label}</th>
+					<th>{planObraSocialNombre_label}</th>
+					<th>{nroObraSocial_label}</th>
+					<th>{tipoAfiliado_label}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- BEGIN: obraSocial -->
+				<tr style="cursor:pointer; white-space: nowrap;" onclick="selectItemClienteObraSocial('{clienteObraSocialOid}', '{obraSocialOid}', '{obraSocialNombre}', '{planObraSocialOid}', '{nroObraSocial}','{tipoAfiliado}'  );">
+					<td>{obraSocialOid}</td>
+					<td>{obraSocialNombre}</td>
+					<td>{planObraSocialNombre}</td>
+					<td>{nroObraSocial}</td>
+					<td>{tipoAfiliadoNombre}</td>
+				</tr>
+				<!-- END: obraSocial -->
+			</tbody>
+		</table>	
+    </div>
+    <!-- END: obrasSociales -->
+    
+    <!-- BEGIN: seleccionarYCerrar -->
+    <script>
+		//tiene una única obra social, la seleccionamos y cerramos el diálogo.
+		selectItemClienteObraSocial('{clienteObraSocialOid}', '{obraSocialOid}', '{obraSocialNombre}', '{planObraSocialOid}', '{nroObraSocial}','{tipoAfiliado}'  );
+    	
+    </script>
+    <!-- END: seleccionarYCerrar -->
+    <!-- BEGIN: cerrar -->
+    <script>
+		//si no tiene obra social, cerramos el diálogo.
+		closePopup("#{popupDivId}");
+    </script>
+    <!-- END: seleccionarYCerrar -->
+</div>
+<!-- END: main-->

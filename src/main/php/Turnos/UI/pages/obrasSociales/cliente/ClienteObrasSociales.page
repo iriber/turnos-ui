@@ -1,0 +1,9 @@
+<rasty specificationClass="Turnos\UI\pages\obrasSociales\cliente\ClienteObrasSociales" templateLocation="pages/obrasSociales/cliente/ClienteObrasSociales.htm"> 
+
+	<param name="layoutType" value="str:TurnosPopupLayout" />
+	
+	<param name="clienteOid" value="get:clienteOid" />
+	<param name="popupDivId" value="get:popupDivId" />
+	<param name="selectRowCallback" value="get:selectRowCallback" />
+
+</rasty>
