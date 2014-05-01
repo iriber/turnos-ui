@@ -113,6 +113,12 @@ class AgendaEnSala extends RastyComponent{
 		$xtpl->assign("importe", TurnosUtils::formatMontoToView($turno->getImporte()) );
 		$xtpl->assign("turno_oid",  $turno->getOid() );
 			
+		$observaciones = $turno->getObservaciones();
+		if(!empty($observaciones)){
+				$xtpl->assign("observaciones", $turno->getObservaciones());
+				$xtpl->parse("main.turno.observaciones");
+		}
+		
 		
 		//TODO esto sólo cuando tengo el profesional.
 		if( $this->getProfesional() != null ){

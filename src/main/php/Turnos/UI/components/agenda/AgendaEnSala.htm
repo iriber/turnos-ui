@@ -26,7 +26,11 @@ $(document).ready(function(){
 		<div class="agenda_turno {first_css} {last_css} {odd_css}" style="display: block;">
 			<h2 class="{prioridad_css}" title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente}<br>
 			<span>{obra_social}</span>
-			<span>{importe}</span>
+			<span class="importe">{importe}</span>
+			<!-- BEGIN:observaciones -->
+			<span class="observaciones">{observaciones}</span>
+			<!-- END:observaciones -->
+			
 			</h2>
 			<p class="{turno_css}">
 				<span>{hora}<!-- BEGIN:duracion -->{duracion}<!-- END:duracion --></span>
