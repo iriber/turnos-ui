@@ -145,6 +145,13 @@ class TurnoQuickForm extends Form{
 		
 		parent::parseXTemplate($xtpl);
 		
+		
+		$fecha = $this->getTurno()->getFecha();
+		$profesional= $this->getTurno()->getProfesional();
+		$hora = $this->getTurno()->getHora();
+		$turnoPara = TurnosUtils::formatMessage($this->localize("turno.para.descripcion"), array( $profesional, TurnosUtils::formatDateToView($fecha, "l j F Y"), TurnosUtils::formatTimeToView($hora) ));
+		$xtpl->assign("lbl_turno", $turnoPara );
+		
 		$xtpl->assign("lbl_fecha", $this->localize("turno.fecha") );
 		$xtpl->assign("lbl_hora", $this->localize("turno.hora") );
 		$xtpl->assign("lbl_profesional", $this->localize("turno.profesional") );

@@ -41,6 +41,8 @@ function turnoshortsubmit(){
 $(function() {
 
 	$("#nombre").focus();
+
+	$(".oculto").hide();
 	
 });
 
@@ -52,24 +54,26 @@ $(function() {
 	<fieldset>
 		<legend>{turno_legend}</legend>
 
+		{lbl_turno}	
+
 		<rasty id="oid" />
 		
-		<div class="item">
+		<div class="item oculto">
 		    <label for="profesional">{lbl_profesional} *:</label>
 		    <rasty id="profesional" />
 		</div>
 				
-		<div class="item">
-		    <label for="fecha">{lbl_fecha} *:</label>
+		<div class="item oculto">
+		    <label for="fecha ">{lbl_fecha} *:</label>
 		    <rasty id="fecha" />
 		</div>
 
-		<div class="item" style="min-width: {minWidth};">
+		<div class="item  oculto" style="min-width: {minWidth};">
 		    <label for="hora">{lbl_hora} *:</label>
 		    <rasty id="hora" />
 		</div>
 		
-		<div class="item">
+		<div class="item oculto">
 		    <label for="duracion">{lbl_duracion} *:</label>
 		    <rasty id="duracion" />
 		</div>

@@ -123,6 +123,8 @@
 	"turno.agregar_sobreturno.title": "Agregar un nuevo sobre turno",
 	"turno.agregar_sobreturno.legend": "Ingrese los datos del sobre turno",
 
+	"turno.para.descripcion": "Turno para $1 el día $2 a las $3 hs",
+
 	"turno.enSala": "Poner el paciente en sala",
 	
 	"turno.buscarClienteObraSocial.title": "Seleccionar la obra social del paciente",

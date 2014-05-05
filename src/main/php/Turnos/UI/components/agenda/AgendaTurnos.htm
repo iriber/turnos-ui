@@ -34,7 +34,7 @@ function agendaTurnos{id}_show_addturnoquick(fecha, hora, profesional){
 	var initialText = "";
 	var title = "Asignando nuevo turno";
 	var width = "60%";
-	var height = "550";
+	var height = "450";
 	extraParams = "hora=" + encodeURI(hora) + "&" + "fecha=" + encodeURI(fecha) + "&" + "profesional=" + encodeURI(profesional)+ "&" + "action=AgregarTurnoJson";
 
 	console.log("extraParams:" + extraParams);
@@ -93,7 +93,7 @@ function agendaTurnos{id}_show_updateturnoquick( turnoOid ){
 	var initialText = "";
 	var title = "Modificando turno";
 	var width = "60%";
-	var height = "550";
+	var height = "450";
 	var extraParams = "turnoOid=" + encodeURI(turnoOid)+ "&" + "action=ModificarTurnoJson";
 
 	console.log("extraParams:" + extraParams);
