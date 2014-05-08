@@ -126,11 +126,11 @@ $(document).ready(function(){
 				}
 			);	
 	
+	/*
 	var isChrome = !!window.chrome && !!window.chrome.webstore;
 	if( isChrome ){
 		$(".agenda_turno").width("95%");
-	}
-
+	}*/
 		
 	$(".agenda_turno").hover(
 					function () {
@@ -197,7 +197,7 @@ reinit();
 
 		
 		<!-- BEGIN: turno -->
-		<div class="agenda_turno {first_css} {last_css} {odd_css}" style="display: block;" >
+		<div class="agenda_turno {first_css} {last_css} {odd_css}" >
 		
 			<!-- BEGIN: turno_no_disponible -->
 			<h2 title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{mensaje}
@@ -295,7 +295,7 @@ reinit();
 				<!-- END: libre_altaa -->
 			
 			<!-- END: turno_disponible -->
-			
+			<div style="clear:both;"></div>
 		</div>
 		<!-- END: turno -->
 		

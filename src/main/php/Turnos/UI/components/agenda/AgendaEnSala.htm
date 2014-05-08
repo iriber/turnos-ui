@@ -7,11 +7,11 @@ function agendaEnSala{id}_turnoChange(data){
 }
 
 $(document).ready(function(){
-	
+	/*
 	var isChrome = !!window.chrome && !!window.chrome.webstore;
 	if( isChrome ){
 		$(".agenda_turno").width("95%");
-	}
+	}*/
 });
 
 </script>
@@ -23,7 +23,7 @@ $(document).ready(function(){
 <div class="agenda">
 	<div class="totalPacientes">{totalPacientes_label}: {totalPacientes}</div>
 		<!-- BEGIN: turno -->
-		<div class="agenda_turno {first_css} {last_css} {odd_css}" style="display: block;">
+		<div class="agenda_turno {first_css} {last_css} {odd_css}">
 			<h2 class="{prioridad_css}" title='{linkSeleccionarLabel}' style="cursor:pointer;" onclick="javascript: gotoLink('{linkSeleccionarTurno}');">{cliente}<br>
 			<span>{obra_social}</span>
 			<span class="importe">{importe}</span>
@@ -57,6 +57,7 @@ $(document).ready(function(){
 				{prioridad}
 			</p>
 			<!-- END: prioridaddd -->
+			<div style="clear:both;"></div>
 		</div>
 		<!-- END: turno -->
 		
