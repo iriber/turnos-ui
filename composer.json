@@ -41,7 +41,8 @@
         "niktux/addendum": "dev-master",
         "dompdf/dompdf" : "dev-master",
         "realityking/pchart": "dev-master",
-        "beberlei/DoctrineExtensions": "dev-master"
+        "beberlei/DoctrineExtensions": "dev-master",
+        "mobiledetect/mobiledetectlib": "dev-master"
     }
     
 }

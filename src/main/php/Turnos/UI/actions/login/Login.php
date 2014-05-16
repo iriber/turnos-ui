@@ -37,11 +37,11 @@ class Login extends Action{
 				$profesional = UIServiceFactory::getUIProfesionalService()->getProfesionalByUser( $user );
 				TurnosUtils::login( $profesional );
 				
-				$forward->setPageName( "ProfesionalHome" );
+				$forward->setPageName( $this->getForwardProfesional() );
 					
 			}else{
 				
-				$forward->setPageName( "TurnosHome" );
+				$forward->setPageName( $this->getHomeForward() );
 			}
 			
 			
@@ -49,7 +49,7 @@ class Login extends Action{
 		
 		} catch (RastyException $e) {
 		
-			$forward->setPageName( "Login" );
+			$forward->setPageName( $this->getErrorForward() );
 			$forward->addError( $e->getMessage() );
 			
 		}
@@ -57,6 +57,17 @@ class Login extends Action{
 		return $forward;
 		
 	}
+	
+	protected function getForwardProfesional(){
+		return "ProfesionalHome";
+	}
 
+	protected function getHomeForward(){
+		return "TurnosHome";
+	}
+	
+	protected function getErrorForward(){
+		return "Login";
+	}
 }
 ?>

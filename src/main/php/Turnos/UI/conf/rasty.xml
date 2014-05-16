@@ -50,7 +50,10 @@
 	<!-- declaración de los componentes -->
 	<component name="HeaderNav" location="components/header" />
 	<component name="HeaderNavMetro" location="components/header" />
+	<component name="HeaderMobileTurnos" location="components/header" />
+	
 	<component name="FooterTurnos" location="components/footer" />
+	<component name="FooterMobileTurnos" location="components/footer" />
 	
 	<component name="AgendaTurnos" location="components/agenda" />
 	<component name="AgendaEnSala" location="components/agenda" />
@@ -117,8 +120,14 @@
 	<component name="TurnosLoginMetroLayout" location="layouts" />
 	<component name="TurnosPdfLayout" location="layouts" />
 	
+	<component name="TurnosMobileLayout" location="layouts" />
+	
+	
 	<!-- declaración de las actions -->
 	<action name="Login" class="Turnos\UI\actions\login\Login" url="login"/>
+	<action name="LoginJson" class="Turnos\UI\actions\login\LoginJson" url="loginjson"/>
+	
+	
 	<action name="Logout" class="Turnos\UI\actions\login\Logout" url="logout"/>
 
 	<action name="AgregarAusencia" class="Turnos\UI\actions\horarios\AgregarAusencia" url="ausencia/agregar"/>
@@ -176,4 +185,36 @@
 	<library name="phprasty_forms" app_path="/home/bernardo/workspace_php/phprasty_forms/src/main/php/Rasty/Forms" web_path="/rasty_fmk/phprasty_forms/"/>
 	<library name="phprasty_menu" app_path="/home/bernardo/workspace_php/phprasty_menu/src/main/php/Rasty/Menu" web_path="/rasty_fmk/phprasty_menu/"/>
 	-->
+	
+	
+	<!-- 
+		*******************
+		MOBILE 
+		*******************
+	-->
+	
+	<!-- declaración de las páginas -->
+	<page name="LoginMobile" location="pages/mobile/login/LoginMobile.page" url="mobile/login"/>
+	<page name="ProfesionalHomeMobile"   location="pages/mobile/ProfesionalHomeMobile.page" url="mobile/home"/>
+	
+	<!-- declaración de los componentes -->
+	<component name="HeaderMobileTurnos" location="components/header" />
+	<component name="FooterMobileTurnos" location="components/footer" />
+	
+	<!-- layouts -->
+	<component name="TurnosLoginMobileLayout" location="layouts" />
+	<component name="TurnosLoginMobileLayout" location="layouts" />
+	
+	<!-- declaración de las actions -->
+	<action name="LoginMobile" class="Turnos\UI\actions\login\LoginMobile" url="mobile/login"/>
+	
+	
+	<!-- API JSON -->
+	<action name="LoginApiJson" class="Turnos\UI\actions\apijson\LoginApiJson" url="apijson/loginjson"/>
+	<action name="ProfesionalHomeAPIJSON" class="Turnos\UI\actions\apijson\profesionales\ProfesionalHomeApiJson" url="apijson/profesionalHome"/>
+	<action name="TurnosDiaAPIJSON" class="Turnos\UI\actions\apijson\profesionales\TurnosDiaApiJson" url="apijson/turnosDia"/>
+	<action name="HistoriaClinicaAPIJSON" class="Turnos\UI\actions\apijson\clientes\HistoriaClinicaApiJson" url="apijson/historiaClinica"/>
+	<action name="ClientesAPIJSON" class="Turnos\UI\actions\apijson\clientes\ClientesApiJson" url="apijson/clientes"/>
+	
+	
 </rasty-application>

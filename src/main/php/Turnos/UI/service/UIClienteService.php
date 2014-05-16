@@ -66,6 +66,7 @@ class UIClienteService implements IEntityGridService{
 			
 		}	
 	}
+	
 
 	
 	function getEntitiesCount($uiCriteria){
@@ -208,6 +209,24 @@ class UIClienteService implements IEntityGridService{
 			
 		}	
 		
+	}
+	
+	public function getCount( UIClienteCriteria $uiCriteria){
+
+		try{
+			$criteria = $uiCriteria->buildCoreCriteria() ;
+			
+			$service = ServiceFactory::getClienteService();
+			
+			$clientes = $service->getCount( $criteria );
+	
+			return $clientes;
+			
+		} catch (\Exception $e) {
+			
+			throw new RastyException($e->getMessage());
+			
+		}	
 	}
 }
 ?>
