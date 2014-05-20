@@ -126,14 +126,14 @@ function finalizarTurno(link, oid, hora, cliente, clienteOid, onSuccess){
 	  	url:  link + "?oid="+oid,
 	  	type: "GET",
 	  	cache: false,
-		complete:function(){
+	  	dataType: "json",
+	  	complete:function(){
 			//$("#loading").hide();
 			//$("#current_action").html("");
 		},
 	  	success: function(data){
 		  	
 			//$("#nextOffer").html("");
-			data = $.parseJSON(data);
 			if( data != null && data["error"]!=null){
 				msg = data["error"];
 				showErrorMessage(msg);
