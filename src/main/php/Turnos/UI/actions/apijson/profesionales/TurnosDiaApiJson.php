@@ -38,7 +38,13 @@ class TurnosDiaApiJson extends TurnosApiJson{
 		}
 			
 		$profesional = TurnosUtils::getProfesionalLogged();
-		$fecha =  new \Datetime();
+		
+		$strFecha = RastyUtils::getParamGET("fecha");
+		if( !empty($strFecha) ){
+			$fecha = TurnosUtils::newDateTime($strFecha) ;
+		}else{
+			$fecha = TurnosUtils::getFechaAgenda();
+		}
 		
 		$nombre = $profesional->getNombre();
 		
@@ -104,6 +110,8 @@ class TurnosDiaApiJson extends TurnosApiJson{
 			);			
 				
 
+		$response["fecha"] = TurnosUtils::formatDateToView($fecha);			
+			
 		return $response;
 		
 	}
