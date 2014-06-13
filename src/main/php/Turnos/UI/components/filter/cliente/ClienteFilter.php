@@ -40,6 +40,7 @@ class ClienteFilter extends Filter{
 		$this->addProperty("obraSocialNombre");
 		$this->addProperty("nroObraSocial");
 		$this->addProperty("domicilio");
+		$this->addProperty("nroDocumento");
 		
 	}
 	
@@ -55,6 +56,7 @@ class ClienteFilter extends Filter{
 		$xtpl->assign("lbl_obraSocialNombre",  $this->localize("cliente.obraSocial") );
 		$xtpl->assign("lbl_nroObraSocial",  $this->localize("cliente.nroObraSocial") );
 		$xtpl->assign("lbl_domicilio",  $this->localize("cliente.domicilio") );
+		$xtpl->assign("lbl_nroDocumento",  $this->localize("cliente.nroDocumento") );
 		
 		//$xtpl->assign("linkSeleccionar",  LinkBuilder::getPageUrl( "HistoriaClinica") );
 		$xtpl->assign("linkSeleccionar",  LinkBuilder::getPageUrl( "ClienteModificar") );

@@ -23,6 +23,8 @@ class UIClienteCriteria extends UITurnosCriteria{
 	
 	private $nroObraSocial;
 	
+	private $nroDocumento;
+	
 	private $obraSocialNombre;
 
 	private $domicilio;
@@ -68,6 +70,7 @@ class UIClienteCriteria extends UITurnosCriteria{
 		$criteria->setNroObraSocial( $this->getNroObraSocial() );
 		$criteria->setObraSocialNombre( $this->getObraSocialNombre() );
 		$criteria->setDomicilio( $this->getDomicilio() );
+		$criteria->setNroDocumento( $this->getNroDocumento() );
 		
 		return $criteria;
 	}
@@ -100,5 +103,15 @@ class UIClienteCriteria extends UITurnosCriteria{
 	public function setDomicilio($domicilio)
 	{
 	    $this->domicilio = $domicilio;
+	}
+
+	public function getNroDocumento()
+	{
+	    return $this->nroDocumento;
+	}
+
+	public function setNroDocumento($nroDocumento)
+	{
+	    $this->nroDocumento = $nroDocumento;
 	}
 }

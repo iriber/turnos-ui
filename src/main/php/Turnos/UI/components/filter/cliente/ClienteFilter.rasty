@@ -19,6 +19,13 @@
 		<param name="placeholder" value="msg:cliente.nroHistoriaClinica" />
 	</component>
 
+	<component id="nroDocumento" type="InputText">
+		<param name="inputId" value="str:nroDocumento" />
+		<param name="name" value="str:nroDocumento" />
+		<param name="value" value="criteria.nroDocumento" />
+		<param name="placeholder" value="msg:cliente.nroDocumento" />
+	</component>
+
 	<component id="nroObraSocial" type="InputText">
 		<param name="name" value="str:nroObraSocial" />
 		<param name="value" value="criteria.nroObraSocial" />
