@@ -3,9 +3,17 @@
 	<component id="nombre" type="InputText">
 		<param name="name" value="str:nombre" />
 		<param name="value" value="criteria.nombre" />
-		<param name="placeholder" value="msg:cliente.nombre" />
+		<param name="placeholder" value="msg:cliente.nombre.placeholder" />
 		<param name="styleCss" value="str:uppercase" />				
 	</component>
+	
+	<component id="nombreEqual" type="InputText">
+		<param name="name" value="str:nombreEqual" />
+		<param name="value" value="criteria.nombreEqual" />
+		<param name="placeholder" value="msg:cliente.nombreEqual.placeholder" />
+		<param name="styleCss" value="str:uppercase" />				
+	</component>
+
 
 	<component id="domicilio" type="InputText">
 		<param name="name" value="str:domicilio" />

@@ -257,7 +257,11 @@
 	"cliente.buscar": "Buscar pacientes",
 	"cliente.buscar.again": "Afinar búsqueda...",
 
+	"cliente.nombreEqual":"Nombre exacto",
+	"cliente.nombreEqual.placeholder":"buscar por el nombre completo",
+	
 	"cliente.nombre":"Nombre",
+	"cliente.nombre.placeholder":"nombre o parte del nombre",
 	"cliente.nombre.unicity":"Ya existe un paciente para el nombre indicado",
 	"cliente.nombre.required":"Ingrese un nombre",
 	"cliente.nroHistoriaClinica.required":"Ingrese el número de historia clínica",

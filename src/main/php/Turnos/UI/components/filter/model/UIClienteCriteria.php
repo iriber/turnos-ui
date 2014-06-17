@@ -19,6 +19,8 @@ class UIClienteCriteria extends UITurnosCriteria{
 
 	private $nombre;
 	
+	private $nombreEqual;
+	
 	private $nroHistoriaClinica;
 	
 	private $nroObraSocial;
@@ -66,6 +68,7 @@ class UIClienteCriteria extends UITurnosCriteria{
 		$criteria = parent::buildCoreCriteria();
 				
 		$criteria->setNombre( $this->getNombre() );
+		$criteria->setNombreEqual( $this->getNombreEqual() );
 		$criteria->setNroHistoriaClinica( $this->getNroHistoriaClinica() );
 		$criteria->setNroObraSocial( $this->getNroObraSocial() );
 		$criteria->setObraSocialNombre( $this->getObraSocialNombre() );
@@ -113,5 +116,15 @@ class UIClienteCriteria extends UITurnosCriteria{
 	public function setNroDocumento($nroDocumento)
 	{
 	    $this->nroDocumento = $nroDocumento;
+	}
+
+	public function getNombreEqual()
+	{
+	    return $this->nombreEqual;
+	}
+
+	public function setNombreEqual($nombreEqual)
+	{
+	    $this->nombreEqual = $nombreEqual;
 	}
 }

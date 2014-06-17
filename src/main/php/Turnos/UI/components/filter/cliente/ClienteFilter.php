@@ -36,6 +36,7 @@ class ClienteFilter extends Filter{
 		
 		//agregamos las propiedades a popular en el submit.
 		$this->addProperty("nombre");
+		$this->addProperty("nombreEqual");
 		$this->addProperty("nroHistoriaClinica");
 		$this->addProperty("obraSocialNombre");
 		$this->addProperty("nroObraSocial");
@@ -52,6 +53,7 @@ class ClienteFilter extends Filter{
 		parent::parseXTemplate($xtpl);
 		
 		$xtpl->assign("lbl_nombre",  $this->localize("cliente.nombre") );
+		$xtpl->assign("lbl_nombreEqual",  $this->localize("cliente.nombreEqual") );
 		$xtpl->assign("lbl_nroHistoriaClinica",  $this->localize("cliente.nroHistoriaClinica") );
 		$xtpl->assign("lbl_obraSocialNombre",  $this->localize("cliente.obraSocial") );
 		$xtpl->assign("lbl_nroObraSocial",  $this->localize("cliente.nroObraSocial") );
